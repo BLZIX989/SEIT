@@ -380,3 +380,600 @@ The long-term objective of SEIT is to derive:
 * Cognitive Systems
 
 from a unified spectral-persistence foundation rooted in distinction, spectrum, constraint, and persistence.
+
+
+Equations:
+[
+\Delta \rightarrow \tau \rightarrow \kappa \rightarrow \Pi
+]
+
+[
+(\Delta,\tau,\neg\kappa)\Rightarrow\neg\Pi
+]
+
+[
+(\Delta,\tau,\kappa)\Rightarrow R
+]
+
+[
+E_a \Rightarrow \Delta
+]
+
+[
+G=(V,E)
+]
+
+[
+U={\Delta_i},\quad i=1,\dots,N
+]
+
+[
+A=(A_{ij}),\quad A_{ij}\in{0,1}
+]
+
+[
+D=\mathrm{diag}(d_i),\quad d_i=\sum_j A_{ij}
+]
+
+[
+L=D-A
+]
+
+[
+L\psi_n=\lambda_n\psi_n
+]
+
+[
+\mathrm{Spec}(L)={\lambda_n}
+]
+
+[
+\mathcal{D}_L^2=L
+]
+
+[
+R=e^{-\beta L}
+]
+
+[
+\Omega=\lim_{n\to\infty}e^{-n\beta L}U
+]
+
+[
+\Pi={\psi_n\mid \lambda_n<\lambda_c}
+]
+
+[
+\Pi\propto \frac{\text{Persistence}}{\text{Complexity}}
+]
+
+[
+A^*=\arg\max\left(\frac{\Pi}{S}\right)
+]
+
+[
+d(i,j)=
+\left(
+\sum_{n\in\Pi}
+|\psi_n(i)-\psi_n(j)|^2
+\right)^{1/2}
+]
+
+[
+g_{ij}
+======
+
+\lim_{x'\to x}
+\frac{\partial^2 d(x,x')}
+{\partial x^i\partial x'^j}
+]
+
+[
+ds^2=g_{\mu\nu}dx^\mu dx^\nu
+]
+
+[
+\Gamma^\lambda_{\mu\nu}
+=======================
+
+\frac12
+g^{\lambda\sigma}
+\left(
+\partial_\nu g_{\sigma\mu}
++
+\partial_\mu g_{\sigma\nu}
+--------------------------
+
+\partial_\sigma g_{\mu\nu}
+\right)
+]
+
+[
+R^\mu_{\nu\rho\sigma}
+=====================
+
+## \partial_\rho\Gamma^\mu_{\nu\sigma}
+
+\partial_\sigma\Gamma^\mu_{\nu\rho}
++
+\Gamma^\mu_{\lambda\rho}\Gamma^\lambda_{\nu\sigma}
+--------------------------------------------------
+
+\Gamma^\mu_{\lambda\sigma}\Gamma^\lambda_{\nu\rho}
+]
+
+[
+R_{\mu\nu}
+==========
+
+R^\rho_{\mu\rho\nu}
+]
+
+[
+R=g^{\mu\nu}R_{\mu\nu}
+]
+
+[
+G_{\mu\nu}
+==========
+
+R_{\mu\nu}
+-\frac12 g_{\mu\nu}R
+]
+
+[
+G_{\mu\nu}
++
+\Lambda g_{\mu\nu}
+==================
+
+\frac{8\pi G}{c^4}T_{\mu\nu}
+]
+
+[
+m_n=m_0\sqrt{\lambda_n}
+]
+
+[
+\alpha_k
+========
+
+\frac{\langle\psi|P_k|\psi\rangle}
+{\langle\psi|\psi\rangle}
+]
+
+[
+\mathbf{G}
+==========
+
+\mathrm{Aut}(\mathbb O)\times\mathrm{Spin}(8)
+\supset
+SU(3)\times SU(2)\times U(1)
+]
+
+[
+F^A_{\mu\nu}
+============
+
+## \partial_\mu A^A_\nu
+
+\partial_\nu A^A_\mu
++
+f^{ABC}A^B_\mu A^C_\nu
+]
+
+[
+i\hbar
+(\partial_\mu-igA_\mu)\psi
+==========================
+
+m\psi
+]
+
+[
+G_{\mu\nu}
+==========
+
+\frac{8\pi G}{c^4}
+\left(
+T^{MM}*{\mu\nu}
++
+T^{D\Psi}*{\mu\nu}
+\right)
+]
+
+[
+i\hbar\frac{\partial\Psi}{\partial t}
+=====================================
+
+\hat H\Psi
+]
+
+[
+\hat H\Psi=E\Psi
+]
+
+[
+\Delta x,\Delta p
+\ge
+\frac{\hbar}{2}
+]
+
+[
+E=h\nu=\hbar\omega
+]
+
+[
+S=k_B\ln\Omega
+]
+
+[
+dU=\delta Q-\delta W
+]
+
+[
+\Delta S\ge0
+]
+
+[
+\frac{dE}{dt}
+=============
+
+G-W_c\eta
+]
+
+[
+\mathrm{Stability}
+\propto
+\frac{Q_d,C_r,E_a}
+{V_e,L}
+]
+
+[
+\frac{dE}{dt}
+=============
+
+G-W_c\eta
+]
+
+[
+\mathrm{Viability}
+\approx
+\frac{\mathrm{Adaptive\ Capacity}}
+{\mathrm{Constraint\ Change\ Rate}}
+]
+
+[
+\frac{dE}{dt}
+=============
+
+G(t)-R(t)
+]
+
+[
+\frac{dE}{dt}
+=============
+
+G-W_c\eta
+]
+
+[
+D
+=
+
+\frac{C_n}
+{C_t+C_s}
+]
+
+[
+I_L=T_r-T_e
+]
+
+[
+F=f(E_i,E_c)
+]
+
+[
+D
+\rightarrow
+\Pi
+\rightarrow
+K
+\rightarrow
+\Gamma
+\rightarrow
+\Phi
+\rightarrow
+\Psi
+]
+
+[
+\Gamma
+======
+
+\frac{\text{Constraint Restoration Rate}}
+{\text{Constraint Degradation Rate}}
+]
+
+[
+\Phi
+====
+
+\text{Constraint Self-Production}
+]
+
+[
+\Psi
+====
+
+\text{System Viability}
+]
+
+[
+\Phi
+====
+
+{f_i:\Sigma f_i\rightarrow f_i}
+]
+
+[
+\frac{dE}{dt}
+=============
+
+G_c-W_c\eta_c
+]
+
+[
+J=-D\nabla c
+]
+
+[
+V_M
+===
+
+\frac{RT}{zF}
+\ln
+\left(
+\frac{[X]_o}{[X]_i}
+\right)
+]
+
+[
+\Delta\bar z=h^2S
+]
+
+[
+\bar w
+======
+
+\sum_i p_i w_i
+]
+
+[
+\Delta p
+========
+
+\frac{p(1-p)(w_1-w_2)}
+{\bar w}
+]
+
+[
+\frac{dS}{dt}
+\propto
+\mathrm{Var}(w)
+]
+
+[
+\Omega
+======
+
+R(R)
+]
+
+[
+U
+\rightarrow
+A
+\rightarrow
+G
+\rightarrow
+D
+\rightarrow
+\Delta
+\rightarrow
+\Omega
+]
+
+[
+\Omega
+\rightarrow
+\Delta
+\rightarrow
+D
+\rightarrow
+G
+\rightarrow
+A
+\rightarrow
+U
+]
+
+[
+\Omega
+\leftrightarrow
+U
+]
+
+[
+g_{ij}(y)
+=========
+
+*
+
+\frac{\partial^2 D(y,y')}
+{\partial y^i\partial y'^j}
+\Bigg|_{y'=y}
+]
+
+[
+I_F
+===
+
+\int_{H_1}
+|\psi(x,t)|^2
+\left|
+\nabla_x
+\ln
+\left(
+\frac{|\psi|^2}
+{\rho_{\text{macro}}}
+\right)
+\right|^2
+dx
+]
+
+[
+C_\Pi[y]
+========
+
+\int_T
+\left[
+-\tau_\Omega^2
+\left(
+\frac{\partial^2 S}
+{\partial y^a\partial y^b}
+\right)
+\dot y^a\dot y^b
++
+2\tau_\Omega I_F
+\right]dt
+]
+
+[
+\ddot y^c
++
+\Gamma^c_{ab}
+\dot y^a
+\dot y^b
+========
+
+*
+
+g^{ca}
+\nabla_a I_F
+]
+
+[
+\ddot y^c
++
+\Gamma^c_{ab}
+\dot y^a
+\dot y^b
+========
+
+0
+]
+
+[
+\frac{\partial\rho}{\partial t}
+===============================
+
+D\nabla^2\rho
+]
+
+[
+\frac{dx_c}{dt}
+===============
+
+x_c(f_c(x)-\phi(x))
+]
+
+[
+\dot y
+======
+
+-G^{-1}\nabla_yF
+]
+
+[
+\Pi_i
+=====
+
+\Theta(\kappa,\lambda_i)
+]
+
+[
+OE
+==
+
+\text{Constraint-Induced Persistence Selection}
+]
+
+[
+O={R>0}
+]
+
+[
+\Pi(x)
+======
+
+f(\lambda_n,\kappa)
+]
+
+[
+\frac{dx}{dt}
+\propto
+\nabla\Pi
+]
+
+[
+Q
+=
+
+-\frac{\hbar^2}{2m}
+\frac{\nabla^2R}{R}
+]
+
+[
+|\Delta|
+\propto
+|\Lambda(E)|
+]
+
+[
+\Pi_E
+=====
+
+\sum_i\Pi_i
+]
+
+[
+\Delta
+\rightarrow
+G
+\rightarrow
+L
+\rightarrow
+\mathrm{Spec}(L)
+\rightarrow
+\Pi
+\rightarrow
+d(i,j)
+\rightarrow
+g_{\mu\nu}
+\rightarrow
+\text{Matter}
+\rightarrow
+\text{Life}
+\rightarrow
+\text{Intelligence}
+]
+
+[
+\text{Reality}
+==============
+
+\text{Persistence of Distinction Across Constrained Transformation}
+]
+
+
