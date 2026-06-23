@@ -687,3 +687,312 @@ Reality =
 Persistence of Distinction
 Across Constrained Transformation
 ```
+
+
+
+
+
+
+
+
+# Proprietary SEIT Equations and Invariants
+
+This section contains equations originating from the Spectral Emergence Information Theory research program and associated frameworks including DTC, UIP, UICP, Wavefront, TNDS, and the Rosetta Stone Protocol.
+
+---
+
+## Core Persistence Grammar
+
+```text
+Δ → τ → κ → Π
+```
+
+---
+
+## Constraint Necessity Theorem
+
+```text
+(Δ, τ, ¬κ) ⇒ ¬Π
+```
+
+---
+
+## Retention Emergence Theorem
+
+```text
+(Δ, τ, κ) ⇒ R
+```
+
+---
+
+## Recursive Distinction
+
+```text
+Ω = R(R)
+```
+
+---
+
+## Red Pill Reduction Operator
+
+```text
+U → A → G → D → Δ → Ω
+```
+
+---
+
+## Blue Pill Generation Operator
+
+```text
+Ω → Δ → D → G → A → U
+```
+
+---
+
+## Bidirectional Completeness Criterion
+
+```text
+Ω ↔ U
+```
+
+---
+
+## Persistence Efficiency
+
+```text
+Π ∝ Persistence / Complexity
+```
+
+---
+
+## Persistence Optimization
+
+```text
+A* = argmax(Π/S)
+```
+
+Where:
+
+```text
+Π = Persistence
+S = Structural Cost
+```
+
+---
+
+## Stability Equation
+
+```text
+Stability ∝
+
+(Qd · Cr · Ea)
+---------------
+(Ve · L)
+```
+
+Where:
+
+```text
+Qd = Detection Quality
+Cr = Corrective Response Capacity
+Ea = Alignment Effectiveness
+Ve = Environmental Volatility
+L  = Total Correction Latency
+```
+
+---
+
+## Viability Equation
+
+```text
+Viability ≈
+
+Adaptive Capacity
+-------------------
+Constraint Change Rate
+```
+
+---
+
+## Constraint Regeneration Capacity
+
+```text
+Γ =
+Constraint Restoration Rate
+----------------------------
+Constraint Degradation Rate
+```
+
+---
+
+## Universal Error Accumulation Equation
+
+```text
+dE/dt = G - Wcη
+```
+
+Where:
+
+```text
+G   = Error Generation
+Wc  = Corrective Work Capacity
+η   = Correction Efficiency
+```
+
+---
+
+## Organizational Closure
+
+```text
+Φ = {fi : Σfi → fi}
+```
+
+---
+
+## Universal Invariant Hierarchy
+
+```text
+D → Π → K → Γ → Φ → Ψ
+```
+
+Where:
+
+```text
+D = Distinction
+Π = Persistence
+K = Constraint Core
+Γ = Regeneration Capacity
+Φ = Self Production
+Ψ = Viability
+```
+
+---
+
+## Decoupling Index
+
+```text
+D =
+Cn
+---------
+Ct + Cs
+```
+
+Where:
+
+```text
+Cn = Administrative Cost
+Ct = Transformative Cost
+Cs = Support Cost
+```
+
+---
+
+## Interpretation Latency
+
+```text
+IL = Tr - Te
+```
+
+Where:
+
+```text
+Tr = Representation Time
+Te = Event Time
+```
+
+---
+
+## Spectral Persistence Selection
+
+```text
+Πi = Θ(κ, λi)
+```
+
+---
+
+## Observer Definition
+
+```text
+O = {R > 0}
+```
+
+---
+
+## Observer Effect
+
+```text
+OE =
+Constraint-Induced
+Persistence Selection
+```
+
+---
+
+## Persistence Gradient Equation
+
+```text
+dx/dt ∝ ∇Π
+```
+
+---
+
+## Persistence Density
+
+```text
+Π(x) = f(λn, κ)
+```
+
+---
+
+## Distinction Expansion Principle
+
+```text
+|Δ| ∝ |Λ(E)|
+```
+
+---
+
+## Planetary Persistence Field
+
+```text
+ΠE = Σ Πi
+```
+
+---
+
+## Universal Persistence Field Equation
+
+```text
+ÿc + Γcab ẏaẏb
+
+=
+
+-gca ∇a IF
+```
+
+---
+
+## Complete Emergence Chain
+
+```text
+Δ
+→ G
+→ L
+→ Spec(L)
+→ Π
+→ d(i,j)
+→ gμν
+→ Matter
+→ Life
+→ Intelligence
+```
+
+---
+
+## Fundamental SEIT Identity
+
+```text
+Reality =
+Persistence of Distinction
+Across Constrained Transformation
+```
