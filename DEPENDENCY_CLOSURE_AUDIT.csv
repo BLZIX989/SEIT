@@ -1,0 +1,14 @@
+branch,representative_node_ids,depends_on_CONTINUUM_LIMIT_L_DESI,blocked_by_FC005,blocking_reason
+1. Variational,VARIATIONAL-NODE,False,False,N/A -- independently reachable
+2. Noether/conservation,NOETHER-CONSERVATION,False,False,N/A -- independently reachable
+3. GR/geometric,GEOMETRY-NODE,False,False,N/A -- independently reachable
+4. Matter<->Geometry,SEMICLASSICAL-EINSTEIN-EQUATION;SEMICLASSICAL-RESIDUAL-E-SC,False,False,N/A -- independently reachable
+5. Statistical Recovery Core,FISHER-STATISTICAL-FAMILY;CALC-FC005-FISHER-PSD;METRIC-CANDIDATE,False,False,N/A -- independently reachable
+6. Quantum Recovery Core,SPEC-H-UNIQUENESS;CALC-FC005-EIGEN-UNIQUENESS,False,False,N/A -- independently reachable
+7. Thermodynamic Recovery Core,THERMODYNAMICS-NODE,False,False,N/A -- independently reachable
+8. Spectral / heat-kernel math,SPECTRUM-L;S3-HEAT-COEFFICIENTS;S3-CURVATURE-CLOSURE,False,False,N/A -- independently reachable
+9. Spectral geometry,DIFFUSION-DISTANCE;METRIC-CANDIDATE,False,False,N/A -- independently reachable
+10. Gauge/representation/matter,GAUGE-NODE;MATTER-NODE;T2-REPRODUCTION,False,False,N/A -- independently reachable
+11. Cosmological,COSMOLOGY-NODE,False,False,N/A -- independently reachable
+12. DESI discrete->continuum,DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK;E-KAPPA-DESI;MATHEMATICAL-CONVERGENCE-DESI;PHYSICAL-VALIDATION-DESI;DESI-HEAT-COEFFICIENTS;DESI-SPECTRUM;DESI-HEAT-TRACE;CONTINUUM-LIMIT-L-DESI;KAPPA-DESI;CURVATURE-CLOSURE-DESI,True,True,self-referential: this IS the FAIL/RETRIABLE branch
+13. Previously falsified,FALS-FC005-FISHER-LORENTZIAN;FALS-FC005-EIGENVALUE-UNIQUENESS,False,False,N/A -- independently reachable
