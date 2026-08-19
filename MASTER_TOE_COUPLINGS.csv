@@ -1,0 +1,6 @@
+COUPLING,VALUE,STATUS
+"alpha (electromagnetic, at low energy)",1/137.035999 (measured),"MEASURED; claimed-derived by corpus, FALSIFIED (see CONSTANTS)"
+"alpha_s (strong coupling, running)","scale-dependent, measured via deep-inelastic scattering etc.","MEASURED (external); beta-function running equation appears in Spectral Codex Volumes.docx per a grep hit this campaign found ('the strong fine structure constant... how it runs with Q^2'), not independently verified or re-derived this campaign"
+sin^2(theta_W) (Weinberg angle),~0.23 (measured),MEASURED (external); not claimed as derived anywhere read this campaign
+Yukawa couplings (fermion masses/v),measured per-fermion,"MEASURED (external); used correctly as INPUTS to DTC-RP-004's own forcing test, not claimed as outputs there"
+Higgs quartic lambda_H,"fixed by measured m_H, v (established)","MEASURED (external); DTC-RP-004 uses the REAL historical Chamseddine-Connes-Marcolli lambda_H forcing relation as its test standard, correctly, without claiming to have derived it itself"

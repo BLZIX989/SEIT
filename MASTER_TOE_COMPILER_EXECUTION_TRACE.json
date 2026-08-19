@@ -1,0 +1,33 @@
+{
+  "trace_type": "MASTER_TOE_COMPILER_EXECUTION_TRACE",
+  "generated_at": "2026-08-19T18:51:43Z",
+  "git_commit": "791d8b0e2d58784b26697c8571b9f4bf6d455e85",
+  "commands_run": [
+    {
+      "command": "python3 -m compiler.run_compiler",
+      "result": "terminal status: CONDITIONALLY_CLOSED; audits passed: True; all 10 self-audits PASS"
+    },
+    {
+      "command": "python3 -m pytest compiler/tests -q",
+      "result": "95 passed in 43.59s"
+    }
+  ],
+  "canonical_node_status_counts": {
+    "OPEN": 35,
+    "PROPOSED": 35,
+    "CALCULATED": 10,
+    "VERIFIED": 12,
+    "CONDITIONAL": 3,
+    "FAIL": 3,
+    "DERIVED": 1,
+    "FALSIFIED": 1
+  },
+  "canonical_node_total": 100,
+  "fc005_status_unchanged": {
+    "MATHEMATICAL-CONVERGENCE-DESI": "FAIL / RETRIABLE",
+    "CONTINUUM-LIMIT-L-DESI": "FAIL / RETRIABLE",
+    "CURVATURE-CLOSURE-DESI": "OPEN",
+    "PHYSICAL-VALIDATION-DESI": "OPEN"
+  },
+  "note": "This campaign ran the existing compiler and test suite to confirm the baseline canonical state before and after corpus-mining, and did not add any new executable backend to the compiler itself -- the corpus-mining pass produced COMPARISON-role findings only (MASTER_THEORY_CORPUS_INDEX.csv, MASTER_TOE_DEPENDENCY_GRAPH.json), none of which survived independent scrutiny well enough to warrant new canonical code."
+}

@@ -1,0 +1,8 @@
+PARAMETER,VALUE,STATUS
+H0 (Hubble constant),"67.36 km/s/Mpc (DESI's own published fiducial, Planck 2018 base-LambdaCDM, per FC005_cosmology.yaml)","MEASURED/EXTERNAL (consumed as pipeline input, not derived)"
+Omega_m,0.315192 (DESI fiducial),MEASURED/EXTERNAL
+Omega_Lambda,0.684808 (DESI fiducial),MEASURED/EXTERNAL
+w0 (dark-energy EOS),"-1.0 (DESI fiducial, cosmological-constant value)",MEASURED/EXTERNAL
+n_s (scalar spectral index),0.965 (Planck-measured),MEASURED/EXTERNAL; used as an input to SEIT v2's N_sub claim (see CONSTANTS)
+SEIT-predicted GW background frequency,"166.48 Hz (proposed, SEIT v2 section VI)","PROPOSED, UNTESTED THIS CAMPAIGN -- not checked against current LIGO/Virgo stochastic-background limits"
+SEIT-predicted dwarf-spheroidal soliton core radius,"120-150 pc (proposed, SEIT v2 section VI)","PROPOSED, UNTESTED THIS CAMPAIGN -- not checked against current dwarf-spheroidal kinematic surveys"
