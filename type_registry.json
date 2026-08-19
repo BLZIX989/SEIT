@@ -1,0 +1,77 @@
+[
+  {
+    "name": "formal_foundation",
+    "description": "F0 = (Logic, in, Axioms)",
+    "parent": null
+  },
+  {
+    "name": "forward_chain_template",
+    "description": "spec-section-6 dependency template node",
+    "parent": null
+  },
+  {
+    "name": "mathematical_object",
+    "description": "a directly postulated candidate structure",
+    "parent": null
+  },
+  {
+    "name": "graph_laplacian_operator",
+    "description": "L = D - A over a graph",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "spectral_data",
+    "description": "eigenvalues/eigenvectors of an operator",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "heat_semigroup",
+    "description": "R(t) = e^{-tL}",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "projector",
+    "description": "a linear projector, e.g. onto ker(L)",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "diffusion_distance",
+    "description": "d_t(i,j) built from Spec(L)",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "geometry_candidate",
+    "description": "a candidate metric/geometry, status never above CONDITIONAL without an analytic proof",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "historical_claim",
+    "description": "a prose claim from a pre-compiler source document",
+    "parent": null
+  },
+  {
+    "name": "reproduction_attempt",
+    "description": "an attempt to re-execute a historical claim in this compiler",
+    "parent": null
+  },
+  {
+    "name": "forward_derivation_attempt",
+    "description": "an attempt at a target-independent forward derivation",
+    "parent": null
+  },
+  {
+    "name": "external_literature_reference",
+    "description": "a third-party published result, comparison-only",
+    "parent": null
+  },
+  {
+    "name": "missing_artifact",
+    "description": "a named artifact the build command required but that was not found in the repository",
+    "parent": null
+  },
+  {
+    "name": "self_acknowledged_obstruction",
+    "description": "a project-internal statement of a derivation obstruction, predating this compiler",
+    "parent": null
+  }
+]

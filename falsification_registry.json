@@ -1,0 +1,63 @@
+[
+  {
+    "id": "FALS-METRIC-UNIQUENESS-cycle",
+    "protocol": "structural_elimination",
+    "target": "diffusion-metric-candidate(cycle)",
+    "passed": false,
+    "detail": "limiting normalized nearest-neighbor diffusion distance depends on the free diffusion-time parameter (relative spread 0.556 across tau multipliers [0.5, 1.0, 2.0]); no canonical time choice is derived upstream, so no single metric candidate is selected",
+    "evidence": {
+      "across_time_choice_spread": 0.5557276531777925,
+      "normalized_sequence": [
+        2.1670826956745204,
+        1.4845849482070417,
+        1.0457526881096353,
+        0.7388493581895421,
+        0.5223414923501947
+      ]
+    }
+  },
+  {
+    "id": "FALS-METRIC-UNIQUENESS-path",
+    "protocol": "structural_elimination",
+    "target": "diffusion-metric-candidate(path)",
+    "passed": false,
+    "detail": "limiting normalized nearest-neighbor diffusion distance depends on the free diffusion-time parameter (relative spread 0.565 across tau multipliers [0.5, 1.0, 2.0]); no canonical time choice is derived upstream, so no single metric candidate is selected",
+    "evidence": {
+      "across_time_choice_spread": 0.564759140356319,
+      "normalized_sequence": [
+        0.7709269987152177,
+        0.5121610744033832,
+        0.3510690581075797,
+        0.24440790654842415,
+        0.171480123476299
+      ]
+    }
+  },
+  {
+    "id": "FALS-METRIC-UNIQUENESS-grid2d",
+    "protocol": "structural_elimination",
+    "target": "diffusion-metric-candidate(grid2d)",
+    "passed": false,
+    "detail": "limiting normalized nearest-neighbor diffusion distance depends on the free diffusion-time parameter (relative spread 0.620 across tau multipliers [0.5, 1.0, 2.0]); no canonical time choice is derived upstream, so no single metric candidate is selected",
+    "evidence": {
+      "across_time_choice_spread": 0.6202900265505977,
+      "normalized_sequence": [
+        1.0452366352731284,
+        0.7341390606161003,
+        0.5545106811416198,
+        0.4454752154014865,
+        0.3723756653761302
+      ]
+    }
+  },
+  {
+    "id": "FALS-SPECTRUM-RELABELING-INVARIANCE",
+    "protocol": "representation_invariance",
+    "target": "Spec(L) for cycle(n=10) under vertex relabeling",
+    "passed": true,
+    "detail": "invariant under all tested representations",
+    "evidence": {
+      "n_representations": 5
+    }
+  }
+]

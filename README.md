@@ -996,3 +996,26 @@ Reality =
 Persistence of Distinction
 Across Constrained Transformation
 ```
+
+---
+
+# Forward-MDCL Universal Theory Compiler
+
+An executable, tested implementation of the compiler infrastructure
+described above — dependency graph, status/provenance system,
+falsification protocols, and target-independence firewall — lives in
+[`compiler/`](compiler/). It does not attempt to derive the Standard
+Model, GR, QFT, or cosmology; it builds and self-audits the machine that
+would determine whether such structures follow from an explicitly
+registered formal substrate.
+
+See [`FORWARD_MDCL_COMPILER_SPEC.md`](FORWARD_MDCL_COMPILER_SPEC.md) for
+the specification, [`compiler_architecture.md`](compiler_architecture.md)
+for the module layout, and [`compiler_test_report.md`](compiler_test_report.md)
+for the latest test/self-audit results.
+
+```
+pip install -r compiler/requirements.txt
+python3 -m pytest compiler/tests -q
+python3 -m compiler.run_compiler
+```

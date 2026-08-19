@@ -1,0 +1,1362 @@
+[
+  {
+    "id": "FOUNDATION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "FOUNDATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.378150+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "F0 = (Logic, in, Axioms), parameterizable formal foundation",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "EMPTYSET",
+    "status": "OPEN",
+    "dependencies": [
+      "FOUNDATION"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "EMPTYSET",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.380656+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "F1 = the empty set, constructed within F0",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "MATH-UNIVERSE",
+    "status": "OPEN",
+    "dependencies": [
+      "EMPTYSET"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "MATH-UNIVERSE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.383140+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "the mathematical universe M of candidate structures",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "PHYSICAL-CANDIDATE-SET",
+    "status": "OPEN",
+    "dependencies": [
+      "MATH-UNIVERSE",
+      "SELECTION-SIGMA"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "PHYSICAL-CANDIDATE-SET",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.385572+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "P = {M in Mathset | Sigma(M) = 1}",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "VACUUM",
+    "status": "OPEN",
+    "dependencies": [
+      "PHYSICAL-CANDIDATE-SET"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "VACUUM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.387853+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "Omega_0, no definition assumed (spec section 11)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "DISTINCTION",
+    "status": "OPEN",
+    "dependencies": [
+      "VACUUM"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "DISTINCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.390166+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "D(Omega_1, Omega_0)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "RELATION",
+    "status": "OPEN",
+    "dependencies": [
+      "DISTINCTION"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "RELATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.392354+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "R(Omega_i, Omega_j)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "TRANSFORMATION-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "RELATION"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "TRANSFORMATION-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.394777+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "f: Omega_i -> Omega_j",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "CONSTRAINT",
+    "status": "OPEN",
+    "dependencies": [
+      "TRANSFORMATION-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "CONSTRAINT",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.396953+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "C = Adm(T)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "PERSISTENCE-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "CONSTRAINT"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "PERSISTENCE-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.399046+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "I[Phi_t Omega] = I[Omega]",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "OPERATOR-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "PERSISTENCE-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "OPERATOR-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.401284+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "L, derived from D,R,T,C,Pi if admissible (spec section 13)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "SPECTRUM-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "OPERATOR-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "SPECTRUM-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.403440+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "Spec(L) = {lambda_n}",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "GEOMETRY-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "SPECTRUM-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "GEOMETRY-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.405656+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "Spec(L) -> d -> g -> nabla -> Riemann -> Ricci -> ... ",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "VARIATIONAL-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "SPECTRUM-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "VARIATIONAL-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.407782+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "S, delta S = 0, Euler-Lagrange, Hamiltonian",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "QUANTUM-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "VARIATIONAL-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "QUANTUM-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.410191+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "Hilbert space, observables, quantization map",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "GAUGE-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "QUANTUM-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "GAUGE-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.412349+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "A_mu, F_munu, gauge algebra (never SU(3)xSU(2)xU(1) as input)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "MATTER-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "GAUGE-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "MATTER-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.414419+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "fermions, representations, chirality, masses",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "THERMODYNAMICS-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "MATTER-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "THERMODYNAMICS-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.416505+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "U, S, Z, F, entropy production",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "COSMOLOGY-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "THERMODYNAMICS-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "COSMOLOGY-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.418784+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "vacuum energy, Lambda, H, a(t)",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "OBSERVABLES-NODE",
+    "status": "OPEN",
+    "dependencies": [
+      "COSMOLOGY-NODE"
+    ],
+    "assumptions": [
+      "Dependency template only (spec section 6): not a proof. Remains OPEN until its own transformation is independently registered and executed."
+    ],
+    "provenance": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "OBSERVABLES-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.420828+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_chain_template",
+    "carrier": "validation-only comparison to observed physics",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "GRAPH-G-SEED",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "Directly given test object, not derived from Sigma/Vacuum."
+    ],
+    "provenance": {
+      "source": "spec section 31",
+      "source_version": "",
+      "object_id": "GRAPH-G-SEED",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.423057+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "mathematical_object",
+    "carrier": "A graph G=(V,E), directly postulated as a candidate mathematical object per spec section 31's own framing of the first executable test; not claimed to descend from the (OPEN) Selection/Vacuum chain.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "OPERATOR-L",
+    "status": "CALCULATED",
+    "dependencies": [
+      "GRAPH-G-SEED"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "OPERATOR-L",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-OPERATOR",
+      "execution_timestamp": "2026-08-19T03:12:33.653056+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "role": "upstream_construction",
+    "type": "graph_laplacian_operator",
+    "carrier": "L = D - A, computed across a sweep of topologies/sizes (14 cases); see calculation_registry.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "SPECTRUM-L",
+    "status": "VERIFIED",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "SPECTRUM-L",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-SPECTRUM",
+      "execution_timestamp": "2026-08-19T03:12:33.658382+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "role": "upstream_construction",
+    "type": "spectral_data",
+    "carrier": "Spec(L) = {lambda_n}, eigen-equation verified numerically (eigh) with exact sympy cross-check for n<=8.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "HEAT-FLOW-R",
+    "status": "VERIFIED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "HEAT-FLOW-R",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-HEATFLOW",
+      "execution_timestamp": "2026-08-19T03:12:33.663093+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "role": "upstream_construction",
+    "type": "heat_semigroup",
+    "carrier": "R(t) = e^{-tL}; R(t)phi_n = e^{-t lambda_n} phi_n verified numerically.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "KERNEL-PROJECTOR",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "KERNEL-PROJECTOR",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-KERNEL",
+      "execution_timestamp": "2026-08-19T03:12:33.665418+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "role": "upstream_construction",
+    "type": "projector",
+    "carrier": "P_ker(L) = lim_{t->inf} e^{-tL}; hypotheses (symmetric, PSD) checked programmatically before the limit is claimed, per graph.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "DIFFUSION-DISTANCE",
+    "status": "CALCULATED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "DIFFUSION-DISTANCE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.869421+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "diffusion_distance",
+    "carrier": "d_t(i,j)^2 = sum_{n:lambda_n>0} e^{-2t lambda_n}(phi_n(i)-phi_n(j))^2",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "METRIC-CANDIDATE",
+    "status": "CONDITIONAL",
+    "dependencies": [
+      "DIFFUSION-DISTANCE"
+    ],
+    "assumptions": [
+      "No analytic convergence proof registered; numeric refinement trend only.",
+      "3/3 topologies show the construction is NON-UNIQUE (depends on the free diffusion-time parameter) -- see falsification_registry."
+    ],
+    "provenance": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "METRIC-CANDIDATE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.873619+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {
+        "reports": [
+          "non_unique",
+          "non_unique",
+          "non_unique"
+        ]
+      }
+    },
+    "role": "upstream_construction",
+    "type": "geometry_candidate",
+    "carrier": "candidate g_ij extracted from diffusion-distance refinement; spec section 32 classification recorded per topology in calculation_registry (never 'exact').",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "T2-HISTORICAL",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "SOURCE CLAIM only: no executable derivation, proof object, or numerical artifact backing this claim was found anywhere in the repository during the spec-section-2 audit (searched: all .docx text, first pages of all .pdf files, README.md, and full git log).",
+      "Per spec section 2, a document's own label (here, prose asserting \"explicitly derived\") is never promoted to VERIFIED/DERIVED on the strength of the label alone."
+    ],
+    "provenance": {
+      "source": "DTC COMPILER.docx; README.md",
+      "source_version": "",
+      "object_id": "T2-HISTORICAL",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.891822+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "artifact_found": false,
+        "note": "prose assertion only"
+      }
+    },
+    "role": "comparison",
+    "type": "historical_claim",
+    "carrier": "Prose claim: G_physical = (1,3) x [SU(3) x SU(2) x U(1)] is asserted to be \"explicitly derived as the group of continuous automorphisms that preserve the invariant structural identity of the set A under local re-indexing\" (DTC COMPILER.docx, section 4). README.md separately states the historical claim Aut(O) x Spin(8) superset SU(3) x SU(2) x U(1) (octonion automorphism / Spin(8) route to the Standard Model gauge group).",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "T2-REPRODUCTION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "Not attempted; OPEN per spec section 5 (stop the branch, do not force closure)."
+    ],
+    "provenance": {
+      "source": "this compiler build",
+      "source_version": "",
+      "object_id": "T2-REPRODUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.894002+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "comparison",
+    "type": "reproduction_attempt",
+    "carrier": "Attempt to independently re-execute the T2-HISTORICAL automorphism-group construction inside this compiler (build Aut(O), build Spin(8) action, compute the invariant subgroup, compare to SU(3)xSU(2)xU(1) as a *comparison* target) has NOT been made in this build. This is out of scope for the initial compiler-construction phase (spec section 31/38: build the machine and the two initial executable tests first; gauge/matter engines activate only after the self-audit passes).",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "T2-FORWARD-DERIVATION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "Gauge engine not yet activated in this build; OPEN.",
+      "See T2-HISTORICAL for the downstream comparison target this node's text and any future construction must remain independent of."
+    ],
+    "provenance": {
+      "source": "this compiler build",
+      "source_version": "",
+      "object_id": "T2-FORWARD-DERIVATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.896137+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "type": "forward_derivation_attempt",
+    "carrier": "Forward derivation of a gauge structure from the upstream forward chain (Constraint -> Operator -> Spectrum -> Gauge) with no reference to any historically-targeted downstream gauge structure (see T2-HISTORICAL for the target this branch must NOT select toward). Not attempted: the Gauge engine is explicitly gated behind the self-audit in this build (spec section 41 final command).",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "Registered as a comparison/validation target for a future forward reconstruction attempt, not as an upstream selector (spec section 34)."
+    ],
+    "provenance": {
+      "source": "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf; Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf",
+      "source_version": "",
+      "object_id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.898462+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "artifact_found": false,
+        "note": "literature review document, not executed derivation"
+      }
+    },
+    "role": "comparison",
+    "type": "external_literature_reference",
+    "carrier": "Standard external result (Chamseddine-Connes spectral action on an almost-commutative spectral triple) summarized in 'Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf': \"when applied to an almost-commutative space (4D spacetime times a finite internal space), the Spectral Action Principle yields exactly the Standard Model coupled to gravity.\" This is third-party published NCG literature, not a SEIT-original derivation.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "STOP condition per spec section 39: missing dependency. Do not fabricate a proof artifact. If the underlying material exists outside this repository, it must be supplied and registered explicitly before this node can advance past OPEN."
+    ],
+    "provenance": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.902961+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "role": "comparison",
+    "type": "missing_artifact",
+    "carrier": "Spec section 34 instructs this compiler to preserve the 'abelian bridge obstruction' theorem/proof artifact from prior seed->NCG experiments. No file in the repository (searched: all .docx converted to text, first pages of all .pdf files, README.md, git log of all prior commits) contains a theorem statement, proof, or computation matching this name.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "STOP condition per spec section 39: missing dependency. Do not fabricate a proof artifact. If the underlying material exists outside this repository, it must be supplied and registered explicitly before this node can advance past OPEN."
+    ],
+    "provenance": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.905064+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "role": "comparison",
+    "type": "missing_artifact",
+    "carrier": "Spec section 34 instructs this compiler to preserve the 'asymmetric-abelian obstruction' theorem/proof artifact from prior seed->NCG experiments. No file in the repository (searched: all .docx converted to text, first pages of all .pdf files, README.md, git log of all prior commits) contains a theorem statement, proof, or computation matching this name.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "STOP condition per spec section 39: missing dependency. Do not fabricate a proof artifact. If the underlying material exists outside this repository, it must be supplied and registered explicitly before this node can advance past OPEN."
+    ],
+    "provenance": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.907069+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "role": "comparison",
+    "type": "missing_artifact",
+    "carrier": "Spec section 34 instructs this compiler to preserve the 'non-Abelian commutant obstruction' theorem/proof artifact from prior seed->NCG experiments. No file in the repository (searched: all .docx converted to text, first pages of all .pdf files, README.md, git log of all prior commits) contains a theorem statement, proof, or computation matching this name.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "DTC-CIRCULARITY-OBSTRUCTION",
+    "status": "CONDITIONAL",
+    "dependencies": [],
+    "assumptions": [
+      "Registered verbatim as project-internal evidence that the circularity risk was recognized prior to this compiler build; not itself a derivation."
+    ],
+    "provenance": {
+      "source": "DTC_Formal_Structure.docx (section 4.2)",
+      "source_version": "",
+      "object_id": "DTC-CIRCULARITY-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.909503+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {}
+    },
+    "role": "comparison",
+    "type": "self_acknowledged_obstruction",
+    "carrier": "DTC_Formal_Structure.docx section 4.2 explicitly acknowledges: \"a derivation from C to R cannot be carried out, even in principle, if C has not been pinned down independently of the R it is meant to produce.\" This is a project-internal statement of exactly the circularity risk the target-independence firewall (spec section 26) is designed to catch: a downstream structure R must not silently define its own upstream selector C.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  }
+]

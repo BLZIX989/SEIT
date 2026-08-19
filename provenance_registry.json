@@ -1,0 +1,1034 @@
+{
+  "FOUNDATION": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "FOUNDATION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.378150+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "EMPTYSET": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "EMPTYSET",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.380656+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "MATH-UNIVERSE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "MATH-UNIVERSE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.383140+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "PHYSICAL-CANDIDATE-SET": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "PHYSICAL-CANDIDATE-SET",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.385572+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "VACUUM": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "VACUUM",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.387853+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "DISTINCTION": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "DISTINCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.390166+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "RELATION": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "RELATION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.392354+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "TRANSFORMATION-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "TRANSFORMATION-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.394777+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "CONSTRAINT": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "CONSTRAINT",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.396953+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "PERSISTENCE-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "PERSISTENCE-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.399046+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "OPERATOR-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "OPERATOR-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.401284+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "SPECTRUM-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "SPECTRUM-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.403440+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "GEOMETRY-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "GEOMETRY-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.405656+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "VARIATIONAL-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "VARIATIONAL-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.407782+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "QUANTUM-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "QUANTUM-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.410191+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "GAUGE-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "GAUGE-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.412349+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "MATTER-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "MATTER-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.414419+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "THERMODYNAMICS-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "THERMODYNAMICS-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.416505+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "COSMOLOGY-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "COSMOLOGY-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.418784+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "OBSERVABLES-NODE": {
+    "source": "spec section 6 (forward architecture template)",
+    "source_version": "",
+    "object_id": "OBSERVABLES-NODE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.420828+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "GRAPH-G-SEED": {
+    "source": "spec section 31",
+    "source_version": "",
+    "object_id": "GRAPH-G-SEED",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.423057+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "PROPOSED",
+    "verification": {}
+  },
+  "OPERATOR-L": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "OPERATOR-L",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "CALC-T1-OPERATOR",
+    "execution_timestamp": "2026-08-19T03:12:33.653056+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CALCULATED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14
+    }
+  },
+  "SPECTRUM-L": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "SPECTRUM-L",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "CALC-T1-SPECTRUM",
+    "execution_timestamp": "2026-08-19T03:12:33.658382+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14
+    }
+  },
+  "HEAT-FLOW-R": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "HEAT-FLOW-R",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "CALC-T1-HEATFLOW",
+    "execution_timestamp": "2026-08-19T03:12:33.663093+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14
+    }
+  },
+  "KERNEL-PROJECTOR": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "KERNEL-PROJECTOR",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "CALC-T1-KERNEL",
+    "execution_timestamp": "2026-08-19T03:12:33.665418+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14
+    }
+  },
+  "DIFFUSION-DISTANCE": {
+    "source": "compiler/backends/diffusion_metric.py",
+    "source_version": "",
+    "object_id": "DIFFUSION-DISTANCE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.869421+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CALCULATED",
+    "verification": {}
+  },
+  "METRIC-CANDIDATE": {
+    "source": "compiler/backends/diffusion_metric.py",
+    "source_version": "",
+    "object_id": "METRIC-CANDIDATE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.873619+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CONDITIONAL",
+    "verification": {
+      "reports": [
+        "non_unique",
+        "non_unique",
+        "non_unique"
+      ]
+    }
+  },
+  "T2-HISTORICAL": {
+    "source": "DTC COMPILER.docx; README.md",
+    "source_version": "",
+    "object_id": "T2-HISTORICAL",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.891822+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "PROPOSED",
+    "verification": {
+      "artifact_found": false,
+      "note": "prose assertion only"
+    }
+  },
+  "T2-REPRODUCTION": {
+    "source": "this compiler build",
+    "source_version": "",
+    "object_id": "T2-REPRODUCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.894002+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "T2-FORWARD-DERIVATION": {
+    "source": "this compiler build",
+    "source_version": "",
+    "object_id": "T2-FORWARD-DERIVATION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.896137+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "NCG-BRIDGE-EXTERNAL-REFERENCE": {
+    "source": "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf; Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf",
+    "source_version": "",
+    "object_id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.898462+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "PROPOSED",
+    "verification": {
+      "artifact_found": false,
+      "note": "literature review document, not executed derivation"
+    }
+  },
+  "NCG-ABELIAN-BRIDGE-OBSTRUCTION": {
+    "source": "compiler-build repository audit (spec section 2/36)",
+    "source_version": "",
+    "object_id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.902961+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {
+      "artifact_found": false,
+      "audited_sources": [
+        "README.md",
+        "DTC COMPILER.docx",
+        "Functorial Gauge Unification v1.docx",
+        "DTC_Formal_Structure.docx",
+        "DTC Logic of Inquiry.docx",
+        "DTC Metaphysics of Structure.docx",
+        "DTC-RP-004_Forced_vs_Free.docx",
+        "DTC_Rosetta_Stone_TOE_v2.docx",
+        "Unified_Rosetta_Stone_TOE_v3.docx",
+        "Universal_Rosetta_Ch1_Remainder.docx",
+        "JOI Reformatted.docx",
+        "Theory of Everything Equation Set.docx",
+        "Unified Field Theory.docx",
+        "geometric unification paper.docx",
+        "Spectral Codex Volumes.docx",
+        "Spectral Codex Volume I Genesis.pdf",
+        "Spectral Codex Volume II Gravity.pdf",
+        "Spectral Emergence Framework v2.pdf",
+        "Spectral Emergence Information Theory.pdf",
+        "Unified Spectral Codex.pdf",
+        "SEIT Unified Derivation.pdf",
+        "SEIT Unified Derivation v2.pdf",
+        "SEIT v2.pdf",
+        "Master Equation Codex.pdf",
+        "MasterRosettaStone TOE Paper.pdf",
+        "Constraint Core Brief.pdf",
+        "Executive Summary.pdf",
+        "Beyond the Theory of Everything.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+      ]
+    }
+  },
+  "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION": {
+    "source": "compiler-build repository audit (spec section 2/36)",
+    "source_version": "",
+    "object_id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.905064+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {
+      "artifact_found": false,
+      "audited_sources": [
+        "README.md",
+        "DTC COMPILER.docx",
+        "Functorial Gauge Unification v1.docx",
+        "DTC_Formal_Structure.docx",
+        "DTC Logic of Inquiry.docx",
+        "DTC Metaphysics of Structure.docx",
+        "DTC-RP-004_Forced_vs_Free.docx",
+        "DTC_Rosetta_Stone_TOE_v2.docx",
+        "Unified_Rosetta_Stone_TOE_v3.docx",
+        "Universal_Rosetta_Ch1_Remainder.docx",
+        "JOI Reformatted.docx",
+        "Theory of Everything Equation Set.docx",
+        "Unified Field Theory.docx",
+        "geometric unification paper.docx",
+        "Spectral Codex Volumes.docx",
+        "Spectral Codex Volume I Genesis.pdf",
+        "Spectral Codex Volume II Gravity.pdf",
+        "Spectral Emergence Framework v2.pdf",
+        "Spectral Emergence Information Theory.pdf",
+        "Unified Spectral Codex.pdf",
+        "SEIT Unified Derivation.pdf",
+        "SEIT Unified Derivation v2.pdf",
+        "SEIT v2.pdf",
+        "Master Equation Codex.pdf",
+        "MasterRosettaStone TOE Paper.pdf",
+        "Constraint Core Brief.pdf",
+        "Executive Summary.pdf",
+        "Beyond the Theory of Everything.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+      ]
+    }
+  },
+  "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION": {
+    "source": "compiler-build repository audit (spec section 2/36)",
+    "source_version": "",
+    "object_id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.907069+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {
+      "artifact_found": false,
+      "audited_sources": [
+        "README.md",
+        "DTC COMPILER.docx",
+        "Functorial Gauge Unification v1.docx",
+        "DTC_Formal_Structure.docx",
+        "DTC Logic of Inquiry.docx",
+        "DTC Metaphysics of Structure.docx",
+        "DTC-RP-004_Forced_vs_Free.docx",
+        "DTC_Rosetta_Stone_TOE_v2.docx",
+        "Unified_Rosetta_Stone_TOE_v3.docx",
+        "Universal_Rosetta_Ch1_Remainder.docx",
+        "JOI Reformatted.docx",
+        "Theory of Everything Equation Set.docx",
+        "Unified Field Theory.docx",
+        "geometric unification paper.docx",
+        "Spectral Codex Volumes.docx",
+        "Spectral Codex Volume I Genesis.pdf",
+        "Spectral Codex Volume II Gravity.pdf",
+        "Spectral Emergence Framework v2.pdf",
+        "Spectral Emergence Information Theory.pdf",
+        "Unified Spectral Codex.pdf",
+        "SEIT Unified Derivation.pdf",
+        "SEIT Unified Derivation v2.pdf",
+        "SEIT v2.pdf",
+        "Master Equation Codex.pdf",
+        "MasterRosettaStone TOE Paper.pdf",
+        "Constraint Core Brief.pdf",
+        "Executive Summary.pdf",
+        "Beyond the Theory of Everything.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+        "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+      ]
+    }
+  },
+  "DTC-CIRCULARITY-OBSTRUCTION": {
+    "source": "DTC_Formal_Structure.docx (section 4.2)",
+    "source_version": "",
+    "object_id": "DTC-CIRCULARITY-OBSTRUCTION",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.909503+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CONDITIONAL",
+    "verification": {}
+  },
+  "SELECTION-SIGMA": {
+    "source": "spec section 10",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "SELECTION-SIGMA",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.373672+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "OPEN",
+    "verification": {}
+  },
+  "T-GRAPH-TO-OPERATOR": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-GRAPH-TO-OPERATOR",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.667708+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CALCULATED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14,
+      "max_eigen_equation_residual": 9.526997726205572e-15,
+      "max_heat_eigen_action_residual": 1.7106873223162943e-15
+    }
+  },
+  "T-OPERATOR-TO-SPECTRUM": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-OPERATOR-TO-SPECTRUM",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.670873+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14,
+      "max_eigen_equation_residual": 9.526997726205572e-15,
+      "max_heat_eigen_action_residual": 1.7106873223162943e-15
+    }
+  },
+  "T-SPECTRUM-TO-HEATFLOW": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.673097+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14,
+      "max_eigen_equation_residual": 9.526997726205572e-15,
+      "max_heat_eigen_action_residual": 1.7106873223162943e-15
+    }
+  },
+  "T-HEATFLOW-TO-KERNEL": {
+    "source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-HEATFLOW-TO-KERNEL",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.675158+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "n_passed": 14,
+      "max_eigen_equation_residual": 9.526997726205572e-15,
+      "max_heat_eigen_action_residual": 1.7106873223162943e-15
+    }
+  },
+  "T-SPECTRUM-TO-DIFFUSION": {
+    "source": "compiler/backends/diffusion_metric.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.876010+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CALCULATED",
+    "verification": {}
+  },
+  "T-DIFFUSION-TO-METRIC": {
+    "source": "compiler/backends/diffusion_metric.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "",
+    "dependency_ids": [],
+    "transformation_id": "T-DIFFUSION-TO-METRIC",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.878264+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "CONDITIONAL",
+    "verification": {}
+  },
+  "EQ-LAPLACIAN-ROW-SUM-ZERO": {
+    "source": "compiler/ir/executable_tests.py:_prove_laplacian_row_sum_zero",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.887306+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "DERIVED",
+    "verification": {
+      "n_cases": 5,
+      "all_passed": true
+    }
+  },
+  "EQ-HEAT-KERNEL-EIGEN-ACTION": {
+    "source": "compiler/backends/heat_flow.py",
+    "source_version": "",
+    "object_id": "",
+    "equation_id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+    "dependency_ids": [],
+    "transformation_id": "",
+    "calculation_id": "",
+    "execution_timestamp": "2026-08-19T03:12:33.889666+00:00",
+    "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+    "code_version": "forward-mdcl-compiler-0.1.0",
+    "numerical_environment": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "sympy": "1.14.0"
+    },
+    "status": "VERIFIED",
+    "verification": {
+      "n_cases": 14,
+      "all_passed": true
+    }
+  }
+}

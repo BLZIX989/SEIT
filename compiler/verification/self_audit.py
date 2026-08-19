@@ -1,0 +1,143 @@
+"""Self-audit (spec section 36). Every failed audit becomes a registered
+issue; none of these audits are permitted to force a pass.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from compiler.core.status import Status
+from compiler.dependencies.graph import CycleError, DependencyGraph
+from compiler.falsification.target_independence import scan_registries
+from compiler.ir.registry import MDCLRegistries
+
+
+@dataclass
+class AuditResult:
+    name: str
+    passed: bool
+    issues: list[str] = field(default_factory=list)
+    details: dict = field(default_factory=dict)
+
+    def to_dict(self) -> dict:
+        return {"name": self.name, "passed": self.passed, "issues": self.issues, "details": self.details}
+
+
+def build_dependency_graph(registries: MDCLRegistries) -> DependencyGraph:
+    g = DependencyGraph()
+    all_ids = set(registries.objects.ids()) | set(registries.transformations.ids()) | set(registries.equations.ids())
+    for node in registries.all_nodes():
+        g.add_node(node.id)
+        for dep in node.dependencies:
+            if dep not in all_ids:
+                g.add_node(dep)  # register as a dangling stub; flagged by dependency_audit
+            g.add_dependency(node.id, dep)
+    return g
+
+
+def dependency_audit(registries: MDCLRegistries, graph: DependencyGraph) -> AuditResult:
+    issues = []
+    all_ids = set(registries.objects.ids()) | set(registries.transformations.ids()) | set(registries.equations.ids())
+    try:
+        order = graph.topological_order()
+    except CycleError as e:
+        return AuditResult("dependency_audit", False, [f"cycle detected: {e}"])
+    for node in registries.all_nodes():
+        for dep in node.dependencies:
+            if dep not in all_ids:
+                issues.append(f"{node.id}: dependency '{dep}' is not a registered node (dangling reference)")
+    return AuditResult("dependency_audit", len(issues) == 0, issues,
+                        {"n_nodes": len(order), "topological_order_len": len(order)})
+
+
+def circularity_audit() -> AuditResult:
+    """Audits the cycle-rejection mechanism itself by attempting to build
+    a known 3-cycle on a scratch graph and confirming it is rejected."""
+    scratch = DependencyGraph()
+    scratch.add_dependency("X", "Y")
+    scratch.add_dependency("Y", "Z")
+    try:
+        scratch.add_dependency("Z", "X")
+    except CycleError:
+        return AuditResult("circularity_audit", True, [],
+                            {"note": "3-cycle X->Y->Z->X correctly rejected"})
+    return AuditResult("circularity_audit", False,
+                        ["dependency engine FAILED to reject a known 3-cycle"])
+
+
+def type_audit(registries: MDCLRegistries) -> AuditResult:
+    issues = []
+    known_types = set(registries.types.ids())
+    for obj in registries.objects:
+        if obj.type not in known_types:
+            issues.append(f"{obj.id}: type '{obj.type}' not present in type_registry")
+    return AuditResult("type_audit", len(issues) == 0, issues, {"n_types": len(known_types)})
+
+
+def provenance_audit(registries: MDCLRegistries) -> AuditResult:
+    issues = []
+    for node in registries.all_nodes():
+        if node.provenance is None:
+            issues.append(f"{node.id}: missing provenance record")
+            continue
+        p = node.provenance
+        if not p.source:
+            issues.append(f"{node.id}: provenance.source is empty")
+        if not p.execution_timestamp:
+            issues.append(f"{node.id}: provenance.execution_timestamp is empty")
+        if not p.git_commit:
+            issues.append(f"{node.id}: provenance.git_commit is empty")
+    return AuditResult("provenance_audit", len(issues) == 0, issues)
+
+
+def target_independence_audit(registries: MDCLRegistries) -> AuditResult:
+    findings = scan_registries(registries)
+    bad = [f for f in findings if not f.allowed]
+    issues = [f"{f.node_id}: forbidden term '{f.term}' appears with role '{f.role}'" for f in bad]
+    return AuditResult("target_independence_audit", len(issues) == 0, issues,
+                        {"n_findings": len(findings), "n_flagged": len(bad)})
+
+
+def status_audit(registries: MDCLRegistries) -> AuditResult:
+    issues = []
+    for node in registries.all_nodes():
+        if node.status == Status.VERIFIED:
+            v = node.provenance.verification if node.provenance else {}
+            if not v:
+                issues.append(f"{node.id}: status VERIFIED but provenance.verification is empty")
+    return AuditResult("status_audit", len(issues) == 0, issues)
+
+
+def numerical_reproducibility_audit() -> AuditResult:
+    from compiler.backends.pipeline_graph_heatflow import run_case
+    issues = []
+    for topology, n in [("cycle", 12), ("path", 10), ("complete", 6)]:
+        r1 = run_case(topology, n)
+        r2 = run_case(topology, n)
+        import numpy as np
+        diff = float(np.max(np.abs(np.array(r1.eigenvalues) - np.array(r2.eigenvalues))))
+        if diff > 1e-10:
+            issues.append(f"{topology}(n={n}): repeated runs disagree by {diff}")
+    return AuditResult("numerical_reproducibility_audit", len(issues) == 0, issues)
+
+
+def artifact_completeness_audit(required_paths: list[Path]) -> AuditResult:
+    issues = [f"missing artifact: {p}" for p in required_paths if not p.exists()]
+    return AuditResult("artifact_completeness_audit", len(issues) == 0, issues,
+                        {"n_required": len(required_paths)})
+
+
+def run_self_audit(registries: MDCLRegistries, required_paths: list[Path] | None = None) -> list[AuditResult]:
+    graph = build_dependency_graph(registries)
+    results = [
+        dependency_audit(registries, graph),
+        circularity_audit(),
+        type_audit(registries),
+        provenance_audit(registries),
+        target_independence_audit(registries),
+        status_audit(registries),
+        numerical_reproducibility_audit(),
+    ]
+    if required_paths is not None:
+        results.append(artifact_completeness_audit(required_paths))
+    return results

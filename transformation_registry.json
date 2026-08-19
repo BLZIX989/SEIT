@@ -1,0 +1,272 @@
+[
+  {
+    "id": "SELECTION-SIGMA",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "Registered as an UNRESOLVED compiler component (spec section 10): no non-arbitrary, unique, representation-invariant derivation of Sigma is registered in this build. A selector that uses the desired answer is invalid and none is substituted here."
+    ],
+    "provenance": {
+      "source": "spec section 10",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "SELECTION-SIGMA",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.373672+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "domain": "MATH-UNIVERSE",
+    "codomain": "PHYSICAL-CANDIDATE-SET",
+    "action": "Sigma : M -> {0,1}",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": ""
+  },
+  {
+    "id": "T-GRAPH-TO-OPERATOR",
+    "status": "CALCULATED",
+    "dependencies": [
+      "GRAPH-G-SEED"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-GRAPH-TO-OPERATOR",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.667708+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "GRAPH-G-SEED",
+    "codomain": "OPERATOR-L",
+    "action": "L = D - A",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "D, A read directly off the graph's edge set; L = D - A by definition."
+  },
+  {
+    "id": "T-OPERATOR-TO-SPECTRUM",
+    "status": "VERIFIED",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-OPERATOR-TO-SPECTRUM",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.670873+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "OPERATOR-L",
+    "codomain": "SPECTRUM-L",
+    "action": "L phi_n = lambda_n phi_n",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "numpy.linalg.eigh (symmetric solver) cross-checked against sympy exact characteristic-polynomial eigenvalues for n<=8."
+  },
+  {
+    "id": "T-SPECTRUM-TO-HEATFLOW",
+    "status": "VERIFIED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.673097+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "SPECTRUM-L",
+    "codomain": "HEAT-FLOW-R",
+    "action": "R(t) = e^{-tL}",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "scipy.linalg.expm; eigen-action R(t)phi_n = e^{-t lambda_n} phi_n verified to <1e-6 residual on every swept case."
+  },
+  {
+    "id": "T-HEATFLOW-TO-KERNEL",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-HEATFLOW-TO-KERNEL",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.675158+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "HEAT-FLOW-R",
+    "codomain": "KERNEL-PROJECTOR",
+    "action": "lim_{t->inf} e^{-tL} = P_ker(L)",
+    "preconditions": [
+      "L symmetric",
+      "L positive semidefinite"
+    ],
+    "postconditions": [],
+    "proof": "hypotheses checked numerically per case; residual ||e^{-tL}-P_ker(L)|| probed at t scaled to 1/spectral_gap and confirmed < 1e-6."
+  },
+  {
+    "id": "T-SPECTRUM-TO-DIFFUSION",
+    "status": "CALCULATED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.876010+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "domain": "SPECTRUM-L",
+    "codomain": "DIFFUSION-DISTANCE",
+    "action": "d_t(i,j)",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "direct evaluation of the diffusion-map distance formula."
+  },
+  {
+    "id": "T-DIFFUSION-TO-METRIC",
+    "status": "CONDITIONAL",
+    "dependencies": [
+      "DIFFUSION-DISTANCE"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-DIFFUSION-TO-METRIC",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.878264+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {}
+    },
+    "role": "upstream_construction",
+    "domain": "DIFFUSION-DISTANCE",
+    "codomain": "METRIC-CANDIDATE",
+    "action": "refinement-sweep metric candidate",
+    "preconditions": [],
+    "postconditions": [
+      "classification in {approximate,conditional,divergent,non_unique} -- never 'exact'"
+    ],
+    "proof": ""
+  }
+]

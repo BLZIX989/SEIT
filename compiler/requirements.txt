@@ -1,0 +1,5 @@
+numpy>=2.0
+scipy>=1.13
+sympy>=1.13
+openpyxl>=3.1
+pytest>=8.0
