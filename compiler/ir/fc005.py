@@ -525,9 +525,19 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                        "sparse_n_scaling_full_results.json")
         if sparse_path.exists():
             sparse_raw = json.loads(sparse_path.read_text())
+            # "converged" here is the CANONICAL, spectral-validation-rule-corrected
+            # verdict (compiler/backends/desi_sparse.py::joint_spectral_convergence)
+            # -- never the raw eigenvalue-only relative-change flag, which can be a
+            # false positive under eigenvalue crossings/degeneracies (see
+            # eigenvalue_only_converged below for the original, superseded value,
+            # kept for transparency/provenance, never used for status decisions).
             sparse_summary = {
                 name: {
-                    "converged": res["converged"], "relative_changes": res["relative_changes"],
+                    "converged": res["converged"],
+                    "eigenvalue_only_converged": res.get("eigenvalue_only_converged"),
+                    "joint_spectral_converged": res.get("joint_spectral_converged"),
+                    "joint_spectral_convergence_reason": res.get("joint_spectral_convergence_reason"),
+                    "relative_changes": res["relative_changes"],
                     "N_values_completed": [r["N"] for r in res["per_N"] if r["status"] == "OK"],
                 }
                 for name, res in sparse_raw.items()

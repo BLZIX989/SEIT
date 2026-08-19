@@ -262,6 +262,55 @@ def eigenvector_subspace_comparison(vecs_small: np.ndarray, vecs_large: np.ndarr
 
 
 # ---------------------------------------------------------------------
+# 5a. Spectral-validation rule (STANDING INVARIANT -- see FC005_CHECKPOINT.md)
+# ---------------------------------------------------------------------
+#
+# RULE: eigenvalue convergence alone is NEVER sufficient grounds for a
+# CLOSED / CALCULATED spectral-convergence verdict whenever eigenvalue
+# crossings, near-degeneracies, or subspace rotations are possible (i.e.
+# whenever an eigenvector/invariant-subspace comparison is available at
+# all). A scalar relative-change-of-eigenvalues metric can report a
+# false positive when two DIFFERENT physical modes happen to have
+# numerically close eigenvalues at two different refinement levels --
+# exactly what was found for DESI's modes 5-15 at N=32000->64000 (see
+# FC005_N_SCALING_REPORT.md section 5): eigenvalue relative change 0.13,
+# subspace principal cosine 0.13 (nearly orthogonal). Any code path that
+# has eigenvector data available MUST use joint_spectral_convergence()
+# below, not the raw eigenvalue-only relative-change flag, to decide
+# "converged". This is enforced by compiler/verification/self_audit.py::
+# spectral_validation_audit, which fails the build if a stored
+# "converged": true value for a dataset with eigenvector-subspace data
+# available disagrees with what joint_spectral_convergence() computes
+# from that same data.
+
+def joint_spectral_convergence(final_transition_clusters: list[dict]) -> dict:
+    """The authoritative convergence verdict for any comparison where
+    eigenvector/subspace data is available: converged only if EVERY
+    mode cluster at the final tested refinement transition is jointly
+    eigenvalue-stable AND eigenvector-stable (classification == "neither").
+    A single "eigenvalue-only", "eigenvector-only", or "both" unstable
+    cluster anywhere in the tested mode range means the retained
+    low-spectrum operator has NOT converged, even if a naive scalar
+    eigenvalue-only metric says otherwise."""
+    if not final_transition_clusters:
+        return {"joint_converged": False, "reason": "no eigenvector/subspace data available "
+                "(e.g. ARPACK never resolved enough modes to compare)",
+                "first_unstable_cluster": None, "n_clusters": 0, "n_stable_clusters": 0}
+    unstable = [c for c in final_transition_clusters if c["classification"] != "neither"]
+    return {
+        "joint_converged": len(unstable) == 0,
+        "reason": "all mode clusters jointly eigenvalue+eigenvector stable" if not unstable
+                  else f"{len(unstable)} of {len(final_transition_clusters)} mode cluster(s) "
+                       f"eigenvector-unstable or worse (first: mode_range="
+                       f"{unstable[0]['mode_range']}, classification={unstable[0]['classification']}, "
+                       f"subspace_cosine={unstable[0]['subspace_principal_cosine_min']:.4f})",
+        "first_unstable_cluster": unstable[0] if unstable else None,
+        "n_clusters": len(final_transition_clusters),
+        "n_stable_clusters": len(final_transition_clusters) - len(unstable),
+    }
+
+
+# ---------------------------------------------------------------------
 # 6. Operator identification (spec section 10) -- diagnostic candidate only
 # ---------------------------------------------------------------------
 

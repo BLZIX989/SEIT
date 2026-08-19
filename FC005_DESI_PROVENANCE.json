@@ -137,6 +137,13 @@
       "next_dependency": "extend N further for DESI specifically (real catalogue supports up to 160,150, 64000 was this session's practical ceiling not a hard limit) to test whether modes 5+ eventually stabilize the same way modes 1-4 already have; determine the correct epsilon-scaling exponent for alpha=1 independently before re-attempting operator identification; see FC005_N_SCALING_REPORT.md section 16"
     },
     {
+      "step": "checkpoint_freeze",
+      "report": "FC005_CHECKPOINT.md",
+      "action": "formalized the spectral-validation rule (eigenvalue convergence alone is insufficient for a converged verdict whenever eigenvector/subspace data is available) as a structural, enforced invariant: compiler/backends/desi_sparse.py::joint_spectral_convergence computes the authoritative joint verdict; compiler/verification/self_audit.py::spectral_validation_audit (a new, ninth self-audit) fails the build if any stored 'converged' value disagrees with its recorded joint verdict. Applied to the already-computed sparse N-scaling results (no eigensolves rerun) via apply_spectral_validation_rule.py -- the canonical 'converged' field for every one of the 6 tested configurations is now False (including uniform IID, whose highest mode cluster falls just short of the strict joint criterion), correcting the naive scalar 0.127 result out of the canonical state.",
+      "verification": "compiler.run_compiler regenerated calculation_registry.json/status_matrix.json/falsification_registry.json/provenance registries through the normal pathway; all 95 tests and all 10 self-audits (including the new spectral_validation_audit and leakage_control_audit) pass",
+      "final_status": "FAIL / RETRIABLE (unchanged) -- not CLOSED, not FALSIFIED. Gate 2 (CURVATURE-CLOSURE-DESI) was not entered."
+    },
+    {
       "step": "heat_trace",
       "status": "NOT COMPUTED -- Gate 1 did not pass"
     },

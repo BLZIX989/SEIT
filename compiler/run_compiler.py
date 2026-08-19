@@ -170,7 +170,8 @@ def build_and_run() -> dict:
         "provenance_registry.json", "target_independence.json", "master_mdcl.json",
         "fc005_result.json",
     )]
-    audit_results = run_self_audit(registries, required_paths=required_paths)
+    audit_results = run_self_audit(registries, required_paths=required_paths,
+                                    calculations=all_calculations)
     (OUT_DIR / "self_audit_report.json").write_text(
         json.dumps([a.to_dict() for a in audit_results], indent=2)
     )

@@ -295,6 +295,21 @@ mathematics to decide anything" — a great deal was decided here, precisely:
 (retriable), unchanged from before this investigation. Gates 2 and 3 remain `OPEN`, never
 entered.
 
+## 15a. Checkpoint addendum: canonical `converged` field corrected
+
+Following this report, `FC005_CHECKPOINT.md` formalized the rule this report's section 5
+establishes and applied it structurally: `data/desi/dr1/fc005/derived/
+sparse_n_scaling_full_results.json`'s `converged` field for every dataset now equals the
+joint (eigenvalue+eigenvector) verdict via `compiler/backends/desi_sparse.py::
+joint_spectral_convergence`, never the scalar eigenvalue-only value shown in this report's
+own tables above (which are preserved here, explicitly labeled "naive", for the historical
+record of what the unvalidated metric reported). Under the corrected field, **all six tested
+configurations show `converged=False`**, including uniform IID (whose highest tested mode
+cluster [11,15] falls just short of the strict joint criterion, cosine 0.76 < 0.9) — a more
+conservative and honest canonical state than this report's own naive table implies. A new,
+ninth self-audit (`spectral_validation_audit`) now fails the build if this correction is ever
+silently reverted. See `FC005_CHECKPOINT.md` for full verification detail.
+
 ## 16. Next dependency
 
 1. **Extend N further for DESI specifically** (the real catalogue supports up to 160,150;

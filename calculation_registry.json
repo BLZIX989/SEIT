@@ -1744,7 +1744,10 @@
     },
     "results": {
       "uniform_alpha0.0": {
-        "converged": true,
+        "converged": false,
+        "eigenvalue_only_converged": true,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "1 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[11, 15], classification=eigenvector-only, subspace_cosine=0.7594)",
         "relative_changes": [
           0.22062116118650224,
           0.14169798657125657,
@@ -1761,11 +1764,17 @@
       },
       "clustered_alpha0.0": {
         "converged": false,
+        "eigenvalue_only_converged": false,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "no eigenvector/subspace data available (e.g. ARPACK never resolved enough modes to compare)",
         "relative_changes": [],
         "N_values_completed": []
       },
       "desi_alpha0.0": {
-        "converged": true,
+        "converged": false,
+        "eigenvalue_only_converged": true,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "3 of 6 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[5, 8], classification=eigenvector-only, subspace_cosine=0.1333)",
         "relative_changes": [
           1.346747844860744,
           1.460437118176044,
@@ -1782,6 +1791,9 @@
       },
       "uniform_alpha1.0": {
         "converged": false,
+        "eigenvalue_only_converged": false,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "5 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 4], classification=eigenvalue-only, subspace_cosine=0.9999)",
         "relative_changes": [
           0.5830765234470595,
           0.5602161199447228,
@@ -1798,11 +1810,17 @@
       },
       "clustered_alpha1.0": {
         "converged": false,
+        "eigenvalue_only_converged": false,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "no eigenvector/subspace data available (e.g. ARPACK never resolved enough modes to compare)",
         "relative_changes": [],
         "N_values_completed": []
       },
       "desi_alpha1.0": {
         "converged": false,
+        "eigenvalue_only_converged": false,
+        "joint_spectral_converged": false,
+        "joint_spectral_convergence_reason": "7 of 7 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9998)",
         "relative_changes": [
           0.5969173091248131,
           0.6064536732024448,
