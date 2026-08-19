@@ -73,5 +73,50 @@
     "name": "self_acknowledged_obstruction",
     "description": "a project-internal statement of a derivation obstruction, predating this compiler",
     "parent": null
+  },
+  {
+    "name": "established_equation",
+    "description": "an equation asserted by an external/prior source; PROPOSED until independently executed in this compiler",
+    "parent": null
+  },
+  {
+    "name": "heat_trace_function",
+    "description": "K(t) = sum_n exp(-t lambda_n)",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "heat_kernel_coefficients",
+    "description": "fitted (a0, a1, a2, ...) short-time heat-kernel expansion coefficients",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "curvature_closure",
+    "description": "the E_kappa = a1/a0 - sgn(a1)*sqrt(2a2/a0) consistency test result",
+    "parent": null
+  },
+  {
+    "name": "pending_data_construction",
+    "description": "a construction whose code path exists but that cannot be executed because required observational data is absent",
+    "parent": null
+  },
+  {
+    "name": "semiclassical_framework_equation",
+    "description": "the established semiclassical Einstein equation G_munu + Lambda g_munu = (8piG/c^4) <T_munu>_ren",
+    "parent": null
+  },
+  {
+    "name": "statistical_family",
+    "description": "a parametric probability family used to compute a Fisher information matrix",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "operator_uniqueness_counterexample",
+    "description": "an executed counterexample to spectrum-determines-operator",
+    "parent": null
+  },
+  {
+    "name": "workbook_reconciliation_record",
+    "description": "provenance/precedence record for the four supplied FC-005 workbooks",
+    "parent": null
   }
 ]

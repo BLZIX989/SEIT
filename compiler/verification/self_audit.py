@@ -98,6 +98,33 @@ def target_independence_audit(registries: MDCLRegistries) -> AuditResult:
                         {"n_findings": len(findings), "n_flagged": len(bad)})
 
 
+LEAKAGE_FORBIDDEN_ANCESTOR_STATUSES = {Status.FALSIFIED, Status.FAIL}
+LEAKAGE_ACTIVE_STATUSES = {Status.VERIFIED, Status.DERIVED, Status.CALCULATED}
+
+
+def leakage_control_audit(registries: MDCLRegistries, graph: DependencyGraph) -> AuditResult:
+    """No FALSIFIED or FAIL node may be a transitive ancestor of any
+    active (VERIFIED/DERIVED/CALCULATED) node -- a rejected hypothesis
+    must never silently re-enter the active DAG (FC-005 build command
+    section 4: leakage control)."""
+    issues = []
+    status_by_id = {n.id: n.status for n in registries.all_nodes()}
+    for node in registries.all_nodes():
+        if node.status not in LEAKAGE_ACTIVE_STATUSES:
+            continue
+        for ancestor_id in graph.ancestors(node.id):
+            ancestor_status = status_by_id.get(ancestor_id)
+            if ancestor_status in LEAKAGE_FORBIDDEN_ANCESTOR_STATUSES:
+                issues.append(
+                    f"{node.id} (status {node.status.value}) has ancestor {ancestor_id} "
+                    f"(status {ancestor_status.value}) -- a rejected/failed result must not "
+                    f"propagate into an active calculation"
+                )
+    return AuditResult("leakage_control_audit", len(issues) == 0, issues,
+                        {"n_active_nodes_checked": sum(1 for n in registries.all_nodes()
+                                                        if n.status in LEAKAGE_ACTIVE_STATUSES)})
+
+
 def status_audit(registries: MDCLRegistries) -> AuditResult:
     issues = []
     for node in registries.all_nodes():
@@ -136,6 +163,7 @@ def run_self_audit(registries: MDCLRegistries, required_paths: list[Path] | None
         provenance_audit(registries),
         target_independence_audit(registries),
         status_audit(registries),
+        leakage_control_audit(registries, graph),
         numerical_reproducibility_audit(),
     ]
     if required_paths is not None:

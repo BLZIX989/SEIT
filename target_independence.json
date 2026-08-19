@@ -20,6 +20,48 @@
       "role": "comparison",
       "allowed": true,
       "context": "historical_claim\nProse claim: G_physical = (1,3) x [SU(3) x SU(2) x U(1)] is asserted to be \"explicitly derived as the group of continuous automorphisms that preserve the invariant structural identity"
+    },
+    {
+      "node_id": "DESI-CATALOGUE",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "pending_data_construction\nrequired: RA, DEC, z, and DESI weights (w_FKP, w_sys, ...) for a galaxy-level point catalogue. ABSENT from the repository, the current workspace, and all four supplied FC-005"
+    },
+    {
+      "node_id": "GRAPH-G-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "mathematical_object\nG_DESI = (V,E,W): weighted observational graph from the DESI catalogue"
+    },
+    {
+      "node_id": "OPERATOR-L-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "graph_laplacian_operator\nL_DESI = D - W"
+    },
+    {
+      "node_id": "DESI-HEAT-TRACE",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "heat_trace_function\nK(t) from the DESI-derived spectrum"
+    },
+    {
+      "node_id": "KAPPA-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "curvature_closure\nkappa_spectral from DESI data"
+    },
+    {
+      "node_id": "E-KAPPA-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "curvature_closure\nE_kappa closure residual for DESI"
     }
   ],
   "n_flagged": 0

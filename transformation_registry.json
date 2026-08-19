@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "SELECTION-SIGMA",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.373672+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:06.647430+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -49,8 +49,8 @@
       "dependency_ids": [],
       "transformation_id": "T-GRAPH-TO-OPERATOR",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.667708+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:06.941115+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -89,8 +89,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-SPECTRUM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.670873+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:06.943419+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -129,8 +129,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.673097+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:06.945552+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -169,8 +169,8 @@
       "dependency_ids": [],
       "transformation_id": "T-HEATFLOW-TO-KERNEL",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.675158+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:06.947839+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -212,8 +212,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.876010+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:07.160827+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -247,8 +247,8 @@
       "dependency_ids": [],
       "transformation_id": "T-DIFFUSION-TO-METRIC",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.878264+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T03:52:07.163460+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -268,5 +268,42 @@
       "classification in {approximate,conditional,divergent,non_unique} -- never 'exact'"
     ],
     "proof": ""
+  },
+  {
+    "id": "T-FC005-S3-CONTROL-CHAIN",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:52:07.440226+00:00",
+      "git_commit": "45b9fb9fef84683e34b0885779c7438c8574acda",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "passed": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "S3-MANIFOLD",
+    "codomain": "S3-CURVATURE-CLOSURE",
+    "action": "analytic Spec -> K(t) -> fit -> E_kappa",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "closed-form S^3 spectrum, numpy heat-trace summation with controlled truncation, numpy.polyfit degree-3/4/5 sweep"
   }
 ]

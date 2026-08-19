@@ -83,6 +83,32 @@ still-open Selection/Vacuum chain. Conflating the two would have silently
 promoted an OPEN selection problem to CLOSED by fiat, which spec section
 5 forbids ("never force CLOSED").
 
+## FC-005 physics extension
+
+Added without touching the existing architecture (same IR, same
+`MDCLRegistries`, same `Status`/`Provenance`, same self-audit):
+
+```
+compiler/backends/heat_kernel_sphere.py   S^3 analytic heat-kernel control (regression test)
+compiler/backends/desi_graph.py            discrete-observation -> continuum bridge (code + synthetic tests)
+compiler/verification/fisher_information.py  executed Fisher-Rao PSD proof (sympy symbolic integration)
+compiler/falsification/eigen_uniqueness.py    executed Spec(H)-does-not-determine-H counterexample
+compiler/historical/fc005_reconciliation.py   4-workbook precedence/discrepancy audit
+compiler/ir/fc005.py                          registers all of the above into the existing MDCL
+fc005_source_workbooks/                       the 4 supplied workbooks, copied in for reproducible provenance
+FC005_EXECUTION_REPORT.md                     the required 14-question final report
+fc005_result.json                             machine-readable FC-005 result
+```
+
+`run_compiler.build_and_run()` calls `register_fc005()` right after the
+existing `register_historical_nodes()`, in the same way the rest of the
+pipeline is composed — no second dependency graph, no second registry
+schema. `compiler/verification/self_audit.py` gained one new audit,
+`leakage_control_audit`, checking that no `FALSIFIED`/`FAIL` node is a
+transitive ancestor of any active (`VERIFIED`/`DERIVED`/`CALCULATED`)
+node — the mechanical form of "a rejected hypothesis must never re-enter
+the active DAG."
+
 ## Extending the compiler
 
 Each backend module is independently testable and has no import-time

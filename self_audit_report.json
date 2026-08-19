@@ -4,8 +4,8 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_nodes": 44,
-      "topological_order_len": 44
+      "n_nodes": 97,
+      "topological_order_len": 97
     }
   },
   {
@@ -21,7 +21,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_types": 15
+      "n_types": 24
     }
   },
   {
@@ -35,7 +35,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_findings": 3,
+      "n_findings": 9,
       "n_flagged": 0
     }
   },
@@ -44,6 +44,14 @@
     "passed": true,
     "issues": [],
     "details": {}
+  },
+  {
+    "name": "leakage_control_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_active_nodes_checked": 20
+    }
   },
   {
     "name": "numerical_reproducibility_audit",
@@ -56,7 +64,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_required": 11
+      "n_required": 12
     }
   }
 ]

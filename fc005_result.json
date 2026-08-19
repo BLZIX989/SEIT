@@ -1,0 +1,93 @@
+{
+  "s3_control": {
+    "passed": true,
+    "max_abs_e_kappa": 1.0192723588153818e-05,
+    "tolerance": 0.0001,
+    "fit_results": [
+      {
+        "t_min": 0.001,
+        "t_max": 0.004,
+        "degree": 3,
+        "npts": 50,
+        "l_max": 283,
+        "a0": 19.73920880215651,
+        "a1": 19.739208845376247,
+        "a2": 9.869575174285904,
+        "kappa_a1": 1.0000000021895374,
+        "kappa_a2": 0.9999985193523063,
+        "e_kappa": 1.482837231114864e-06
+      },
+      {
+        "t_min": 0.0015,
+        "t_max": 0.006,
+        "degree": 3,
+        "npts": 50,
+        "l_max": 231,
+        "a0": 19.739208802065917,
+        "a1": 19.739208948291147,
+        "a2": 9.869538540783054,
+        "kappa_a1": 1.0000000074078566,
+        "kappa_a2": 0.9999966634751961,
+        "e_kappa": 3.343932660437865e-06
+      },
+      {
+        "t_min": 0.002,
+        "t_max": 0.008,
+        "degree": 3,
+        "npts": 50,
+        "l_max": 200,
+        "a0": 19.739208801821967,
+        "a1": 19.7392091487821,
+        "a2": 9.869487225631897,
+        "kappa_a1": 1.0000000175772057,
+        "kappa_a2": 0.9999940638133954,
+        "e_kappa": 5.953763810295776e-06
+      },
+      {
+        "t_min": 0.003,
+        "t_max": 0.01,
+        "degree": 3,
+        "npts": 50,
+        "l_max": 164,
+        "a0": 19.73920880107265,
+        "a1": 19.739209592859357,
+        "a2": 9.869403997041188,
+        "kappa_a1": 1.0000000401123832,
+        "kappa_a2": 0.999989847388795,
+        "e_kappa": 1.0192723588153818e-05
+      }
+    ]
+  },
+  "desi_execution": {
+    "catalogue_found": false,
+    "status": "PENDING DATA",
+    "blocked_nodes": [
+      "DESI-CATALOGUE",
+      "GRAPH-G-DESI",
+      "OPERATOR-L-DESI",
+      "CONTINUUM-LIMIT-L-DESI",
+      "DESI-SPECTRUM",
+      "DESI-HEAT-TRACE",
+      "DESI-HEAT-COEFFICIENTS",
+      "KAPPA-DESI",
+      "E-KAPPA-DESI",
+      "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"
+    ]
+  },
+  "fisher_lorentzian_obstruction": {
+    "is_positive_semidefinite": true,
+    "eigenvalues_at_sigma1": [
+      1.0,
+      2.0
+    ],
+    "conclusion": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general."
+  },
+  "eigenvalue_uniqueness_counterexample": {
+    "n_confirmed": 25,
+    "n_trials": 25,
+    "spectra_match_max_residual": 8.881784197001252e-16
+  },
+  "n_reference_equations_imported": 29,
+  "terminal_status": "CONDITIONALLY_CLOSED",
+  "all_self_audits_passed": true
+}

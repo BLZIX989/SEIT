@@ -1014,6 +1014,13 @@ the specification, [`compiler_architecture.md`](compiler_architecture.md)
 for the module layout, and [`compiler_test_report.md`](compiler_test_report.md)
 for the latest test/self-audit results.
 
+The FC-005 physics execution (S^3 heat-kernel closure control, the
+discrete-observation → continuum-operator bridge, and the Fisher-Rao /
+eigenvalue-uniqueness rejections) is integrated into the same compiler —
+see [`FC005_EXECUTION_REPORT.md`](FC005_EXECUTION_REPORT.md) for the
+result and [`fc005_source_workbooks/`](fc005_source_workbooks/) for the
+reconciled source workbooks.
+
 ```
 pip install -r compiler/requirements.txt
 python3 -m pytest compiler/tests -q
