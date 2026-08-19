@@ -1,0 +1,11 @@
+SOURCE_ID,LITERATURE_ITEM_ID,MDCL_NODE_ID,DEFINITION_PRESENT,DERIVATION_PRESENT,CODE_PRESENT,TEST_PRESENT,NUMERICAL_VALIDATION_PRESENT,EXTERNAL_VALIDATION_PRESENT,PROVENANCE_PRESENT,DEPENDENCY_COMPLETE,STATUS
+LIT-TONG-SM,LIT-002,NOETHER-SYMMETRY,NO,NO,NO,NO,NO,NO,NO,NO,"GAP -- literature supplies group structure only, repository supplies nothing"
+LIT-TONG-SM,LIT-003,QUANTUM-NODE,NO,NO,NO,NO,NO,NO,NO,NO,GAP -- repository's only Quantum-branch content is the unrelated eigenvalue-uniqueness counterexample
+LIT-TONG-SM,LIT-004,n/a (no node exists),NO,NO,NO,NO,NO,NO,NO,NO,GAP -- no discrete-symmetry node exists to compare against
+LIT-TONG-SM,LIT-005,n/a (no node exists),NO,NO,NO,NO,NO,NO,NO,NO,GAP -- no discrete-symmetry node exists to compare against
+LIT-EGN-HIGGS,LIT-007,GAUGE-NODE,NO,NO,NO,NO,NO,NO,NO,NO,GAP -- GAUGE-NODE is a bare OPEN template node
+LIT-EGN-HIGGS,LIT-008,GAUGE-NODE,NO,NO,NO,NO,NO,NO,NO,NO,GAP
+LIT-EGN-HIGGS,LIT-009,GAUGE-NODE,NO,NO,NO,NO,NO,NO,NO,NO,GAP
+LIT-EGN-HIGGS,LIT-011,GAUGE-NODE,NO,NO,NO,NO,NO,NO,NO,NO,GAP
+LIT-EGN-HIGGS,LIT-012,COSMOLOGY-NODE (Early-universe),NO,NO,NO,NO,NO,NO,NO,NO,"GAP -- topically adjacent only, no structural content to compare"
+LIT-HASHIMOTO-TOE,LIT-013,EXCLUDED,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,"EXCLUDED -- REJECTED SOURCE, not eligible for crosswalk use per Part I.3"
