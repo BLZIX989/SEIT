@@ -1,0 +1,10 @@
+[
+  {
+    "filename": "LRG_SGC_clustering.dat.fits",
+    "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+    "status": "OK",
+    "checksum_verified": true,
+    "path": "/home/user/SEIT/data/desi/dr1/fc005/raw/LRG_SGC_clustering.dat.fits",
+    "size_bytes": 64272960
+  }
+]

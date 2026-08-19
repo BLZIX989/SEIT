@@ -20,6 +20,76 @@
       "role": "comparison",
       "allowed": true,
       "context": "historical_claim\nProse claim: G_physical = (1,3) x [SU(3) x SU(2) x U(1)] is asserted to be \"explicitly derived as the group of continuous automorphisms that preserve the invariant structural identity"
+    },
+    {
+      "node_id": "DESI-CATALOGUE",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "pending_data_construction\nDESI DR1 LRG SGC clustering catalogue, v1.5, real data acquired from the official public release and checksum-verified. Pilot fixture: 3000 objects (0.4<=z<0.6 subsample), us"
+    },
+    {
+      "node_id": "GRAPH-G-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "mathematical_object\nG_DESI = (V,E,W): weighted observational graph from the DESI catalogue"
+    },
+    {
+      "node_id": "OPERATOR-L-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "graph_laplacian_operator\nL_DESI = D - W"
+    },
+    {
+      "node_id": "DESI-SPECTRUM",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "spectral_data\nSpec(-Delta_h) via -L_tilde eigenproblem (sign-corrected, see desi_fc005_pipeline.py)"
+    },
+    {
+      "node_id": "DESI-HEAT-TRACE",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "heat_trace_function\nK(t) from the DESI-derived spectrum"
+    },
+    {
+      "node_id": "KAPPA-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "curvature_closure\nkappa_spectral from DESI data"
+    },
+    {
+      "node_id": "E-KAPPA-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "curvature_closure\nE_kappa closure residual for DESI"
+    },
+    {
+      "node_id": "MATHEMATICAL-CONVERGENCE-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 1: does L_tilde_(N,eps) converge under (N,eps) refinement? A property of the operator and the sampling, evaluated independently of any curvature or cosmological claim. See compiler/ba"
+    },
+    {
+      "node_id": "CURVATURE-CLOSURE-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 2: only evaluated if stage 1 converged. Does E_kappa fall below the predefined tolerance? A property of the fitted heat-kernel coefficients, independent of any external/observational "
+    },
+    {
+      "node_id": "PHYSICAL-VALIDATION-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 3: only evaluated if stage 2 closed. Does kappa_spectral agree with an INDEPENDENTLY sourced kappa_cosmological (never derived from the same catalogue/run)? See compiler/backends/desi"
     }
   ],
   "n_flagged": 0

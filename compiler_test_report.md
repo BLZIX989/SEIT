@@ -4,10 +4,12 @@ Run with: `python3 -m pytest compiler/tests -q && python3 -m compiler.run_compil
 
 ## Pytest
 
-**54 / 54 passed** (unit tests for IR/status, dependency graph incl. cycle
-rejection, verification, falsification protocols, target-independence
-firewall; integration tests for both executable-test sweeps and the full
-`run_compiler.build_and_run()` orchestration).
+**92 / 92 passed** (54 pre-existing unit/integration tests for IR/status,
+dependency graph incl. cycle rejection, verification, falsification
+protocols, target-independence firewall, and both executable-test
+sweeps; 38 FC-005 tests, including 8 for the three-stage DESI execution
+procedure — see `FC005_EXECUTION_REPORT.md` for the physics results
+these tests check).
 
 ## Test 1 — graph → L=D-A → Spec(L) → e^{-tL} → P_ker(L)
 
@@ -71,9 +73,28 @@ hidden.
   random vertex relabelings, as required of a genuine structural
   invariant.
 
-## Self-audit (spec section 36)
+## FC-005 physics integration
 
-All 8 audits **passed** on the current build:
+The four supplied FC-005 physics derivation workbooks are reconciled and
+integrated into this same MDCL — see `FC005_EXECUTION_REPORT.md` and
+`FC005_DESI_ACQUISITION_REPORT.md` for the full results:
+
+- S^3 heat-kernel control regression test: **passed**, max|E_κ|=1.019e-05.
+- Real DESI DR1 LRG SGC data: **acquired, checksum-verified, and
+  validated** (12/12 checks). `G_DESI`/`L_DESI` **successfully
+  constructed** on real data. Gate 1 (mathematical convergence):
+  **executed on real data, FAILED** (relative spectral change did not
+  fall below the pre-registered tolerance across the refinement
+  sequence); exact failed node `CONTINUUM-LIMIT-L-DESI`. Gates 2 and 3
+  correctly never entered.
+- Fisher-Rao→Lorentzian identification: **FALSIFIED**, executed via
+  genuine sympy symbolic integration.
+- Eigenvalue-uniqueness: **OPEN**, executed unitary-conjugation
+  counterexample, 25/25 trials confirmed.
+
+## Self-audit (spec section 36 + FC-005 build command section 4)
+
+All 9 audits **passed** on the current build:
 
 | audit | result |
 |---|---|
@@ -83,27 +104,39 @@ All 8 audits **passed** on the current build:
 | provenance_audit | pass (0 issues) |
 | target_independence_audit | pass (0 issues) |
 | status_audit | pass (0 issues) |
+| leakage_control_audit | pass — no FALSIFIED/FAIL node is a transitive ancestor of any active (VERIFIED/DERIVED/CALCULATED) node |
 | numerical_reproducibility_audit | pass — bitwise-identical repeated runs |
-| artifact_completeness_audit | pass — all 11 required JSON artifacts present |
+| artifact_completeness_audit | pass — all 12 required JSON artifacts present |
 
 ## Registry contents (this run)
 
-35 Objects, 7 Transformations, 2 Equations, 15 Types.
+58 Objects, 8 Transformations, 34 Equations, 25 Types.
 
-Status distribution: 26 `OPEN` (the untouched spec-section-6 template
-past `SELECTION-SIGMA`, plus the not-yet-attempted `T2-REPRODUCTION`,
-`T2-FORWARD-DERIVATION`, and the three named-but-unlocated NCG
-obstruction artifacts), 6 `VERIFIED`, 4 `CALCULATED`, 3 `PROPOSED`
-(historical claims), 3 `CONDITIONAL` (`DTC-CIRCULARITY-OBSTRUCTION` and
-the two diffusion-metric candidate nodes).
+Status distribution: 35 `OPEN` (includes `CURVATURE-CLOSURE-DESI` and
+`PHYSICAL-VALIDATION-DESI` — never entered since Gate 1 failed — plus
+everything downstream of `CONTINUUM-LIMIT-L-DESI`), 35 `PROPOSED`
+(mostly the 29 bulk-imported FC-005 reference equations plus historical
+claims, never trusted above PROPOSED without independent execution),
+12 `VERIFIED`, 10 `CALCULATED` (includes `DESI-CATALOGUE`,
+`GRAPH-G-DESI`, `OPERATOR-L-DESI` — real data, successfully executed),
+3 `CONDITIONAL`, 3 `FAIL` (`CONTINUUM-LIMIT-L-DESI`, `DESI-SPECTRUM`,
+`MATHEMATICAL-CONVERGENCE-DESI` — Gate 1 genuinely failed on real DESI
+data; `leakage_control_audit` confirms the FAIL status correctly stops
+at these nodes and never propagates into an active downstream
+calculation), 1 `DERIVED`, 1 `FALSIFIED`
+(`EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION`).
 
 ## Terminal status
 
-**CONDITIONALLY_CLOSED.** Every self-audit passes and both executable
-tests are fully verified, but the build is honest that it is not
-`CLOSED`: `SELECTION-SIGMA` (spec section 10) remains an unresolved
-compiler component, the historical T2/NCG claims remain `PROPOSED`/`OPEN`
-with no supporting executable artifact located in the repository, and the
-gauge/matter/thermodynamic/cosmological engines have not been activated.
-This status is computed from the actual audit and registry state in
+**CONDITIONALLY_CLOSED.** Every self-audit passes and both the original
+executable tests and the S^3 control regression test are fully verified,
+but the build is honest that it is not `CLOSED`: `SELECTION-SIGMA` (spec
+section 10) remains an unresolved compiler component, the historical
+T2/NCG and FC-005 reference-equation claims remain `PROPOSED`/`OPEN` with
+no supporting executable artifact located in the repository, Gate 1 of
+the real-data DESI discrete-to-continuum chain genuinely failed
+(`CONTINUUM-LIMIT-L-DESI`, status `FAIL` — see
+`FC005_DESI_ACQUISITION_REPORT.md`), and the gauge/matter/thermodynamic/
+cosmological engines have not been activated. This status is computed
+from the actual audit and registry state in
 `compiler/run_compiler.py::build_and_run` — it is never asserted.

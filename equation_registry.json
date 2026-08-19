@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.887306+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T04:53:01.210374+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -55,8 +55,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T03:12:33.889666+00:00",
-      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "execution_timestamp": "2026-08-19T04:53:01.212490+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -79,6 +79,1169 @@
       "n_cases": 14,
       "max_residual": 1.7106873223162943e-15,
       "precision": "numeric"
+    }
+  },
+  {
+    "id": "EQ-001",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-001",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-001",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.318394+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Spacetime interval",
+    "rhs": "ds\u00b2=g_\u03bc\u03bddx^\u03bcdx^\u03bd",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g_\u03bc\u03bd",
+    "verification": {}
+  },
+  {
+    "id": "EQ-002",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-002",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-002",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.321218+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Einstein equation",
+    "rhs": "G_\u03bc\u03bd+\u039bg_\u03bc\u03bd=(8\u03c0G/c\u2074)T_\u03bc\u03bd",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: G_\u03bc\u03bd,\u039b,g,T,G,c",
+    "verification": {}
+  },
+  {
+    "id": "EQ-003",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-003",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-003",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.323707+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "FLRW metric",
+    "rhs": "ds\u00b2=-c\u00b2dt\u00b2+a\u00b2(t)[d\u03c7\u00b2+\u03c7\u00b2d\u03a9\u00b2]",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: a,\u03c7,\u03a9",
+    "verification": {}
+  },
+  {
+    "id": "EQ-004",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-004",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-004",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.325932+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Graph Laplacian",
+    "rhs": "L_N=D-W",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: L_N,D,W",
+    "verification": {}
+  },
+  {
+    "id": "EQ-005",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-005",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-005",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.328374+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Graph eigenproblem",
+    "rhs": "L_N\u03c6_k=\u03bb_k\u03c6_k",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: L_N,\u03c6_k,\u03bb_k",
+    "verification": {}
+  },
+  {
+    "id": "EQ-006",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-006",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-006",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.330601+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Continuum eigenproblem",
+    "rhs": "-\u0394_h\u03c6_n=\u03bb_n\u03c6_n",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: \u0394_h,\u03c6_n,\u03bb_n",
+    "verification": {}
+  },
+  {
+    "id": "EQ-007",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-007",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-007",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.332725+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Heat trace",
+    "rhs": "K(t)=\u03a3e^{-t\u03bb_n}",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: t,\u03bb_n",
+    "verification": {}
+  },
+  {
+    "id": "EQ-008",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-008",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-008",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.335031+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "3D heat expansion",
+    "rhs": "K~(4\u03c0t)^(-3/2)(a0+a1t+a2t\u00b2+...)",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: a0,a1,a2",
+    "verification": {}
+  },
+  {
+    "id": "EQ-009",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-009",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-009",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.337246+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Curvature coefficient",
+    "rhs": "a1=(1/6)\u222bR dV",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: a1,R",
+    "verification": {}
+  },
+  {
+    "id": "EQ-010",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED*' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-010",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-010",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.339536+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Constant curvature",
+    "rhs": "R=6\u03ba",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: R,\u03ba",
+    "verification": {}
+  },
+  {
+    "id": "EQ-011",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED*' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-011",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-011",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.342388+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "role": "comparison",
+    "lhs": "a2 constant curvature",
+    "rhs": "a2=(1/2)V\u03ba\u00b2",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: a2,V,\u03ba",
+    "verification": {}
+  },
+  {
+    "id": "EQ-012",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='TEST' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-012",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-012",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.344893+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "TEST"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Curvature residual",
+    "rhs": "R\u03ba=a1/a0-sgn(a1)\u221a(2a2/a0)",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: a0,a1,a2",
+    "verification": {}
+  },
+  {
+    "id": "EQ-013",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CONDITIONAL' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-013",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-013",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.347036+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CONDITIONAL"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Continuum normalization",
+    "rhs": "L\u0303=-L_N/(C_KN\u03b5^(d/2+1))",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: L_N,C_K,N,\u03b5,d",
+    "verification": {}
+  },
+  {
+    "id": "EQ-014",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CONDITIONAL' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-014",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-014",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.349223+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CONDITIONAL"
+      }
+    },
+    "role": "comparison",
+    "lhs": "d=3 normalization",
+    "rhs": "L\u0303=-L_N/(C_KN\u03b5^(5/2))",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: L_N,C_K,N,\u03b5",
+    "verification": {}
+  },
+  {
+    "id": "EQ-015",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED*' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-015",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-015",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.351668+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Friedmann",
+    "rhs": "H\u00b2=(8\u03c0G/3)\u03c1+\u039bc\u00b2/3-c\u00b2\u03ba/a\u00b2",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: H,\u03c1,\u039b,c,\u03ba,a",
+    "verification": {}
+  },
+  {
+    "id": "EQ-016",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-016",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-016",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.353699+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Continuity",
+    "rhs": "\u03c1\u0307+3H(\u03c1+p/c\u00b2)=0",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: \u03c1,H,p,c",
+    "verification": {}
+  },
+  {
+    "id": "EQ-017",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='ASSUMPTION' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-017",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-017",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.355905+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "ASSUMPTION"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Equation of state",
+    "rhs": "p=w\u03c1c\u00b2",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: p,w,\u03c1,c",
+    "verification": {}
+  },
+  {
+    "id": "EQ-018",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='DERIVED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-018",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-018",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.358184+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "DERIVED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Density evolution",
+    "rhs": "\u03c1(a)=\u03c10a^{-3(1+w)}",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: \u03c1,\u03c10,a,w",
+    "verification": {}
+  },
+  {
+    "id": "EQ-019",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-019",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-019",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.360394+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Hamiltonian decomposition",
+    "rhs": "H=\u03a3E_nP_n",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: H,E_n,P_n",
+    "verification": {}
+  },
+  {
+    "id": "EQ-020",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-020",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-020",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.362483+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Quantum state",
+    "rhs": "\u03c1_Q=\u03a3p_nP_n",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: \u03c1_Q,p_n,P_n",
+    "verification": {}
+  },
+  {
+    "id": "EQ-021",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-021",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-021",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.364847+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Stress expectation",
+    "rhs": "<T_\u03bc\u03bd>=Tr(\u03c1_QT\u0302_\u03bc\u03bd)",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: \u03c1_Q,T\u0302",
+    "verification": {}
+  },
+  {
+    "id": "EQ-022",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED*' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-022",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-022",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.366902+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Semiclassical Einstein",
+    "rhs": "G_\u03bc\u03bd+\u039bg_\u03bc\u03bd=(8\u03c0G/c\u2074)<T\u0302_\u03bc\u03bd>_ren",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g,<T>_ren",
+    "verification": {}
+  },
+  {
+    "id": "EQ-023",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-023",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-023",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.369048+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Fisher metric",
+    "rhs": "F_ab=\u222bp\u2202a ln p\u2202b ln p dx",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: p,F",
+    "verification": {}
+  },
+  {
+    "id": "EQ-024",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='PROOF' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-024",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-024",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.371237+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "PROOF"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Fisher positivity",
+    "rhs": "v^aF_abv^b=\u222bp(v^a\u2202a ln p)\u00b2dx\u22650",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: F,p,v",
+    "verification": {}
+  },
+  {
+    "id": "EQ-025",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-025",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-025",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.373543+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Fisher pullback",
+    "rhs": "g^F_\u03bc\u03bd=F_ab\u2202_\u03bc\u03b8^a\u2202_\u03bd\u03b8^b",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: F,\u03b8",
+    "verification": {}
+  },
+  {
+    "id": "EQ-026",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='ESTABLISHED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-026",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-026",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.375657+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "ESTABLISHED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Lorentzian signature",
+    "rhs": "signature(g)=(-,+,+,+)",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g",
+    "verification": {}
+  },
+  {
+    "id": "EQ-027",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='FALSIFIED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-027",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-027",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.377723+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "FALSIFIED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Fisher obstruction",
+    "rhs": "signature(g^F)\u2260(-,+,+,+)",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g^F,g",
+    "verification": {}
+  },
+  {
+    "id": "EQ-028",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='CLOSED' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-028",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-028",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.379922+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Principal symbol",
+    "rhs": "\u03c3_2(-\u0394_g)=g^{\u03bc\u03bd}\u03be_\u03bc\u03be_\u03bd",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g,\u03be",
+    "verification": {}
+  },
+  {
+    "id": "EQ-029",
+    "status": "PROPOSED",
+    "dependencies": [],
+    "assumptions": [
+      "workbook_claimed_status='TEST' -- NOT trusted at face value (spec section 2/4); PROPOSED until independently executed in this compiler."
+    ],
+    "provenance": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-029",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-029",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:01.381985+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "TEST"
+      }
+    },
+    "role": "comparison",
+    "lhs": "Semiclassical residual",
+    "rhs": "F_SC[g]=G_\u03bc\u03bd+\u039bg_\u03bc\u03bd-(8\u03c0G/c\u2074)<T\u0302_\u03bc\u03bd[g]>_ren",
+    "domain": "FC-005 reference equation set",
+    "derivation": "variables: g,<T>",
+    "verification": {}
+  },
+  {
+    "id": "EQ-FC005-S3-CURVATURE-RESIDUAL",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-CURVATURE-CLOSURE"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-S3-CURVATURE-RESIDUAL",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T04:53:01.406987+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "passed": true
+      }
+    },
+    "role": "upstream_construction",
+    "lhs": "E_kappa",
+    "rhs": "a1/a0 - sgn(a1)*sqrt(2*a2/a0)",
+    "domain": "S^3 heat-kernel control",
+    "derivation": "independently executed regression test reproducing the workbook's ~1e-6 closure result (workbook nominal 3.2156e-06 at window [0.0015,0.006]; this build: 3.3439e-06 at the same window, degree-3 fit)",
+    "verification": {
+      "max_abs_e_kappa": 1.0192723588153818e-05,
+      "tolerance": 0.0001,
+      "passed": true
+    }
+  },
+  {
+    "id": "EQ-FC005-FISHER-PSD",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FISHER-STATISTICAL-FAMILY"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/verification/fisher_information.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-FISHER-PSD",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-FISHER-PSD",
+      "execution_timestamp": "2026-08-19T04:53:04.457772+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "is_positive_semidefinite": true
+      }
+    },
+    "role": "upstream_construction",
+    "lhs": "v^T F v",
+    "rhs": ">= 0 for all v",
+    "domain": "information geometry",
+    "derivation": "F computed by genuine sympy symbolic integration over the Gaussian family (not hardcoded); eigenvalues confirmed >=0 both symbolically and by sampling v^T F v >= 0 numerically at multiple sigma.",
+    "verification": {
+      "eigenvalues_at_sigma1": [
+        1.0,
+        2.0
+      ]
+    }
+  },
+  {
+    "id": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION",
+    "status": "FALSIFIED",
+    "dependencies": [
+      "FISHER-STATISTICAL-FAMILY"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/verification/fisher_information.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T04:53:04.460386+00:00",
+      "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FALSIFIED",
+      "verification": {
+        "conclusion": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general."
+      }
+    },
+    "role": "comparison",
+    "lhs": "F",
+    "rhs": "g_munu (Lorentzian, signature (-,+,+,+))",
+    "domain": "information geometry vs spacetime geometry",
+    "derivation": "F is PSD (EQ-FC005-FISHER-PSD, executed); a Lorentzian metric requires a strictly negative eigenvalue; signature is basis-independent (spectral theorem); PSD and Lorentzian signatures are disjoint. Direct identification F = g_munu is therefore FALSIFIED.",
+    "verification": {
+      "conclusion": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general."
     }
   }
 ]

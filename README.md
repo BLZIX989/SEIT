@@ -1014,6 +1014,21 @@ the specification, [`compiler_architecture.md`](compiler_architecture.md)
 for the module layout, and [`compiler_test_report.md`](compiler_test_report.md)
 for the latest test/self-audit results.
 
+The FC-005 physics execution (S^3 heat-kernel closure control, the
+discrete-observation → continuum-operator bridge, and the Fisher-Rao /
+eigenvalue-uniqueness rejections) is integrated into the same compiler —
+see [`FC005_EXECUTION_REPORT.md`](FC005_EXECUTION_REPORT.md) for the
+result and [`fc005_source_workbooks/`](fc005_source_workbooks/) for the
+reconciled source workbooks.
+
+Real DESI DR1 data has been acquired, validated, and run through Gate 1
+(mathematical convergence) — see
+[`FC005_DESI_ACQUISITION_REPORT.md`](FC005_DESI_ACQUISITION_REPORT.md)
+for the full acquisition/execution report and
+[`FC005_DESI_PROVENANCE.json`](FC005_DESI_PROVENANCE.json) for the
+complete dependency chain from the official DESI URL through to the
+Gate 1 result.
+
 ```
 pip install -r compiler/requirements.txt
 python3 -m pytest compiler/tests -q

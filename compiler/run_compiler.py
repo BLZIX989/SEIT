@@ -19,6 +19,7 @@ from compiler.falsification.protocols import (
 )
 from compiler.historical.register import register_historical_nodes
 from compiler.ir.executable_tests import register_executable_tests
+from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
 from compiler.verification.self_audit import run_self_audit
@@ -80,15 +81,19 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS:
+    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005:
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
     test_results = register_executable_tests(registries)
     register_historical_nodes(registries)
+    fc005_results = register_fc005(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
+    falsifications.extend(fc005_results["falsifications"])
+
+    all_calculations = list(test_results["calculations"]) + list(fc005_results["calculations"])
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     registries.dump_all(OUT_DIR)
@@ -103,7 +108,7 @@ def build_and_run() -> dict:
     (OUT_DIR / "proof_registry.json").write_text(json.dumps(proof_registry, indent=2))
 
     (OUT_DIR / "calculation_registry.json").write_text(
-        json.dumps(test_results["calculations"], indent=2)
+        json.dumps(all_calculations, indent=2)
     )
 
     falsification_registry = [f.to_dict() for f in falsifications]
@@ -130,11 +135,40 @@ def build_and_run() -> dict:
     }
     (OUT_DIR / "master_mdcl.json").write_text(json.dumps(master_mdcl, indent=2))
 
+    s3 = fc005_results["s3_report"]
+    fisher = fc005_results["fisher_demo"]
+    eigen_cx = fc005_results["eigen_counterexample"]
+    fc005_result_json = {
+        "s3_control": {"passed": s3.passed, "max_abs_e_kappa": s3.max_abs_e_kappa,
+                       "tolerance": s3.tolerance, "fit_results": [r.to_dict() for r in s3.fit_results]},
+        "desi_execution": {
+            "catalogue_found": False,
+            "status": "PENDING DATA",
+            "blocked_nodes": ["DESI-CATALOGUE", "GRAPH-G-DESI", "OPERATOR-L-DESI",
+                              "CONTINUUM-LIMIT-L-DESI", "DESI-SPECTRUM", "DESI-HEAT-TRACE",
+                              "DESI-HEAT-COEFFICIENTS", "KAPPA-DESI", "E-KAPPA-DESI",
+                              "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"],
+        },
+        "fisher_lorentzian_obstruction": {
+            "is_positive_semidefinite": fisher.is_positive_semidefinite,
+            "eigenvalues_at_sigma1": fisher.numeric_eigenvalues_at_sigma1,
+            "conclusion": fisher.conclusion,
+        },
+        "eigenvalue_uniqueness_counterexample": {
+            "n_confirmed": eigen_cx.n_confirmed, "n_trials": eigen_cx.n_trials,
+            "spectra_match_max_residual": eigen_cx.spectra_match_max_residual,
+        },
+        "n_reference_equations_imported": fc005_results["n_reference_equations"],
+        "terminal_status": None,  # filled in below once computed
+    }
+    (OUT_DIR / "fc005_result.json").write_text(json.dumps(fc005_result_json, indent=2))
+
     required_paths = [OUT_DIR / name for name in (
         "type_registry.json", "object_registry.json", "transformation_registry.json",
         "equation_registry.json", "status_matrix.json", "proof_registry.json",
         "calculation_registry.json", "falsification_registry.json",
         "provenance_registry.json", "target_independence.json", "master_mdcl.json",
+        "fc005_result.json",
     )]
     audit_results = run_self_audit(registries, required_paths=required_paths)
     (OUT_DIR / "self_audit_report.json").write_text(
@@ -155,9 +189,15 @@ def build_and_run() -> dict:
     else:
         terminal = TerminalStatus.PARTIALLY_CLOSED
 
+    fc005_result_json["terminal_status"] = terminal.value
+    fc005_result_json["all_self_audits_passed"] = all_audits_passed
+    (OUT_DIR / "fc005_result.json").write_text(json.dumps(fc005_result_json, indent=2))
+
     return {
         "registries": registries,
         "test_results": test_results,
+        "fc005_results": fc005_results,
+        "all_calculations": all_calculations,
         "falsifications": falsifications,
         "audit_results": audit_results,
         "all_audits_passed": all_audits_passed,

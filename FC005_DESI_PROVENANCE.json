@@ -1,0 +1,115 @@
+{
+  "chain": [
+    {
+      "step": "DESI_URL",
+      "value": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+      "source_documentation": "https://data.desi.lbl.gov/doc/releases/dr1/"
+    },
+    {
+      "step": "file",
+      "filename": "LRG_SGC_clustering.dat.fits",
+      "local_raw_path": "data/desi/dr1/fc005/raw/LRG_SGC_clustering.dat.fits (gitignored; re-fetchable via download_desi_fc005.py)",
+      "size_bytes": 64272960,
+      "row_count": 662492
+    },
+    {
+      "step": "checksum",
+      "algorithm": "sha256",
+      "value": "ae478557d9ef70257cc689197052515f5ebbc0b23359c81159a8ad3289332e69",
+      "verified_against": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/dr1_survey_catalogs_dr1_LSS_iron_LSScats_v1.5.sha256sum",
+      "verification_result": "PASSED (download_desi_fc005.py, see data/desi/dr1/fc005/metadata/download_log.json)"
+    },
+    {
+      "step": "version",
+      "release": "DR1", "lss_version": "v1.5",
+      "rationale": "see FC005_DESI_SELECTION.md; v1.2 comparison recorded, not silently mixed"
+    },
+    {
+      "step": "selection",
+      "tracer": "LRG", "cap": "SGC",
+      "redshift_bin_full_file": "0.4 < z < 1.1",
+      "pilot_redshift_bin": "0.4 <= z < 0.6",
+      "n_objects_full_file": 662492,
+      "n_objects_in_pilot_bin": 160150,
+      "rationale": "see FC005_DESI_SELECTION.md"
+    },
+    {
+      "step": "preprocessing",
+      "schema_map": "compiler/backends/desi_schema.py::SCHEMA_MAP (identity map; DESI columns used unchanged)",
+      "canonical_fields_loaded": ["TARGETID", "RA", "DEC", "Z", "WEIGHT", "WEIGHT_FKP", "WEIGHT_SYS",
+                                  "WEIGHT_ZFAIL", "WEIGHT_COMP", "NTILE", "PHOTSYS", "FRAC_TLOBS_TILES", "NX"],
+      "validation": "FC005_DESI_VALIDATION_REPORT.md (12/12 checks PASSED)",
+      "random_catalogue": "NOT used -- G_DESI is built directly on data-point positions, no DD/DR/RR estimator; see FC005_DESI_SELECTION.md 'Randoms' section for the full justification"
+    },
+    {
+      "step": "cosmology",
+      "source": "FC005_cosmology.yaml",
+      "provenance": "DESI's own official fiducial cosmology (arXiv:2404.03005), numerically equal to Planck 2018 base-LambdaCDM",
+      "H0_km_s_Mpc": 67.36, "Omega_m": 0.315192, "Omega_Lambda": 0.684808, "Omega_k": 0.0, "w0": -1.0
+    },
+    {
+      "step": "coordinate_transform",
+      "formula": "chi(z) = c * integral_0^z dz'/H(z'); x=chi*cos(dec)*cos(ra), y=chi*cos(dec)*sin(ra), z_spatial=chi*sin(dec)",
+      "implementation": "compiler/backends/desi_graph.py::comoving_distance, radec_to_cartesian",
+      "note": "z_spatial (Cartesian) kept unambiguously distinct from redshift z throughout the codebase"
+    },
+    {
+      "step": "graph",
+      "construction": "G_DESI = (V,E,W); W_ij = exp(-d_ij^2 / (2*epsilon^2)), weighted by WEIGHT_i*WEIGHT_j",
+      "implementation": "compiler/backends/desi_graph.py::build_kernel_graph",
+      "pilot_run": {
+        "fixture": "data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits",
+        "n_nodes": 3000, "n_connected_components": 1,
+        "W_symmetric": true, "W_nonnegative": true, "W_diagonal_zero": true,
+        "sparsity_fraction_nonzero": 0.4349306666666667,
+        "verification_report": "data/desi/dr1/fc005/derived/pilot_run_result.json"
+      },
+      "gate1_run": {
+        "source": "full raw catalogue (data/desi/dr1/fc005/raw/, not committed)",
+        "redshift_bin": [0.4, 0.6], "N_values": [800, 1500, 2500, 4000],
+        "epsilon_values_mpc": [233.566, 189.413, 159.757, 136.590],
+        "epsilon_rule": "3 x median NN separation at N=3000 (measured), scaled by (3000/N)^(1/3)"
+      }
+    },
+    {
+      "step": "laplacian",
+      "formula": "L_N = D - W",
+      "implementation": "compiler/backends/desi_graph.py::graph_laplacian_from_weights",
+      "verification": "symmetric, row-sums ~0 to machine precision, v^T L v >= 0 over 200 random test vectors -- data/desi/dr1/fc005/derived/pilot_run_result.json"
+    },
+    {
+      "step": "continuum_normalization",
+      "formula": "L_tilde_(N,eps) = -L_N / (C_K * N * eps^(5/2)), d=3",
+      "implementation": "compiler/backends/desi_graph.py::normalize_continuum_limit",
+      "C_K": "15.749609945722419 (Gaussian kernel, analytic (2*pi)^(3/2), cross-checked numerically to 5 sig figs)"
+    },
+    {
+      "step": "eigenproblem",
+      "formula": "-Delta_h phi_n = lambda_n phi_n  =>  Spec used here is Spec(-L_tilde), NOT Spec(L_tilde)",
+      "sign_convention_note": "L_tilde -> Delta_h (negative semidefinite, per the workbook's own DC-009/DC-010); the physically meaningful lambda_n>=0 spectrum for the heat trace is Spec(-Delta_h) = Spec(-L_tilde). This sign flip is applied explicitly in compiler/backends/desi_fc005_pipeline.py::run_mathematical_convergence -- see the in-code comment for the full derivation. This is a bug fix made during Gate 1 execution, not a physics change: it corrects which operator's spectrum is computed, required by the equations exactly as given in the source workbook.",
+      "implementation": "compiler/backends/desi_fc005_pipeline.py::_low_eigen (called on -L_tilde)",
+      "solver": "numpy.linalg.eigh (dense); solver_residual < 1e-20 at every (N,eps) point tested"
+    },
+    {
+      "step": "gate1_result",
+      "converged": false,
+      "relative_changes": [0.4171554315794859, 0.2789003548762659, 0.4139746215960837],
+      "tolerance": 0.15,
+      "failed_dependency": "CONTINUUM-LIMIT-L-DESI",
+      "conclusion": "Gate 1 (mathematical convergence) FAILED on real DESI DR1 LRG SGC data (0.4<=z<0.6 bin) with the tested (N,epsilon) refinement sequence. Per instruction, Gates 2 (curvature closure) and 3 (physical validation) were NOT entered. No heat trace, no (a0,a1,a2) fit, no curvature residual was computed for DESI -- those remain OPEN, never executed.",
+      "full_result_file": "data/desi/dr1/fc005/derived/gate1_run_result.json"
+    },
+    {
+      "step": "heat_trace",
+      "status": "NOT COMPUTED -- Gate 1 did not pass"
+    },
+    {
+      "step": "coefficient_fit",
+      "status": "NOT COMPUTED -- Gate 1 did not pass"
+    },
+    {
+      "step": "curvature_residual",
+      "status": "NOT COMPUTED -- Gate 1 did not pass"
+    }
+  ]
+}

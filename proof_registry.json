@@ -33,5 +33,12 @@
     "statement": "d_t(i,j)",
     "method": "direct evaluation of the diffusion-map distance formula.",
     "status": "CALCULATED"
+  },
+  {
+    "id": "PROOF-T-FC005-S3-CONTROL-CHAIN",
+    "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
+    "statement": "analytic Spec -> K(t) -> fit -> E_kappa",
+    "method": "closed-form S^3 spectrum, numpy heat-trace summation with controlled truncation, numpy.polyfit degree-3/4/5 sweep",
+    "status": "VERIFIED"
   }
 ]

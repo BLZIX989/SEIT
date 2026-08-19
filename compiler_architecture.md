@@ -83,6 +83,70 @@ still-open Selection/Vacuum chain. Conflating the two would have silently
 promoted an OPEN selection problem to CLOSED by fiat, which spec section
 5 forbids ("never force CLOSED").
 
+## FC-005 physics extension
+
+Added without touching the existing architecture (same IR, same
+`MDCLRegistries`, same `Status`/`Provenance`, same self-audit):
+
+```
+compiler/backends/heat_kernel_sphere.py     S^3 analytic heat-kernel control (regression test)
+compiler/backends/desi_graph.py             discrete-observation -> continuum bridge primitives (code + synthetic tests)
+compiler/backends/desi_fc005_pipeline.py    the three-stage execution procedure (see below)
+compiler/verification/heat_kernel_fit.py    shared fit/curvature-closure arithmetic (S^3 control and DESI pipeline
+                                             use the SAME functions, so results are directly comparable)
+compiler/verification/fisher_information.py executed Fisher-Rao PSD proof (sympy symbolic integration)
+compiler/falsification/eigen_uniqueness.py  executed Spec(H)-does-not-determine-H counterexample
+compiler/historical/fc005_reconciliation.py 4-workbook precedence/discrepancy audit
+compiler/ir/fc005.py                        registers all of the above into the existing MDCL
+fc005_source_workbooks/                     the 4 supplied workbooks, copied in for reproducible provenance
+FC005_EXECUTION_REPORT.md                   the required 14-question final report
+fc005_result.json                           machine-readable FC-005 result
+```
+
+### The three-stage DESI execution procedure
+
+`compiler/backends/desi_fc005_pipeline.py::run_fc005_desi_pipeline` is the
+exact procedure this branch is bound to once a real catalogue is
+supplied, and is deliberately never adjusted after the fact to obtain a
+particular answer:
+
+1. **Mathematical convergence** (`run_mathematical_convergence`): a
+   refinement sweep over (N, epsilon) checking whether L_tilde's
+   low-lying spectrum stabilizes. On failure, returns the *exact* IR node
+   id it failed at (`GRAPH-G-DESI` / `OPERATOR-L-DESI` /
+   `CONTINUUM-LIMIT-L-DESI` / `DESI-SPECTRUM`) and the pipeline stops --
+   stages 2 and 3 are never evaluated.
+2. **Curvature closure** (`run_curvature_closure`): only entered if stage
+   1 converged. Fits (a0,a1,a2) and E_kappa using the exact same shared
+   arithmetic as the S^3 control (`compiler/verification/heat_kernel_fit.py`),
+   guarded by two independent safeguards -- a truncation-margin check (do
+   the captured eigenmodes cover the requested short-time window?) and an
+   empirical degree-refinement stability check (does the fit change when
+   the polynomial degree increases by one?). Either safeguard failing
+   returns `sufficient_modes=False` rather than a silently biased result.
+3. **Physical validation** (`run_physical_validation`): only entered if
+   stage 2 closed, and only if the caller supplies an *independently
+   sourced* `kappa_cosmological` with a named source -- the function
+   raises rather than run if that source is empty, refusing to let a
+   catalogue-derived number validate itself.
+
+`FC005DesiExecutionResult` keeps `mathematical_convergence`,
+`curvature_closure_result`, and `physical_validation_result` as three
+separate, independently-populated fields (never collapsed into one
+closed/not-closed bit), mirrored in the IR by three `stage_gate` objects
+(`MATHEMATICAL-CONVERGENCE-DESI`, `CURVATURE-CLOSURE-DESI`,
+`PHYSICAL-VALIDATION-DESI`) registered in `compiler/ir/fc005.py`, each
+currently `OPEN` pending a real catalogue.
+
+`run_compiler.build_and_run()` calls `register_fc005()` right after the
+existing `register_historical_nodes()`, in the same way the rest of the
+pipeline is composed — no second dependency graph, no second registry
+schema. `compiler/verification/self_audit.py` gained one new audit,
+`leakage_control_audit`, checking that no `FALSIFIED`/`FAIL` node is a
+transitive ancestor of any active (`VERIFIED`/`DERIVED`/`CALCULATED`)
+node — the mechanical form of "a rejected hypothesis must never re-enter
+the active DAG."
+
 ## Extending the compiler
 
 Each backend module is independently testable and has no import-time

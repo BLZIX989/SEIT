@@ -59,5 +59,31 @@
     "evidence": {
       "n_representations": 5
     }
+  },
+  {
+    "id": "FALS-FC005-FISHER-LORENTZIAN",
+    "protocol": "mathematical_invariance",
+    "target": "Fisher-Rao metric F = Lorentzian spacetime metric g_munu",
+    "passed": false,
+    "detail": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general.",
+    "evidence": {
+      "eigenvalues_at_sigma1": [
+        1.0,
+        2.0
+      ],
+      "family": "Gaussian N(mu, sigma^2), theta=(mu, sigma)"
+    }
+  },
+  {
+    "id": "FALS-FC005-EIGENVALUE-UNIQUENESS",
+    "protocol": "structural_elimination",
+    "target": "H is uniquely determined by Spec(H)",
+    "passed": false,
+    "detail": "25/25 random unitary-conjugation trials produce a distinct operator with identical spectrum.",
+    "evidence": {
+      "n_confirmed": 25,
+      "n_trials": 25,
+      "spectra_match_max_residual": 8.881784197001252e-16
+    }
   }
 ]

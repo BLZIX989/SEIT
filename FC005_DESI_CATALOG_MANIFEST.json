@@ -1,0 +1,89 @@
+{
+  "generated_by": "compiler/ir/fc005.py data-acquisition phase (manual inspection, recorded here)",
+  "official_source_documentation": [
+    "https://data.desi.lbl.gov/public/dr1",
+    "https://data.desi.lbl.gov/doc/releases/dr1/",
+    "https://desidatamodel.readthedocs.io"
+  ],
+  "inspection_method": "Apache directory listings (curl) + astropy.io.fits.open(url, use_fsspec=True) HTTP range-request header/column reads. No file was downloaded blindly; every entry below was inspected in place before any decision to fetch its full bytes.",
+  "entries": [
+    {
+      "role": "SELECTED_PRIMARY_DATA",
+      "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+      "version": "v1.5",
+      "tracer": "LRG",
+      "cap": "SGC",
+      "redshift_bin": "0.4 < z < 1.1 (full LRG clustering sample; verified by reading Z column, observed range [0.4003, 1.0989] in a 5000-row sample)",
+      "filename": "LRG_SGC_clustering.dat.fits",
+      "file_size_bytes": 64272960,
+      "file_size_human": "64.27 MB",
+      "last_modified": "2025-02-10T13:19:48Z",
+      "checksum_sha256": "ae478557d9ef70257cc689197052515f5ebbc0b23359c81159a8ad3289332e69",
+      "checksum_source": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/dr1_survey_catalogs_dr1_LSS_iron_LSScats_v1.5.sha256sum",
+      "row_count": 662492,
+      "columns": ["TARGETID", "Z", "NTILE", "RA", "DEC", "PHOTSYS", "FRAC_TLOBS_TILES",
+                  "WEIGHT_ZFAIL", "WEIGHT_SYS", "WEIGHT", "WEIGHT_COMP", "NX", "WEIGHT_FKP"],
+      "required_optional": "REQUIRED",
+      "reason_for_inclusion": "LRG is the DESI tracer whose documented redshift range (0.4<z<1.1, arXiv:2411.12020) has the largest, cleanest overlap with the FC-005 target range 0.1<=z<=1.1 as a SINGLE tracer, matching the build command's preference for 'a single well-defined tracer/redshift bin' for the first execution. SGC (South Galactic Cap) chosen over NGC purely for size (64 MB vs 143 MB) -- same tracer, same selection function, smaller pilot.",
+      "source_documentation_url": "https://data.desi.lbl.gov/doc/releases/dr1/"
+    },
+    {
+      "role": "RANDOM_CATALOG_DEFERRED",
+      "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_0_clustering.ran.fits",
+      "version": "v1.5",
+      "tracer": "LRG",
+      "cap": "SGC",
+      "filename": "LRG_SGC_0_clustering.ran.fits",
+      "file_size_bytes": 520781760,
+      "file_size_human": "520.78 MB (one realization; DESI provides up to 18 numbered realizations 0-17 for full statistical power)",
+      "checksum_sha256": "70821a9609c4f825fecd6c45f6ede3b95bc309103e7ca580231b212a27e2592e",
+      "row_count": 4959721,
+      "columns": ["TARGETID", "RA", "DEC", "NTILE", "PHOTSYS", "FRAC_TLOBS_TILES", "Z", "WEIGHT",
+                  "WEIGHT_SYS", "WEIGHT_COMP", "WEIGHT_ZFAIL", "TARGETID_DATA", "NX", "WEIGHT_FKP"],
+      "required_optional": "OPTIONAL for the pilot phase; REQUIRED before any mask-boundary-corrected full run",
+      "reason_for_inclusion": "NOT downloaded for the pilot. FC-005's G_DESI construction (compiler/backends/desi_graph.py) builds a kernel graph directly on DATA point positions and does not perform a Landy-Szalay-style DD/DR/RR pair-count requiring a random catalog -- see FC005_DESI_SELECTION.md section 'Randoms' for the full justification. Randoms are recorded here as a real, located dependency for the survey-mask-boundary correction the full (non-pilot) run will need (spec section 11), not invented or skipped silently.",
+      "source_documentation_url": "https://data.desi.lbl.gov/doc/releases/dr1/"
+    },
+    {
+      "role": "VERSION_COMPARISON_NOT_SELECTED",
+      "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.2/LRG_SGC_clustering.dat.fits",
+      "version": "v1.2",
+      "tracer": "LRG",
+      "cap": "SGC",
+      "filename": "LRG_SGC_clustering.dat.fits",
+      "file_size_bytes": 74868480,
+      "file_size_human": "74.87 MB",
+      "row_count": 662468,
+      "columns": ["TARGETID", "Z", "NTILE", "RA", "DEC", "PHOTSYS", "FRAC_TLOBS_TILES", "WEIGHT_SN",
+                  "WEIGHT_FKP", "WEIGHT_RF", "WEIGHT_ZFAIL", "WEIGHT_SYS", "WEIGHT", "WEIGHT_COMP", "NX"],
+      "required_optional": "NOT SELECTED -- recorded for the version-comparison audit only",
+      "reason_for_inclusion": "Inspected (not downloaded) to compare against v1.5. Real schema difference found: v1.2 carries WEIGHT_SN and WEIGHT_RF columns that v1.5 does not; v1.5 instead consolidates systematics into WEIGHT_SYS. Row count differs by 24 objects (662468 vs 662492), consistent with v1.5's refined veto masking (evidenced by the additional *_HPmapcut.ran.fits variants present only in v1.5). See FC005_DESI_SELECTION.md for the full version-selection rationale.",
+      "source_documentation_url": "https://data.desi.lbl.gov/doc/releases/dr1/"
+    },
+    {
+      "role": "CHECKSUM_MANIFEST",
+      "url": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/dr1_survey_catalogs_dr1_LSS_iron_LSScats_v1.5.sha256sum",
+      "version": "v1.5",
+      "filename": "dr1_survey_catalogs_dr1_LSS_iron_LSScats_v1.5.sha256sum",
+      "required_optional": "REQUIRED (integrity verification)",
+      "reason_for_inclusion": "Official per-directory sha256 manifest published by DESI for the entire v1.5 LSScats directory; used to verify LRG_SGC_clustering.dat.fits after download rather than trusting HTTP transfer alone.",
+      "source_documentation_url": "https://data.desi.lbl.gov/doc/releases/dr1/"
+    }
+  ],
+  "tracers_evaluated_but_not_selected": {
+    "BGS": {
+      "redshift_range": "0.1 < z < 0.4 (arXiv:2411.12020)",
+      "smallest_file": "BGS_BRIGHT-21.5_SGC_clustering.dat.fits (9.65 MB, v1.5)",
+      "why_not_selected": "Covers only the low-z edge of the FC-005 target range (0.1-1.1); would require combining with a second tracer for full coverage, which the build command asks to defer to a 'multi-tracer extension' designed separately from the first execution."
+    },
+    "ELG": {
+      "redshift_range": "0.8 < z < 1.6 (arXiv:2411.12020)",
+      "why_not_selected": "Extends past the FC-005 target upper bound (1.1) and starts inside LRG's already-selected range; would add tracer-mixing complexity without extending usable coverage."
+    },
+    "QSO": {
+      "redshift_range": "0.8 < z < 2.1 (arXiv:2411.12020)",
+      "smallest_file": "QSO_SGC_clustering.dat.fits (45.18 MB, v1.5)",
+      "why_not_selected": "Redshift range extends well past the FC-005 target upper bound (1.1); QSO clustering catalog also has lower spatial number density (sparser tracer) than LRG at these redshifts, less favorable for the discrete-observation -> continuum-operator bridge test."
+    }
+  }
+}

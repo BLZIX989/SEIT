@@ -261,6 +261,185 @@
     "dependencies": []
   },
   {
+    "id": "FC005-WORKBOOK-RECONCILIATION",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "S3-MANIFOLD",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "S3-SPECTRUM",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "S3-HEAT-TRACE",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "S3-SPECTRUM"
+    ]
+  },
+  {
+    "id": "S3-HEAT-COEFFICIENTS",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-HEAT-TRACE"
+    ]
+  },
+  {
+    "id": "S3-CURVATURE-CLOSURE",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-HEAT-COEFFICIENTS"
+    ]
+  },
+  {
+    "id": "DESI-CATALOGUE",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "GRAPH-G-DESI",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "DESI-CATALOGUE"
+    ]
+  },
+  {
+    "id": "OPERATOR-L-DESI",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "GRAPH-G-DESI"
+    ]
+  },
+  {
+    "id": "CONTINUUM-LIMIT-L-DESI",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "OPERATOR-L-DESI"
+    ]
+  },
+  {
+    "id": "DESI-SPECTRUM",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "CONTINUUM-LIMIT-L-DESI"
+    ]
+  },
+  {
+    "id": "DESI-HEAT-TRACE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "DESI-SPECTRUM"
+    ]
+  },
+  {
+    "id": "DESI-HEAT-COEFFICIENTS",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "DESI-HEAT-TRACE"
+    ]
+  },
+  {
+    "id": "KAPPA-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "DESI-HEAT-COEFFICIENTS"
+    ]
+  },
+  {
+    "id": "E-KAPPA-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "KAPPA-DESI"
+    ]
+  },
+  {
+    "id": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "KAPPA-DESI"
+    ]
+  },
+  {
+    "id": "MATHEMATICAL-CONVERGENCE-DESI",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "GRAPH-G-DESI",
+      "OPERATOR-L-DESI",
+      "CONTINUUM-LIMIT-L-DESI",
+      "DESI-SPECTRUM"
+    ]
+  },
+  {
+    "id": "CURVATURE-CLOSURE-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "MATHEMATICAL-CONVERGENCE-DESI",
+      "DESI-HEAT-TRACE",
+      "DESI-HEAT-COEFFICIENTS",
+      "E-KAPPA-DESI"
+    ]
+  },
+  {
+    "id": "PHYSICAL-VALIDATION-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "CURVATURE-CLOSURE-DESI",
+      "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"
+    ]
+  },
+  {
+    "id": "SEMICLASSICAL-EINSTEIN-EQUATION",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "SEMICLASSICAL-RESIDUAL-E-SC",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SEMICLASSICAL-EINSTEIN-EQUATION"
+    ]
+  },
+  {
+    "id": "FISHER-STATISTICAL-FAMILY",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "SPEC-H-UNIQUENESS",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -315,6 +494,14 @@
     ]
   },
   {
+    "id": "T-FC005-S3-CONTROL-CHAIN",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ]
+  },
+  {
     "id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
     "kind": "Equation",
     "status": "DERIVED",
@@ -328,6 +515,204 @@
     "status": "VERIFIED",
     "dependencies": [
       "HEAT-FLOW-R"
+    ]
+  },
+  {
+    "id": "EQ-001",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-002",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-003",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-004",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-005",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-006",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-007",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-008",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-009",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-010",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-011",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-012",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-013",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-014",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-015",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-016",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-017",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-018",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-019",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-020",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-021",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-022",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-023",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-024",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-025",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-026",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-027",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-028",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-029",
+    "kind": "Equation",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "EQ-FC005-S3-CURVATURE-RESIDUAL",
+    "kind": "Equation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-CURVATURE-CLOSURE"
+    ]
+  },
+  {
+    "id": "EQ-FC005-FISHER-PSD",
+    "kind": "Equation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FISHER-STATISTICAL-FAMILY"
+    ]
+  },
+  {
+    "id": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION",
+    "kind": "Equation",
+    "status": "FALSIFIED",
+    "dependencies": [
+      "FISHER-STATISTICAL-FAMILY"
     ]
   }
 ]

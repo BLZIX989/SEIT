@@ -1,0 +1,50 @@
+# FC-005 cosmology configuration.
+#
+# This is DESI's own official fiducial cosmology (used by the DESI
+# collaboration itself for redshift -> comoving-distance conversion and
+# the BAO template), NOT an independently chosen value -- spec section 12
+# of the FC-005 build command forbids silently using arbitrary
+# cosmological parameters. It is numerically equal to the Planck 2018
+# base-LambdaCDM cosmology.
+#
+# Source: "Optimal Reconstruction of Baryon Acoustic Oscillations for
+# DESI 2024" (arXiv:2404.03005), which states the DESI fiducial cosmology
+# as omega_cdm=0.1200, omega_b=0.02237, h=0.6736, N_ur=2.0328, one massive
+# neutrino with omega_nu=0.00064420 -- "matches the Planck 2018
+# base-LCDM parameters." Retrieved and recorded 2026-08-19.
+
+release: DR1
+provenance:
+  source: "arXiv:2404.03005 (DESI 2024 III / BAO reconstruction paper), DESI collaboration's own stated fiducial cosmology"
+  retrieved: "2026-08-19"
+  note: >
+    omega_cdm, omega_b, omega_nu below are physical densities (Omega_i * h^2)
+    as quoted in the source paper; H0, Omega_m, Omega_Lambda, Omega_k below
+    are derived from them (h = H0/100, Omega_m = (omega_cdm+omega_b+omega_nu)/h^2,
+    flat universe so Omega_Lambda = 1 - Omega_m, Omega_k = 0). No parameter
+    here was chosen independently of this source.
+
+parameters:
+  h: 0.6736
+  H0_km_s_Mpc: 67.36
+  omega_cdm: 0.1200
+  omega_b: 0.02237
+  omega_nu: 0.00064420
+  N_ur: 2.0328
+  Omega_m: 0.315192           # derived: (omega_cdm + omega_b + omega_nu) / h^2
+  Omega_Lambda: 0.684808      # derived: 1 - Omega_m (flat)
+  Omega_k: 0.0                # flat LambdaCDM, as used for the DESI BAO template
+  w0: -1.0                    # cosmological constant (not w0-waCDM) for this fiducial
+  wa: 0.0
+
+equation_of_state_assumption: "w(z) = -1 (cosmological constant), matching the DESI fiducial template"
+
+comoving_distance_formula: "chi(z) = c * integral_0^z dz' / H(z'), H(z') = H0 * sqrt(Omega_m*(1+z')^3 + Omega_k*(1+z')^2 + Omega_Lambda)"
+
+used_by:
+  - "compiler/backends/desi_graph.py::CosmologyModel"
+  - "compiler/backends/desi_fc005_pipeline.py"
+
+do_not:
+  - "Do not substitute a different cosmology without updating this file and re-recording provenance."
+  - "Do not silently mix this fiducial cosmology with kappa_cosmological values sourced under a different cosmology in the Gate 3 cross-check -- record the source cosmology of kappa_cosmological explicitly wherever it is supplied."

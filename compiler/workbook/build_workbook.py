@@ -99,15 +99,17 @@ def build_workbook(result: dict, out_path: Path) -> None:
               for t in registries.transformations.to_list() if t.get("proof")]
     _write_table(ws, proofs)
 
+    all_calculations = result.get("all_calculations", result["test_results"]["calculations"])
+
     ws = wb.create_sheet("CALCULATIONS")
     _write_table(ws, [
         {"id": c["id"], "kind": c["kind"], "inputs": c["inputs"], "status": c["status"]}
-        for c in result["test_results"]["calculations"]
+        for c in all_calculations
     ])
 
     ws = wb.create_sheet("VERIFICATION")
     verif_rows = []
-    for c in result["test_results"]["calculations"]:
+    for c in all_calculations:
         verif_rows.append({"calculation_id": c["id"], "verification": c["verification"], "status": c["status"]})
     _write_table(ws, verif_rows)
 
@@ -133,7 +135,11 @@ def build_workbook(result: dict, out_path: Path) -> None:
         {"note": "No physical predictions are registered in this build. The gauge, matter, "
                  "thermodynamic, and cosmological engines are gated behind this compiler's "
                  "own self-audit (spec section 41) and have not been activated. A fitted "
-                 "parameter is never registered here as a prediction (spec section 4)."}
+                 "parameter is never registered here as a prediction (spec section 4)."},
+        {"note": "FC-005: kappa_spectral (from real DESI data) is not computed -- no DESI "
+                 "catalogue is available (see FC005_S3_CONTROL sheet / DESI-CATALOGUE node). "
+                 "The S^3 control result is a regression test on a known analytic manifold, "
+                 "not a prediction."},
     ], headers=["note"])
 
     ws = wb.create_sheet("OPEN_PROBLEMS")
@@ -147,5 +153,20 @@ def build_workbook(result: dict, out_path: Path) -> None:
 
     ws = wb.create_sheet("STATUS_MATRIX")
     _write_table(ws, registries.status_matrix())
+
+    fc005 = result.get("fc005_results")
+    if fc005 is not None:
+        ws = wb.create_sheet("FC005_S3_CONTROL")
+        s3 = fc005["s3_report"]
+        _write_table(ws, [r.to_dict() for r in s3.fit_results])
+        ws.append([])
+        ws.append(["exact reference", "kappa=1, R=6, a0=2*pi^2, a1=2*pi^2, a2=pi^2"])
+        ws.append(["tolerance", s3.tolerance])
+        ws.append(["max_abs_e_kappa", s3.max_abs_e_kappa])
+        ws.append(["passed", s3.passed])
+
+        ws = wb.create_sheet("FC005_WORKBOOK_RECONCILIATION")
+        from compiler.historical.fc005_reconciliation import WORKBOOK_CHAIN
+        _write_table(ws, WORKBOOK_CHAIN)
 
     wb.save(out_path)
