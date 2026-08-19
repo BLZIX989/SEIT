@@ -1,0 +1,554 @@
+{
+  "graph_type": "MASTER_TOE_DEPENDENCY_GRAPH",
+  "generated_at": "2026-08-19T18:51:43Z",
+  "git_commit": "791d8b0e2d58784b26697c8571b9f4bf6d455e85",
+  "note": "Extends the existing, canonical DEPENDENCY_CLOSURE_AUDIT.csv graph (66 nodes, unmodified, all copied in verbatim below) with 12 new HISTORICAL/COMPARISON-role nodes assessed during the Master TOE Derivation Campaign's corpus-mining pass. Every historical node's role is 'comparison' -- none is wired as an upstream dependency of any canonical forward-chain node, per this project's standing target-independence discipline (compiler/historical/register.py).",
+  "nodes": [
+    {
+      "id": "FOUNDATION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "EMPTYSET",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "MATH-UNIVERSE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "PHYSICAL-CANDIDATE-SET",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "VACUUM",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DISTINCTION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "RELATION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "TRANSFORMATION-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "CONSTRAINT",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "PERSISTENCE-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "OPERATOR-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SPECTRUM-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "GEOMETRY-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "VARIATIONAL-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "QUANTUM-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "GAUGE-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "MATTER-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "THERMODYNAMICS-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "COSMOLOGY-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "OBSERVABLES-NODE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "GRAPH-G-SEED",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "OPERATOR-L",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SPECTRUM-L",
+      "kind": "Object",
+      "status": "VERIFIED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "HEAT-FLOW-R",
+      "kind": "Object",
+      "status": "VERIFIED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "KERNEL-PROJECTOR",
+      "kind": "Object",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DIFFUSION-DISTANCE",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "METRIC-CANDIDATE",
+      "kind": "Object",
+      "status": "CONDITIONAL",
+      "category": "conditional",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T2-HISTORICAL",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T2-REPRODUCTION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T2-FORWARD-DERIVATION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DTC-CIRCULARITY-OBSTRUCTION",
+      "kind": "Object",
+      "status": "CONDITIONAL",
+      "category": "conditional",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "FC005-WORKBOOK-RECONCILIATION",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "S3-MANIFOLD",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "S3-SPECTRUM",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "S3-HEAT-TRACE",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "S3-HEAT-COEFFICIENTS",
+      "kind": "Object",
+      "status": "VERIFIED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "S3-CURVATURE-CLOSURE",
+      "kind": "Object",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DESI-CATALOGUE",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "GRAPH-G-DESI",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "OPERATOR-L-DESI",
+      "kind": "Object",
+      "status": "CALCULATED",
+      "category": "closed_intermediate",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "CONTINUUM-LIMIT-L-DESI",
+      "kind": "Object",
+      "status": "FAIL",
+      "category": "failed_retriable",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DESI-SPECTRUM",
+      "kind": "Object",
+      "status": "FAIL",
+      "category": "failed_retriable",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DESI-HEAT-TRACE",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DESI-HEAT-COEFFICIENTS",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "KAPPA-DESI",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "E-KAPPA-DESI",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "MATHEMATICAL-CONVERGENCE-DESI",
+      "kind": "Object",
+      "status": "FAIL",
+      "category": "failed_retriable",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "CURVATURE-CLOSURE-DESI",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "PHYSICAL-VALIDATION-DESI",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SEMICLASSICAL-EINSTEIN-EQUATION",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SEMICLASSICAL-RESIDUAL-E-SC",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "FISHER-STATISTICAL-FAMILY",
+      "kind": "Object",
+      "status": "PROPOSED",
+      "category": "proposed",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SPEC-H-UNIQUENESS",
+      "kind": "Object",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "SELECTION-SIGMA",
+      "kind": "Transformation",
+      "status": "OPEN",
+      "category": "open",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-GRAPH-TO-OPERATOR",
+      "kind": "Transformation",
+      "status": "CALCULATED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-OPERATOR-TO-SPECTRUM",
+      "kind": "Transformation",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-SPECTRUM-TO-HEATFLOW",
+      "kind": "Transformation",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-HEATFLOW-TO-KERNEL",
+      "kind": "Transformation",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-SPECTRUM-TO-DIFFUSION",
+      "kind": "Transformation",
+      "status": "CALCULATED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-DIFFUSION-TO-METRIC",
+      "kind": "Transformation",
+      "status": "CONDITIONAL",
+      "category": "conditional",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "T-FC005-S3-CONTROL-CHAIN",
+      "kind": "Transformation",
+      "status": "VERIFIED",
+      "category": "closed_leaf",
+      "source": "canonical (object_registry.json / transformation_registry.json)"
+    },
+    {
+      "id": "MEC-SPECTRAL-CASCADE",
+      "kind": "HistoricalClaim",
+      "status": "PARTIALLY_MATCHED_BY_CANONICAL",
+      "category": "comparison",
+      "source": "Master Equation Codex.pdf sections 0-2, matched by GRAPH-G-SEED..SPECTRUM-L"
+    },
+    {
+      "id": "MEC-GEOMETRY-CLAIM",
+      "kind": "HistoricalClaim",
+      "status": "ILL_POSED",
+      "category": "comparison",
+      "source": "Master Equation Codex.pdf section 3 (undefined embedding in eq 3.2)"
+    },
+    {
+      "id": "MEC-GAUGE-CLAIM",
+      "kind": "HistoricalClaim",
+      "status": "UNSUBSTANTIATED",
+      "category": "comparison",
+      "source": "Master Equation Codex.pdf section 5.3 = T2-HISTORICAL"
+    },
+    {
+      "id": "DTC-FS-CONSTRAINT-THEOREM",
+      "kind": "HistoricalTheorem",
+      "status": "PROVED_EXTERNAL_MATH",
+      "category": "comparison",
+      "source": "DTC_Formal_Structure.docx section II"
+    },
+    {
+      "id": "DTC-FS-GNC",
+      "kind": "HistoricalConjecture",
+      "status": "OPEN_HONEST",
+      "category": "comparison",
+      "source": "DTC_Formal_Structure.docx section III"
+    },
+    {
+      "id": "DTC-RP4-FORCING-TEST",
+      "kind": "HistoricalFalsificationTest",
+      "status": "NEGATIVE_RESULT",
+      "category": "comparison",
+      "source": "DTC-RP-004_Forced_vs_Free.docx"
+    },
+    {
+      "id": "DTC-C-ALPHA-CLAIM",
+      "kind": "HistoricalClaim",
+      "status": "FALSIFIED_NONSEQUITUR",
+      "category": "comparison",
+      "source": "DTC COMPILER.docx section 5.1"
+    },
+    {
+      "id": "DTC-C-ELECTRON-MASS-CLAIM",
+      "kind": "HistoricalClaim",
+      "status": "FALSIFIED_REVERSE_FIT",
+      "category": "comparison",
+      "source": "DTC COMPILER.docx section 5.2"
+    },
+    {
+      "id": "SEIT-GAUGE-DERIVATION",
+      "kind": "HistoricalClaim",
+      "status": "INCOMPLETE_NOT_VERIFIED",
+      "category": "comparison",
+      "source": "SEIT v2.pdf section V"
+    },
+    {
+      "id": "SEIT-AXION-GW-SOLITON-PREDICTIONS",
+      "kind": "HistoricalPrediction",
+      "status": "UNTESTED_STRUCTURALLY_LEGITIMATE",
+      "category": "comparison",
+      "source": "SEIT v2.pdf section VI"
+    },
+    {
+      "id": "FGU-ISOMORPHISM-CLAIM",
+      "kind": "HistoricalClaim",
+      "status": "UNSUBSTANTIATED_UNFALSIFIABLE",
+      "category": "comparison",
+      "source": "Functorial Gauge Unification v1.docx"
+    },
+    {
+      "id": "NCG-EXTERNAL-SPECTRAL-ACTION",
+      "kind": "ExternalLiteratureReference",
+      "status": "PROPOSED",
+      "category": "comparison",
+      "source": "already registered as NCG-BRIDGE-EXTERNAL-REFERENCE in canonical registry"
+    }
+  ]
+}

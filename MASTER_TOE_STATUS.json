@@ -1,0 +1,28 @@
+{
+  "campaign": "MASTER TOE DERIVATION CAMPAIGN",
+  "generated_at": "2026-08-19T18:51:43Z",
+  "git_commit": "791d8b0e2d58784b26697c8571b9f4bf6d455e85",
+  "complete_toe_derived": false,
+  "strongest_surviving_result": "The graph-Laplacian spectral cascade (distinction graph -> Laplacian -> spectrum -> heat flow), already independently built and executed in this project's own Test1 pipeline prior to this campaign, is the only point of genuine contact between the ~30-document historical corpus and canonical, executable, verified physics. Beyond that point, no corpus document's claimed extension (geometry, gauge group, matter, gravity, quantum continuum limit, thermodynamics) survived independent verification this campaign.",
+  "genuine_positive_findings_this_campaign": [
+    "DTC_Formal_Structure.docx's Constraint Necessity Theorem: a real, checkable, narrow category-theory result (external mathematics, not new physics)",
+    "Ordinary Noether's theorem correctly and exactly recovered as a special case of the same document's category-theoretic reformulation (no distortion, no new content)",
+    "DTC-RP-004_Forced_vs_Free.docx's own honest, SymPy-verified negative self-falsification of its predecessor document's NCG-spectral-action correspondence",
+    "SEIT v2's axion-mass/GW-frequency/soliton-core-radius prediction triplet: the most structurally legitimate falsifiable claim found in the corpus (real formula form, arithmetic independently reconfirmed, not reverse-fit to an already-known answer) -- untested against current data this campaign"
+  ],
+  "falsified_or_rejected_claims_this_campaign": [
+    "DTC COMPILER.docx section 5.1: claimed exact geometric derivation of the fine-structure constant -- arithmetic non-sequitur, independently recomputed and rejected",
+    "DTC COMPILER.docx section 5.2: claimed first-principles electron-mass eigenvalue -- numerically consistent with reverse-computation from the known answer, no independent construction shown",
+    "Master Equation Codex section 3's metric-tensor construction -- mathematically ill-posed (undefined embedding coordinate)",
+    "Master Equation Codex section 6's claim that quantum mechanics is the continuum limit of the graph eigenproblem -- contradicted by this project's own FC-005 execution",
+    "Functorial Gauge Unification v1.docx's claim that string theory/LQG/AdS-CFT are isomorphic and 'the search for a TOE is complete' -- no isomorphism constructed anywhere in the document"
+  ],
+  "obstructions_confirmed_unresolved": [
+    "SELECTION-SIGMA: no non-arbitrary, non-circular derivation found anywhere in the corpus or by independent construction this campaign",
+    "The specific 'abelian bridge obstruction' / 'asymmetric-abelian obstruction' / 'non-Abelian commutant obstruction' artifacts referenced by prior project instructions remain absent from the entire repository -- independently reconfirmed by full-text grep this campaign across all ~30 corpus documents",
+    "Generalized Noether Conjecture (C -> R for systems without continuous symmetry/variational structure): explicitly open, honestly reported by the corpus's own author",
+    "SU(3)xSU(2)xU(1): preserved as established EXTERNAL physics per governing instruction; no document in this corpus or this project's own compiler derives it from first principles"
+  ],
+  "canonical_registries_modified": false,
+  "fc005_rerun": false
+}
