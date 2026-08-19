@@ -60,6 +60,10 @@ def build_sparse_kernel_graph(points: np.ndarray, epsilon: float, *,
     row, col, dist = row[keep], col[keep], dist[keep]
     w = np.exp(-(dist ** 2) / (2 * epsilon ** 2))
     if weights is not None:
+        # FITS columns (e.g. DESI's WEIGHT) commonly load as big-endian
+        # (">f8"); scipy.sparse rejects non-native byte order outright,
+        # so cast to native float64 explicitly.
+        weights = np.asarray(weights, dtype=np.float64)
         w = w * weights[row] * weights[col]
     n = len(points)
     W = coo_matrix((w, (row, col)), shape=(n, n)).tocsr()

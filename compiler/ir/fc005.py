@@ -16,6 +16,7 @@ documents.
 """
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import openpyxl
@@ -509,6 +510,39 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                              "failed_dependency": mc.failed_dependency},
             "status": Status.CALCULATED.value if mc.converged else Status.FAIL.value,
         })
+
+        # Follow-up sparse N-scaling investigation (separates finite-
+        # resolution failure from point-process failure for the same
+        # CONTINUUM-LIMIT-L-DESI failure -- see FC005_N_SCALING_REPORT.md
+        # and FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 16). Loaded
+        # from its pre-computed result file (a ~40-minute sparse-
+        # eigensolver sweep up to N=64000, not re-run on every compiler
+        # build) if present; absent gracefully otherwise. This node
+        # records that the INVESTIGATION was executed -- it never sets
+        # CONTINUUM-LIMIT-L-DESI's own status, which comes only from
+        # CALC-FC005-DESI-GATE1 above.
+        sparse_path = (Path(repo_root) / "data" / "desi" / "dr1" / "fc005" / "derived" /
+                       "sparse_n_scaling_full_results.json")
+        if sparse_path.exists():
+            sparse_raw = json.loads(sparse_path.read_text())
+            sparse_summary = {
+                name: {
+                    "converged": res["converged"], "relative_changes": res["relative_changes"],
+                    "N_values_completed": [r["N"] for r in res["per_N"] if r["status"] == "OK"],
+                }
+                for name, res in sparse_raw.items()
+            }
+            calculations.append({
+                "id": "CALC-FC005-DESI-SPARSE-N-SCALING",
+                "kind": "desi_sparse_n_scaling_point_process_separation",
+                "inputs": {"report": "FC005_N_SCALING_REPORT.md",
+                          "raw_data": str(sparse_path.relative_to(Path(repo_root)))},
+                "results": sparse_summary,
+                "verification": {"purpose": "separate finite-resolution failure from "
+                                            "point-process failure for CONTINUUM-LIMIT-L-DESI, "
+                                            "per FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 16"},
+                "status": Status.CALCULATED.value,
+            })
 
     return {
         "calculations": calculations,
