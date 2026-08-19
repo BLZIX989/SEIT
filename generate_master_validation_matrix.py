@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generates MASTER_PHYSICS_VALIDATION_MATRIX.csv and
+"""Generates MASTER_PHYSICS_CLOSURE_MATRIX.csv (Part XIV) and
 DEPENDENCY_CLOSURE_AUDIT.csv from the live, freshly-regenerated
 registries -- never hand-typed/asserted values. This is a VALIDATION
 campaign: every row reflects what is actually registered and executed
@@ -15,8 +15,10 @@ ROOT = Path(__file__).resolve().parent
 NR = "not reachable / not executed"
 NA = "n/a -- no executable backend registered"
 
-FIELDS = ["ID", "branch", "result", "equation", "variables", "dependencies",
-          "derivation_status", "symbolic_status", "numerical_status",
+# Part XIV's exact column set (renamed from the internal dict keys used below:
+# result->proposition, derivation_status->mathematical_status).
+FIELDS = ["ID", "branch", "proposition", "equation", "variables", "dependencies",
+          "mathematical_status", "symbolic_status", "numerical_status",
           "observational_status", "external_status", "adversarial_status",
           "provenance_status", "final_status", "failure_mode", "next_dependency"]
 
@@ -27,9 +29,9 @@ def load(name):
 
 ROWS = [
     dict(ID="VARIATIONAL-NODE", branch="1. Variational physics",
-         result="S[phi], delta S=0, Euler-Lagrange",
+         proposition="S[phi], delta S=0, Euler-Lagrange",
          equation="S[phi] = int L d^4x; delta S/delta phi = 0", variables="phi, S, L",
-         dependencies="SPECTRUM-NODE (itself OPEN)", derivation_status=NR, symbolic_status=NR,
+         dependencies="SPECTRUM-NODE (itself OPEN)", mathematical_status=NR, symbolic_status=NR,
          numerical_status=NR, observational_status=NR, external_status=NA,
          adversarial_status=NA, provenance_status="OPEN", final_status="OPEN",
          failure_mode="No action functional, stationary-action derivation, or Euler-Lagrange "
@@ -41,11 +43,11 @@ ROWS = [
          "out of scope for this validation campaign per its own boundary (no new backends)"),
 
     dict(ID="NOETHER-CONSERVATION", branch="2. Symmetry/conservation",
-         result="continuous symmetry -> Noether current -> conservation law",
+         proposition="continuous symmetry -> Noether current -> conservation law",
          equation="J^mu (Noether current); d_mu J^mu = 0",
          variables="phi, J^mu, symmetry generator",
          dependencies="VARIATIONAL-NODE (itself OPEN, unexecuted)",
-         derivation_status=NR, symbolic_status=NR, numerical_status=NR,
+         mathematical_status=NR, symbolic_status=NR, numerical_status=NR,
          observational_status=NR, external_status=NA, adversarial_status=NA,
          provenance_status="NOT REGISTERED", final_status="NOT REGISTERED",
          failure_mode="No IR node of any kind exists for Noether's theorem or a conservation "
@@ -54,10 +56,10 @@ ROWS = [
          next_dependency="would require branch 1 (variational) to exist first"),
 
     dict(ID="GEOMETRY-NODE", branch="3. GR / geometric branch",
-         result="g_munu -> nabla -> Riemann -> Ricci -> R -> Einstein tensor -> field equations",
+         proposition="g_munu -> nabla -> Riemann -> Ricci -> R -> Einstein tensor -> field equations",
          equation="G_munu + Lambda g_munu = (8 pi G/c^4) T_munu",
          variables="g_munu, R^rho_sigmamunu, R_munu, R, G_munu, T_munu",
-         dependencies="SPECTRUM-NODE (itself OPEN)", derivation_status=NR, symbolic_status=NR,
+         dependencies="SPECTRUM-NODE (itself OPEN)", mathematical_status=NR, symbolic_status=NR,
          numerical_status=NR, observational_status=NR, external_status=NA,
          adversarial_status=NA, provenance_status="OPEN", final_status="OPEN",
          failure_mode="No Riemann/Ricci/Einstein-tensor computation, no Bianchi-identity "
@@ -68,10 +70,10 @@ ROWS = [
          "(no new backends)"),
 
     dict(ID="SEMICLASSICAL-EINSTEIN-EQUATION", branch="4. Matter<->Geometry",
-         result="<T_munu> sources semiclassical G_munu (QFT-in-curved-spacetime coupling)",
+         proposition="<T_munu> sources semiclassical G_munu (QFT-in-curved-spacetime coupling)",
          equation="G_munu = (8 pi G/c^4) <T_munu>", variables="G_munu, <T_munu>",
          dependencies="GEOMETRY-NODE, QUANTUM-NODE (both OPEN)",
-         derivation_status="PROPOSED (bulk-imported prose)", symbolic_status=NR,
+         mathematical_status="PROPOSED (bulk-imported prose)", symbolic_status=NR,
          numerical_status=NR, observational_status=NR, external_status=NA,
          adversarial_status=NA, provenance_status="PROPOSED", final_status="PROPOSED",
          failure_mode="Registered at Status.PROPOSED -- a bulk-imported prose claim from a "
@@ -83,17 +85,17 @@ ROWS = [
          "campaign"),
 
     dict(ID="SEMICLASSICAL-RESIDUAL-E-SC", branch="4. Matter<->Geometry",
-         result="residual E_sc of the semiclassical closure test",
+         proposition="residual E_sc of the semiclassical closure test",
          equation="E_sc = |G_munu - (8piG/c^4)<T_munu>|", variables="E_sc",
          dependencies="SEMICLASSICAL-EINSTEIN-EQUATION (PROPOSED)",
-         derivation_status=NR, symbolic_status=NR, numerical_status=NR,
+         mathematical_status=NR, symbolic_status=NR, numerical_status=NR,
          observational_status=NR, external_status=NA, adversarial_status=NA,
          provenance_status="OPEN", final_status="OPEN",
          failure_mode="Downstream of a PROPOSED (unexecuted) node; never computed.",
          next_dependency="blocked on SEMICLASSICAL-EINSTEIN-EQUATION"),
 
     dict(ID="FISHER-STATISTICAL-FAMILY", branch="5. Statistical Recovery Core",
-         result="the full stated chain Omega,F -> mu -> P -> X -> E[X] -> Var(X) -> H(P) -> Z "
+         proposition="the full stated chain Omega,F -> mu -> P -> X -> E[X] -> Var(X) -> H(P) -> Z "
          "-> F -> P(x,t) -> L -> spectral decomposition -> relaxation timescale -> spectral "
          "gap -> mutual information -> KL divergence -> Fisher information -> Fisher-Rao metric",
          equation="many (Omega, F, mu, P, X, H(P), Z, L, I(theta), F_ij)",
@@ -101,7 +103,7 @@ ROWS = [
          "spectral decomposition, relaxation timescale, spectral gap, mutual information, KL "
          "divergence) are not individually registered as IR nodes anywhere in this compiler",
          dependencies="none individually registered",
-         derivation_status="PROPOSED (bulk-imported prose)", symbolic_status=NR,
+         mathematical_status="PROPOSED (bulk-imported prose)", symbolic_status=NR,
          numerical_status=NR, observational_status=NR, external_status=NA,
          adversarial_status=NA, provenance_status="PROPOSED", final_status="PROPOSED",
          failure_mode="Only the LAST TWO steps of this stated chain (Fisher information -> "
@@ -113,11 +115,11 @@ ROWS = [
          "out of scope (no new backends per this campaign's boundary)"),
 
     dict(ID="CALC-FC005-FISHER-PSD", branch="5. Statistical Recovery Core",
-         result="Fisher information metric F for a Gaussian family is positive semidefinite",
+         proposition="Fisher information metric F for a Gaussian family is positive semidefinite",
          equation="F_ij = E[(d/d theta_i log p)(d/d theta_j log p)]",
          variables="F (Fisher-Rao metric), theta=(mu,sigma)",
          dependencies="none (self-contained calculation)",
-         derivation_status="VERIFIED (symbolic F derived)", symbolic_status="VERIFIED",
+         mathematical_status="VERIFIED (symbolic F derived)", symbolic_status="VERIFIED",
          numerical_status="VERIFIED", observational_status=NR, external_status=NR,
          adversarial_status="VERIFIED (re-executed fresh this campaign)",
          provenance_status="VERIFIED", final_status="VERIFIED", failure_mode="none",
@@ -128,10 +130,10 @@ ROWS = [
 
     dict(ID="FALS-FC005-FISHER-LORENTZIAN",
          branch="5. Statistical Recovery Core / 13. Previously falsified",
-         result="Fisher-Rao metric F = physical Lorentzian spacetime metric g_munu",
+         proposition="Fisher-Rao metric F = physical Lorentzian spacetime metric g_munu",
          equation="F =?= g_munu (Lorentzian signature)", variables="F, g_munu",
          dependencies="CALC-FC005-FISHER-PSD",
-         derivation_status="VERIFIED (falsification protocol executed)",
+         mathematical_status="VERIFIED (falsification protocol executed)",
          symbolic_status="VERIFIED", numerical_status="VERIFIED", observational_status=NR,
          external_status=NR, adversarial_status="VERIFIED (re-audited this campaign)",
          provenance_status="VERIFIED", final_status="FALSIFIED",
@@ -144,10 +146,10 @@ ROWS = [
          "provenance, not to be revisited"),
 
     dict(ID="METRIC-CANDIDATE", branch="5. Statistical Recovery Core / 9. Spectral geometry",
-         result="diffusion-time-normalized nearest-neighbour distance as a metric candidate",
+         proposition="diffusion-time-normalized nearest-neighbour distance as a metric candidate",
          equation="d_t(x,y) from diffusion distance at fixed time t",
          variables="tau (diffusion-time multiplier), d_t",
-         dependencies="DIFFUSION-DISTANCE (CALCULATED)", derivation_status="CALCULATED",
+         dependencies="DIFFUSION-DISTANCE (CALCULATED)", mathematical_status="CALCULATED",
          symbolic_status="CALCULATED", numerical_status="CALCULATED", observational_status=NR,
          external_status=NR,
          adversarial_status="FALSIFIED for uniqueness (see FALS-METRIC-UNIQUENESS-* below)",
@@ -160,10 +162,10 @@ ROWS = [
          "none is derivable upstream in this build"),
 
     dict(ID="SPEC-H-UNIQUENESS", branch="6. Quantum Recovery Core",
-         result="H|n> = E_n|n>; does Spec(H) uniquely determine H (and hence the underlying "
+         proposition="H|n> = E_n|n>; does Spec(H) uniquely determine H (and hence the underlying "
          "geometry)?",
          equation="H|n> = E_n|n>", variables="H, E_n, |n>",
-         dependencies="OPERATOR-NODE (itself OPEN)", derivation_status=NR, symbolic_status=NR,
+         dependencies="OPERATOR-NODE (itself OPEN)", mathematical_status=NR, symbolic_status=NR,
          numerical_status=NR, observational_status=NR,
          external_status="REFUTED (see CALC-FC005-EIGEN-UNIQUENESS below)",
          adversarial_status=NA, provenance_status="OPEN", final_status="OPEN",
@@ -178,10 +180,10 @@ ROWS = [
 
     dict(ID="CALC-FC005-EIGEN-UNIQUENESS",
          branch="6. Quantum Recovery Core / 9. Spectral geometry",
-         result="explicit counterexample: two different 2x2 symmetric matrices with identical "
+         proposition="explicit counterexample: two different 2x2 symmetric matrices with identical "
          "spectra",
          equation="Spec(H_1) = Spec(H_2) but H_1 != H_2", variables="H_1, H_2, Spec",
-         dependencies="none (self-contained)", derivation_status="VERIFIED",
+         dependencies="none (self-contained)", mathematical_status="VERIFIED",
          symbolic_status="VERIFIED", numerical_status="VERIFIED", observational_status=NR,
          external_status=NR,
          adversarial_status="VERIFIED (re-executed fresh this campaign)",
@@ -192,10 +194,10 @@ ROWS = [
 
     dict(ID="FALS-FC005-EIGENVALUE-UNIQUENESS",
          branch="6. Quantum Recovery Core / 9. Spectral geometry / 13. Previously falsified",
-         result="the operator/geometry is uniquely determined by its spectrum alone",
+         proposition="the operator/geometry is uniquely determined by its spectrum alone",
          equation="H uniquely determined by Spec(H)?", variables="H, Spec(H)",
          dependencies="CALC-FC005-EIGEN-UNIQUENESS",
-         derivation_status="VERIFIED (falsification protocol executed)",
+         mathematical_status="VERIFIED (falsification protocol executed)",
          symbolic_status="VERIFIED", numerical_status="VERIFIED", observational_status=NR,
          external_status=NR, adversarial_status="VERIFIED (re-audited this campaign)",
          provenance_status="VERIFIED", final_status="FALSIFIED",
@@ -208,10 +210,10 @@ ROWS = [
          next_dependency="none -- permanently closed negative result, retained for provenance"),
 
     dict(ID="THERMODYNAMICS-NODE", branch="7. Thermodynamic Recovery Core",
-         result="e=E/rho-(1/2)u^alpha u_alpha; Clausius-Duhem; entropy current S^mu; "
+         proposition="e=E/rho-(1/2)u^alpha u_alpha; Clausius-Duhem; entropy current S^mu; "
          "q^mu=-kappa*grad^mu T, kappa>=0",
          equation="e, S^mu, q^mu, kappa, T", variables="e, E, rho, u^alpha, S^mu, q^mu, kappa, T",
-         dependencies="MATTER-NODE (itself OPEN)", derivation_status=NR, symbolic_status=NR,
+         dependencies="MATTER-NODE (itself OPEN)", mathematical_status=NR, symbolic_status=NR,
          numerical_status=NR, observational_status=NR, external_status=NA,
          adversarial_status=NA, provenance_status="OPEN", final_status="OPEN",
          failure_mode="No thermodynamic-recovery computation of any kind (internal energy "
@@ -222,11 +224,11 @@ ROWS = [
          "out of scope to build (no new backends)"),
 
     dict(ID="T1-GRAPH-HEATFLOW-PIPELINE", branch="8. Spectral / heat-kernel math",
-         result="L phi_n = lambda_n phi_n; heat trace K(t) = sum_n exp(-t lambda_n); heat-flow "
+         proposition="L phi_n = lambda_n phi_n; heat trace K(t) = sum_n exp(-t lambda_n); heat-flow "
          "R(t)",
          equation="L, lambda_n, phi_n, K(t), R(t)",
          variables="OPERATOR-L, SPECTRUM-L, HEAT-FLOW-R, KERNEL-PROJECTOR",
-         dependencies="none (self-contained pipeline)", derivation_status="VERIFIED",
+         dependencies="none (self-contained pipeline)", mathematical_status="VERIFIED",
          symbolic_status="VERIFIED", numerical_status="VERIFIED",
          observational_status="n/a (pure mathematics, not observational)", external_status="n/a",
          adversarial_status="FALS-SPECTRUM-RELABELING-INVARIANCE passed=True (representation "
@@ -237,12 +239,12 @@ ROWS = [
          "this campaign. This is real, substantively executed, correct mathematics."),
 
     dict(ID="S3-HEAT-KERNEL-CONTROL", branch="8. Spectral / heat-kernel math",
-         result="analytic S^3 heat-kernel coefficients (a0,a1,a2) recovered from a numerical "
+         proposition="analytic S^3 heat-kernel coefficients (a0,a1,a2) recovered from a numerical "
          "fit to K(t)",
          equation="K(t)=sum exp(-t lambda_n); a0,a1,a2 polynomial fit; "
          "E_kappa = |kappa(a1)-kappa(a2)|",
          variables="S3-SPECTRUM, S3-HEAT-TRACE, S3-HEAT-COEFFICIENTS, S3-CURVATURE-CLOSURE",
-         dependencies="none (self-contained control)", derivation_status="VERIFIED",
+         dependencies="none (self-contained control)", mathematical_status="VERIFIED",
          symbolic_status="VERIFIED",
          numerical_status="VERIFIED (analytic reference EXACT_A0/A1/A2 by construction)",
          observational_status="n/a (mathematical control, not an observational claim)",
@@ -256,11 +258,11 @@ ROWS = [
          "DESI branch (12) -- confirmed no dependency edge exists between them."),
 
     dict(ID="T2-DIFFUSION-METRIC-PIPELINE", branch="9. Spectral geometry",
-         result="Spec(L) -> diffusion distance -> candidate metric d_t(x,y); does this equal "
+         proposition="Spec(L) -> diffusion distance -> candidate metric d_t(x,y); does this equal "
          "g_munu?",
          equation="d_t(x,y), Spec(L)",
          variables="DIFFUSION-DISTANCE, METRIC-CANDIDATE, DTC-CIRCULARITY-OBSTRUCTION",
-         dependencies="T1-GRAPH-HEATFLOW-PIPELINE", derivation_status="CALCULATED / CONDITIONAL",
+         dependencies="T1-GRAPH-HEATFLOW-PIPELINE", mathematical_status="CALCULATED / CONDITIONAL",
          symbolic_status="CALCULATED", numerical_status="CALCULATED",
          observational_status="n/a", external_status="n/a",
          adversarial_status="FALS-METRIC-UNIQUENESS-{cycle,path,grid2d} all passed=False -- "
@@ -275,10 +277,10 @@ ROWS = [
          "by this pipeline's own results."),
 
     dict(ID="SPECTRUM-RELABELING-INVARIANCE", branch="9. Spectral geometry",
-         result="Spec(L) is invariant under vertex relabeling (representation-invariance "
+         proposition="Spec(L) is invariant under vertex relabeling (representation-invariance "
          "adversarial test)",
          equation="Spec(L) under permutation of vertex labels", variables="L, permutation sigma",
-         dependencies="SPECTRUM-L", derivation_status="VERIFIED", symbolic_status="VERIFIED",
+         dependencies="SPECTRUM-L", mathematical_status="VERIFIED", symbolic_status="VERIFIED",
          numerical_status="VERIFIED", observational_status="n/a", external_status="n/a",
          adversarial_status="PASSED (5 representations tested)", provenance_status="VERIFIED",
          final_status="VERIFIED", failure_mode="none",
@@ -287,10 +289,10 @@ ROWS = [
          "required for any spectral quantity to be physically meaningful."),
 
     dict(ID="GAUGE-MATTER-NODES", branch="10. Gauge/representation/matter",
-         result="G_SM = SU(3) x SU(2) x U(1); fermion representations, chirality, masses",
+         proposition="G_SM = SU(3) x SU(2) x U(1); fermion representations, chirality, masses",
          equation="A_mu, F_munu, gauge algebra, fermion fields",
          variables="GAUGE-NODE, MATTER-NODE", dependencies="T2-FORWARD-DERIVATION (OPEN)",
-         derivation_status=NR, symbolic_status=NR, numerical_status=NR, observational_status=NR,
+         mathematical_status=NR, symbolic_status=NR, numerical_status=NR, observational_status=NR,
          external_status=NA, adversarial_status=NA, provenance_status="OPEN",
          final_status="OPEN",
          failure_mode="No SU(3)xSU(2)xU(1) recovery, gauge-algebra derivation, or "
@@ -305,13 +307,13 @@ ROWS = [
 
     dict(ID="T2-NCG-BRIDGE",
          branch="10. Gauge/representation/matter / 14. Interface I (Quantum<->Gravity)",
-         result="T2 (historical spectral-triple/NCG result) reproduction and forward "
+         proposition="T2 (historical spectral-triple/NCG result) reproduction and forward "
          "derivation attempt",
          equation="n/a (historical bridge, not a physics equation)",
          variables="T2-HISTORICAL, T2-REPRODUCTION, T2-FORWARD-DERIVATION, "
          "3x NCG-*-OBSTRUCTION",
          dependencies="none (root of this sub-branch)",
-         derivation_status="PROPOSED (T2-HISTORICAL)", symbolic_status=NR, numerical_status=NR,
+         mathematical_status="PROPOSED (T2-HISTORICAL)", symbolic_status=NR, numerical_status=NR,
          observational_status="PROPOSED (NCG-BRIDGE-EXTERNAL-REFERENCE)", external_status=NA,
          adversarial_status=NA, provenance_status="OPEN", final_status="OPEN",
          failure_mode="compiler/historical/register.py explicitly marks T2-REPRODUCTION as "
@@ -322,11 +324,11 @@ ROWS = [
          "explicit stop-the-branch instruction -- retained honestly as OPEN"),
 
     dict(ID="COSMOLOGY-NODE", branch="11. Cosmological / early<->late",
-         result="vacuum energy, Lambda, H(t), a(t) evolution connecting early- and "
+         proposition="vacuum energy, Lambda, H(t), a(t) evolution connecting early- and "
          "late-universe physics",
          equation="H(t), a(t), Lambda, rho, p", variables="H(t), a(t), Lambda, rho, p",
          dependencies="COSMOLOGY-NODE",
-         derivation_status="OPEN (dependency template only)", symbolic_status=NR,
+         mathematical_status="OPEN (dependency template only)", symbolic_status=NR,
          numerical_status=NR, observational_status=NR,
          external_status="the ONLY cosmology-adjacent content in this build is "
          "FC005_cosmology.yaml -- DESI's own published fiducial parameters (H0, Om, OL, w0), "
@@ -354,13 +356,13 @@ def build_gate_rows(sm: dict):
         reached = node_id in ("CONTINUUM-LIMIT-L-DESI", "MATHEMATICAL-CONVERGENCE-DESI")
         ROWS.append(dict(
             ID=node_id, branch="12. DESI / discrete->continuum (FROZEN)",
-            result="graph-Laplacian continuum limit of the real DESI DR1 LRG SGC point "
+            proposition="graph-Laplacian continuum limit of the real DESI DR1 LRG SGC point "
                    "process",
             equation="L_tilde_(N,eps) -> Delta_h; K(t); a0,a1,a2; kappa_spectral vs "
                      "kappa_cosmological",
             variables="N, epsilon, L_N, L_tilde, lambda_n",
             dependencies="see FC005_CHECKPOINT.md dependency chain",
-            derivation_status="CALCULATED (graph) / FAIL (continuum limit)" if reached else
+            mathematical_status="CALCULATED (graph) / FAIL (continuum limit)" if reached else
                               "OPEN (never entered)",
             symbolic_status="n/a",
             numerical_status=("FAIL (sparse N-scaling: modes 1-4 converge, modes 5-15 do not "
@@ -378,10 +380,10 @@ def build_gate_rows(sm: dict):
 # ---- Branch 14: Four fundamental interfaces (cross-cutting summary) ----
 ROWS += [
     dict(ID="INTERFACE-I-QUANTUM-GRAVITY", branch="14. Interface I: Quantum<->Gravity",
-         result="no admissible bridge equation is registered", equation="n/a",
+         proposition="no admissible bridge equation is registered", equation="n/a",
          variables="n/a",
          dependencies="QUANTUM-NODE (OPEN), GEOMETRY-NODE (OPEN), T2-NCG-BRIDGE (OPEN)",
-         derivation_status="OPEN", symbolic_status=NR, numerical_status=NR,
+         mathematical_status="OPEN", symbolic_status=NR, numerical_status=NR,
          observational_status=NR, external_status=NA, adversarial_status=NA,
          provenance_status="OPEN", final_status="OPEN",
          failure_mode="Nothing established: no quantization-of-gravity computation, no NCG "
@@ -393,11 +395,11 @@ ROWS += [
          "first"),
 
     dict(ID="INTERFACE-II-MATTER-GEOMETRY", branch="14. Interface II: Matter<->Geometry",
-         result="<T_munu> sources G_munu, distinct from full quantum gravity",
+         proposition="<T_munu> sources G_munu, distinct from full quantum gravity",
          equation="G_munu = (8piG/c^4)<T_munu>",
          variables="G_munu, <T_munu>",
          dependencies="SEMICLASSICAL-EINSTEIN-EQUATION (PROPOSED)",
-         derivation_status="PROPOSED", symbolic_status=NR, numerical_status=NR,
+         mathematical_status="PROPOSED", symbolic_status=NR, numerical_status=NR,
          observational_status=NR, external_status=NA, adversarial_status=NA,
          provenance_status="PROPOSED", final_status="PROPOSED",
          failure_mode="Only a bulk-imported prose claim (branch 4), never independently "
@@ -407,10 +409,10 @@ ROWS += [
          next_dependency="requires branches 3 and 6's broader chain to exist first"),
 
     dict(ID="INTERFACE-III-DISCRETE-CONTINUUM", branch="14. Interface III: Discrete<->Continuum",
-         result="discrete DESI observations -> continuum spacetime operator",
+         proposition="discrete DESI observations -> continuum spacetime operator",
          equation="L_tilde_(N,eps) -> Delta_h", variables="N, epsilon, L_N, L_tilde, lambda_n",
          dependencies="all 4 DESI gate nodes (branch 12)",
-         derivation_status="CALCULATED (graph) / FAIL (continuum limit)", symbolic_status="n/a",
+         mathematical_status="CALCULATED (graph) / FAIL (continuum limit)", symbolic_status="n/a",
          numerical_status="FAIL (see branch 12 rows)",
          observational_status="real DESI DR1 data used throughout", external_status="n/a",
          adversarial_status="extensive: 2 full diagnostic investigations, 76+30-row failure "
@@ -424,10 +426,10 @@ ROWS += [
          "pursued further this campaign"),
 
     dict(ID="INTERFACE-IV-EARLY-LATE", branch="14. Interface IV: Early<->Late universe",
-         result="no admissible evolution equation connecting early- and late-universe physics "
+         proposition="no admissible evolution equation connecting early- and late-universe physics "
          "is registered",
          equation="n/a", variables="n/a", dependencies="COSMOLOGY-NODE (OPEN)",
-         derivation_status="OPEN", symbolic_status=NR, numerical_status=NR,
+         mathematical_status="OPEN", symbolic_status=NR, numerical_status=NR,
          observational_status=NR, external_status=NA, adversarial_status=NA,
          provenance_status="OPEN", final_status="OPEN",
          failure_mode="Nothing established beyond a DESI fiducial-cosmology parameter file "
@@ -440,14 +442,16 @@ def main():
     sm = {e["id"]: e["status"] for e in load("status_matrix.json")}
     build_gate_rows(sm)
 
-    csv_path = ROOT / "MASTER_PHYSICS_VALIDATION_MATRIX.csv"
+    csv_path = ROOT / "MASTER_PHYSICS_CLOSURE_MATRIX.csv"
     with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(ROWS)
     print(f"wrote {csv_path} ({len(ROWS)} rows)")
 
-    # ---- DEPENDENCY_CLOSURE_AUDIT.csv ----
+    # ---- BRANCH_FC005_DEPENDENCY_SUMMARY.csv (branch-level complement to the
+    # node-level DEPENDENCY_CLOSURE_AUDIT.csv produced by
+    # generate_dependency_closure_audit.py) ----
     fc005_downstream = {"DESI-SPECTRUM", "MATHEMATICAL-CONVERGENCE-DESI",
                          "CURVATURE-CLOSURE-DESI", "PHYSICAL-VALIDATION-DESI",
                          "DESI-HEAT-TRACE", "DESI-HEAT-COEFFICIENTS", "KAPPA-DESI",
@@ -485,13 +489,13 @@ def main():
             "blocking_reason": blocked_reason or
                                ("N/A -- independently reachable" if not depends_on_fc005 else ""),
         })
-    with open(ROOT / "DEPENDENCY_CLOSURE_AUDIT.csv", "w", newline="") as f:
+    with open(ROOT / "BRANCH_FC005_DEPENDENCY_SUMMARY.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["branch", "representative_node_ids",
                                           "depends_on_CONTINUUM_LIMIT_L_DESI",
                                           "blocked_by_FC005", "blocking_reason"])
         w.writeheader()
         w.writerows(closure_rows)
-    print(f"wrote {ROOT / 'DEPENDENCY_CLOSURE_AUDIT.csv'} ({len(closure_rows)} rows)")
+    print(f"wrote {ROOT / 'BRANCH_FC005_DEPENDENCY_SUMMARY.csv'} ({len(closure_rows)} rows)")
 
 
 if __name__ == "__main__":

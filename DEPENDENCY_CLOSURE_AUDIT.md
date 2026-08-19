@@ -1,56 +1,97 @@
-# Dependency Closure Audit
+# MDCL Dependency Closure Audit
 
-Determines, for each of the 14 canonical physics branches in scope for the Master Physics
-Validation Campaign, whether it is blocked by `CONTINUUM-LIMIT-L-DESI` (the FC-005 Gate 1
-node, frozen at `FAIL / RETRIABLE` per `FC005_CHECKPOINT.md`). Raw data:
-`DEPENDENCY_CLOSURE_AUDIT.csv`, derived by direct traversal of `object_registry.json` /
-`transformation_registry.json`'s `dependency_ids` fields — not asserted.
+Node-level audit (Part IX) of every Object and Transformation in the live registries.
+Raw data: `DEPENDENCY_CLOSURE_AUDIT.csv` (66 rows — one per registered node), produced by
+`generate_dependency_closure_audit.py` directly from `object_registry.json` /
+`transformation_registry.json`. A complementary branch-level summary (mapping FC-005's
+downstream chain specifically) is in `BRANCH_FC005_DEPENDENCY_SUMMARY.csv`.
 
-## Method
+## Method and a bug found and fixed during this audit
 
-A node depends on `CONTINUUM-LIMIT-L-DESI` if that ID appears anywhere in its own
-`dependency_ids` or in the `dependency_ids` of any of its ancestors. Direct traversal of the
-full registry finds exactly three nodes with `CONTINUUM-LIMIT-L-DESI` (or its own direct
-downstream `MATHEMATICAL-CONVERGENCE-DESI`) as an immediate dependency:
+A node "depends on" another via the `dependencies` field in the exported registry JSON.
+**An earlier draft of the audit script read a different, wrong key (`dependency_ids`, which
+only exists nested inside each node's `provenance` block and is unrelated) and silently
+produced an empty dependency graph** — 0 `closed_intermediate` nodes, 0 `blocked` nodes, every
+node misclassified as an independent leaf. This was caught by manually cross-checking a known
+case (`T-OPERATOR-TO-SPECTRUM` should depend on `OPERATOR-L`) against the raw JSON before
+trusting the audit's own output — exactly the discipline this campaign requires of every other
+result. Fixed by reading the correct `dependencies` field; the corrected audit is what follows.
 
-```
-DESI-SPECTRUM <- CONTINUUM-LIMIT-L-DESI
-MATHEMATICAL-CONVERGENCE-DESI <- GRAPH-G-DESI, OPERATOR-L-DESI, CONTINUUM-LIMIT-L-DESI, DESI-SPECTRUM
-CURVATURE-CLOSURE-DESI <- MATHEMATICAL-CONVERGENCE-DESI, DESI-HEAT-TRACE, DESI-HEAT-COEFFICIENTS, E-KAPPA-DESI
-```
+## Category counts (66 nodes total: Objects + Transformations combined)
 
-`PHYSICAL-VALIDATION-DESI` depends on `CURVATURE-CLOSURE-DESI`, extending the chain by one
-more hop. No other node in the entire registry — across the template chain, Test 1, Test 2,
-S^3 control, Fisher-Rao, eigen-uniqueness, or historical T2/NCG bridge — names any FC-005 node
-as a dependency.
+| Category | Count |
+|---|---|
+| `closed_leaf` (VERIFIED/DERIVED/CALCULATED, nothing depends on it) | 9 |
+| `closed_intermediate` (VERIFIED/DERIVED/CALCULATED, has dependents) | 10 |
+| `open` | 35 |
+| `conditional` | 3 |
+| `failed_retriable` (`FAIL`) | 3 |
+| `falsified` (node-level `Status.FALSIFIED`) | 0 |
+| `proposed` | 6 |
+| `superseded` | 0 |
+| **`blocked`** (closed-like status but an unresolved ancestor exists) | **15** |
 
-## Result
+## `falsified: 0` and `superseded: 0` — explained, not omitted
 
-**12 of 13 non-DESI branches are NOT blocked by FC-005.** Only branch 12 itself (the DESI
-branch) is blocked — trivially, since `CONTINUUM-LIMIT-L-DESI` is its own root failure.
+**No Object or Transformation in this compiler carries node-level `Status.FALSIFIED`.** The
+two correct, permanent falsifications this project has produced (Fisher-Rao≠Lorentzian,
+spectrum-does-not-determine-operator) are tracked in a **separate** registry —
+`falsification_registry.json` (`FalsificationRecord` entries, `passed: false`) — not as
+`Status.FALSIFIED` IR nodes. This is a real architectural fact, not a gap: falsification
+records and node statuses are two different tracking mechanisms in this compiler, and
+`leakage_control_audit`'s forbidden-ancestor set (`{FALSIFIED, FAIL}`) checks node status, so
+it structurally cannot see falsification-registry entries directly — it relies instead on
+those rejected propositions never having been given an active downstream node in the first
+place (confirmed true here: neither Fisher-Rao-as-Lorentzian nor the spectrum-determines-
+operator claim has any node that inherits from it).
 
-| Branch | Blocked by FC-005? | Why (or why not) |
+**`Status.SUPERSEDED` does not exist in `compiler/core/status.py`'s `Status` enum at all** —
+only `VERIFIED, DERIVED, CALCULATED, CONDITIONAL, PROPOSED, OPEN, FAIL, FALSIFIED`. No node can
+carry it by construction. This campaign's instruction anticipated a `SUPERSEDED` category;
+this compiler's schema does not implement one. Reported explicitly rather than silently
+dropped from the matrix.
+
+## `blocked: 15` — a real, important, non-alarming finding
+
+All 15 blocked nodes belong to exactly two pipelines, blocked by exactly two root nodes:
+
+| Root node | Status | Blocks |
 |---|---|---|
-| 1. Variational | No | Blocked instead by `SELECTION-SIGMA` (`OPEN`, unrelated to FC-005) and the fact that no executable backend exists at all |
-| 2. Noether/conservation | No | No node registered; not reachable from FC-005 or anything else |
-| 3. GR/geometric | No | Same as branch 1 — blocked by the unrelated open `SELECTION-SIGMA` template gate, not FC-005 |
-| 4. Matter<->Geometry | No | `SEMICLASSICAL-EINSTEIN-EQUATION` depends on `GEOMETRY-NODE`/`QUANTUM-NODE`, neither of which touches FC-005 |
-| 5. Statistical Recovery Core | No | Fisher-Rao branch is fully self-contained, no FC-005 dependency |
-| 6. Quantum Recovery Core | No | Eigen-uniqueness counterexample is fully self-contained |
-| 7. Thermodynamic Recovery Core | No | Depends on `MATTER-NODE`, unrelated to FC-005 |
-| 8. Spectral/heat-kernel math | No | Test 1 and the S^3 control are fully self-contained; confirmed zero dependency edge to any FC-005 node |
-| 9. Spectral geometry | No | Test 2 (diffusion-metric pipeline) and the eigenvalue-uniqueness counterexample are self-contained |
-| 10. Gauge/representation/matter | No | Blocked by the historical bridge's own explicit "not attempted" status, not FC-005 |
-| 11. Cosmological | No | `COSMOLOGY-NODE` is a bare template placeholder unrelated to FC-005; the DESI fiducial-cosmology *parameter file* is consumed by branch 12, not the reverse |
-| 12. DESI discrete<->continuum | **Yes (self)** | This is the branch itself |
-| 13. Previously falsified | No | Both falsification records are self-contained calculations |
+| `GRAPH-G-SEED` | `PROPOSED` | `OPERATOR-L`, `SPECTRUM-L`, `HEAT-FLOW-R`, `KERNEL-PROJECTOR`, `DIFFUSION-DISTANCE` (Objects) + `T-GRAPH-TO-OPERATOR`, `T-OPERATOR-TO-SPECTRUM`, `T-SPECTRUM-TO-HEATFLOW`, `T-HEATFLOW-TO-KERNEL`, `T-SPECTRUM-TO-DIFFUSION` (Transformations) — the entire Test 1 / Test 2 pipeline |
+| `S3-MANIFOLD` | `PROPOSED` | `S3-SPECTRUM`, `S3-HEAT-TRACE`, `S3-HEAT-COEFFICIENTS`, `S3-CURVATURE-CLOSURE` (Objects) + `T-FC005-S3-CONTROL-CHAIN` (Transformation) — the entire S³ control |
+
+This is not a defect. `compiler/ir/forward_chain.py`'s own module docstring explains it
+directly: the executable test branch *"starts from a directly postulated mathematical object
+('a graph G'), exactly as the spec's own initial-test instruction frames it, and is NOT
+claimed to descend from the (still-open) Selection/Vacuum chain."* `GRAPH-G-SEED` ("a graph
+G") and `S3-MANIFOLD` ("the S³ manifold") are honestly registered `PROPOSED` — asserted
+starting objects, not derived from anything — precisely so that everything downstream is never
+mistaken for having descended from a resolved first-principles selection. This satisfies this
+campaign's own governing rule (Part I.1): *"all required upstream dependencies CLOSED or
+independently justified as external inputs"* — the postulated starting object is exactly that
+kind of declared, non-hidden external input, not a concealed dependency.
+
+**Practical consequence**: no node in this compiler can be honestly described as *fully*
+closed in an unconditional, foundation-to-leaf sense — every closed-like result in branches 8
+and 9 is closed *conditional on accepting its directly postulated starting object*. This is the
+correct, honest state of the project, not a shortfall introduced by this audit.
+
+## The FC-005 chain, seen through this lens
+
+`CONTINUUM-LIMIT-L-DESI`, `DESI-SPECTRUM`, `MATHEMATICAL-CONVERGENCE-DESI` are the three
+`failed_retriable` nodes. `DESI-CATALOGUE`, `GRAPH-G-DESI`, `OPERATOR-L-DESI` are
+`closed_intermediate` (`CALCULATED`) and — unlike the Test 1/S3 pipelines — **not** blocked:
+`DESI-CATALOGUE` has no dependencies (it is itself a directly acquired, real-data root, not a
+postulated mathematical object), so the DESI graph-construction chain is closed on its own
+terms without an upstream `PROPOSED` gap. The break in the DESI chain is entirely at
+`CONTINUUM-LIMIT-L-DESI` itself (frozen `FAIL/RETRIABLE`, per `FC005_CHECKPOINT.md`), not at
+any hidden earlier dependency.
 
 ## Conclusion
 
-FC-005 remaining `FAIL / RETRIABLE` **does not block any of the other 12 branches** from being
-validated to whatever extent their own executable content supports. The branches that remain
-`OPEN`/`PROPOSED`/`NOT REGISTERED` in this campaign's validation matrix
-(`MASTER_PHYSICS_VALIDATION_MATRIX.csv`) are blocked by the *absence of an executable backend*
-in this compiler build — a separate, independent limitation from FC-005's numerical
-non-convergence, and out of scope to fix here (per the campaign's own boundary: no new
-backends).
+Zero nodes are falsely marked closed. `leakage_control_audit` (which checks the narrower,
+correct-for-its-purpose condition — no `FAIL`/`FALSIFIED` ancestor of an active node) continues
+to pass, and remains the authoritative build-blocking check; this broader audit is a
+supplementary transparency report, not a replacement. The 15 `blocked` nodes are all honestly
+and correctly disclosed as conditional on a directly postulated starting object, not a hidden
+gap.
