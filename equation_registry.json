@@ -1,0 +1,84 @@
+[
+  {
+    "id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+    "status": "DERIVED",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/ir/executable_tests.py:_prove_laplacian_row_sum_zero",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.887306+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "DERIVED",
+      "verification": {
+        "n_cases": 5,
+        "all_passed": true
+      }
+    },
+    "role": "upstream_construction",
+    "lhs": "L @ ones_vector",
+    "rhs": "0_vector",
+    "domain": "graph Laplacian operators",
+    "derivation": "D_ii := sum_j A_ij by definition, so (L@1)_i = D_ii - sum_j A_ij = 0 for every i; proved symbolically (sympy) for a generic 5x5 symmetric zero-diagonal adjacency matrix, not merely observed on one numeric example.",
+    "verification": {
+      "n_cases": 5,
+      "all_passed": true,
+      "precision": "exact"
+    }
+  },
+  {
+    "id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/heat_flow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T03:12:33.889666+00:00",
+      "git_commit": "ec03712b8a3c1e043c13b6f772caa4ff83af85ae",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "all_passed": true
+      }
+    },
+    "role": "upstream_construction",
+    "lhs": "R(t) phi_n",
+    "rhs": "exp(-t*lambda_n) * phi_n",
+    "domain": "heat semigroup",
+    "derivation": "follows from L phi_n = lambda_n phi_n and R(t) = e^{-tL} via the spectral theorem for symmetric operators; verified numerically (not re-derived symbolically) across every swept topology/size.",
+    "verification": {
+      "n_cases": 14,
+      "max_residual": 1.7106873223162943e-15,
+      "precision": "numeric"
+    }
+  }
+]

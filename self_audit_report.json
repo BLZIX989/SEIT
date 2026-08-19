@@ -1,0 +1,62 @@
+[
+  {
+    "name": "dependency_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_nodes": 44,
+      "topological_order_len": 44
+    }
+  },
+  {
+    "name": "circularity_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "note": "3-cycle X->Y->Z->X correctly rejected"
+    }
+  },
+  {
+    "name": "type_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_types": 15
+    }
+  },
+  {
+    "name": "provenance_audit",
+    "passed": true,
+    "issues": [],
+    "details": {}
+  },
+  {
+    "name": "target_independence_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_findings": 3,
+      "n_flagged": 0
+    }
+  },
+  {
+    "name": "status_audit",
+    "passed": true,
+    "issues": [],
+    "details": {}
+  },
+  {
+    "name": "numerical_reproducibility_audit",
+    "passed": true,
+    "issues": [],
+    "details": {}
+  },
+  {
+    "name": "artifact_completeness_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_required": 11
+    }
+  }
+]

@@ -1,0 +1,333 @@
+[
+  {
+    "id": "FOUNDATION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "EMPTYSET",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "FOUNDATION"
+    ]
+  },
+  {
+    "id": "MATH-UNIVERSE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "EMPTYSET"
+    ]
+  },
+  {
+    "id": "PHYSICAL-CANDIDATE-SET",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "MATH-UNIVERSE",
+      "SELECTION-SIGMA"
+    ]
+  },
+  {
+    "id": "VACUUM",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "PHYSICAL-CANDIDATE-SET"
+    ]
+  },
+  {
+    "id": "DISTINCTION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "VACUUM"
+    ]
+  },
+  {
+    "id": "RELATION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "DISTINCTION"
+    ]
+  },
+  {
+    "id": "TRANSFORMATION-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "RELATION"
+    ]
+  },
+  {
+    "id": "CONSTRAINT",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "TRANSFORMATION-NODE"
+    ]
+  },
+  {
+    "id": "PERSISTENCE-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "CONSTRAINT"
+    ]
+  },
+  {
+    "id": "OPERATOR-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "PERSISTENCE-NODE"
+    ]
+  },
+  {
+    "id": "SPECTRUM-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "OPERATOR-NODE"
+    ]
+  },
+  {
+    "id": "GEOMETRY-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SPECTRUM-NODE"
+    ]
+  },
+  {
+    "id": "VARIATIONAL-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SPECTRUM-NODE"
+    ]
+  },
+  {
+    "id": "QUANTUM-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "VARIATIONAL-NODE"
+    ]
+  },
+  {
+    "id": "GAUGE-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "QUANTUM-NODE"
+    ]
+  },
+  {
+    "id": "MATTER-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "GAUGE-NODE"
+    ]
+  },
+  {
+    "id": "THERMODYNAMICS-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "MATTER-NODE"
+    ]
+  },
+  {
+    "id": "COSMOLOGY-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "THERMODYNAMICS-NODE"
+    ]
+  },
+  {
+    "id": "OBSERVABLES-NODE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "COSMOLOGY-NODE"
+    ]
+  },
+  {
+    "id": "GRAPH-G-SEED",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "OPERATOR-L",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "GRAPH-G-SEED"
+    ]
+  },
+  {
+    "id": "SPECTRUM-L",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "OPERATOR-L"
+    ]
+  },
+  {
+    "id": "HEAT-FLOW-R",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ]
+  },
+  {
+    "id": "KERNEL-PROJECTOR",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ]
+  },
+  {
+    "id": "DIFFUSION-DISTANCE",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ]
+  },
+  {
+    "id": "METRIC-CANDIDATE",
+    "kind": "Object",
+    "status": "CONDITIONAL",
+    "dependencies": [
+      "DIFFUSION-DISTANCE"
+    ]
+  },
+  {
+    "id": "T2-HISTORICAL",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "T2-REPRODUCTION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "T2-FORWARD-DERIVATION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "DTC-CIRCULARITY-OBSTRUCTION",
+    "kind": "Object",
+    "status": "CONDITIONAL",
+    "dependencies": []
+  },
+  {
+    "id": "SELECTION-SIGMA",
+    "kind": "Transformation",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "T-GRAPH-TO-OPERATOR",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "GRAPH-G-SEED"
+    ]
+  },
+  {
+    "id": "T-OPERATOR-TO-SPECTRUM",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "OPERATOR-L"
+    ]
+  },
+  {
+    "id": "T-SPECTRUM-TO-HEATFLOW",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ]
+  },
+  {
+    "id": "T-HEATFLOW-TO-KERNEL",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ]
+  },
+  {
+    "id": "T-SPECTRUM-TO-DIFFUSION",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "SPECTRUM-L"
+    ]
+  },
+  {
+    "id": "T-DIFFUSION-TO-METRIC",
+    "kind": "Transformation",
+    "status": "CONDITIONAL",
+    "dependencies": [
+      "DIFFUSION-DISTANCE"
+    ]
+  },
+  {
+    "id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+    "kind": "Equation",
+    "status": "DERIVED",
+    "dependencies": [
+      "OPERATOR-L"
+    ]
+  },
+  {
+    "id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+    "kind": "Equation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ]
+  }
+]
