@@ -1,0 +1,22 @@
+{
+  "RECOVERY_ID": "RECOVERY-STR-002",
+  "TARGET_BRANCH": "Symmetry / Conservation",
+  "TARGET_NODE": "NOETHER-SYMMETRY (not registered); CONSERVATION-LAW (not registered)",
+  "SOURCE_ID": "LIT-KIRITSIS-SST",
+  "SOURCE_PAGE": "18-19",
+  "SOURCE_EQUATION": "(3.2.41)-(3.2.46)",
+  "REQUIRED_INPUTS": "A closed VARIATIONAL-NODE (see RECOVERY-STR-001) supplying a concrete Lagrangian and its symmetry group.",
+  "DERIVATION_STEPS": [
+    "1. Given a continuous symmetry delta(field) of the closed VARIATIONAL-NODE Lagrangian, form the canonical current J^alpha = (partial L/partial(partial_alpha field)) delta(field), following the source's explicit construction of P_mu^alpha and J_munu^alpha from the Poincare symmetry of the Polyakov action (Kiritsis eq. 3.2.43-3.2.44).",
+    "2. Integrate the current's timelike component over the spatial domain to obtain a conserved charge Q_f = integral f(xi) T_{++}(xi) d(sigma), following (3.2.41).",
+    "3. Prove d_alpha J^alpha = 0 directly from the field equations of the closed VARIATIONAL-NODE (mirroring the explicit boundary-term argument in 3.2.45-3.2.46, which shows the boundary term vanishes automatically for a periodic/closed domain and requires Neumann-type conditions otherwise)."
+  ],
+  "EXPECTED_OUTPUT": "A closed NOETHER-SYMMETRY node (the current-construction procedure) and a closed CONSERVATION-LAW node (the direct corollary conservation proof).",
+  "DEPENDENCIES": "RECOVERY-STR-001 (VARIATIONAL-NODE) -- unresolved",
+  "ASSUMPTIONS": "That the symmetry group identified in RECOVERY-STR-001 step 4 is a genuine continuous symmetry of the UOC Lagrangian (not assumed here, must be independently verified for whatever field content is eventually chosen).",
+  "IMPLEMENTATION_PLAN": "Symbolic Noether-current construction as a direct code adaptation of the demonstrated pattern, parametrized by the (not-yet-chosen) UOC Lagrangian and symmetry generator.",
+  "UNIT_TEST_PLAN": "Reproduce the source's own worked example first (Poincare invariance of the Polyakov action) as a correctness check on the implementation before applying it to any UOC-specific symmetry.",
+  "NUMERICAL_TEST_PLAN": "Not applicable until RECOVERY-STR-001 resolves.",
+  "FALSIFICATION_TEST": "If the divergence of the constructed current is shown to be nonzero off a measure-zero set using the actual field equations, the claimed symmetry is not genuine and this recovery fails for that symmetry.",
+  "STATUS": "PROPOSED"
+}

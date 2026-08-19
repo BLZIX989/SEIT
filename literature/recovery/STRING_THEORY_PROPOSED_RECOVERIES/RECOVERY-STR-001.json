@@ -1,0 +1,25 @@
+{
+  "RECOVERY_ID": "RECOVERY-STR-001",
+  "TARGET_BRANCH": "Variational",
+  "TARGET_NODE": "VARIATIONAL-NODE",
+  "SOURCE_ID": "LIT-TONG-ST; LIT-KIRITSIS-SST (independently cross-confirmed)",
+  "SOURCE_PAGE": "Tong pp.9-27; Kiritsis pp.10-22",
+  "SOURCE_EQUATION": "Tong (1.1)-(1.29); Kiritsis (3.1.1)-(3.3.27) -- see PROPOSED_STRING_VARIATIONAL_RECOVERY.md for the itemized action/fields/variation/EOM/constraints/symmetries/conserved-quantities breakdown",
+  "REQUIRED_INPUTS": "A UOC-specific field content and Lagrangian density attached to SPECTRUM-NODE. NEITHER SOURCE SUPPLIES THIS -- both sources use string-specific fields (embedding coordinates X^mu, worldsheet metric g_ab) which are external, not UOC objects.",
+  "DERIVATION_STEPS": [
+    "1. Choose (independently, not from this corpus) a UOC field content and postulated Lagrangian density attached to SPECTRUM-NODE.",
+    "2. Following the demonstrated pattern (Tong 1.13/1.22, Kiritsis 3.2.1/3.2.12): write the action as an integral of the Lagrangian density over the relevant domain.",
+    "3. Vary the action w.r.t. the field content to obtain Euler-Lagrange equations, following the demonstrated pattern (Tong 1.21/1.23, Kiritsis 3.2.15).",
+    "4. Identify the symmetry group acting on the chosen fields (this is a NEW derivation for UOC fields -- Poincare invariance is specific to the string's embedding in Minkowski space and cannot be assumed for an arbitrary UOC field content).",
+    "5. Construct the Noether current and conserved charge for each identified symmetry, following the explicit worked template (Kiritsis 3.2.41-3.2.46).",
+    "6. Verify current conservation directly from the field equations (as demonstrated in source, not merely asserted)."
+  ],
+  "EXPECTED_OUTPUT": "A closed VARIATIONAL-NODE with an explicit action, EL equations, and (if step 4 succeeds) a path toward closing NOETHER-SYMMETRY and CONSERVATION-LAW as direct corollaries.",
+  "DEPENDENCIES": "SPECTRUM-NODE (OPEN) -- unresolved; this recovery record does not resolve it and cannot proceed until it does",
+  "ASSUMPTIONS": "That step 1 (choosing a UOC field content and Lagrangian) can be done without inventing new, unsupported physics -- NOT established by this corpus and NOT established by this recovery record. This is the single largest open assumption in this entire proposal.",
+  "IMPLEMENTATION_PLAN": "Symbolic (sympy) construction mirroring compiler/verification/fisher_information.py's existing style: define the candidate Lagrangian symbolically, compute the Euler-Lagrange equations via symbolic functional differentiation, verify against at least one known limiting case.",
+  "UNIT_TEST_PLAN": "Reproduce the string-theory template's own internal consistency checks as a sanity check on the implementation code BEFORE applying it to any UOC-specific Lagrangian: (a) verify the Nambu-Goto and Polyakov EOM coincide after eliminating g_ab via its own equation of motion (Tong 1.24-1.25); (b) verify the stress tensor is traceless under conformal invariance (Kiritsis 3.2.21-3.2.23).",
+  "NUMERICAL_TEST_PLAN": "Not applicable until step 1 (UOC field content) is resolved -- no numerical target exists without a concrete field content to evaluate.",
+  "FALSIFICATION_TEST": "If no UOC-specific field content and Lagrangian can be constructed without inventing new, unsupported physics (i.e. if step 1 is genuinely impossible under this project's existing constraints), this recovery record cannot proceed and VARIATIONAL-NODE remains OPEN indefinitely on this path.",
+  "STATUS": "PROPOSED"
+}

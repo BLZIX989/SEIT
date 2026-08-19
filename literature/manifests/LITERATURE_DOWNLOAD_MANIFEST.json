@@ -1,0 +1,73 @@
+{
+  "manifest_type": "LITERATURE_DOWNLOAD_MANIFEST",
+  "phase": "L0-A -- External Physics Literature Acquisition",
+  "generated_at": "2026-08-19T17:26:41Z",
+  "network_notes": "All downloads went through this session's mandatory HTTPS_PROXY (127.0.0.1:45455) with --cacert /root/.ccr/ca-bundle.crt, per this environment's egress policy. HTTPS_PROXY was never unset; TLS verification was never disabled.",
+  "acquired": [
+    {
+      "SOURCE_ID": "LIT-TONG-ST",
+      "TITLE": "String Theory (University of Cambridge Part III Mathematical Tripos)",
+      "AUTHOR": "David Tong",
+      "SOURCE_URL": "https://www.damtp.cam.ac.uk/user/tong/string/string.pdf",
+      "DOWNLOAD_URL": "https://arxiv.org/pdf/0908.0333",
+      "DOWNLOAD_TIMESTAMP": "2026-08-19T17:22:00Z",
+      "FILE_NAME": "tong_string_theory_arxiv.pdf",
+      "FILE_PATH": "literature/string_theory/tong_string_theory_arxiv.pdf",
+      "FILE_SIZE_BYTES": 1442465,
+      "SHA256": "b267b9d7bb717e8e7765b202910cd464e86de290489b5a70dc27d25e07fc848c",
+      "CONTENT_TYPE": "application/pdf",
+      "PAGE_COUNT": 218,
+      "VERSION_IF_IDENTIFIABLE": "arXiv:0908.0333v3 [hep-th], revised 23 Feb 2012 (original submission Jan 2009)",
+      "PRIMARY_OR_MIRROR": "MIRROR (archival) -- the Cambridge PRIMARY URL failed, see acquisition_failures below; this arXiv copy was explicitly pre-authorized as the fallback and is confirmed genuine (title page reads 'String Theory / University of Cambridge Part III Mathematical Tripos / David Tong')",
+      "LICENSE_OR_USAGE_NOTE": "arXiv preprint, author-submitted; no explicit machine-readable license field found on inspection of the first page"
+    },
+    {
+      "SOURCE_ID": "LIT-KIRITSIS-SST",
+      "TITLE": "Introduction to Superstring Theory",
+      "AUTHOR": "Elias Kiritsis",
+      "SOURCE_URL": "https://arxiv.org/pdf/hep-th/9709062",
+      "DOWNLOAD_URL": "https://arxiv.org/pdf/hep-th/9709062",
+      "DOWNLOAD_TIMESTAMP": "2026-08-19T17:23:00Z",
+      "FILE_NAME": "kiritsis_intro_superstring_arxiv.pdf",
+      "FILE_PATH": "literature/superstring_theory/kiritsis_intro_superstring_arxiv.pdf",
+      "FILE_SIZE_BYTES": 1798642,
+      "SHA256": "7f7c2e4665c5b6148b5d3718e843aefddcbf219ce33ebba1db0264fe5dd9f4ea",
+      "CONTENT_TYPE": "application/pdf",
+      "PAGE_COUNT": 249,
+      "VERSION_IF_IDENTIFIABLE": "arXiv:hep-th/9709062v2, 30 Mar 1998; CERN-TH/97-218, March 1997",
+      "PRIMARY_OR_MIRROR": "PRIMARY -- this was the only URL supplied for this source and it succeeded directly",
+      "LICENSE_OR_USAGE_NOTE": "arXiv preprint; lecture notes to be published by Leuven University Press per the cover page; no explicit machine-readable open license field found on inspection"
+    }
+  ],
+  "acquisition_failures": [
+    {
+      "SOURCE_ID": "LIT-TONG-ST-CAMBRIDGE",
+      "TITLE": "String Theory (Cambridge primary hosting)",
+      "ATTEMPTED_URL": "https://www.damtp.cam.ac.uk/user/tong/string/string.pdf",
+      "FAILURE_MODE": "TLS handshake failure through the session's HTTPS_PROXY CONNECT tunnel: 'SSL certificate problem: unable to get local issuer certificate'. Diagnosed with openssl s_client -proxy: the real origin certificate chain (issuer 'C=US, O=Let's Encrypt, CN=YR1', subject 'CN=www.damtp.cam.ac.uk') is missing its intermediate certificate as served by damtp.cam.ac.uk -- a genuine server-side chain-completeness issue, not a proxy/policy block (confirmed distinct from a 403/407 policy denial; recentRelayFailures on the proxy status endpoint was empty).",
+      "RETRY_COUNT": 3,
+      "RESOLUTION": "Recorded as failed per instruction; fell back to the explicitly pre-authorized arXiv archival mirror (see LIT-TONG-ST above), which succeeded."
+    },
+    {
+      "SOURCE_ID": "LIT-TONG-SM-CAMBRIDGE",
+      "TITLE": "The Standard Model (Cambridge)",
+      "ATTEMPTED_URL": "https://www.damtp.cam.ac.uk/user/tong/sm/standardmodel.pdf",
+      "FAILURE_MODE": "Same class of failure as LIT-TONG-ST-CAMBRIDGE (TLS chain incompleteness on damtp.cam.ac.uk), confirmed independently via WebFetch (HTTP 503 from an entirely separate network path).",
+      "RETRY_COUNT": 3,
+      "RESOLUTION": "UNRESOLVED. No archival/mirror URL for this specific document was supplied by the instructing message. Fabricating a substitute URL is prohibited. This repository already holds a PARTIAL extraction of this same work (Chapter 1 only) acquired via a different provenance channel (user chat upload) in a prior L0 phase, recorded as LIT-TONG-SM in the root-level LITERATURE_EXTRACTION_REGISTRY.json -- that prior extraction is NOT re-used or merged into this phase's string-theory-specific deliverables; it is only cross-referenced here for transparency."
+    },
+    {
+      "SOURCE_ID": "LIT-TONG-GAUGE-CAMBRIDGE",
+      "TITLE": "Lectures on Gauge Theory (Cambridge course page and its linked PDFs: Yang-Mills Theory, Anomalies, Lattice Gauge Theory, Chiral Symmetry Breaking, Large N)",
+      "ATTEMPTED_URL": "https://www.damtp.cam.ac.uk/user/tong/gaugetheory.html",
+      "FAILURE_MODE": "Same class of failure as above; the index page itself could not be fetched (confirmed via curl through the proxy and independently via WebFetch, both against damtp.cam.ac.uk), so the individual sub-PDF links could not even be enumerated.",
+      "RETRY_COUNT": 3,
+      "RESOLUTION": "UNRESOLVED. No archival/mirror URL was supplied for this course page or any of its five named sub-topics. Not acquired this phase."
+    }
+  ],
+  "summary": {
+    "acquired_count": 2,
+    "failed_count": 3,
+    "total_pages_acquired": 467
+  }
+}

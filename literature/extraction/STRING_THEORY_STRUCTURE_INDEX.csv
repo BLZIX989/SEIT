@@ -1,0 +1,53 @@
+ITEM_NUMBER,TOPIC,PRESENT,SOURCE_IDS,PAGE_RANGE,SECTION_RANGE,EQUATION_REFERENCES
+1,Special relativity,PRESENT,"ST-001,ST-002,ST-014",Tong p.9-10; Kiritsis p.10,1.1; 3.1,"(1.1),(1.2);(3.1.1)"
+2,Relativistic particles,PRESENT,"ST-001,ST-002,ST-003,ST-004,ST-014,ST-015",Tong p.9-13; Kiritsis p.10-11,1.1; 3.1,(1.1)-(1.10);(3.1.1)-(3.1.13)
+3,Classical strings,PRESENT,"ST-005,ST-016",Tong p.14; Kiritsis p.13-14,1.2; 3.2,(1.11)-(1.14);(3.2.1)-(3.2.4)
+4,Nambu-Goto action,PRESENT,"ST-005,ST-006,ST-016",Tong p.14-17; Kiritsis p.13-14,1.2; 3.2,"(1.13),(1.14);(3.2.1),(3.2.4)"
+5,Polyakov action,PRESENT,"ST-008,ST-018",Tong p.18; Kiritsis p.15,1.3; 3.2,(1.22);(3.2.12)
+6,Worldsheet geometry,PRESENT,"ST-005,ST-009,ST-016","Tong p.14,19; Kiritsis p.13","1.2,1.3; 3.2","(1.12),(1.25);(3.2.2),(3.2.3)"
+7,Reparametrization invariance,PRESENT,"ST-002,ST-004,ST-010,ST-020","Tong p.10,13,20; Kiritsis p.16-17","1.1,1.3.1; 3.2","(1.10),(1.26);(3.2.19),(3.2.24)"
+8,Worldsheet conformal invariance,PRESENT,"ST-010,ST-011,ST-020",Tong p.20-22; Kiritsis p.16-17,"1.3.1,1.3.2; 3.2",(1.26)-(1.29);(3.2.20)-(3.2.23)
+9,Classical equations of motion,PRESENT,"ST-007,ST-009,ST-012,ST-021","Tong p.17-18,23-25; Kiritsis p.15,18","1.2.2,1.4; 3.2","(1.21),(1.23);(3.2.15),(3.2.34)"
+10,Constraints,PRESENT,"ST-012,ST-021",Tong p.23-25; Kiritsis p.18,1.4; 3.2,T_ab=0 both sources
+11,Gauge fixing,PRESENT,"ST-011,ST-020",Tong p.22; Kiritsis p.17,1.3.2; 3.2,"(1.27),(1.28);(3.2.24)"
+12,Quantization,"TOC-ONLY, not extracted",none (Ch.2/Ch.4 not read),Tong p.28+; Kiritsis p.23+,2; 4,none
+13,Canonical quantization,"TOC-ONLY, not extracted",none,Tong p.28+; Kiritsis p.23+,2.1; 4.1,none
+14,Path-integral quantization,"TOC-ONLY, not extracted",none,Tong p.108+ (Ch.5); Kiritsis p.28+,5; 4.4,none
+15,Oscillator modes,PRESENT (classical only),"ST-013,ST-023,ST-024",Tong p.25-27; Kiritsis p.19-21,1.4; 3.3,unnumbered (Tong); (3.3.2)-(3.3.17)
+16,String spectrum,"TOC-ONLY, not extracted",none (Ch.2.3 / Kiritsis 4.3 not read),Tong p.40+; Kiritsis p.26+,2.3; 4.3,none
+17,Virasoro generators,PRESENT (classical only),ST-025,Kiritsis p.22,3.3,(3.3.21)-(3.3.26)
+18,Virasoro algebra,PRESENT (classical only),ST-025,Kiritsis p.22,3.3,(3.3.27)
+19,Critical dimension,"TOC-ONLY, not extracted",none (Tong 5.3 not read),Tong p.117+,5.3,none
+20,Ghost structure,"TOC-ONLY, not extracted","none (Tong 2.1.1, 5.1.3 not read)","Tong p.30,113+",2.1.1; 5.1.3,none
+21,Bosonic string,PRESENT,ST-005 through ST-025 (all items this phase concern the bosonic string),Tong p.9-27; Kiritsis p.10-22,1; 3,many
+22,Superstrings,"TOC-ONLY, not extracted","none (Tong 2.5, Ch.3-superstring nod; Kiritsis Ch.10 not read)","Tong p.48,56; Kiritsis p.104+",2.5; 10,none
+23,Supersymmetry,"TOC-ONLY, not extracted",none,Kiritsis p.104+,10,none
+24,Ramond/Neveu-Schwarz sectors,"TOC-ONLY, not extracted",none,"Kiritsis p.104+ (implied by Ch.10 title, not seen directly in TOC line items read)",10,none
+25,GSO projection,"TOC-ONLY, not extracted",none,"not located in either TOC's visible section titles; likely within Ch.10 (Kiritsis) or Tong Ch.2.5/superstring chapters, not confirmed since unread",unknown,none
+26,D-branes,"PRESENT (TOC + boundary-condition mention only, not deeply extracted)",ST-017 (Dirichlet boundary condition explicitly flagged as D-brane-relevant),Tong TOC Ch.3 p.50-59; Kiritsis p.14,3 (Tong); 3.2 (Kiritsis),(3.2.8) Dirichlet condition
+27,Open strings,PRESENT,"ST-017,ST-023","Tong TOC Ch.3; Kiritsis p.14,19-20","3 (Tong, TOC only); 3.2,3.3 (Kiritsis, read)","(3.2.7),(3.2.8);(3.3.8),(3.3.9)"
+28,Closed strings,PRESENT,"ST-005,ST-013,ST-023","Tong p.14,25-27; Kiritsis p.19-20","1.2,1.4; 3.3",(1.11);(3.3.2)-(3.3.6)
+29,String interactions,"TOC-ONLY, not extracted","none (Tong Ch.6, Kiritsis Ch.5 not read)",Tong p.125+; Kiritsis p.36+,6; 5,none
+30,Scattering amplitudes,"TOC-ONLY, not extracted",none,Tong p.125+; Kiritsis p.98+,6; 8,none
+31,Conformal field theory,"TOC-ONLY, not extracted","none (Tong Ch.4, Kiritsis Ch.6 not read; only the conformal-INVARIANCE property of the Polyakov action itself was read, item 8 above, which is distinct from full CFT machinery)",Tong p.61+; Kiritsis p.38+,4; 6,none
+32,Anomalies,"TOC-ONLY, not extracted",none (Kiritsis Ch.11 not read),Kiritsis p.122+,11,none
+33,Modular invariance,"TOC-ONLY, not extracted",none (Tong 6.4.1 not read),Tong p.143+,6.4.1,none
+34,Compactification,"TOC-ONLY, not extracted","none (Tong Ch.8, Kiritsis Ch.12 not read)",Tong p.197+; Kiritsis p.130+,8; 12,none
+35,Kaluza-Klein reduction,"TOC-ONLY, not extracted",none (Kiritsis Appendix C not read),Kiritsis p.219+,App. C,none
+36,Calabi-Yau compactification,"PRESENT (single passing mention only, not a derivation)",none,"Tong p.4 (Introduction, 'mirror symmetry ... topologically different Calabi-Yau manifolds')",Introduction,none (prose mention only)
+37,Gauge symmetry emergence,PRESENT (single passing mention only),none,"Tong p.1 ('General relativity, electromagnetism and Yang-Mills gauge theories all appear in a surprising fashion')",0. Introduction,none (prose mention only)
+38,Supersymmetry breaking,"TOC-ONLY, not extracted",none,"Kiritsis p.130,153+",12.5,none
+39,Effective field theory,PRESENT (single passing mention + TOC),none,Tong p.5-6 (non-renormalizability discussion); TOC Ch.7,0.1; 7,none (Ch.7 itself not read)
+40,Low-energy limits,"TOC-ONLY, not extracted","none (Tong Ch.7, Kiritsis Ch.9 not read)",Tong p.157+; Kiritsis p.102+,7; 9,none
+41,General relativity limit,"PRESENT (introduction discussion only, not string-derived)",none,"Tong p.3-8 (Einstein-Hilbert action, non-renormalizability discussion -- background material, NOT derived from string theory in the pages read)",0.1,"S_EH=(1/16 pi G_N) int d^4x sqrt(-g) R (stated, not derived from strings)"
+42,Supergravity,"TOC-ONLY, not extracted",none (Kiritsis Appendix D not read),Kiritsis p.221+,App. D,none
+43,Dualities,"TOC-ONLY, not extracted","none (Tong Ch.8.3-8.4, Kiritsis Ch.14 not read)",Tong p.204+; Kiritsis p.179+,8.3-8.4; 14,none
+44,T-duality,"TOC-ONLY, not extracted","none (Tong Ch.8, Kiritsis 7.3 not read)",Tong p.197+; Kiritsis p.85+,8; 7.3,none
+45,S-duality,"TOC-ONLY, not extracted",none (Kiritsis 14.6 not read),Kiritsis p.196+,14.6,none
+46,U-duality,NONE FOUND,n/a,not located in either TOC's visible section titles,n/a,none
+47,Nonperturbative structure,"TOC-ONLY, not extracted",none (Kiritsis Ch.14 not read),Kiritsis p.179+,14,none
+48,Black holes,PRESENT (single passing mention only),none,"Tong p.1,6-7 (information paradox, entropy of black holes mentioned in Introduction)",0. Introduction,"none (prose mention only, not derived)"
+49,String thermodynamics,NONE FOUND,n/a,not located in the pages read (would likely be in unread chapters),n/a,none
+50,Cosmological applications,PRESENT (single passing mention only),none,"Tong p.7 (cosmological constant discussion, 'explained away as an environmental quantity as in string theory')",0.1,none (prose mention only)
+51,Quantum gravity implications,PRESENT,"none (extensive prose discussion, not equation-level)",Tong p.1-8 (full section 0.1 'Quantum Gravity'),0.1,"(S_EH),(various perturbative-expansion schematics)"
+52,Unresolved problems,PRESENT,none (prose),"Tong p.1-8 (singularities, non-renormalizability, unknown unknowns, cosmological constant); Kiritsis p.9 (UV-divergence of quantum gravity, non-renormalizability of Einstein gravity + matter)",0.1; 2,(2.7) Kiritsis two-graviton UV divergence estimate
