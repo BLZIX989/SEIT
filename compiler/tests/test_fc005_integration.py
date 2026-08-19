@@ -45,9 +45,30 @@ def test_desi_chain_stays_open_pending_data():
     result = build_and_run()
     regs = result["registries"]
     for node_id in ("DESI-CATALOGUE", "GRAPH-G-DESI", "OPERATOR-L-DESI", "KAPPA-DESI",
-                     "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"):
+                     "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+                     "MATHEMATICAL-CONVERGENCE-DESI", "CURVATURE-CLOSURE-DESI",
+                     "PHYSICAL-VALIDATION-DESI"):
         node = regs.objects.get(node_id)
         assert node.status == Status.OPEN, f"{node_id} should remain OPEN (pending data)"
+
+
+def test_three_stage_gates_are_independent_nodes_correctly_chained():
+    result = build_and_run()
+    regs = result["registries"]
+    math_gate = regs.objects.get("MATHEMATICAL-CONVERGENCE-DESI")
+    curvature_gate = regs.objects.get("CURVATURE-CLOSURE-DESI")
+    physical_gate = regs.objects.get("PHYSICAL-VALIDATION-DESI")
+    # three distinct nodes, never collapsed into one
+    assert len({math_gate.id, curvature_gate.id, physical_gate.id}) == 3
+    assert math_gate.type == curvature_gate.type == physical_gate.type == "stage_gate"
+    # curvature closure depends on mathematical convergence, physical
+    # validation depends on curvature closure -- the ordering this branch
+    # requires (never skip ahead)
+    assert "MATHEMATICAL-CONVERGENCE-DESI" in curvature_gate.dependencies
+    assert "CURVATURE-CLOSURE-DESI" in physical_gate.dependencies
+    # physical validation must not depend directly on mathematical convergence,
+    # skipping the curvature-closure gate in between
+    assert "MATHEMATICAL-CONVERGENCE-DESI" not in physical_gate.dependencies
 
 
 def test_desi_branch_never_feeds_forward_chain_template():
@@ -56,7 +77,8 @@ def test_desi_branch_never_feeds_forward_chain_template():
     template_nodes = [n for n in regs.objects if n.type == "forward_chain_template"]
     desi_ids = {"DESI-CATALOGUE", "GRAPH-G-DESI", "OPERATOR-L-DESI", "CONTINUUM-LIMIT-L-DESI",
                 "DESI-SPECTRUM", "DESI-HEAT-TRACE", "DESI-HEAT-COEFFICIENTS", "KAPPA-DESI",
-                "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"}
+                "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+                "MATHEMATICAL-CONVERGENCE-DESI", "CURVATURE-CLOSURE-DESI", "PHYSICAL-VALIDATION-DESI"}
     for node in template_nodes:
         assert not (set(node.dependencies) & desi_ids), (
             f"{node.id} (forward_chain_template) must not depend on the DESI branch"

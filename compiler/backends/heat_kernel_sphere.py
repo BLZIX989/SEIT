@@ -21,6 +21,8 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
+from compiler.verification.heat_kernel_fit import curvature_closure, fit_polynomial_coefficients
+
 EXACT_KAPPA = 1.0
 EXACT_R = 6.0
 EXACT_A0 = 2 * np.pi**2
@@ -79,13 +81,11 @@ def fit_window(t_min: float, t_max: float, *, degree: int = 3, npts: int = 50) -
     lam, mult = s3_spectrum(l_max)
     ts = np.linspace(t_min, t_max, npts)
     ys = heat_trace_scaled(ts, lam, mult)
-    coeffs = np.polyfit(ts, ys, degree)[::-1]  # coeffs[0]=a0, coeffs[1]=a1, coeffs[2]=a2
-    a0, a1, a2 = float(coeffs[0]), float(coeffs[1]), float(coeffs[2])
-    kappa_a1 = a1 / a0
-    kappa_a2 = np.sign(a1) * np.sqrt(2 * a2 / a0) if a2 > 0 else float("nan")
-    e_kappa = kappa_a1 - kappa_a2
+    coeffs = fit_polynomial_coefficients(ts, ys, degree)  # coeffs[0]=a0, coeffs[1]=a1, coeffs[2]=a2
+    closure = curvature_closure(coeffs[0], coeffs[1], coeffs[2])
     return FitWindowResult(t_min=t_min, t_max=t_max, degree=degree, npts=npts, l_max=l_max,
-                            a0=a0, a1=a1, a2=a2, kappa_a1=kappa_a1, kappa_a2=kappa_a2, e_kappa=e_kappa)
+                            a0=closure.a0, a1=closure.a1, a2=closure.a2,
+                            kappa_a1=closure.kappa_a1, kappa_a2=closure.kappa_a2, e_kappa=closure.e_kappa)
 
 
 @dataclass
@@ -128,7 +128,7 @@ def run_s3_control(
     a0_res = max(abs(r.a0 - EXACT_A0) / EXACT_A0 for r in fit_results)
     a1_res = max(abs(r.a1 - EXACT_A1) / EXACT_A1 for r in fit_results)
     a2_res = max(abs(r.a2 - EXACT_A2) / EXACT_A2 for r in fit_results)
-    passed = max_abs_e_kappa < tolerance and a0_res < tolerance and a1_res < tolerance and a2_res < tolerance
+    passed = bool(max_abs_e_kappa < tolerance and a0_res < tolerance and a1_res < tolerance and a2_res < tolerance)
 
     return S3ControlReport(
         fit_results=fit_results, degree_sweep=degree_sweep, tolerance=tolerance,

@@ -4,11 +4,12 @@ Run with: `python3 -m pytest compiler/tests -q && python3 -m compiler.run_compil
 
 ## Pytest
 
-**83 / 83 passed** (54 pre-existing unit/integration tests for IR/status,
+**92 / 92 passed** (54 pre-existing unit/integration tests for IR/status,
 dependency graph incl. cycle rejection, verification, falsification
 protocols, target-independence firewall, and both executable-test
-sweeps; 29 new FC-005 tests — see `FC005_EXECUTION_REPORT.md` for the
-physics results these tests check).
+sweeps; 38 FC-005 tests, including 8 for the three-stage DESI execution
+procedure — see `FC005_EXECUTION_REPORT.md` for the physics results
+these tests check).
 
 ## Test 1 — graph → L=D-A → Spec(L) → e^{-tL} → P_ker(L)
 
@@ -101,9 +102,12 @@ All 9 audits **passed** on the current build:
 
 ## Registry contents (this run)
 
-55 Objects, 8 Transformations, 34 Equations, 24 Types.
+58 Objects, 8 Transformations, 34 Equations, 25 Types.
 
-Status distribution: 38 `OPEN`, 35 `PROPOSED` (mostly the 29 bulk-imported
+Status distribution: 41 `OPEN` (includes the three explicit `stage_gate`
+nodes -- `MATHEMATICAL-CONVERGENCE-DESI`, `CURVATURE-CLOSURE-DESI`,
+`PHYSICAL-VALIDATION-DESI` -- reported independently rather than as one
+closed/not-closed bit), 35 `PROPOSED` (mostly the 29 bulk-imported
 FC-005 reference equations plus historical claims, never trusted above
 PROPOSED without independent execution), 12 `VERIFIED`, 7 `CALCULATED`,
 3 `CONDITIONAL`, 1 `DERIVED`, 1 `FALSIFIED`

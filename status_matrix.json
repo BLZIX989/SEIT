@@ -383,6 +383,37 @@
     ]
   },
   {
+    "id": "MATHEMATICAL-CONVERGENCE-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "GRAPH-G-DESI",
+      "OPERATOR-L-DESI",
+      "CONTINUUM-LIMIT-L-DESI",
+      "DESI-SPECTRUM"
+    ]
+  },
+  {
+    "id": "CURVATURE-CLOSURE-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "MATHEMATICAL-CONVERGENCE-DESI",
+      "DESI-HEAT-TRACE",
+      "DESI-HEAT-COEFFICIENTS",
+      "E-KAPPA-DESI"
+    ]
+  },
+  {
+    "id": "PHYSICAL-VALIDATION-DESI",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "CURVATURE-CLOSURE-DESI",
+      "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"
+    ]
+  },
+  {
     "id": "SEMICLASSICAL-EINSTEIN-EQUATION",
     "kind": "Object",
     "status": "PROPOSED",

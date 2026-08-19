@@ -62,6 +62,27 @@
       "role": "observational_output",
       "allowed": true,
       "context": "curvature_closure\nE_kappa closure residual for DESI"
+    },
+    {
+      "node_id": "MATHEMATICAL-CONVERGENCE-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 1: does L_tilde_(N,eps) converge under (N,eps) refinement? A property of the operator and the sampling, evaluated independently of any curvature or cosmological claim. See compiler/ba"
+    },
+    {
+      "node_id": "CURVATURE-CLOSURE-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 2: only evaluated if stage 1 converged. Does E_kappa fall below the predefined tolerance? A property of the fitted heat-kernel coefficients, independent of any external/observational "
+    },
+    {
+      "node_id": "PHYSICAL-VALIDATION-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "stage_gate\nStage 3: only evaluated if stage 2 closed. Does kappa_spectral agree with an INDEPENDENTLY sourced kappa_cosmological (never derived from the same catalogue/run)? See compiler/backends/desi"
     }
   ],
   "n_flagged": 0

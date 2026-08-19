@@ -66,6 +66,9 @@ TYPE_DEFS_FC005 = [
                             "information matrix", "mathematical_object"),
     ("operator_uniqueness_counterexample", "an executed counterexample to spectrum-determines-"
                                             "operator", None),
+    ("stage_gate", "one of the three independently-reported FC-005 execution stages "
+                   "(mathematical convergence, curvature closure, physical validation); "
+                   "its status is never inferred from another stage_gate's status", None),
     ("workbook_reconciliation_record", "provenance/precedence record for the four supplied "
                                         "FC-005 workbooks", None),
 ]
@@ -245,6 +248,51 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                                           object_id=obj.id, status=Status.OPEN,
                                           verification={"blocked_on": "DESI-CATALOGUE"})
         registries.objects.add_object(obj)
+
+    # ---- 3b. Explicit three-stage gates (never merged into one bit):
+    # mathematical convergence != observational agreement != physical
+    # validation. compiler/backends/desi_fc005_pipeline.py implements the
+    # exact stop-on-failure procedure these three gates represent; when a
+    # real catalogue is executed, each gate's status is set independently
+    # from that run's MathematicalConvergenceResult / CurvatureClosureResult
+    # / PhysicalValidationResult -- never collapsed into a single closed/
+    # not-closed flag, and a later stage's status is never set unless the
+    # earlier stage actually passed (spec: "never alter the model to
+    # obtain closure").
+    stage_gates = [
+        ("MATHEMATICAL-CONVERGENCE-DESI",
+         ["GRAPH-G-DESI", "OPERATOR-L-DESI", "CONTINUUM-LIMIT-L-DESI", "DESI-SPECTRUM"],
+         "Stage 1: does L_tilde_(N,eps) converge under (N,eps) refinement? A property of the "
+         "operator and the sampling, evaluated independently of any curvature or cosmological "
+         "claim. See compiler/backends/desi_fc005_pipeline.py::run_mathematical_convergence. "
+         "On failure, the exact failed node id is reported (e.g. OPERATOR-L-DESI for a "
+         "disconnected graph) and the pipeline stops -- stages 2 and 3 are never evaluated."),
+        ("CURVATURE-CLOSURE-DESI",
+         ["MATHEMATICAL-CONVERGENCE-DESI", "DESI-HEAT-TRACE", "DESI-HEAT-COEFFICIENTS", "E-KAPPA-DESI"],
+         "Stage 2: only evaluated if stage 1 converged. Does E_kappa fall below the "
+         "predefined tolerance? A property of the fitted heat-kernel coefficients, "
+         "independent of any external/observational comparison. See "
+         "compiler/backends/desi_fc005_pipeline.py::run_curvature_closure. A stage-1 pass "
+         "with a stage-2 failure is reported as a genuine curvature-closure failure, not "
+         "reinterpreted or hidden."),
+        ("PHYSICAL-VALIDATION-DESI",
+         ["CURVATURE-CLOSURE-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"],
+         "Stage 3: only evaluated if stage 2 closed. Does kappa_spectral agree with an "
+         "INDEPENDENTLY sourced kappa_cosmological (never derived from the same "
+         "catalogue/run)? See compiler/backends/desi_fc005_pipeline.py::run_physical_validation, "
+         "which raises rather than runs if no independent source is named."),
+    ]
+    for node_id, deps, desc in stage_gates:
+        gate = Object(id=node_id, type="stage_gate", status=Status.OPEN,
+                      role="observational_output", dependencies=deps, carrier=desc,
+                      assumptions=["PENDING DATA: blocked on DESI-CATALOGUE. This gate's status "
+                                   "is set independently by its own pipeline stage function when "
+                                   "a real catalogue is executed -- never inferred from another "
+                                   "gate's result and never force-closed."])
+        gate.provenance = make_provenance(source="compiler/backends/desi_fc005_pipeline.py",
+                                           object_id=gate.id, status=Status.OPEN,
+                                           verification={"blocked_on": "DESI-CATALOGUE"})
+        registries.objects.add_object(gate)
 
     # ---- 4. Semiclassical quantum/gravity boundary (spec section 18): OPEN, not full QG ----
     semiclassical = Object(

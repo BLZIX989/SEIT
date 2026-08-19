@@ -175,6 +175,34 @@ machinery itself is correct and executes cleanly; `compiler/backends/
 desi_graph.py` is ready to run the identical pipeline the moment a
 catalogue is supplied, with no code changes required.
 
+### Execution procedure once a catalogue is supplied
+
+`compiler/backends/desi_fc005_pipeline.py::run_fc005_desi_pipeline` runs
+exactly the three-stage procedure this branch is bound to, and reports
+all three stages independently rather than as a single verdict:
+
+1. **Mathematical convergence** — checked first, on its own terms (does
+   the operator converge under refinement?). On failure, the function
+   returns the exact node it failed at and STOPS; stages 2 and 3 are
+   never run.
+2. **Curvature closure** ("observational agreement" with the
+   constant-curvature sector) — only entered if stage 1 converged.
+   |E_kappa| not falling below the predefined tolerance is reported as a
+   genuine curvature-closure failure, not reinterpreted as anything else,
+   and the pipeline stops there.
+3. **Physical validation** (the independent cosmological cross-check) —
+   only entered if stage 2 closed, and only against a `kappa_cosmological`
+   value the caller must supply from a named, independent source; the
+   function raises rather than run if no such source is given, so
+   Δκ can never be computed against the same catalogue that produced
+   κ_spectral.
+
+No stage's outcome is ever inferred from another's, no threshold is
+adjusted after seeing a result, and no catalogue-derived number is
+reused to validate itself. This is enforced in code (see
+`compiler/tests/test_fc005_three_stage_pipeline.py`), not left as a
+process promise.
+
 ## Self-audit
 
 All 9 self-audits pass after FC-005 integration (dependency,

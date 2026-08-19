@@ -115,6 +115,11 @@
     "parent": null
   },
   {
+    "name": "stage_gate",
+    "description": "one of the three independently-reported FC-005 execution stages (mathematical convergence, curvature closure, physical validation); its status is never inferred from another stage_gate's status",
+    "parent": null
+  },
+  {
     "name": "workbook_reconciliation_record",
     "description": "provenance/precedence record for the four supplied FC-005 workbooks",
     "parent": null
