@@ -207,8 +207,21 @@ def run_mathematical_convergence(
     for i in range(len(points_out) - 1):
         prev = np.array(points_out[i].low_eigenvalues)
         curr = np.array(points_out[i + 1].low_eigenvalues)
-        denom = np.maximum(np.abs(prev), 1e-12)
-        relative_changes.append(float(np.max(np.abs(curr - prev) / denom)))
+        # Exclude index 0 (the zero mode -- comparing two numbers that are
+        # both supposed to be exactly 0 up to solver noise is meaningless).
+        # The floor for the relative-change denominator must be RELATIVE to
+        # this run's own eigenvalue scale, never a fixed absolute constant:
+        # a fixed floor (e.g. 1e-12) silently dominates the comparison and
+        # manufactures an artificially small "relative change" whenever the
+        # true eigenvalues themselves are smaller than the floor (this
+        # happened during this build's own diagnostic investigation -- see
+        # FC005_CONTINUUM_DIAGNOSTIC_REPORT.md -- and produced a spurious
+        # near-perfect "convergence" that evaporated once fixed).
+        prev_nz, curr_nz = prev[1:], curr[1:]
+        scale = float(np.mean(np.abs(prev_nz))) if len(prev_nz) else 1e-12
+        floor = max(scale * 1e-6, 1e-300)
+        denom = np.maximum(np.abs(prev_nz), floor)
+        relative_changes.append(float(np.max(np.abs(curr_nz - prev_nz) / denom)))
 
     if not relative_changes:
         return MathematicalConvergenceResult(
