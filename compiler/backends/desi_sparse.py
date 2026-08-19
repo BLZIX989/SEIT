@@ -102,7 +102,7 @@ class SparseEigenResult:
 
 
 def sparse_low_eigen(neg_L_tilde, n_modes: int, *, sigma: float | None = None,
-                      tol: float = 1e-8, maxiter: int = 20000) -> SparseEigenResult:
+                      tol: float = 1e-8, maxiter: int = 2500) -> SparseEigenResult:
     """Smallest n_modes eigenpairs of a sparse PSD operator (here always
     called on -L_tilde = L_N/(C_K*N*eps^(d+2)), sign convention per
     desi_fc005_pipeline.py: the eigenproblem used for the heat trace is

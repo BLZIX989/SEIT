@@ -51,7 +51,7 @@ N_VALUES_DESI = [4000, 8000, 16000, 32000, 64000]
 # This is the computational-feasibility boundary named in the spec
 # (section 7/15), recorded rather than silently dropped.
 N_VALUES_SYNTH = [4000, 8000, 16000, 32000, 64000]
-N_MODES = 20
+N_MODES = 15
 SEED = 20250819
 TOLERANCE = 0.15
 
@@ -101,25 +101,43 @@ def run_process(label: str, pts_full: np.ndarray, w_full: np.ndarray | None,
         _, L = sparse_graph_laplacian(W)
         norm_const = C_K * N_eff * eps ** (D + 2)
         neg_L_tilde = (1.0 / norm_const) * L  # Spec(-L_tilde) = Spec(L)/norm_const
-        result = sparse_low_eigen(neg_L_tilde, N_MODES)
+        # maxiter bounded to a practical budget (500 ARPACK restarts):
+        # the clustered-control graph was measured directly to induce
+        # severe ARPACK ill-conditioning (near-decoupled density clumps
+        # produce a cluster of near-zero eigenvalues), taking >500s at
+        # N=8000 with the unbounded default. A tight, uniformly-applied
+        # budget means a genuinely stuck case fails fast and honestly
+        # (recorded as arpack_converged=False) rather than consuming the
+        # whole session's compute -- non-convergence itself is a valid,
+        # disclosed diagnostic result per the spec ("record ... maximum
+        # iterations, convergence residuals"), not a suppressed failure.
+        result = sparse_low_eigen(neg_L_tilde, N_MODES, maxiter=500)
         elapsed = time.time() - t_n0
         avg_degree = float(W.sum() / N_eff)
+        n_converged_modes = len(result.eigenvalues)
+        status = "OK" if n_converged_modes >= 2 else "ARPACK_INSUFFICIENT_CONVERGED_MODES"
         per_N.append({
             "N": N, "N_effective": N_eff, "n_connected_components": int(n_comp),
             "largest_component_fraction": largest_fraction, "restricted_to_largest": restricted,
             "epsilon": eps, "avg_degree": avg_degree, "nnz": int(W.nnz),
             "solver": result.solver, "sigma": result.sigma, "tol": result.tol,
             "maxiter": result.maxiter, "n_modes_requested": result.n_modes_requested,
+            "n_modes_converged": n_converged_modes,
             "max_residual": result.max_residual, "arpack_converged": result.converged,
-            "elapsed_seconds": elapsed, "status": "OK",
+            "elapsed_seconds": elapsed, "status": status,
             "low_eigenvalues": result.eigenvalues.tolist(),
         })
-        low_eigs_seq.append(result.eigenvalues)
-        eigvecs_seq.append(result.eigenvectors)
+        if status == "OK":
+            low_eigs_seq.append(result.eigenvalues)
+            eigvecs_seq.append(result.eigenvectors)
+        else:
+            low_eigs_seq.append(None)
+            eigvecs_seq.append(None)
+        lambda1_str = f"{result.eigenvalues[1]:.4e}" if n_converged_modes >= 2 else "N/A"
         print(f"    [{label} alpha={alpha}] N={N} eps={eps:.4f} avg_deg={avg_degree:.1f} "
               f"nnz={W.nnz} n_comp={n_comp} largest_frac={largest_fraction:.4f} "
               f"resid={result.max_residual:.2e} t={elapsed:.1f}s "
-              f"lambda1={result.eigenvalues[1]:.4e}")
+              f"n_conv_modes={n_converged_modes} lambda1={lambda1_str}")
 
     valid_pairs = [(i, e) for i, e in enumerate(low_eigs_seq) if e is not None]
     valid_eigs = [e for _, e in valid_pairs]
