@@ -90,6 +90,27 @@
       "role": "observational_output",
       "allowed": true,
       "context": "stage_gate\nStage 3: only evaluated if stage 2 closed. Does kappa_spectral agree with an INDEPENDENTLY sourced kappa_cosmological (never derived from the same catalogue/run)? See compiler/backends/desi"
+    },
+    {
+      "node_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "term": "SU(3)",
+      "role": "comparison",
+      "allowed": true,
+      "context": "G2 (intersection via triality) Spin(8)\nSU(3) x SU(2) x U(1)\ncompact Lie group theory\nclaimed in COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx section 8; disproved by rank-counting -- see FALS-H4-G2-"
+    },
+    {
+      "node_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "term": "SU(2)",
+      "role": "comparison",
+      "allowed": true,
+      "context": "G2 (intersection via triality) Spin(8)\nSU(3) x SU(2) x U(1)\ncompact Lie group theory\nclaimed in COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx section 8; disproved by rank-counting -- see FALS-H4-G2-"
+    },
+    {
+      "node_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "term": "U(1)",
+      "role": "comparison",
+      "allowed": true,
+      "context": "G2 (intersection via triality) Spin(8)\nSU(3) x SU(2) x U(1)\ncompact Lie group theory\nclaimed in COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx section 8; disproved by rank-counting -- see FALS-H4-G2-"
     }
   ],
   "n_flagged": 0

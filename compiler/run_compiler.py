@@ -22,6 +22,9 @@ from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
+from compiler.ir.toe_closure_hypotheses import (
+    TYPE_DEFS_TOE_CLOSURE, register_toe_closure_hypotheses,
+)
 from compiler.verification.self_audit import run_self_audit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,19 +84,22 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005:
+    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE:
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
     test_results = register_executable_tests(registries)
     register_historical_nodes(registries)
     fc005_results = register_fc005(registries, ROOT)
+    toe_closure_results = register_toe_closure_hypotheses(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
     falsifications.extend(fc005_results["falsifications"])
+    falsifications.extend(toe_closure_results["falsifications"])
 
-    all_calculations = list(test_results["calculations"]) + list(fc005_results["calculations"])
+    all_calculations = (list(test_results["calculations"]) + list(fc005_results["calculations"])
+                         + list(toe_closure_results["calculations"]))
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     registries.dump_all(OUT_DIR)

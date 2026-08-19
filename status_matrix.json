@@ -440,6 +440,32 @@
     "dependencies": []
   },
   {
+    "id": "H1-SELECTION-WELLPOSEDNESS",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
+    "id": "H2-SPECTRAL-TRIPLE-LOCALITY",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": []
+  },
+  {
+    "id": "H3-FC005-CORRECTION-TEST",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "CONTINUUM-LIMIT-L-DESI"
+    ]
+  },
+  {
+    "id": "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": []
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -714,5 +740,11 @@
     "dependencies": [
       "FISHER-STATISTICAL-FAMILY"
     ]
+  },
+  {
+    "id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+    "kind": "Equation",
+    "status": "FALSIFIED",
+    "dependencies": []
   }
 ]

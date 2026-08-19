@@ -1,0 +1,997 @@
+{
+  "generated_from": "master_mdcl.json (compiler/run_compiler.py output, this campaign's run)",
+  "n_nodes": 105,
+  "n_edges": 63,
+  "nodes": [
+    {
+      "id": "FOUNDATION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "EMPTYSET",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "MATH-UNIVERSE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "PHYSICAL-CANDIDATE-SET",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "VACUUM",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "DISTINCTION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "RELATION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "TRANSFORMATION-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "CONSTRAINT",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "PERSISTENCE-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "OPERATOR-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "SPECTRUM-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "GEOMETRY-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "VARIATIONAL-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "QUANTUM-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "GAUGE-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "MATTER-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "THERMODYNAMICS-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "COSMOLOGY-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "OBSERVABLES-NODE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_chain_template"
+    },
+    {
+      "id": "GRAPH-G-SEED",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "upstream_construction",
+      "type": "mathematical_object"
+    },
+    {
+      "id": "OPERATOR-L",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "graph_laplacian_operator"
+    },
+    {
+      "id": "SPECTRUM-L",
+      "kind": "object",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "spectral_data"
+    },
+    {
+      "id": "HEAT-FLOW-R",
+      "kind": "object",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "heat_semigroup"
+    },
+    {
+      "id": "KERNEL-PROJECTOR",
+      "kind": "object",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "projector"
+    },
+    {
+      "id": "DIFFUSION-DISTANCE",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "diffusion_distance"
+    },
+    {
+      "id": "METRIC-CANDIDATE",
+      "kind": "object",
+      "status": "CONDITIONAL",
+      "role": "upstream_construction",
+      "type": "geometry_candidate"
+    },
+    {
+      "id": "T2-HISTORICAL",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": "historical_claim"
+    },
+    {
+      "id": "T2-REPRODUCTION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "reproduction_attempt"
+    },
+    {
+      "id": "T2-FORWARD-DERIVATION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "forward_derivation_attempt"
+    },
+    {
+      "id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": "external_literature_reference"
+    },
+    {
+      "id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "missing_artifact"
+    },
+    {
+      "id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "missing_artifact"
+    },
+    {
+      "id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "missing_artifact"
+    },
+    {
+      "id": "DTC-CIRCULARITY-OBSTRUCTION",
+      "kind": "object",
+      "status": "CONDITIONAL",
+      "role": "comparison",
+      "type": "self_acknowledged_obstruction"
+    },
+    {
+      "id": "FC005-WORKBOOK-RECONCILIATION",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "comparison",
+      "type": "workbook_reconciliation_record"
+    },
+    {
+      "id": "S3-MANIFOLD",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "upstream_construction",
+      "type": "mathematical_object"
+    },
+    {
+      "id": "S3-SPECTRUM",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "spectral_data"
+    },
+    {
+      "id": "S3-HEAT-TRACE",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "heat_trace_function"
+    },
+    {
+      "id": "S3-HEAT-COEFFICIENTS",
+      "kind": "object",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "heat_kernel_coefficients"
+    },
+    {
+      "id": "S3-CURVATURE-CLOSURE",
+      "kind": "object",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "curvature_closure"
+    },
+    {
+      "id": "DESI-CATALOGUE",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "observational_output",
+      "type": "pending_data_construction"
+    },
+    {
+      "id": "GRAPH-G-DESI",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "observational_output",
+      "type": "mathematical_object"
+    },
+    {
+      "id": "OPERATOR-L-DESI",
+      "kind": "object",
+      "status": "CALCULATED",
+      "role": "observational_output",
+      "type": "graph_laplacian_operator"
+    },
+    {
+      "id": "CONTINUUM-LIMIT-L-DESI",
+      "kind": "object",
+      "status": "FAIL",
+      "role": "observational_output",
+      "type": "mathematical_object"
+    },
+    {
+      "id": "DESI-SPECTRUM",
+      "kind": "object",
+      "status": "FAIL",
+      "role": "observational_output",
+      "type": "spectral_data"
+    },
+    {
+      "id": "DESI-HEAT-TRACE",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "heat_trace_function"
+    },
+    {
+      "id": "DESI-HEAT-COEFFICIENTS",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "heat_kernel_coefficients"
+    },
+    {
+      "id": "KAPPA-DESI",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "curvature_closure"
+    },
+    {
+      "id": "E-KAPPA-DESI",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "curvature_closure"
+    },
+    {
+      "id": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "curvature_closure"
+    },
+    {
+      "id": "MATHEMATICAL-CONVERGENCE-DESI",
+      "kind": "object",
+      "status": "FAIL",
+      "role": "observational_output",
+      "type": "stage_gate"
+    },
+    {
+      "id": "CURVATURE-CLOSURE-DESI",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "stage_gate"
+    },
+    {
+      "id": "PHYSICAL-VALIDATION-DESI",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "observational_output",
+      "type": "stage_gate"
+    },
+    {
+      "id": "SEMICLASSICAL-EINSTEIN-EQUATION",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": "semiclassical_framework_equation"
+    },
+    {
+      "id": "SEMICLASSICAL-RESIDUAL-E-SC",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "curvature_closure"
+    },
+    {
+      "id": "FISHER-STATISTICAL-FAMILY",
+      "kind": "object",
+      "status": "PROPOSED",
+      "role": "upstream_construction",
+      "type": "statistical_family"
+    },
+    {
+      "id": "SPEC-H-UNIQUENESS",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "operator_uniqueness_counterexample"
+    },
+    {
+      "id": "H1-SELECTION-WELLPOSEDNESS",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "closure_hypothesis_test"
+    },
+    {
+      "id": "H2-SPECTRAL-TRIPLE-LOCALITY",
+      "kind": "object",
+      "status": "FAIL",
+      "role": "comparison",
+      "type": "closure_hypothesis_test"
+    },
+    {
+      "id": "H3-FC005-CORRECTION-TEST",
+      "kind": "object",
+      "status": "FAIL",
+      "role": "comparison",
+      "type": "closure_hypothesis_test"
+    },
+    {
+      "id": "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED",
+      "kind": "object",
+      "status": "OPEN",
+      "role": "comparison",
+      "type": "closure_hypothesis_test"
+    },
+    {
+      "id": "SELECTION-SIGMA",
+      "kind": "transformation",
+      "status": "OPEN",
+      "role": "upstream_construction",
+      "type": "Sigma : M -> {0,1}"
+    },
+    {
+      "id": "T-GRAPH-TO-OPERATOR",
+      "kind": "transformation",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "L = D - A"
+    },
+    {
+      "id": "T-OPERATOR-TO-SPECTRUM",
+      "kind": "transformation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "L phi_n = lambda_n phi_n"
+    },
+    {
+      "id": "T-SPECTRUM-TO-HEATFLOW",
+      "kind": "transformation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "R(t) = e^{-tL}"
+    },
+    {
+      "id": "T-HEATFLOW-TO-KERNEL",
+      "kind": "transformation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "lim_{t->inf} e^{-tL} = P_ker(L)"
+    },
+    {
+      "id": "T-SPECTRUM-TO-DIFFUSION",
+      "kind": "transformation",
+      "status": "CALCULATED",
+      "role": "upstream_construction",
+      "type": "d_t(i,j)"
+    },
+    {
+      "id": "T-DIFFUSION-TO-METRIC",
+      "kind": "transformation",
+      "status": "CONDITIONAL",
+      "role": "upstream_construction",
+      "type": "refinement-sweep metric candidate"
+    },
+    {
+      "id": "T-FC005-S3-CONTROL-CHAIN",
+      "kind": "transformation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": "analytic Spec -> K(t) -> fit -> E_kappa"
+    },
+    {
+      "id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+      "kind": "equation",
+      "status": "DERIVED",
+      "role": "upstream_construction",
+      "type": ""
+    },
+    {
+      "id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+      "kind": "equation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": ""
+    },
+    {
+      "id": "EQ-001",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-002",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-003",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-004",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-005",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-006",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-007",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-008",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-009",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-010",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-011",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-012",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-013",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-014",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-015",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-016",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-017",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-018",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-019",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-020",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-021",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-022",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-023",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-024",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-025",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-026",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-027",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-028",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-029",
+      "kind": "equation",
+      "status": "PROPOSED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-FC005-S3-CURVATURE-RESIDUAL",
+      "kind": "equation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": ""
+    },
+    {
+      "id": "EQ-FC005-FISHER-PSD",
+      "kind": "equation",
+      "status": "VERIFIED",
+      "role": "upstream_construction",
+      "type": ""
+    },
+    {
+      "id": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION",
+      "kind": "equation",
+      "status": "FALSIFIED",
+      "role": "comparison",
+      "type": ""
+    },
+    {
+      "id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "kind": "equation",
+      "status": "FALSIFIED",
+      "role": "comparison",
+      "type": ""
+    }
+  ],
+  "edges": [
+    {
+      "from": "FOUNDATION",
+      "to": "EMPTYSET"
+    },
+    {
+      "from": "EMPTYSET",
+      "to": "MATH-UNIVERSE"
+    },
+    {
+      "from": "MATH-UNIVERSE",
+      "to": "PHYSICAL-CANDIDATE-SET"
+    },
+    {
+      "from": "SELECTION-SIGMA",
+      "to": "PHYSICAL-CANDIDATE-SET"
+    },
+    {
+      "from": "PHYSICAL-CANDIDATE-SET",
+      "to": "VACUUM"
+    },
+    {
+      "from": "VACUUM",
+      "to": "DISTINCTION"
+    },
+    {
+      "from": "DISTINCTION",
+      "to": "RELATION"
+    },
+    {
+      "from": "RELATION",
+      "to": "TRANSFORMATION-NODE"
+    },
+    {
+      "from": "TRANSFORMATION-NODE",
+      "to": "CONSTRAINT"
+    },
+    {
+      "from": "CONSTRAINT",
+      "to": "PERSISTENCE-NODE"
+    },
+    {
+      "from": "PERSISTENCE-NODE",
+      "to": "OPERATOR-NODE"
+    },
+    {
+      "from": "OPERATOR-NODE",
+      "to": "SPECTRUM-NODE"
+    },
+    {
+      "from": "SPECTRUM-NODE",
+      "to": "GEOMETRY-NODE"
+    },
+    {
+      "from": "SPECTRUM-NODE",
+      "to": "VARIATIONAL-NODE"
+    },
+    {
+      "from": "VARIATIONAL-NODE",
+      "to": "QUANTUM-NODE"
+    },
+    {
+      "from": "QUANTUM-NODE",
+      "to": "GAUGE-NODE"
+    },
+    {
+      "from": "GAUGE-NODE",
+      "to": "MATTER-NODE"
+    },
+    {
+      "from": "MATTER-NODE",
+      "to": "THERMODYNAMICS-NODE"
+    },
+    {
+      "from": "THERMODYNAMICS-NODE",
+      "to": "COSMOLOGY-NODE"
+    },
+    {
+      "from": "COSMOLOGY-NODE",
+      "to": "OBSERVABLES-NODE"
+    },
+    {
+      "from": "GRAPH-G-SEED",
+      "to": "OPERATOR-L"
+    },
+    {
+      "from": "OPERATOR-L",
+      "to": "SPECTRUM-L"
+    },
+    {
+      "from": "SPECTRUM-L",
+      "to": "HEAT-FLOW-R"
+    },
+    {
+      "from": "HEAT-FLOW-R",
+      "to": "KERNEL-PROJECTOR"
+    },
+    {
+      "from": "SPECTRUM-L",
+      "to": "DIFFUSION-DISTANCE"
+    },
+    {
+      "from": "DIFFUSION-DISTANCE",
+      "to": "METRIC-CANDIDATE"
+    },
+    {
+      "from": "S3-MANIFOLD",
+      "to": "S3-SPECTRUM"
+    },
+    {
+      "from": "S3-SPECTRUM",
+      "to": "S3-HEAT-TRACE"
+    },
+    {
+      "from": "S3-HEAT-TRACE",
+      "to": "S3-HEAT-COEFFICIENTS"
+    },
+    {
+      "from": "S3-HEAT-COEFFICIENTS",
+      "to": "S3-CURVATURE-CLOSURE"
+    },
+    {
+      "from": "DESI-CATALOGUE",
+      "to": "GRAPH-G-DESI"
+    },
+    {
+      "from": "GRAPH-G-DESI",
+      "to": "OPERATOR-L-DESI"
+    },
+    {
+      "from": "OPERATOR-L-DESI",
+      "to": "CONTINUUM-LIMIT-L-DESI"
+    },
+    {
+      "from": "CONTINUUM-LIMIT-L-DESI",
+      "to": "DESI-SPECTRUM"
+    },
+    {
+      "from": "DESI-SPECTRUM",
+      "to": "DESI-HEAT-TRACE"
+    },
+    {
+      "from": "DESI-HEAT-TRACE",
+      "to": "DESI-HEAT-COEFFICIENTS"
+    },
+    {
+      "from": "DESI-HEAT-COEFFICIENTS",
+      "to": "KAPPA-DESI"
+    },
+    {
+      "from": "KAPPA-DESI",
+      "to": "E-KAPPA-DESI"
+    },
+    {
+      "from": "KAPPA-DESI",
+      "to": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK"
+    },
+    {
+      "from": "GRAPH-G-DESI",
+      "to": "MATHEMATICAL-CONVERGENCE-DESI"
+    },
+    {
+      "from": "OPERATOR-L-DESI",
+      "to": "MATHEMATICAL-CONVERGENCE-DESI"
+    },
+    {
+      "from": "CONTINUUM-LIMIT-L-DESI",
+      "to": "MATHEMATICAL-CONVERGENCE-DESI"
+    },
+    {
+      "from": "DESI-SPECTRUM",
+      "to": "MATHEMATICAL-CONVERGENCE-DESI"
+    },
+    {
+      "from": "MATHEMATICAL-CONVERGENCE-DESI",
+      "to": "CURVATURE-CLOSURE-DESI"
+    },
+    {
+      "from": "DESI-HEAT-TRACE",
+      "to": "CURVATURE-CLOSURE-DESI"
+    },
+    {
+      "from": "DESI-HEAT-COEFFICIENTS",
+      "to": "CURVATURE-CLOSURE-DESI"
+    },
+    {
+      "from": "E-KAPPA-DESI",
+      "to": "CURVATURE-CLOSURE-DESI"
+    },
+    {
+      "from": "CURVATURE-CLOSURE-DESI",
+      "to": "PHYSICAL-VALIDATION-DESI"
+    },
+    {
+      "from": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+      "to": "PHYSICAL-VALIDATION-DESI"
+    },
+    {
+      "from": "SEMICLASSICAL-EINSTEIN-EQUATION",
+      "to": "SEMICLASSICAL-RESIDUAL-E-SC"
+    },
+    {
+      "from": "CONTINUUM-LIMIT-L-DESI",
+      "to": "H3-FC005-CORRECTION-TEST"
+    },
+    {
+      "from": "GRAPH-G-SEED",
+      "to": "T-GRAPH-TO-OPERATOR"
+    },
+    {
+      "from": "OPERATOR-L",
+      "to": "T-OPERATOR-TO-SPECTRUM"
+    },
+    {
+      "from": "SPECTRUM-L",
+      "to": "T-SPECTRUM-TO-HEATFLOW"
+    },
+    {
+      "from": "HEAT-FLOW-R",
+      "to": "T-HEATFLOW-TO-KERNEL"
+    },
+    {
+      "from": "SPECTRUM-L",
+      "to": "T-SPECTRUM-TO-DIFFUSION"
+    },
+    {
+      "from": "DIFFUSION-DISTANCE",
+      "to": "T-DIFFUSION-TO-METRIC"
+    },
+    {
+      "from": "S3-MANIFOLD",
+      "to": "T-FC005-S3-CONTROL-CHAIN"
+    },
+    {
+      "from": "OPERATOR-L",
+      "to": "EQ-LAPLACIAN-ROW-SUM-ZERO"
+    },
+    {
+      "from": "HEAT-FLOW-R",
+      "to": "EQ-HEAT-KERNEL-EIGEN-ACTION"
+    },
+    {
+      "from": "S3-CURVATURE-CLOSURE",
+      "to": "EQ-FC005-S3-CURVATURE-RESIDUAL"
+    },
+    {
+      "from": "FISHER-STATISTICAL-FAMILY",
+      "to": "EQ-FC005-FISHER-PSD"
+    },
+    {
+      "from": "FISHER-STATISTICAL-FAMILY",
+      "to": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION"
+    }
+  ],
+  "h1_h4_subgraph_note": "H1-H4 nodes (H1-SELECTION-WELLPOSEDNESS, H2-SPECTRAL-TRIPLE-LOCALITY, H3-FC005-CORRECTION-TEST, EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM, H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED) are registered role=comparison: they test axioms the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx manuscript left unproven and never feed forward into the canonical upstream_construction chain."
+}

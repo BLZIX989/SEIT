@@ -123,5 +123,10 @@
     "name": "workbook_reconciliation_record",
     "description": "provenance/precedence record for the four supplied FC-005 workbooks",
     "parent": null
+  },
+  {
+    "name": "closure_hypothesis_test",
+    "description": "an executed test of one of the four primary load-bearing hypotheses (H1-H4) required to decounterfactualize the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING manuscript",
+    "parent": null
   }
 ]

@@ -1,0 +1,55 @@
+{
+  "generated_from": "proof_registry.json (compiler/run_compiler.py output) + this campaign's H4 rank-counting proof",
+  "n_proofs": 7,
+  "proofs": [
+    {
+      "id": "PROOF-T-GRAPH-TO-OPERATOR",
+      "transformation_id": "T-GRAPH-TO-OPERATOR",
+      "statement": "L = D - A",
+      "method": "D, A read directly off the graph's edge set; L = D - A by definition.",
+      "status": "CALCULATED"
+    },
+    {
+      "id": "PROOF-T-OPERATOR-TO-SPECTRUM",
+      "transformation_id": "T-OPERATOR-TO-SPECTRUM",
+      "statement": "L phi_n = lambda_n phi_n",
+      "method": "numpy.linalg.eigh (symmetric solver) cross-checked against sympy exact characteristic-polynomial eigenvalues for n<=8.",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "PROOF-T-SPECTRUM-TO-HEATFLOW",
+      "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
+      "statement": "R(t) = e^{-tL}",
+      "method": "scipy.linalg.expm; eigen-action R(t)phi_n = e^{-t lambda_n} phi_n verified to <1e-6 residual on every swept case.",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "PROOF-T-HEATFLOW-TO-KERNEL",
+      "transformation_id": "T-HEATFLOW-TO-KERNEL",
+      "statement": "lim_{t->inf} e^{-tL} = P_ker(L)",
+      "method": "hypotheses checked numerically per case; residual ||e^{-tL}-P_ker(L)|| probed at t scaled to 1/spectral_gap and confirmed < 1e-6.",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "PROOF-T-SPECTRUM-TO-DIFFUSION",
+      "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
+      "statement": "d_t(i,j)",
+      "method": "direct evaluation of the diffusion-map distance formula.",
+      "status": "CALCULATED"
+    },
+    {
+      "id": "PROOF-T-FC005-S3-CONTROL-CHAIN",
+      "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
+      "statement": "analytic Spec -> K(t) -> fit -> E_kappa",
+      "method": "closed-form S^3 spectrum, numpy heat-trace summation with controlled truncation, numpy.polyfit degree-3/4/5 sweep",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "PROOF-H4-G2-TRIALITY-RANK-OBSTRUCTION",
+      "transformation_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "statement": "SU(3)xSU(2)xU(1) cannot be realized as a subgroup of G2 (the triality-fixed subgroup of Spin(8)) under any embedding.",
+      "method": "Maximal torus theorem: for a closed subgroup H of a compact Lie group G, rank(H) <= rank(G). rank(SU(3)xSU(2)xU(1)) = 2+1+1 = 4. rank(G2) = 2. 4 > 2, so no embedding exists. Dimension-independent, fully general, formally decisive -- see compiler/backends/toe_closure_hypotheses.py::h4_g2_spin8_construction_check and FALS-H4-G2-TRIALITY-RANK-OBSTRUCTION for the full statement of standard Lie-theory facts used.",
+      "status": "FALSIFIED"
+    }
+  ]
+}

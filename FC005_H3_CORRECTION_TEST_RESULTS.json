@@ -1,0 +1,304 @@
+{
+  "n_small": 4000,
+  "n_large": 8000,
+  "seed": 20250819,
+  "eps_small_baseline": 45.20160608096975,
+  "eps_large_baseline": 40.940164290269614,
+  "baseline": {
+    "n_modes_small": 13,
+    "n_modes_large": 15,
+    "arpack_converged_small": false,
+    "arpack_converged_large": true,
+    "max_residual_small": 2.670997568641022e-19,
+    "max_residual_large": 3.5129943418110583e-19,
+    "clusters": [
+      {
+        "mode_range": [
+          1,
+          3
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.274868774637372,
+        "subspace_principal_cosine_min": 0.9877477452017875,
+        "classification": "eigenvalue-only"
+      },
+      {
+        "mode_range": [
+          3,
+          6
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.46329178593726916,
+        "subspace_principal_cosine_min": 0.001897318381927742,
+        "classification": "both"
+      },
+      {
+        "mode_range": [
+          6,
+          7
+        ],
+        "is_degenerate_cluster": false,
+        "eigenvalue_relative_change": 0.31673622553931546,
+        "subspace_principal_cosine_min": 0.013790170286359323,
+        "classification": "both"
+      },
+      {
+        "mode_range": [
+          7,
+          11
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.30534810542854524,
+        "subspace_principal_cosine_min": 0.09196141445536521,
+        "classification": "both"
+      },
+      {
+        "mode_range": [
+          11,
+          13
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.38171371870382637,
+        "subspace_principal_cosine_min": 0.06218678996057056,
+        "classification": "both"
+      }
+    ],
+    "verdict": {
+      "joint_converged": false,
+      "reason": "5 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9877)",
+      "first_unstable_cluster": {
+        "mode_range": [
+          1,
+          3
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.274868774637372,
+        "subspace_principal_cosine_min": 0.9877477452017875,
+        "classification": "eigenvalue-only"
+      },
+      "n_clusters": 5,
+      "n_stable_clusters": 0
+    }
+  },
+  "candidate_A_tighter_tolerance": {
+    "n_modes_small": 15,
+    "n_modes_large": 15,
+    "arpack_converged_small": true,
+    "arpack_converged_large": true,
+    "max_residual_small": 3.490547409092162e-23,
+    "max_residual_large": 3.6282660270673046e-23,
+    "clusters": [
+      {
+        "mode_range": [
+          1,
+          3
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.2748687746391458,
+        "subspace_principal_cosine_min": 0.9877477452016908,
+        "classification": "eigenvalue-only"
+      },
+      {
+        "mode_range": [
+          3,
+          6
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.46329178593789555,
+        "subspace_principal_cosine_min": 0.0018973183818954454,
+        "classification": "both"
+      },
+      {
+        "mode_range": [
+          6,
+          7
+        ],
+        "is_degenerate_cluster": false,
+        "eigenvalue_relative_change": 0.3167362255377876,
+        "subspace_principal_cosine_min": 0.01379017028665755,
+        "classification": "both"
+      },
+      {
+        "mode_range": [
+          7,
+          15
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.48708675640661925,
+        "subspace_principal_cosine_min": 0.013943159854301484,
+        "classification": "both"
+      }
+    ],
+    "verdict": {
+      "joint_converged": false,
+      "reason": "4 of 4 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9877)",
+      "first_unstable_cluster": {
+        "mode_range": [
+          1,
+          3
+        ],
+        "is_degenerate_cluster": true,
+        "eigenvalue_relative_change": 0.2748687746391458,
+        "subspace_principal_cosine_min": 0.9877477452016908,
+        "classification": "eigenvalue-only"
+      },
+      "n_clusters": 4,
+      "n_stable_clusters": 0
+    }
+  },
+  "candidate_B_bandwidth_sweep": {
+    "0.5": {
+      "n_modes_small": 0,
+      "n_modes_large": 0,
+      "arpack_converged_small": false,
+      "arpack_converged_large": false,
+      "max_residual_small": NaN,
+      "max_residual_large": NaN,
+      "clusters": [],
+      "verdict": {
+        "joint_converged": false,
+        "reason": "no eigenvector/subspace data available (e.g. ARPACK never resolved enough modes to compare)",
+        "first_unstable_cluster": null,
+        "n_clusters": 0,
+        "n_stable_clusters": 0
+      }
+    },
+    "1.0": {
+      "n_modes_small": 13,
+      "n_modes_large": 15,
+      "arpack_converged_small": false,
+      "arpack_converged_large": true,
+      "max_residual_small": 2.361533184981945e-19,
+      "max_residual_large": 3.585922344693267e-19,
+      "clusters": [
+        {
+          "mode_range": [
+            1,
+            3
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.2748687746367218,
+          "subspace_principal_cosine_min": 0.9877477452017555,
+          "classification": "eigenvalue-only"
+        },
+        {
+          "mode_range": [
+            3,
+            6
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.46329178593869175,
+          "subspace_principal_cosine_min": 0.0018973183820529596,
+          "classification": "both"
+        },
+        {
+          "mode_range": [
+            6,
+            7
+          ],
+          "is_degenerate_cluster": false,
+          "eigenvalue_relative_change": 0.31673622553973385,
+          "subspace_principal_cosine_min": 0.013790170286762445,
+          "classification": "both"
+        },
+        {
+          "mode_range": [
+            7,
+            11
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.30534810542756063,
+          "subspace_principal_cosine_min": 0.09196139066566776,
+          "classification": "both"
+        },
+        {
+          "mode_range": [
+            11,
+            13
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.3817137309773936,
+          "subspace_principal_cosine_min": 0.06213383931773965,
+          "classification": "both"
+        }
+      ],
+      "verdict": {
+        "joint_converged": false,
+        "reason": "5 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9877)",
+        "first_unstable_cluster": {
+          "mode_range": [
+            1,
+            3
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.2748687746367218,
+          "subspace_principal_cosine_min": 0.9877477452017555,
+          "classification": "eigenvalue-only"
+        },
+        "n_clusters": 5,
+        "n_stable_clusters": 0
+      }
+    },
+    "2.0": {
+      "n_modes_small": 15,
+      "n_modes_large": 15,
+      "arpack_converged_small": true,
+      "arpack_converged_large": true,
+      "max_residual_small": 3.3363804990857476e-19,
+      "max_residual_large": 2.379452815762683e-19,
+      "clusters": [
+        {
+          "mode_range": [
+            1,
+            4
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.03236705155346322,
+          "subspace_principal_cosine_min": 0.9977915509548697,
+          "classification": "neither"
+        },
+        {
+          "mode_range": [
+            4,
+            5
+          ],
+          "is_degenerate_cluster": false,
+          "eigenvalue_relative_change": 0.022180291702000275,
+          "subspace_principal_cosine_min": 0.9871215284814867,
+          "classification": "neither"
+        },
+        {
+          "mode_range": [
+            5,
+            15
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.15582071048973498,
+          "subspace_principal_cosine_min": 0.01950954677517467,
+          "classification": "both"
+        }
+      ],
+      "verdict": {
+        "joint_converged": false,
+        "reason": "1 of 3 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[5, 15], classification=both, subspace_cosine=0.0195)",
+        "first_unstable_cluster": {
+          "mode_range": [
+            5,
+            15
+          ],
+          "is_degenerate_cluster": true,
+          "eigenvalue_relative_change": 0.15582071048973498,
+          "subspace_principal_cosine_min": 0.01950954677517467,
+          "classification": "both"
+        },
+        "n_clusters": 3,
+        "n_stable_clusters": 2
+      }
+    }
+  },
+  "candidate_C_curvature_kernel_correction": {
+    "attempted_numerically": false,
+    "reason": "CIRCULAR AS STATED, ruled out analytically before any computation: the counterfactual manuscript's proposed K_corrected = K_Gaussian * (1 + c2*eps^2*R(x) + O(eps^4)) requires R(x), the target-space Ricci scalar curvature, as an INPUT to the kernel used to construct the very operator whose spectrum is meant to DERIVE R(x) in the first place (per the master equation's own a2 heat-kernel term, Sec. 5 of the counterfactual manuscript). No independent, non-circular source for R(x) exists anywhere in this pipeline prior to the continuum limit this correction is supposed to help achieve. This is exactly the target-conditioned-input failure mode Section XI/XVII of the campaign instruction requires flagging, not attempting to route around by inventing a value for R(x)."
+  },
+  "total_elapsed_seconds": 66.3131775856018
+}

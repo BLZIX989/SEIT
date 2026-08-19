@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.210300+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.556048+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -55,8 +55,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.212368+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.558605+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -96,8 +96,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.312221+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.655159+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -132,8 +132,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.314600+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.657696+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -168,8 +168,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.316710+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.659906+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -204,8 +204,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.318607+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.662026+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -240,8 +240,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.320589+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.664207+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -276,8 +276,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.322455+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.666269+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -312,8 +312,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.324371+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.668402+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -348,8 +348,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.326248+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.670396+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -384,8 +384,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.328250+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.672442+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -420,8 +420,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.330266+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.674736+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -456,8 +456,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.332272+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.676794+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -492,8 +492,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.334137+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.678881+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -528,8 +528,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.336080+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.681036+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -564,8 +564,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.337887+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.683149+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -600,8 +600,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.339816+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.685265+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -636,8 +636,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.341682+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.687254+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -672,8 +672,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.343735+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.689365+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -708,8 +708,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.345605+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.691374+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -744,8 +744,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.347595+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.693363+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -780,8 +780,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.349490+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.695384+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -816,8 +816,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.351343+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.698014+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -852,8 +852,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.353344+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.699973+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -888,8 +888,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.355287+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.702022+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -924,8 +924,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.357218+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.703970+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -960,8 +960,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.359120+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.706150+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -996,8 +996,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.361140+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.708085+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1032,8 +1032,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.363112+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.710161+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1068,8 +1068,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.365118+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.712178+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1104,8 +1104,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.367038+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.714119+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1140,8 +1140,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.387390+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:04.736631+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1180,8 +1180,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-FISHER-PSD",
-      "execution_timestamp": "2026-08-19T16:51:44.066313+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:06.108262+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1221,8 +1221,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:44.068362+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-19T20:47:06.110475+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1242,6 +1242,118 @@
     "derivation": "F is PSD (EQ-FC005-FISHER-PSD, executed); a Lorentzian metric requires a strictly negative eigenvalue; signature is basis-independent (spectral theorem); PSD and Lorentzian signatures are disjoint. Direct identification F = g_munu is therefore FALSIFIED.",
     "verification": {
       "conclusion": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general."
+    }
+  },
+  {
+    "id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+    "status": "FALSIFIED",
+    "dependencies": [],
+    "assumptions": [
+      "The counterfactual manuscript's specific restatement of the gauge-closure claim (COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx section 8)."
+    ],
+    "provenance": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h4_g2_spin8_construction_check",
+      "source_version": "",
+      "object_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:47:06.132437+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FALSIFIED",
+      "verification": {
+        "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+        "standard_lie_theory_facts_used": {
+          "G2": {
+            "dim": 14,
+            "rank": 2,
+            "note": "Aut(octonions), the smallest exceptional simple Lie group"
+          },
+          "Spin(8)": {
+            "dim": 28,
+            "rank": 4,
+            "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+          },
+          "SU(3)": {
+            "dim": 8,
+            "rank": 2
+          },
+          "SU(2)": {
+            "dim": 3,
+            "rank": 1
+          },
+          "U(1)": {
+            "dim": 1,
+            "rank": 1
+          }
+        },
+        "triality_fixed_subgroup_of_Spin(8)": "G2",
+        "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+        "rank_argument": {
+          "rank(G2)": 2,
+          "rank(SU(3)xSU(2)xU(1))": 4,
+          "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+          "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+        },
+        "distinct_from_repository_original_direct_product_claim": {
+          "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+          "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+        },
+        "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
+      }
+    },
+    "role": "comparison",
+    "lhs": "G2 (intersection via triality) Spin(8)",
+    "rhs": "SU(3) x SU(2) x U(1)",
+    "domain": "compact Lie group theory",
+    "derivation": "claimed in COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING.docx section 8; disproved by rank-counting -- see FALS-H4-G2-TRIALITY-RANK-OBSTRUCTION",
+    "verification": {
+      "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+      "standard_lie_theory_facts_used": {
+        "G2": {
+          "dim": 14,
+          "rank": 2,
+          "note": "Aut(octonions), the smallest exceptional simple Lie group"
+        },
+        "Spin(8)": {
+          "dim": 28,
+          "rank": 4,
+          "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+        },
+        "SU(3)": {
+          "dim": 8,
+          "rank": 2
+        },
+        "SU(2)": {
+          "dim": 3,
+          "rank": 1
+        },
+        "U(1)": {
+          "dim": 1,
+          "rank": 1
+        }
+      },
+      "triality_fixed_subgroup_of_Spin(8)": "G2",
+      "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+      "rank_argument": {
+        "rank(G2)": 2,
+        "rank(SU(3)xSU(2)xU(1))": 4,
+        "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+        "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+      },
+      "distinct_from_repository_original_direct_product_claim": {
+        "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+        "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+      },
+      "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
     }
   }
 ]
