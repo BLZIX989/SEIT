@@ -41,15 +41,24 @@ def test_s3_control_result_is_active_and_not_blocked_by_any_falsified_ancestor()
     assert s3.status in (Status.VERIFIED, Status.DERIVED, Status.CALCULATED)
 
 
-def test_desi_chain_stays_open_pending_data():
+def test_desi_chain_reflects_real_gate1_execution():
+    # A real, committed DESI DR1 pilot fixture is present (see
+    # FC005_DESI_SELECTION.md), so Gate 1 is executed live rather than
+    # staying PENDING DATA. As of this build it genuinely fails (real
+    # result, not tuned), so downstream nodes correctly stay OPEN
+    # (never entered) rather than propagating past a failed gate.
     result = build_and_run()
     regs = result["registries"]
-    for node_id in ("DESI-CATALOGUE", "GRAPH-G-DESI", "OPERATOR-L-DESI", "KAPPA-DESI",
-                     "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
-                     "MATHEMATICAL-CONVERGENCE-DESI", "CURVATURE-CLOSURE-DESI",
-                     "PHYSICAL-VALIDATION-DESI"):
+    assert regs.objects.get("DESI-CATALOGUE").status == Status.CALCULATED
+    assert regs.objects.get("GRAPH-G-DESI").status == Status.CALCULATED
+    assert regs.objects.get("OPERATOR-L-DESI").status == Status.CALCULATED
+    for node_id in ("KAPPA-DESI", "E-KAPPA-DESI", "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+                     "CURVATURE-CLOSURE-DESI", "PHYSICAL-VALIDATION-DESI"):
         node = regs.objects.get(node_id)
-        assert node.status == Status.OPEN, f"{node_id} should remain OPEN (pending data)"
+        assert node.status == Status.OPEN, f"{node_id} should remain OPEN (never entered)"
+    # MATHEMATICAL-CONVERGENCE-DESI itself is CALCULATED or FAIL depending
+    # on the live result -- never OPEN, since it was actually executed.
+    assert regs.objects.get("MATHEMATICAL-CONVERGENCE-DESI").status in (Status.CALCULATED, Status.FAIL)
 
 
 def test_three_stage_gates_are_independent_nodes_correctly_chained():

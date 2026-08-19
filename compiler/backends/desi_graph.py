@@ -33,6 +33,17 @@ class CosmologyModel:
     def E(self, z: float) -> float:
         return np.sqrt(self.Om * (1 + z) ** 3 + self.Ok * (1 + z) ** 2 + self.OL)
 
+    @classmethod
+    def from_yaml(cls, path) -> "CosmologyModel":
+        """Loads the recorded, provenance-tracked cosmology (spec section
+        12: never silently use arbitrary cosmological parameters). See
+        FC005_cosmology.yaml for the source citation."""
+        import yaml
+        with open(path) as f:
+            config = yaml.safe_load(f)
+        p = config["parameters"]
+        return cls(H0=p["H0_km_s_Mpc"], Om=p["Omega_m"], OL=p["Omega_Lambda"], Ok=p["Omega_k"])
+
 
 def comoving_distance(z: np.ndarray, cosmology: CosmologyModel) -> np.ndarray:
     """chi(z) = c * integral_0^z dz' / H(z'), H(z') = H0 * E(z')."""

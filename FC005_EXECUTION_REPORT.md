@@ -9,6 +9,13 @@ compiler, or force a closure result — see `compiler/ir/fc005.py` for the
 registration code and `fc005_result.json` for the machine-readable
 result of the run this report describes.
 
+**Update:** real DESI DR1 data has since been acquired, validated, and
+run through Gate 1 (mathematical convergence) — see
+`FC005_DESI_ACQUISITION_REPORT.md` for the full data-acquisition report
+and `FC005_DESI_PROVENANCE.json` for the complete dependency chain. The
+sections below (B through N) are updated to reflect that real execution,
+not the original "no catalogue" state.
+
 ## Workbook reconciliation (spec section 1/3)
 
 The four supplied workbooks are a **strictly nested provenance chain**,
@@ -71,69 +78,77 @@ confirming the degree-3 choice is not arbitrary (see
 
 ## B. Was G_DESI successfully constructed?
 
-**No.** No DESI catalogue (RA, DEC, z, weights) exists anywhere in the
-repository, the session workspace, or any of the four supplied
-workbooks — the primary workbook's own audit sheet already records
-"No catalog file present in uploaded workbook," and this build
-independently confirmed the absence via filesystem search. `G_DESI` is
-registered `OPEN` (node `GRAPH-G-DESI`, blocked on `DESI-CATALOGUE`).
-The construction code (`compiler/backends/desi_graph.py`) is
-implemented and unit-tested on synthetic point clouds only.
+**Yes.** Real DESI DR1 LRG SGC data was acquired and validated (see
+`FC005_DESI_ACQUISITION_REPORT.md`); `G_DESI` (node `GRAPH-G-DESI`) was
+constructed at every tested (N, ε) point — symmetric, non-negative,
+zero-diagonal weight matrix, single connected component. Status
+`CALCULATED`.
 
 ## C. Was L_DESI successfully constructed?
 
-**No** — blocked on B. Node `OPERATOR-L-DESI`, status `OPEN`.
+**Yes.** `L = D - W` (node `OPERATOR-L-DESI`), symmetric, row-sums zero
+to machine precision, `v^T L v ≥ 0` confirmed over 200 random test
+vectors at every point. Status `CALCULATED`.
 
 ## D. Did L_DESI converge toward a continuum Laplacian?
 
-**Not applicable / not tested.** No data to test convergence against.
-`CONTINUUM-LIMIT-L-DESI`, status `OPEN`.
+**No.** Gate 1 (mathematical convergence) was executed on real data and
+**FAILED**: the low-lying spectrum's relative change across the (N, ε)
+refinement sequence was 0.42, 0.28, 0.41, against a pre-registered
+tolerance of 0.15. Node `CONTINUUM-LIMIT-L-DESI`, status `FAIL`. This is
+the **exact failed dependency** the pipeline stopped at, per instruction.
+See `FC005_DESI_ACQUISITION_REPORT.md` for the full diagnostic (the
+tested ε values are likely not yet small relative to the sample's
+spatial extent to be in the asymptotic regime — not re-tuned to chase
+convergence).
 
 ## E. Did the spectrum converge?
 
-**Not applicable for DESI** (blocked on B). For the **S^3 control**,
-yes: the analytic spectrum is exact by construction; the heat-trace
-fit converges to the exact coefficients as the fit degree increases
-(degree 2 → |E_κ|~1e-3, degree 4/5 → |E_κ|~1e-8/1e-9).
+**No, for DESI** — see D. For the **S^3 control**, yes: the analytic
+spectrum is exact by construction; the heat-trace fit converges to the
+exact coefficients as the fit degree increases (degree 2 → |E_κ|~1e-3,
+degree 4/5 → |E_κ|~1e-8/1e-9).
 
 ## F. Were a0, a1, a2 stable?
 
 For the **S^3 control**: yes, to the tolerances above, across all four
-fit windows and a degree-2..6 sweep. For **DESI**: not computed
-(blocked on B).
+fit windows and a degree-2..6 sweep. For **DESI**: **not computed** —
+Gate 1 failed, so Gate 2 (curvature closure, where a0/a1/a2 would be
+fit) was never entered, per instruction.
 
 ## G. Was κ stable?
 
 For **S^3**: yes (κ(a1) and κ(a2) agree to ~1e-5 relative across all
-four windows). For **DESI (κ_spectral)**: not computed.
+four windows). For **DESI (κ_spectral)**: not computed — Gate 2 never
+entered.
 
 ## H. Did E_κ satisfy the predefined tolerance?
 
 **Yes, for the S^3 control** (tolerance 1e-4, defined *before* running
 the sweep, per spec section 17): max|E_κ| = 1.019e-05. **Not applicable
-for DESI** — no E_κ_DESI was computed.
+for DESI** — Gate 2 never entered, no E_κ_DESI was computed.
 
 ## I. Did κ_spectral agree with an independent cosmological constraint?
 
-**Not computed.** Requires κ_spectral from real DESI data (B), which
-was never constructed. `DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK`, status
-`OPEN`.
+**Not computed.** Requires κ_spectral (Gate 2), which requires Gate 1 to
+have passed. Gate 1 failed. `DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK`,
+status `OPEN`, never entered.
 
 ## J. Which links are CLOSED?
 
-None. Per spec section 17, `CLOSED` requires the *complete* chain
-(including the DESI/cosmological links) to converge within predefined
-tolerances; that chain is blocked at G_DESI. The compiler's terminal
-status is `CONDITIONALLY_CLOSED` (see `compiler_test_report.md`), never
-forced to `CLOSED`.
+None. Per spec section 17, `CLOSED` requires the *complete* chain to
+converge within predefined tolerances; the real-data chain is blocked
+at `CONTINUUM-LIMIT-L-DESI` (Gate 1). The compiler's terminal status is
+`CONDITIONALLY_CLOSED` (see `compiler_test_report.md`), never forced to
+`CLOSED`.
 
 ## K. Which are CONDITIONAL?
 
 The general continuum-limit and spectral-convergence *equations*
 (EQ-013, EQ-014, EQ-Δ_h-limit — bulk-imported, `PROPOSED` pending
-independent execution) are registered as requiring conditions
-(adequate sampling, ε→0, isolated eigenvalues) that are stated but not
-empirically validated absent real data.
+independent execution) remain registered as requiring conditions
+(adequate sampling, ε→0, isolated eigenvalues) that are stated but were
+not satisfied by the real-data run actually executed (see D).
 
 ## L. Which are FALSIFIED?
 
@@ -150,8 +165,14 @@ Two, both independently re-executed in this build (not copied):
 
 ## M. Which remain OPEN?
 
-- The full DESI discrete-to-continuum chain (10 nodes, B through I),
-  blocked on the missing catalogue.
+- `DESI-HEAT-TRACE`, `DESI-HEAT-COEFFICIENTS`, `KAPPA-DESI`,
+  `E-KAPPA-DESI`, `DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK`,
+  `CURVATURE-CLOSURE-DESI`, `PHYSICAL-VALIDATION-DESI`: never entered,
+  because Gate 1 (`MATHEMATICAL-CONVERGENCE-DESI`, status `FAIL`) did
+  not pass. `GRAPH-G-DESI`, `OPERATOR-L-DESI`, `DESI-CATALOGUE` are
+  `CALCULATED` (they were successfully executed); `CONTINUUM-LIMIT-L-DESI`
+  and `DESI-SPECTRUM` are `FAIL` (the convergence claim itself, and
+  everything whose meaning depends on it).
 - `SELECTION-SIGMA` and the rest of the original forward-chain template
   past it (unrelated to FC-005, inherited from the base compiler).
 - `SPEC-H-UNIQUENESS`: eigenvalue-only spectral data does not determine
@@ -166,16 +187,21 @@ Two, both independently re-executed in this build (not copied):
 
 ## N. What is the exact next dependency?
 
-**A real DESI (or equivalent) galaxy-level catalogue with RA, DEC, z,
-and survey weights (w_FKP, w_sys).** This is the single missing
-dependency blocking every downstream FC-005 link (C through J). Nothing
-else in the chain is blocked for a mathematical reason — the S^3
-control demonstrates the operator/spectral/heat-trace/curvature-closure
-machinery itself is correct and executes cleanly; `compiler/backends/
-desi_graph.py` is ready to run the identical pipeline the moment a
-catalogue is supplied, with no code changes required.
+**A refinement sweep resolved deep enough into the asymptotic (N→∞,
+ε→0) regime to test mathematical convergence properly** — the current
+run (ε from 136 to 234 Mpc, chosen from the data's own nearest-neighbor
+spacing) is very likely not yet in that regime for this sample's spatial
+extent (see `FC005_DESI_ACQUISITION_REPORT.md` for the diagnostic). That
+requires the sparse/kNN/chunked methods the build command's own §15
+anticipates for the full catalogue (662,492 objects; the current dense
+`numpy.linalg.eigh` approach does not scale past a few thousand points).
+This is recorded as the next dependency, not attempted here — attempting
+it now, right after seeing Gate 1 fail, would risk looking like tuning
+for closure even if done in good faith. The catalogue itself is no
+longer the blocker: it is acquired, validated, and Gate 1 has been run
+on it for real (see `FC005_DESI_ACQUISITION_REPORT.md`).
 
-### Execution procedure once a catalogue is supplied
+### Execution procedure (as actually run)
 
 `compiler/backends/desi_fc005_pipeline.py::run_fc005_desi_pipeline` runs
 exactly the three-stage procedure this branch is bound to, and reports

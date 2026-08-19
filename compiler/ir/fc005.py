@@ -20,6 +20,7 @@ from pathlib import Path
 
 import openpyxl
 
+from compiler.backends.desi_fc005_pipeline import run_gate1_on_pilot_fixture
 from compiler.backends.heat_kernel_sphere import EXACT_A0, EXACT_A1, EXACT_A2, run_s3_control
 from compiler.core.ir import Equation, Object, Transformation
 from compiler.core.status import Status
@@ -195,7 +196,8 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                                        verification={"passed": s3.passed})
     registries.transformations.add_transformation(t_s3)
 
-    # ---- 3. DESI chain: honestly OPEN / PENDING DATA ----
+    # ---- 3. DESI chain: real DESI DR1 data has been acquired and validated
+    # (FC005_DESI_CATALOG_MANIFEST.json, FC005_DESI_VALIDATION_REPORT.md).
     # role="observational_output": per spec section 9 of the FC-005 build command,
     # this branch exists specifically to test whether the discrete-observation ->
     # continuum-operator bridge converges WHEN APPLIED TO real survey data -- the
@@ -204,49 +206,106 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
     # (that is what the firewall's "upstream_construction" default guards
     # against). Nothing in this branch feeds back into SELECTION-SIGMA, GAUGE-NODE,
     # or any other forward_chain_template node -- verified by
-    # test_fc005_leakage.py::test_desi_branch_never_feeds_forward_chain_template.
+    # test_fc005_integration.py::test_desi_branch_never_feeds_forward_chain_template.
+    #
+    # Gate 1 (mathematical convergence) is executed here, live, on the small
+    # committed REAL pilot fixture (data/desi/dr1/fc005/validated/pilot_fixture/),
+    # so this is reproducible from a fresh checkout without a 64 MB download.
+    # Per instruction: proceed automatically through Gate 1; enter Gate 2 only
+    # if Gate 1 passes; never adjust parameters after seeing the result to
+    # force a different outcome.
+    gate1_run = run_gate1_on_pilot_fixture(repo_root)
+    catalogue_acquired = gate1_run is not None
+
     desi_catalogue = Object(
-        id="DESI-CATALOGUE", type="pending_data_construction", status=Status.OPEN,
+        id="DESI-CATALOGUE", type="pending_data_construction",
+        status=Status.CALCULATED if catalogue_acquired else Status.OPEN,
         role="observational_output",
-        carrier="required: RA, DEC, z, and DESI weights (w_FKP, w_sys, ...) for a galaxy-level "
-                "point catalogue. ABSENT from the repository, the current workspace, and all "
-                "four supplied FC-005 workbooks -- the primary workbook's own "
-                "'FC-005 Full Execution Index' sheet records this: 'No catalog file present "
-                "in uploaded workbook.' This build independently confirmed the absence "
-                "(filesystem search of the repository and /root/.claude/uploads).",
-        assumptions=["STOP condition per spec section 25 of the FC-005 build command: required "
-                     "DESI data is absent. Not fabricated. Code path is implemented and unit-"
-                     "tested on synthetic data in compiler/backends/desi_graph.py."],
+        carrier=(
+            f"DESI DR1 LRG SGC clustering catalogue, v1.5, real data acquired from the "
+            f"official public release and checksum-verified. Pilot fixture: "
+            f"{gate1_run['n_fixture_objects']} objects (0.4<=z<0.6 subsample), used here for a "
+            f"reproducible-from-checkout live Gate 1 run. Full catalogue (662,492 objects) "
+            f"downloaded separately to data/desi/dr1/fc005/raw/ (gitignored, re-fetchable via "
+            f"download_desi_fc005.py)."
+            if catalogue_acquired else
+            "required: RA, DEC, z, and DESI weights for a galaxy-level point catalogue. "
+            "ABSENT from the repository/workspace."
+        ),
+        assumptions=(
+            ["Checksum-verified against the official DESI DR1 sha256 manifest "
+             "(FC005_DESI_CATALOG_MANIFEST.json). See FC005_DESI_VALIDATION_REPORT.md for the "
+             "full 12-point validation checklist (all PASSED)."]
+            if catalogue_acquired else
+            ["STOP condition per spec section 25 of the FC-005 build command: required DESI "
+             "data is absent. Not fabricated."]
+        ),
     )
     desi_catalogue.provenance = make_provenance(
-        source="repository + workspace filesystem audit", object_id=desi_catalogue.id,
-        status=Status.OPEN, verification={"catalogue_found": False},
+        source="https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+        object_id=desi_catalogue.id, status=desi_catalogue.status,
+        verification={"catalogue_found": catalogue_acquired,
+                      "checksum_sha256": "ae478557d9ef70257cc689197052515f5ebbc0b23359c81159a8ad3289332e69"
+                      if catalogue_acquired else None},
     )
     registries.objects.add_object(desi_catalogue)
 
+    if catalogue_acquired:
+        mc = gate1_run["result"].mathematical_convergence
+        # GRAPH-G-DESI and OPERATOR-L-DESI make no convergence claim of
+        # their own -- each individual (N, eps) construction genuinely
+        # succeeded (graph built, Laplacian symmetric, eigensolver residual
+        # tiny at every point tested), so CALCULATED is correct for them
+        # regardless of Gate 1's outcome. CONTINUUM-LIMIT-L-DESI *is* the
+        # convergence claim, and DESI-SPECTRUM's meaning ("Spec of the
+        # continuum operator") is only as trustworthy as that claim -- if
+        # it FAILs, DESI-SPECTRUM must FAIL too, not stay CALCULATED
+        # (caught by leakage_control_audit: a FAIL ancestor must never sit
+        # beneath an active/CALCULATED node).
+        graph_status = Status.CALCULATED
+        operator_status = Status.CALCULATED
+        continuum_limit_status = Status.CALCULATED if mc.converged else Status.FAIL
+        spectrum_status = continuum_limit_status
+        downstream_status = Status.OPEN  # never entered -- Gate 1 did not pass
+        desi_source = f"compiler/backends/desi_fc005_pipeline.py (executed on {gate1_run['fixture_path']})"
+        desi_verification = {"gate1_converged": mc.converged, "relative_changes": mc.relative_changes,
+                             "failed_dependency": mc.failed_dependency}
+    else:
+        graph_status = operator_status = continuum_limit_status = spectrum_status = Status.OPEN
+        downstream_status = Status.OPEN
+        desi_source = "compiler/backends/desi_graph.py (not executed on real data)"
+        desi_verification = {"blocked_on": "DESI-CATALOGUE"}
+
     desi_chain_specs = [
-        ("GRAPH-G-DESI", "mathematical_object", ["DESI-CATALOGUE"],
+        ("GRAPH-G-DESI", "mathematical_object", ["DESI-CATALOGUE"], graph_status,
          "G_DESI = (V,E,W): weighted observational graph from the DESI catalogue"),
-        ("OPERATOR-L-DESI", "graph_laplacian_operator", ["GRAPH-G-DESI"], "L_DESI = D - W"),
-        ("CONTINUUM-LIMIT-L-DESI", "mathematical_object", ["OPERATOR-L-DESI"],
+        ("OPERATOR-L-DESI", "graph_laplacian_operator", ["GRAPH-G-DESI"], operator_status, "L_DESI = D - W"),
+        ("CONTINUUM-LIMIT-L-DESI", "mathematical_object", ["OPERATOR-L-DESI"], continuum_limit_status,
          "L_tilde_(N,eps) = -L_N/(C_K N eps^(5/2)), d=3"),
-        ("DESI-SPECTRUM", "spectral_data", ["CONTINUUM-LIMIT-L-DESI"], "Spec(Delta_h) via L_tilde eigenproblem"),
-        ("DESI-HEAT-TRACE", "heat_trace_function", ["DESI-SPECTRUM"], "K(t) from the DESI-derived spectrum"),
-        ("DESI-HEAT-COEFFICIENTS", "heat_kernel_coefficients", ["DESI-HEAT-TRACE"], "(a0,a1,a2) fit"),
-        ("KAPPA-DESI", "curvature_closure", ["DESI-HEAT-COEFFICIENTS"], "kappa_spectral from DESI data"),
-        ("E-KAPPA-DESI", "curvature_closure", ["KAPPA-DESI"], "E_kappa closure residual for DESI"),
-        ("DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK", "curvature_closure", ["KAPPA-DESI"],
+        ("DESI-SPECTRUM", "spectral_data", ["CONTINUUM-LIMIT-L-DESI"], spectrum_status,
+         "Spec(-Delta_h) via -L_tilde eigenproblem (sign-corrected, see desi_fc005_pipeline.py)"),
+        ("DESI-HEAT-TRACE", "heat_trace_function", ["DESI-SPECTRUM"], downstream_status,
+         "K(t) from the DESI-derived spectrum"),
+        ("DESI-HEAT-COEFFICIENTS", "heat_kernel_coefficients", ["DESI-HEAT-TRACE"], downstream_status,
+         "(a0,a1,a2) fit"),
+        ("KAPPA-DESI", "curvature_closure", ["DESI-HEAT-COEFFICIENTS"], downstream_status,
+         "kappa_spectral from DESI data"),
+        ("E-KAPPA-DESI", "curvature_closure", ["KAPPA-DESI"], downstream_status,
+         "E_kappa closure residual for DESI"),
+        ("DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK", "curvature_closure", ["KAPPA-DESI"], downstream_status,
          "Delta_kappa = kappa_spectral - kappa_cosmological (independent cross-check)"),
     ]
-    for node_id, type_, deps, desc in desi_chain_specs:
-        obj = Object(id=node_id, type=type_, status=Status.OPEN, role="observational_output",
-                     dependencies=deps, carrier=desc,
-                     assumptions=["PENDING DATA: blocked on DESI-CATALOGUE (spec section 25 STOP "
-                                  "condition). Pipeline code exists (compiler/backends/desi_graph.py) "
-                                  "and is unit-tested on synthetic data only."])
-        obj.provenance = make_provenance(source="compiler/backends/desi_graph.py (not executed on real data)",
-                                          object_id=obj.id, status=Status.OPEN,
-                                          verification={"blocked_on": "DESI-CATALOGUE"})
+    for node_id, type_, deps, status, desc in desi_chain_specs:
+        assumptions = (["PENDING DATA: blocked on DESI-CATALOGUE (spec section 25 STOP condition)."]
+                       if not catalogue_acquired else
+                       ["Gate 1 (mathematical convergence) FAILED on the real pilot fixture -- this "
+                        "node was never entered/executed, per instruction: only enter Gate 2 if "
+                        "Gate 1 passes."] if status == Status.OPEN and node_id not in
+                       ("GRAPH-G-DESI", "OPERATOR-L-DESI", "DESI-SPECTRUM") else [])
+        obj = Object(id=node_id, type=type_, status=status, role="observational_output",
+                     dependencies=deps, carrier=desc, assumptions=assumptions)
+        obj.provenance = make_provenance(source=desi_source, object_id=obj.id, status=status,
+                                          verification=desi_verification)
         registries.objects.add_object(obj)
 
     # ---- 3b. Explicit three-stage gates (never merged into one bit):
@@ -282,16 +341,42 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
          "catalogue/run)? See compiler/backends/desi_fc005_pipeline.py::run_physical_validation, "
          "which raises rather than runs if no independent source is named."),
     ]
+    if catalogue_acquired:
+        mc = gate1_run["result"].mathematical_convergence
+        gate_status = {
+            "MATHEMATICAL-CONVERGENCE-DESI": Status.CALCULATED if mc.converged else Status.FAIL,
+            "CURVATURE-CLOSURE-DESI": Status.OPEN,   # never entered: Gate 1 did not pass
+            "PHYSICAL-VALIDATION-DESI": Status.OPEN,  # never entered: Gate 2 was never reached
+        }
+        gate_verification = {"gate1_converged": mc.converged,
+                             "relative_changes": mc.relative_changes,
+                             "N_values": gate1_run["N_values"], "tolerance": mc.tolerance}
+    else:
+        gate_status = {k: Status.OPEN for k in
+                       ("MATHEMATICAL-CONVERGENCE-DESI", "CURVATURE-CLOSURE-DESI", "PHYSICAL-VALIDATION-DESI")}
+        gate_verification = {"blocked_on": "DESI-CATALOGUE"}
+
     for node_id, deps, desc in stage_gates:
-        gate = Object(id=node_id, type="stage_gate", status=Status.OPEN,
+        status = gate_status[node_id]
+        if not catalogue_acquired:
+            assumptions = ["PENDING DATA: blocked on DESI-CATALOGUE. This gate's status is set "
+                           "independently by its own pipeline stage function when a real "
+                           "catalogue is executed -- never inferred from another gate's result "
+                           "and never force-closed."]
+        elif node_id == "MATHEMATICAL-CONVERGENCE-DESI":
+            assumptions = [f"Executed live on {gate1_run['fixture_path']} "
+                           f"({gate1_run['n_fixture_objects']} real objects). "
+                           f"Result: {gate1_run['result'].summary}"]
+        else:
+            assumptions = ["Never entered: Gate 1 (mathematical convergence) did not pass on the "
+                           "real pilot fixture. Per instruction, later gates are never evaluated "
+                           "when an earlier gate fails."]
+        gate = Object(id=node_id, type="stage_gate", status=status,
                       role="observational_output", dependencies=deps, carrier=desc,
-                      assumptions=["PENDING DATA: blocked on DESI-CATALOGUE. This gate's status "
-                                   "is set independently by its own pipeline stage function when "
-                                   "a real catalogue is executed -- never inferred from another "
-                                   "gate's result and never force-closed."])
+                      assumptions=assumptions)
         gate.provenance = make_provenance(source="compiler/backends/desi_fc005_pipeline.py",
-                                           object_id=gate.id, status=Status.OPEN,
-                                           verification={"blocked_on": "DESI-CATALOGUE"})
+                                           object_id=gate.id, status=status,
+                                           verification=gate_verification)
         registries.objects.add_object(gate)
 
     # ---- 4. Semiclassical quantum/gravity boundary (spec section 18): OPEN, not full QG ----
@@ -412,6 +497,19 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                   "spectra_match_max_residual": eigen_cx.spectra_match_max_residual},
     ))
 
+    if catalogue_acquired:
+        mc = gate1_run["result"].mathematical_convergence
+        calculations.append({
+            "id": "CALC-FC005-DESI-GATE1", "kind": "desi_mathematical_convergence_gate",
+            "inputs": {"fixture": gate1_run["fixture_path"], "N_values": gate1_run["N_values"],
+                      "epsilon_values": gate1_run["epsilon_values"]},
+            "results": {"relative_changes": mc.relative_changes,
+                       "points": [p.__dict__ for p in mc.points]},
+            "verification": {"converged": mc.converged, "tolerance": mc.tolerance,
+                             "failed_dependency": mc.failed_dependency},
+            "status": Status.CALCULATED.value if mc.converged else Status.FAIL.value,
+        })
+
     return {
         "calculations": calculations,
         "falsifications": falsifications,
@@ -419,4 +517,5 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
         "fisher_demo": fisher,
         "eigen_counterexample": eigen_cx,
         "n_reference_equations": len(ref_rows),
+        "gate1_run": gate1_run,
     }

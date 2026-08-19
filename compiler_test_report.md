@@ -76,13 +76,21 @@ hidden.
 ## FC-005 physics integration
 
 The four supplied FC-005 physics derivation workbooks are reconciled and
-integrated into this same MDCL — see `FC005_EXECUTION_REPORT.md` for the
-full result (S^3 heat-kernel control regression test **passed**,
-max|E_κ|=1.019e-05; DESI discrete-to-continuum chain **OPEN / PENDING
-DATA**, no catalogue available; Fisher-Rao→Lorentzian identification
-**FALSIFIED**, executed via genuine sympy symbolic integration;
-eigenvalue-uniqueness **OPEN**, executed unitary-conjugation
-counterexample, 25/25 trials confirmed).
+integrated into this same MDCL — see `FC005_EXECUTION_REPORT.md` and
+`FC005_DESI_ACQUISITION_REPORT.md` for the full results:
+
+- S^3 heat-kernel control regression test: **passed**, max|E_κ|=1.019e-05.
+- Real DESI DR1 LRG SGC data: **acquired, checksum-verified, and
+  validated** (12/12 checks). `G_DESI`/`L_DESI` **successfully
+  constructed** on real data. Gate 1 (mathematical convergence):
+  **executed on real data, FAILED** (relative spectral change did not
+  fall below the pre-registered tolerance across the refinement
+  sequence); exact failed node `CONTINUUM-LIMIT-L-DESI`. Gates 2 and 3
+  correctly never entered.
+- Fisher-Rao→Lorentzian identification: **FALSIFIED**, executed via
+  genuine sympy symbolic integration.
+- Eigenvalue-uniqueness: **OPEN**, executed unitary-conjugation
+  counterexample, 25/25 trials confirmed.
 
 ## Self-audit (spec section 36 + FC-005 build command section 4)
 
@@ -104,13 +112,18 @@ All 9 audits **passed** on the current build:
 
 58 Objects, 8 Transformations, 34 Equations, 25 Types.
 
-Status distribution: 41 `OPEN` (includes the three explicit `stage_gate`
-nodes -- `MATHEMATICAL-CONVERGENCE-DESI`, `CURVATURE-CLOSURE-DESI`,
-`PHYSICAL-VALIDATION-DESI` -- reported independently rather than as one
-closed/not-closed bit), 35 `PROPOSED` (mostly the 29 bulk-imported
-FC-005 reference equations plus historical claims, never trusted above
-PROPOSED without independent execution), 12 `VERIFIED`, 7 `CALCULATED`,
-3 `CONDITIONAL`, 1 `DERIVED`, 1 `FALSIFIED`
+Status distribution: 35 `OPEN` (includes `CURVATURE-CLOSURE-DESI` and
+`PHYSICAL-VALIDATION-DESI` — never entered since Gate 1 failed — plus
+everything downstream of `CONTINUUM-LIMIT-L-DESI`), 35 `PROPOSED`
+(mostly the 29 bulk-imported FC-005 reference equations plus historical
+claims, never trusted above PROPOSED without independent execution),
+12 `VERIFIED`, 10 `CALCULATED` (includes `DESI-CATALOGUE`,
+`GRAPH-G-DESI`, `OPERATOR-L-DESI` — real data, successfully executed),
+3 `CONDITIONAL`, 3 `FAIL` (`CONTINUUM-LIMIT-L-DESI`, `DESI-SPECTRUM`,
+`MATHEMATICAL-CONVERGENCE-DESI` — Gate 1 genuinely failed on real DESI
+data; `leakage_control_audit` confirms the FAIL status correctly stops
+at these nodes and never propagates into an active downstream
+calculation), 1 `DERIVED`, 1 `FALSIFIED`
 (`EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION`).
 
 ## Terminal status
@@ -120,9 +133,10 @@ executable tests and the S^3 control regression test are fully verified,
 but the build is honest that it is not `CLOSED`: `SELECTION-SIGMA` (spec
 section 10) remains an unresolved compiler component, the historical
 T2/NCG and FC-005 reference-equation claims remain `PROPOSED`/`OPEN` with
-no supporting executable artifact located in the repository, the full
-DESI discrete-to-continuum chain is blocked on missing catalogue data,
-and the gauge/matter/thermodynamic/cosmological engines have not been
-activated. This status is computed from the actual audit and registry
-state in `compiler/run_compiler.py::build_and_run` — it is never
-asserted.
+no supporting executable artifact located in the repository, Gate 1 of
+the real-data DESI discrete-to-continuum chain genuinely failed
+(`CONTINUUM-LIMIT-L-DESI`, status `FAIL` — see
+`FC005_DESI_ACQUISITION_REPORT.md`), and the gauge/matter/thermodynamic/
+cosmological engines have not been activated. This status is computed
+from the actual audit and registry state in
+`compiler/run_compiler.py::build_and_run` — it is never asserted.

@@ -56,7 +56,7 @@ class RefinementPoint:
     N: int
     epsilon: float
     low_eigenvalues: list[float]
-    solver_residual: float  # max ||L_tilde v_k - lambda_k v_k||
+    solver_residual: float  # max ||(-L_tilde) v_k - lambda_k v_k||; see sign-convention note below
 
 
 @dataclass
@@ -179,7 +179,20 @@ def run_mathematical_convergence(
                 points=points_out, relative_changes=[], tolerance=tolerance,
             )
         L_tilde = normalize_continuum_limit(L, N=N, epsilon=eps)
-        low_vals, _, residual = _low_eigen(L_tilde, n_modes)
+        # Sign convention (a real fix, not a tuning choice -- see
+        # FC005_DESI_GATE1_REPORT.md "sign convention correction" for the
+        # full derivation): the workbook's own DC-009/EQ-014 defines
+        # L_tilde with a leading minus sign and states L_tilde -> Delta_h
+        # (DC-010), the analyst's Laplacian, which is NEGATIVE
+        # semidefinite. The eigenproblem actually used for the heat trace
+        # (EQ-006: -Delta_h phi_n = lambda_n phi_n, lambda_n >= 0, needed
+        # for K(t)=sum exp(-t*lambda_n) to converge) is stated for
+        # -Delta_h, not Delta_h. So the physically meaningful spectrum is
+        # Spec(-L_tilde), not Spec(L_tilde) -- diagonalizing L_tilde
+        # directly (as an earlier version of this function did) silently
+        # fed a negative-semidefinite operator's spectrum into a
+        # convergence/heat-trace pipeline that assumes lambda_n >= 0.
+        low_vals, _, residual = _low_eigen(-L_tilde, n_modes)
         if residual > solver_tolerance:
             return MathematicalConvergenceResult(
                 converged=False, failed_dependency="DESI-SPECTRUM",
@@ -433,3 +446,53 @@ def run_fc005_desi_pipeline(
                 f"physical_validation={'AGREES' if validation.agrees else 'DISAGREES'} "
                 f"(delta_kappa={validation.delta_kappa:.4g} vs tolerance {physical_tolerance}).",
     )
+
+
+PILOT_FIXTURE_RELATIVE_PATH = (
+    "data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits"
+)
+
+
+def run_gate1_on_pilot_fixture(repo_root) -> dict | None:
+    """Runs Gate 1 (mathematical convergence) on the small, committed,
+    REAL DESI DR1 LRG SGC pilot fixture (3000 objects, 0.4<=z<0.6) so the
+    result is reproducible from a fresh checkout without requiring the
+    64 MB raw catalogue download. Returns None if the fixture is not
+    present (should not happen in a normal checkout; handled gracefully
+    rather than raising). This is real DESI data -- never synthetic.
+    """
+    from pathlib import Path
+
+    import numpy as np
+    from astropy.table import Table
+
+    fixture_path = Path(repo_root) / PILOT_FIXTURE_RELATIVE_PATH
+    if not fixture_path.exists():
+        return None
+
+    t = Table.read(fixture_path)
+    ra, dec, z, weight = (np.asarray(t["RA"]), np.asarray(t["DEC"]),
+                          np.asarray(t["Z"]), np.asarray(t["WEIGHT"]))
+    n_available = len(ra)
+
+    cosmo = CosmologyModel.from_yaml(Path(repo_root) / "FC005_cosmology.yaml")
+
+    # Kept modest (dense eigh is O(N^3)) since this runs live on every
+    # compiler build/test invocation; run_desi_gate1.py runs a larger,
+    # slower sweep (N up to 4000) on demand, separately, on the full
+    # downloaded catalogue.
+    n_values = [n for n in (300, 600, 1000, 1500) if n <= n_available]
+    ref_n, ref_epsilon = 3000, 150.337  # measured in run_desi_pilot.py (3 x median NN at N=3000)
+    epsilon_values = [ref_epsilon * (ref_n / n) ** (1.0 / 3.0) for n in n_values]
+
+    result = run_fc005_desi_pipeline(
+        ra, dec, z, weight, cosmo, N_values=n_values, epsilon_values=epsilon_values,
+        kappa_cosmological=None, convergence_tolerance=0.15,
+    )
+    return {
+        "fixture_path": PILOT_FIXTURE_RELATIVE_PATH, "n_fixture_objects": n_available,
+        "N_values": n_values, "epsilon_values": epsilon_values,
+        "epsilon_rule": "3 x median NN separation at N=3000 (measured in run_desi_pilot.py), "
+                        "scaled by (3000/N)^(1/3)",
+        "result": result,
+    }

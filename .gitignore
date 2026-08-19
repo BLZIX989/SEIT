@@ -1,3 +1,18 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# DESI raw survey data: large FITS files fetched from the official public
+# DR1 release are never committed (spec: "repository must remain
+# reproducible without embedding tens or hundreds of gigabytes of
+# external survey data"). Only small derived/validated fixtures, metadata,
+# manifests, and checksums under data/desi/dr1/fc005/{validated,metadata}/
+# are tracked -- see download_desi_fc005.py, which re-fetches raw/ from
+# the manifest URLs on demand. The one intentionally-committed pilot
+# fixture lives under data/desi/dr1/fc005/validated/pilot_fixture/ and is
+# explicitly un-ignored below.
+data/desi/dr1/fc005/raw/*
+!data/desi/dr1/fc005/raw/.gitkeep
+data/desi/dr1/fc005/derived/*
+!data/desi/dr1/fc005/derived/.gitkeep
+!data/desi/dr1/fc005/validated/pilot_fixture/

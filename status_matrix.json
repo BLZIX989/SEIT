@@ -307,13 +307,13 @@
   {
     "id": "DESI-CATALOGUE",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "CALCULATED",
     "dependencies": []
   },
   {
     "id": "GRAPH-G-DESI",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "CALCULATED",
     "dependencies": [
       "DESI-CATALOGUE"
     ]
@@ -321,7 +321,7 @@
   {
     "id": "OPERATOR-L-DESI",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "CALCULATED",
     "dependencies": [
       "GRAPH-G-DESI"
     ]
@@ -329,7 +329,7 @@
   {
     "id": "CONTINUUM-LIMIT-L-DESI",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "FAIL",
     "dependencies": [
       "OPERATOR-L-DESI"
     ]
@@ -337,7 +337,7 @@
   {
     "id": "DESI-SPECTRUM",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "FAIL",
     "dependencies": [
       "CONTINUUM-LIMIT-L-DESI"
     ]
@@ -385,7 +385,7 @@
   {
     "id": "MATHEMATICAL-CONVERGENCE-DESI",
     "kind": "Object",
-    "status": "OPEN",
+    "status": "FAIL",
     "dependencies": [
       "GRAPH-G-DESI",
       "OPERATOR-L-DESI",

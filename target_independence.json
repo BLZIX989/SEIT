@@ -26,7 +26,7 @@
       "term": "DESI",
       "role": "observational_output",
       "allowed": true,
-      "context": "pending_data_construction\nrequired: RA, DEC, z, and DESI weights (w_FKP, w_sys, ...) for a galaxy-level point catalogue. ABSENT from the repository, the current workspace, and all four supplied FC-005"
+      "context": "pending_data_construction\nDESI DR1 LRG SGC clustering catalogue, v1.5, real data acquired from the official public release and checksum-verified. Pilot fixture: 3000 objects (0.4<=z<0.6 subsample), us"
     },
     {
       "node_id": "GRAPH-G-DESI",
@@ -41,6 +41,13 @@
       "role": "observational_output",
       "allowed": true,
       "context": "graph_laplacian_operator\nL_DESI = D - W"
+    },
+    {
+      "node_id": "DESI-SPECTRUM",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "spectral_data\nSpec(-Delta_h) via -L_tilde eigenproblem (sign-corrected, see desi_fc005_pipeline.py)"
     },
     {
       "node_id": "DESI-HEAT-TRACE",

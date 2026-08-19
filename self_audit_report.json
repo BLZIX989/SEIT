@@ -35,7 +35,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_findings": 12,
+      "n_findings": 13,
       "n_flagged": 0
     }
   },
@@ -50,7 +50,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_active_nodes_checked": 20
+      "n_active_nodes_checked": 23
     }
   },
   {

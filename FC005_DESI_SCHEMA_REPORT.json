@@ -1,0 +1,38 @@
+{
+  "file": "LRG_SGC_clustering.dat.fits",
+  "n_rows": 662492,
+  "columns": [
+    "TARGETID",
+    "Z",
+    "NTILE",
+    "RA",
+    "DEC",
+    "PHOTSYS",
+    "FRAC_TLOBS_TILES",
+    "WEIGHT_ZFAIL",
+    "WEIGHT_SYS",
+    "WEIGHT",
+    "WEIGHT_COMP",
+    "NX",
+    "WEIGHT_FKP"
+  ],
+  "z_range_observed": [
+    0.4000038261085298,
+    1.0999879460308266
+  ],
+  "column_formats": {
+    "TARGETID": "K",
+    "Z": "D",
+    "NTILE": "K",
+    "RA": "D",
+    "DEC": "D",
+    "PHOTSYS": "1A",
+    "FRAC_TLOBS_TILES": "D",
+    "WEIGHT_ZFAIL": "D",
+    "WEIGHT_SYS": "D",
+    "WEIGHT": "D",
+    "WEIGHT_COMP": "D",
+    "NX": "D",
+    "WEIGHT_FKP": "D"
+  }
+}
