@@ -104,8 +104,24 @@ def graph_laplacian_from_weights(W: np.ndarray) -> tuple[np.ndarray, np.ndarray]
 
 
 def normalize_continuum_limit(L_N: np.ndarray, N: int, epsilon: float, *, d: int = 3, C_K: float | None = None) -> np.ndarray:
-    """L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d/2 + 1)); d=3 gives the
-    eps^(5/2) normalization the workbook records explicitly (EQ-014)."""
+    """L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)).
+
+    CORRECTED exponent (was eps^(d/2+1) = eps^2.5 for d=3). The workbook's
+    own kernel definition (EQ-013/DC-002) is literally K(d^2/eps), i.e.
+    the workbook's eps carries LENGTH^2 units and its exponent d/2+1
+    applies to that length^2-unit eps. `build_kernel_graph` above instead
+    implements K(d^2/eps^2) -- a LENGTH-unit eps, the far more common
+    convention (Belkin-Niyogi 2005/2008; Coifman-Lafon 2006; Hein,
+    Audibert & von Luxburg 2007; Singer 2006). Translating the workbook's
+    length^2-unit exponent to this code's length-unit eps gives eps^(d+2)
+    = eps^5 for d=3, matching the standard graph-Laplacian/continuum-
+    Laplacian consistency normalization for this kernel convention. Found
+    and derived during the CONTINUUM-LIMIT-L-DESI Gate 1 failure
+    investigation -- see FC005_CONTINUUM_DIAGNOSTIC_REPORT.md. This
+    correction alone is NOT sufficient to achieve Gate 1 convergence (see
+    that report); it is applied because it is independently correct, not
+    because it resolves the failure.
+    """
     if C_K is None:
         C_K = gaussian_kernel_C_K(d)
-    return -L_N / (C_K * N * epsilon ** (d / 2 + 1))
+    return -L_N / (C_K * N * epsilon ** (d + 2))

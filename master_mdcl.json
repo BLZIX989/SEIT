@@ -142,8 +142,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.827172+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.149101+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -178,8 +178,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.829918+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.151189+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -214,8 +214,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.832176+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.156774+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -251,8 +251,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.834471+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.160757+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -287,8 +287,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.836599+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.164758+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -323,8 +323,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.838828+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.168594+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -359,8 +359,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.841706+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.172798+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -395,8 +395,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.845789+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.176533+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -431,8 +431,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.848046+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.180643+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -467,8 +467,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.850351+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.184767+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -503,8 +503,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.852853+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.188750+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -539,8 +539,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.855175+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.192869+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -575,8 +575,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.857387+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.196800+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -611,8 +611,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.859759+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.200758+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -647,8 +647,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.861968+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.204828+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -683,8 +683,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.864114+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.208503+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -719,8 +719,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.866199+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.212858+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -755,8 +755,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.868459+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.216688+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -791,8 +791,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.870635+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.223274+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -827,8 +827,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.872845+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.225128+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -861,8 +861,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.874916+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.226989+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -895,8 +895,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-T1-OPERATOR",
-        "execution_timestamp": "2026-08-19T04:53:01.002309+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.394680+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -932,8 +932,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-T1-SPECTRUM",
-        "execution_timestamp": "2026-08-19T04:53:01.005166+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.397131+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -969,8 +969,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-T1-HEATFLOW",
-        "execution_timestamp": "2026-08-19T04:53:01.007281+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.400668+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1006,8 +1006,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-T1-KERNEL",
-        "execution_timestamp": "2026-08-19T04:53:01.009394+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.404787+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1043,8 +1043,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.196809+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.586627+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1080,8 +1080,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.199527+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.589294+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1121,8 +1121,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.214498+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.601246+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1158,8 +1158,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.216629+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.602932+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1193,8 +1193,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.221409+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.604585+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1227,8 +1227,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.223414+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.606280+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1264,8 +1264,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.225462+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.608854+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1332,8 +1332,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.229452+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.612829+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1400,8 +1400,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.233469+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.616887+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1468,8 +1468,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.236113+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.623288+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1503,8 +1503,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.238234+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.625502+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1627,8 +1627,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.396066+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.773548+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1661,8 +1661,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.398256+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.775715+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1695,8 +1695,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.400466+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.777504+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1731,8 +1731,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.402555+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.779766+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1767,8 +1767,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.404751+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.781767+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1803,8 +1803,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.926777+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.021256+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1840,8 +1840,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.929704+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.024086+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1853,9 +1853,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -1882,8 +1882,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.932023+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.026186+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1895,9 +1895,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -1924,8 +1924,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.934199+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.028819+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1937,9 +1937,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -1966,8 +1966,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.936495+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.032812+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -1979,9 +1979,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2010,8 +2010,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.941504+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.036811+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2023,9 +2023,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2054,8 +2054,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.945591+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.040724+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2067,9 +2067,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2098,8 +2098,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.947843+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.044753+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2111,9 +2111,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2142,8 +2142,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.950000+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.048633+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2155,9 +2155,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2186,8 +2186,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.952251+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.052866+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2199,9 +2199,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
         }
@@ -2223,7 +2223,7 @@
         "DESI-SPECTRUM"
       ],
       "assumptions": [
-        "Executed live on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits (3000 real objects). Result: STOPPED at mathematical convergence: failed dependency 'CONTINUUM-LIMIT-L-DESI' -- low-spectrum relative change did not fall below tolerance 0.15 under refinement (last relative change 0.3124); L_tilde_(N,eps) does not show numerical evidence of convergence to Delta_h with this catalogue"
+        "Executed live on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits (3000 real objects). Result: STOPPED at mathematical convergence: failed dependency 'CONTINUUM-LIMIT-L-DESI' -- low-spectrum relative change did not fall below tolerance 0.15 under refinement (last relative change 0.7028); L_tilde_(N,eps) does not show numerical evidence of convergence to Delta_h with this catalogue"
       ],
       "provenance": {
         "source": "compiler/backends/desi_fc005_pipeline.py",
@@ -2233,8 +2233,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.954472+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.057677+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2246,9 +2246,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "N_values": [
             300,
@@ -2286,8 +2286,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.956698+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.059673+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2299,9 +2299,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "N_values": [
             300,
@@ -2337,8 +2337,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.961509+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.061564+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2350,9 +2350,9 @@
         "verification": {
           "gate1_converged": false,
           "relative_changes": [
-            0.5170411400353772,
-            0.3031274120611896,
-            0.3123977917315483
+            0.5586585860767282,
+            1.3502457414283322,
+            0.7027972128580907
           ],
           "N_values": [
             300,
@@ -2383,8 +2383,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.966098+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.063502+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2419,8 +2419,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:03.968675+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.065527+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2451,8 +2451,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:04.454479+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.228096+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2485,8 +2485,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-EIGEN-UNIQUENESS",
-        "execution_timestamp": "2026-08-19T04:53:04.468418+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.237788+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2524,8 +2524,8 @@
         "dependency_ids": [],
         "transformation_id": "SELECTION-SIGMA",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:00.823834+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.144567+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2559,8 +2559,8 @@
         "dependency_ids": [],
         "transformation_id": "T-GRAPH-TO-OPERATOR",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.011426+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.408621+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2599,8 +2599,8 @@
         "dependency_ids": [],
         "transformation_id": "T-OPERATOR-TO-SPECTRUM",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.013518+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.412957+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2639,8 +2639,8 @@
         "dependency_ids": [],
         "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.015521+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.415001+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2679,8 +2679,8 @@
         "dependency_ids": [],
         "transformation_id": "T-HEATFLOW-TO-KERNEL",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.017578+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.423265+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2722,8 +2722,8 @@
         "dependency_ids": [],
         "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.201762+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.591834+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2757,8 +2757,8 @@
         "dependency_ids": [],
         "transformation_id": "T-DIFFUSION-TO-METRIC",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.204009+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.593640+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2794,8 +2794,8 @@
         "dependency_ids": [],
         "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.409102+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.785879+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2833,8 +2833,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.210374+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.597727+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2874,8 +2874,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.212490+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.599521+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2915,8 +2915,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.318394+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.694901+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2951,8 +2951,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.321218+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.697246+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -2987,8 +2987,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.323707+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.699504+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3023,8 +3023,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.325932+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.702170+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3059,8 +3059,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.328374+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.704779+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3095,8 +3095,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.330601+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.708788+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3131,8 +3131,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.332725+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.714024+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3167,8 +3167,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.335031+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.716182+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3203,8 +3203,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.337246+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.718060+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3239,8 +3239,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.339536+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.719891+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3275,8 +3275,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.342388+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.721602+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3311,8 +3311,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.344893+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.723440+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3347,8 +3347,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.347036+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.725220+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3383,8 +3383,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.349223+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.727264+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3419,8 +3419,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.351668+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.729260+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3455,8 +3455,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.353699+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.731226+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3491,8 +3491,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.355905+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.732941+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3527,8 +3527,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.358184+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.734581+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3563,8 +3563,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.360394+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.736499+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3599,8 +3599,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.362483+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.738720+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3635,8 +3635,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.364847+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.740655+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3671,8 +3671,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.366902+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.742448+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3707,8 +3707,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.369048+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.744191+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3743,8 +3743,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.371237+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.745865+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3779,8 +3779,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.373543+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.747648+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3815,8 +3815,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.375657+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.749822+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3851,8 +3851,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.377723+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.752114+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3887,8 +3887,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.379922+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.754036+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3923,8 +3923,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:01.381985+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.756154+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3959,8 +3959,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-S3-CONTROL",
-        "execution_timestamp": "2026-08-19T04:53:01.406987+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:44.783794+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -3999,8 +3999,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "CALC-FC005-FISHER-PSD",
-        "execution_timestamp": "2026-08-19T04:53:04.457772+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.230467+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
@@ -4040,8 +4040,8 @@
         "dependency_ids": [],
         "transformation_id": "",
         "calculation_id": "",
-        "execution_timestamp": "2026-08-19T04:53:04.460386+00:00",
-        "git_commit": "6725c27fddfc9a8f58272f832b2349ed97c1a160",
+        "execution_timestamp": "2026-08-19T07:59:46.232539+00:00",
+        "git_commit": "fad9f659caa19d5f94c663bdef3403d04c652f23",
         "code_version": "forward-mdcl-compiler-0.1.0",
         "numerical_environment": {
           "python": "3.11.15",
