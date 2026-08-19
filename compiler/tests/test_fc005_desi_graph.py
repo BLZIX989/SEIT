@@ -94,7 +94,14 @@ def test_spectral_gap_convergence_with_more_points():
         _, L = graph_laplacian_from_weights(W)
         L_tilde = normalize_continuum_limit(L, N=n, epsilon=150.0)
         eigvals = np.linalg.eigvalsh(L_tilde)
-        nonzero = eigvals[np.abs(eigvals) > 1e-8]
+        # Threshold scaled to this run's own eigenvalue magnitude, not a
+        # fixed absolute constant: the corrected eps^(d+2) normalization
+        # (see desi_graph.py::normalize_continuum_limit) legitimately
+        # shrinks eigenvalues by several orders of magnitude relative to
+        # the old eps^(d/2+1) exponent, so a fixed 1e-8 floor tuned to the
+        # old scale silently zeroed out every "nonzero" mode here.
+        scale = float(np.max(np.abs(eigvals)))
+        nonzero = eigvals[np.abs(eigvals) > scale * 1e-6]
         gaps.append(float(nonzero[0]) if len(nonzero) else float("nan"))
     assert all(np.isfinite(g) for g in gaps)
 

@@ -1,0 +1,32 @@
+{
+  "manifest_type": "STRING_THEORY_CORPUS_MANIFEST",
+  "generated_at": "2026-08-19T17:30:00Z",
+  "search_performed": "Searched the supplied workspace/session for files matching 'string theory', 'superstring', 'string_theory', 'string-theory', 'superstring-theory', 'Introduction to String Theory', 'Introduction to Superstring Theory', and the named candidates string_theory(1).pdf / string_theory.pdf / superstring-theory.pdf. None were found attached to this session -- the prior L0-ST instruction's premise ('the supplied String Theory PDFs could not be uploaded successfully') is confirmed: no such files exist in this session's upload directory or working tree. This phase instead executed L0-A: direct authoritative download of equivalent/named sources.",
+  "files": [
+    {
+      "FILE_ID": "FT-001",
+      "FILENAME": "tong_string_theory_arxiv.pdf",
+      "PATH": "literature/string_theory/tong_string_theory_arxiv.pdf",
+      "SIZE_BYTES": 1442465,
+      "HASH": "sha256:b267b9d7bb717e8e7765b202910cd464e86de290489b5a70dc27d25e07fc848c",
+      "VERSION_IF_DETERMINABLE": "arXiv:0908.0333v3 [hep-th], 23 Feb 2012",
+      "SOURCE_LOCATION": "downloaded from https://arxiv.org/pdf/0908.0333 (archival mirror; Cambridge primary https://www.damtp.cam.ac.uk/user/tong/string/string.pdf failed -- see literature/manifests/LITERATURE_DOWNLOAD_MANIFEST.json)",
+      "INGESTION_STATUS": "PARTIAL -- title page, book recommendations, full Table of Contents, Introduction (0. Introduction, 0.1 Quantum Gravity), and full Chapter 1 'The Relativistic String' (pp.9-27: 1.1 Relativistic Point Particle incl. 1.1.1/1.1.2, 1.2 Nambu-Goto Action incl. 1.2.1/1.2.2, 1.3 Polyakov Action incl. 1.3.1/1.3.2) were read and extracted with full equation-level provenance. Chapters 2-8 (pp.28-209: quantization, D-branes, CFT, path integral/ghosts, string interactions, low-energy effective actions, compactification/T-duality) were NOT read this phase -- indexed by Table of Contents only."
+    },
+    {
+      "FILE_ID": "FK-001",
+      "FILENAME": "kiritsis_intro_superstring_arxiv.pdf",
+      "PATH": "literature/superstring_theory/kiritsis_intro_superstring_arxiv.pdf",
+      "SIZE_BYTES": 1798642,
+      "HASH": "sha256:7f7c2e4665c5b6148b5d3718e843aefddcbf219ce33ebba1db0264fe5dd9f4ea",
+      "VERSION_IF_DETERMINABLE": "arXiv:hep-th/9709062v2, 30 Mar 1998 (CERN-TH/97-218, March 1997)",
+      "SOURCE_LOCATION": "downloaded from https://arxiv.org/pdf/hep-th/9709062 (this was the primary URL supplied and it succeeded directly)",
+      "INGESTION_STATUS": "PARTIAL -- title page, abstract, full Table of Contents, section 1 'Introduction', section 2 'Historical perspective', and section 3 'Classical string theory' through 3.3 'Oscillator expansions' (pp.5-22: 3.1 The point particle, 3.2 Relativistic strings, 3.3 Oscillator expansions) were read and extracted with full equation-level provenance. Sections 4-15 and Appendices A-H (pp.23-243: quantization, interactions/amplitudes, CFT, CFT on the torus, scattering amplitudes, low-energy effective actions, superstrings/supersymmetry, anomalies, compactification/SUSY breaking, loop corrections, non-perturbative dualities, outlook) were NOT read this phase -- indexed by Table of Contents only."
+    }
+  ],
+  "duplicates_found": "NONE -- no duplicate filenames or byte-identical files were encountered, since only one copy of each of the 2 successfully acquired documents exists in this corpus.",
+  "documents_not_acquired": [
+    "David Tong, 'The Standard Model' (Cambridge) -- download failed, no archival URL supplied, see LITERATURE_DOWNLOAD_MANIFEST.json",
+    "David Tong, 'Lectures on Gauge Theory' course page and its 5 sub-PDFs (Yang-Mills Theory, Anomalies, Lattice Gauge Theory, Chiral Symmetry Breaking, Large N) -- download failed, no archival URL supplied"
+  ]
+}

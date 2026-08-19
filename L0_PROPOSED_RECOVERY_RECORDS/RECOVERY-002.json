@@ -1,0 +1,15 @@
+{
+  "RECOVERY_ID": "RECOVERY-002",
+  "TARGET_NODE": "NOETHER-SYMMETRY",
+  "SOURCE_REFERENCE": "LIT-002 (Tong, 'The Standard Model', section 1.1, pp. 9-15)",
+  "SOURCE_DERIVATION": "Lorentz group SO(3,1)/Poincare group structure, generators M^{mu nu}, P^mu, as the continuous spacetime symmetry group of any relativistic field theory",
+  "REQUIRED_INPUTS": "VARIATIONAL-NODE must be CLOSED first (a concrete Lagrangian L(phi, d_mu phi) is required to compute a Noether current)",
+  "REQUIRED_OPERATORS": "infinitesimal symmetry generator delta phi; canonical energy-momentum-like current construction dL/d(d_mu phi)",
+  "EXPECTED_OUTPUT": "conserved current J^mu satisfying d_mu J^mu = 0 on-shell",
+  "DEPENDENCIES": "VARIATIONAL-NODE (OPEN, must close first)",
+  "ASSUMPTIONS": "the field content is assumed to transform in a representation of the Poincare group per LIT-002's structure",
+  "IMPLEMENTATION_REQUIREMENTS": "symbolic construction of J^mu from the closed VARIATIONAL-NODE's Lagrangian, following the standard Noether-current formula",
+  "TEST_REQUIREMENTS": "numerically or symbolically verify d_mu J^mu = 0 using the field equations from VARIATIONAL-NODE",
+  "FALSIFICATION_REQUIREMENTS": "show d_mu J^mu != 0 off a measure-zero set, or show the claimed symmetry is not in fact a symmetry of the constructed Lagrangian",
+  "CANONICAL_STATUS": "PROPOSED"
+}

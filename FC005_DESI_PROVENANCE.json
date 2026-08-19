@@ -67,19 +67,20 @@
       "gate1_run": {
         "source": "full raw catalogue (data/desi/dr1/fc005/raw/, not committed)",
         "redshift_bin": [0.4, 0.6], "N_values": [800, 1500, 2500, 4000],
-        "epsilon_values_mpc": [233.566, 189.413, 159.757, 136.590],
-        "epsilon_rule": "3 x median NN separation at N=3000 (measured), scaled by (3000/N)^(1/3)"
+        "epsilon_values_mpc_CORRECTED": [85.51, 66.57, 54.28, 45.20],
+        "epsilon_rule_CORRECTED": "1 x median NN separation (median-heuristic bandwidth, Gretton et al.), measured directly per subsample -- corrected from the prior 3x median NN rule during the CONTINUUM-LIMIT-L-DESI diagnostic investigation; see FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 3.3. The prior 3x rule produced a near-complete, non-local graph (30-65% edge density)."
       }
     },
     {
       "step": "laplacian",
       "formula": "L_N = D - W",
       "implementation": "compiler/backends/desi_graph.py::graph_laplacian_from_weights",
-      "verification": "symmetric, row-sums ~0 to machine precision, v^T L v >= 0 over 200 random test vectors -- data/desi/dr1/fc005/derived/pilot_run_result.json"
+      "verification": "symmetric, row-sums ~0 to machine precision, v^T L v >= 0 over 200 random test vectors -- data/desi/dr1/fc005/derived/pilot_run_result.json; re-audited at N=2500 during the diagnostic investigation (FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 3.5) with no anomaly found"
     },
     {
       "step": "continuum_normalization",
-      "formula": "L_tilde_(N,eps) = -L_N / (C_K * N * eps^(5/2)), d=3",
+      "formula": "L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)), d=3 -> eps^5",
+      "formula_note_CORRECTED": "Exponent corrected from eps^(5/2) to eps^(d+2)=eps^5 during the CONTINUUM-LIMIT-L-DESI diagnostic investigation: the workbook's own kernel (DC-002) is K(d^2/eps) with eps in length^2 units, but this code's build_kernel_graph implements K(d^2/eps^2) with eps in length units (the standard convention -- Belkin-Niyogi, Coifman-Lafon, Hein-Audibert-von Luxburg, Singer). Translating the workbook's length^2-unit exponent to this code's length-unit eps gives eps^(d+2). See FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 3.2. This correction alone does not achieve Gate 1 convergence.",
       "implementation": "compiler/backends/desi_graph.py::normalize_continuum_limit",
       "C_K": "15.749609945722419 (Gaussian kernel, analytic (2*pi)^(3/2), cross-checked numerically to 5 sig figs)"
     },
@@ -93,11 +94,54 @@
     {
       "step": "gate1_result",
       "converged": false,
-      "relative_changes": [0.4171554315794859, 0.2789003548762659, 0.4139746215960837],
+      "relative_changes_ORIGINAL_pre_investigation": [0.4171554315794859, 0.2789003548762659, 0.4139746215960837],
+      "relative_changes_CORRECTED_metric_and_normalization": [0.3596172051367086, 0.5618430401954762, 0.3772569212305514],
       "tolerance": 0.15,
       "failed_dependency": "CONTINUUM-LIMIT-L-DESI",
-      "conclusion": "Gate 1 (mathematical convergence) FAILED on real DESI DR1 LRG SGC data (0.4<=z<0.6 bin) with the tested (N,epsilon) refinement sequence. Per instruction, Gates 2 (curvature closure) and 3 (physical validation) were NOT entered. No heat trace, no (a0,a1,a2) fit, no curvature residual was computed for DESI -- those remain OPEN, never executed.",
+      "conclusion": "Gate 1 (mathematical convergence) FAILED on real DESI DR1 LRG SGC data (0.4<=z<0.6 bin) with the tested (N,epsilon) refinement sequence, both before and after the diagnostic investigation's corrections (metric floor fix, normalization exponent fix, bandwidth rule fix). Per instruction, Gates 2 (curvature closure) and 3 (physical validation) were NOT entered. No heat trace, no (a0,a1,a2) fit, no curvature residual was computed for DESI -- those remain OPEN, never executed.",
       "full_result_file": "data/desi/dr1/fc005/derived/gate1_run_result.json"
+    },
+    {
+      "step": "diagnostic_investigation",
+      "report": "FC005_CONTINUUM_DIAGNOSTIC_REPORT.md",
+      "matrix": "FC005_CONTINUUM_FAILURE_MATRIX.csv (76 rows)",
+      "raw_data": ["data/desi/dr1/fc005/derived/diagnostic_full_results.json",
+                   "data/desi/dr1/fc005/derived/alpha_normalization_results.json",
+                   "data/desi/dr1/fc005/derived/operator_and_knn_results.json",
+                   "data/desi/dr1/fc005/derived/redshift_slice_results.json"],
+      "bugs_found_and_fixed": ["relative-change metric absolute-floor artifact",
+                                "normalization exponent units mismatch (eps^2.5 -> eps^5)",
+                                "bandwidth rule (3x median NN -> 1x median NN)",
+                                "stale test threshold in test_fc005_desi_graph.py"],
+      "causes_ruled_out": ["bare graph-construction implementation error (algebraic audit clean)",
+                            "redshift/radial selection function alone (synthetic control converges)",
+                            "survey boundary alone (interior-only trim does not resolve failure)"],
+      "leading_cause": "mismatch between DESI's genuinely clustered (non-i.i.d.) point process and the i.i.d.-sampling assumption underlying graph-Laplacian convergence theorems, compounded by insufficient N resolution achievable with a dense eigensolver at N=800-4000 (even the uniform i.i.d. positive control is only borderline)",
+      "standard_correction_tested_and_insufficient": "Coifman-Lafon alpha=1 density-normalized graph Laplacian -- does not repair DESI convergence and destabilizes the clustered synthetic control",
+      "final_status": "OPEN (not CLOSED, not FALSIFIED) -- CONTINUUM-LIMIT-L-DESI and MATHEMATICAL-CONVERGENCE-DESI remain Status.FAIL (retriable), Gates 2 and 3 never entered",
+      "next_dependency": "scale N beyond 4000 with a sparse iterative eigensolver to separate resolution-limit effects from point-process effects; see FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 16"
+    },
+    {
+      "step": "sparse_n_scaling_investigation",
+      "report": "FC005_N_SCALING_REPORT.md",
+      "raw_data": "data/desi/dr1/fc005/derived/sparse_n_scaling_full_results.json",
+      "csvs": ["FC005_SPARSE_SPECTRAL_RESULTS.csv", "FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv",
+               "FC005_POINT_PROCESS_COMPARISON.csv"],
+      "solver": "scipy.sparse.linalg.eigsh, which='SA', no shift-invert (shift-invert's sparse LU factorization was measured to hang past 100s at N=16000 for this graph family); maxiter=500 uniformly across all processes, tol=1e-8",
+      "N_values_tested": [4000, 8000, 16000, 32000, 64000],
+      "N_ceiling_reason": "N=128000 attempted for synthetic controls, timed out at 300s in a standalone test before this was the shared ceiling for all 6 (process,alpha) configurations -- computational-feasibility boundary",
+      "epsilon_scaling_correction": "eps_N = eps_ref * (N_ref/N)^(1/(d+4)) (exponent 1/7 for d=3), replacing the prior diagnostic phase's eps_N ~ N^(-1/d) rate, which was found to violate the asymptotic condition N*eps_N^(d+2) -> infinity required for graph-Laplacian convergence (verified: under the old rate this quantity shrinks as N^(-2/3); under the corrected rate it grows, verified for every tested configuration)",
+      "key_finding": "the naive eigenvalue-only relative-change metric reports DESI (alpha=0) as 'converged' at N=64000 (0.127 < 0.15 tolerance) -- but the required eigenvector/invariant-subspace comparison (spec section 12) shows this is a FALSE POSITIVE for modes 5-15: their eigenvalues coincidentally land close between N=32000 and N=64000 but their subspaces are nearly orthogonal (cosine 0.07-0.15), an eigenvalue-crossing artifact, not genuine convergence. Modes 1-4 DO show genuine joint eigenvalue+eigenvector stability (cosine 0.99+), closely paralleling but trailing the uniform IID positive control (jointly stable through mode ~11 by N=64000). The uniform positive control, only borderline convergent in the prior diagnostic phase at N<=4000, is confirmed to converge cleanly once N is scaled properly with the corrected epsilon rate -- confirming finite resolution (Category D) was the dominant limiting factor at the prior report's N range. The clustered non-i.i.d. synthetic control shows total, persistent ARPACK non-convergence at every N tested (0 eigenvalues resolved within the iteration budget) -- a qualitatively more severe failure than DESI exhibits.",
+      "operator_identification": "attempted (alpha=0 vs alpha=1 comparison at largest N) but inconclusive -- alpha=1 (Coifman-Lafon density normalization) did not converge for EITHER uniform or DESI under the epsilon-scaling rate calibrated for alpha=0, so the large alpha0-vs-alpha1 spectral difference cannot be used as evidence of a density-weighted limiting operator for DESI specifically; recorded as an open methodological question (alpha=1 likely needs its own, different epsilon-scaling exponent), not resolved in this round",
+      "final_status": "FAIL / RETRIABLE (unchanged from before this investigation) -- not CLOSED (full retained mode set 1-15 does not show joint convergence for DESI, only modes 1-4 do), not FALSIFIED (opposite: first evidence of genuine dual eigenvalue+eigenvector convergence for real DESI data, for a defensible spectral subset)",
+      "next_dependency": "extend N further for DESI specifically (real catalogue supports up to 160,150, 64000 was this session's practical ceiling not a hard limit) to test whether modes 5+ eventually stabilize the same way modes 1-4 already have; determine the correct epsilon-scaling exponent for alpha=1 independently before re-attempting operator identification; see FC005_N_SCALING_REPORT.md section 16"
+    },
+    {
+      "step": "checkpoint_freeze",
+      "report": "FC005_CHECKPOINT.md",
+      "action": "formalized the spectral-validation rule (eigenvalue convergence alone is insufficient for a converged verdict whenever eigenvector/subspace data is available) as a structural, enforced invariant: compiler/backends/desi_sparse.py::joint_spectral_convergence computes the authoritative joint verdict; compiler/verification/self_audit.py::spectral_validation_audit (a new, ninth self-audit) fails the build if any stored 'converged' value disagrees with its recorded joint verdict. Applied to the already-computed sparse N-scaling results (no eigensolves rerun) via apply_spectral_validation_rule.py -- the canonical 'converged' field for every one of the 6 tested configurations is now False (including uniform IID, whose highest mode cluster falls just short of the strict joint criterion), correcting the naive scalar 0.127 result out of the canonical state.",
+      "verification": "compiler.run_compiler regenerated calculation_registry.json/status_matrix.json/falsification_registry.json/provenance registries through the normal pathway; all 95 tests and all 10 self-audits (including the new spectral_validation_audit and leakage_control_audit) pass",
+      "final_status": "FAIL / RETRIABLE (unchanged) -- not CLOSED, not FALSIFIED. Gate 2 (CURVATURE-CLOSURE-DESI) was not entered."
     },
     {
       "step": "heat_trace",

@@ -66,5 +66,13 @@
     "details": {
       "n_required": 12
     }
+  },
+  {
+    "name": "spectral_validation_audit",
+    "passed": true,
+    "issues": [],
+    "details": {
+      "n_datasets_checked": 6
+    }
   }
 ]

@@ -1,0 +1,15 @@
+{
+  "RECOVERY_ID": "RECOVERY-003",
+  "TARGET_NODE": "GAUGE-NODE",
+  "SOURCE_REFERENCE": "LIT-007, LIT-008, LIT-009, LIT-011 (Ellis, Gaillard, Nanopoulos, 'A Historical Profile of the Higgs Boson', sections 14.2-14.3, 14.6, pp. 257-263, 268-271)",
+  "SOURCE_DERIVATION": "Higgs mechanism: SSB of a local gauge symmetry via a scalar doublet phi with potential V(phi), gauge-boson mass generation from |D_mu phi|^2, applied to SU(2)xU(1) electroweak unification",
+  "REQUIRED_INPUTS": "QUANTUM-NODE must be CLOSED first (a Hilbert-space/field-quantization structure is required before a gauge symmetry can act on it)",
+  "REQUIRED_OPERATORS": "covariant derivative D_mu = partial_mu - ig A_mu; scalar potential V(phi) = -mu^2|phi|^2 + lambda|phi|^4",
+  "EXPECTED_OUTPUT": "gauge-boson mass term m_A^2 = g^2 v^2/4 after SSB, and the residual unbroken-symmetry structure (e.g. massless photon in the electroweak case)",
+  "DEPENDENCIES": "QUANTUM-NODE (OPEN, must close first)",
+  "ASSUMPTIONS": "a specific gauge group and representation content must be chosen for this compiler -- LIT-007/008/009/011 supply the standard SU(2)xU(1) electroweak case as the best-attested external template, but choosing it for THIS compiler's own matter content is a new decision, not something the literature makes for us",
+  "IMPLEMENTATION_REQUIREMENTS": "symbolic construction of the covariant derivative, potential, and mass term following the standard construction; explicit gauge-invariance check of the full Lagrangian",
+  "TEST_REQUIREMENTS": "verify gauge invariance under a general gauge transformation; verify the mass term reduces to the known electroweak relation m_W = (1/2) g v in the appropriate parameter limit",
+  "FALSIFICATION_REQUIREMENTS": "show the constructed Lagrangian is not gauge invariant, or that the mass spectrum does not match the standard electroweak relations in the appropriate limit",
+  "CANONICAL_STATUS": "PROPOSED"
+}

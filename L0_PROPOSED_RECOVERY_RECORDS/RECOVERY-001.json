@@ -1,0 +1,15 @@
+{
+  "RECOVERY_ID": "RECOVERY-001",
+  "TARGET_NODE": "VARIATIONAL-NODE",
+  "SOURCE_REFERENCE": "None of the 3 supplied documents derive an action functional; the variational principle itself is established external mathematics (classical field theory, e.g. Goldstein or any standard QFT text -- NOT among the sources ingested this phase, so this recovery record's REQUIRED_INPUTS below are not literature-sourced and must be treated as a placeholder pending a dedicated classical-mechanics/field-theory source)",
+  "SOURCE_DERIVATION": "n/a -- no derivation available in the ingested corpus",
+  "REQUIRED_INPUTS": "a field content phi (not yet defined anywhere in this compiler) and a Lagrangian density L(phi, d_mu phi) (not yet defined anywhere in this compiler)",
+  "REQUIRED_OPERATORS": "functional derivative delta/delta phi",
+  "EXPECTED_OUTPUT": "stationarity condition delta S/delta phi = 0, equivalent to the Euler-Lagrange equations",
+  "DEPENDENCIES": "SPECTRUM-NODE (OPEN)",
+  "ASSUMPTIONS": "a specific field content and Lagrangian density must be chosen -- this compiler currently supplies neither, and none of the ingested literature supplies UOC-specific choices (only generic textbook machinery)",
+  "IMPLEMENTATION_REQUIREMENTS": "symbolic (sympy) construction of a candidate Lagrangian and its Euler-Lagrange equations, analogous in code style to the existing Fisher-information symbolic derivation (compiler/verification/fisher_information.py)",
+  "TEST_REQUIREMENTS": "verify delta S=0 reproduces the Euler-Lagrange equation for at least one known free-field case (e.g. a free scalar) as a limiting-case sanity check",
+  "FALSIFICATION_REQUIREMENTS": "show the constructed stationarity condition is NOT dimensionally consistent, or does not reduce to a known free-field EL equation in the appropriate limit",
+  "CANONICAL_STATUS": "PROPOSED"
+}

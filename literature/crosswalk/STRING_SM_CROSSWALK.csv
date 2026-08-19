@@ -1,0 +1,10 @@
+TOPIC,PRESENT_IN_PAGES_READ,SOURCE_LOCATION,CORRESPONDS_TO_MDCL_NODE,CLASSIFICATION
+Gauge groups,NO,"Tong Ch.7.7 'The Yang-Mills Action' (p.191, NOT read); Kiritsis Ch.10-12 (NOT read)",GAUGE-NODE,UNDETERMINED
+Gauge fields,NO,same as above,GAUGE-NODE,UNDETERMINED
+Representations,NO,not read this phase,GAUGE-NODE,UNDETERMINED
+Matter fields,"PARTIAL -- X^mu are the string's own embedding-coordinate fields, not Standard-Model matter fields","Tong 1.2-1.3 (ST-005,ST-008)",MATTER-NODE,NONE -- embedding coordinates are not a matter-field representation in the Standard-Model sense
+Fermions,NO,"requires superstring/RNS chapters, not read",MATTER-NODE,UNDETERMINED
+Chiral structure,NO,not read this phase,MATTER-NODE,UNDETERMINED
+Anomaly cancellation,NO,"Kiritsis Ch.11 'Anomalies' (p.122, NOT read)",GAUGE-NODE,UNDETERMINED
+Compactification-generated gauge symmetry,NO,"Tong Ch.8.2.3 'Enhanced Gauge Symmetry' (p.203, NOT read)",GAUGE-NODE,UNDETERMINED
+Effective field theory / low-energy SM limit,NO,Tong Ch.7 (NOT read),"GAUGE-NODE, MATTER-NODE",UNDETERMINED

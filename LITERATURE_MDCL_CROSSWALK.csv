@@ -1,0 +1,14 @@
+LITERATURE_ITEM_ID,SOURCE_ID,MDCL_NODE_ID,MDCL_BRANCH_ID,DEPENDENCY_MATCH,NOTATION_MATCH,STRUCTURAL_MATCH,DERIVATION_MATCH,IMPLEMENTATION_MATCH,VALIDATION_MATCH
+LIT-001,LIT-TONG-SM,n/a (scope statement only),Gauge/SM (general),UNDETERMINED,UNDETERMINED,NONE,NONE,NONE,NONE
+LIT-002,LIT-TONG-SM,NOETHER-SYMMETRY (not registered),Symmetry,ANALOGOUS,NONE,EXACT (Lorentz/Poincare group structure is the standard continuous-symmetry group any Noether construction on this compiler's fields would need),NONE (source states the group structure; does not derive a UOC-specific current),NONE,NONE
+LIT-003,LIT-TONG-SM,QUANTUM-NODE,Quantum,ANALOGOUS,NONE,ANALOGOUS (Weyl/Dirac spinor representations are the standard relativistic-QM matter-field structure; this compiler's QUANTUM-NODE has no field content at all yet to compare against),NONE,NONE,NONE
+LIT-004,LIT-TONG-SM,n/a (no discrete-symmetry node exists anywhere in the MDCL),Symmetry,NONE,NONE,NONE,NONE,NONE,NONE
+LIT-005,LIT-TONG-SM,n/a (no discrete-symmetry node exists anywhere in the MDCL),Symmetry,NONE,NONE,NONE,NONE,NONE,NONE
+LIT-006,LIT-TONG-SM,"GAUGE-NODE, MATTER-NODE (topics only, not extracted)",Gauge/SM,UNDETERMINED,UNDETERMINED,UNDETERMINED (content not available for comparison),UNDETERMINED,NONE,NONE
+LIT-007,LIT-EGN-HIGGS,GAUGE-NODE,Gauge/SM,ANALOGOUS,NONE,"PARTIAL (SSB structure is standard, but GAUGE-NODE has no field/potential content registered to compare against)",NONE,NONE,NONE
+LIT-008,LIT-EGN-HIGGS,GAUGE-NODE,Gauge/SM,ANALOGOUS,NONE,PARTIAL (Higgs mechanism is the standard mass-generation structure a future GAUGE-NODE implementation would need; nothing currently registered to compare against),NONE,NONE,NONE
+LIT-009,LIT-EGN-HIGGS,"GAUGE-NODE, MATTER-NODE",Gauge/SM,ANALOGOUS,NONE,PARTIAL,NONE,NONE,NONE
+LIT-010,LIT-EGN-HIGGS,OBSERVABLES-NODE,Gauge/SM (observational),NONE,NONE,"NONE (historical/experimental narrative, not a mathematical structure to match against an unexecuted node)",NONE,NONE,NONE
+LIT-011,LIT-EGN-HIGGS,GAUGE-NODE,Gauge/SM,ANALOGOUS,NONE,PARTIAL (RG-running effective potential is a standard structure; nothing registered here),NONE,NONE,NONE
+LIT-012,LIT-EGN-HIGGS,COSMOLOGY-NODE (Early-universe),Early-universe/Cosmology,ANALOGOUS,NONE,"NONE (topically adjacent only -- inflation/vacuum-stability mentioned, no Friedmann-equation structure supplied)",NONE,NONE,NONE
+LIT-013,LIT-HASHIMOTO-TOE,EXCLUDED -- REJECTED SOURCE,EXCLUDED,NONE,NONE,NONE,NONE,NONE,NONE

@@ -154,7 +154,43 @@ def artifact_completeness_audit(required_paths: list[Path]) -> AuditResult:
                         {"n_required": len(required_paths)})
 
 
-def run_self_audit(registries: MDCLRegistries, required_paths: list[Path] | None = None) -> list[AuditResult]:
+def spectral_validation_audit(calculations: list[dict]) -> AuditResult:
+    """Enforces the standing spectral-validation rule established during the
+    FC-005 CONTINUUM-LIMIT-L-DESI investigation (see FC005_N_SCALING_REPORT.md
+    section 5, FC005_CHECKPOINT.md): eigenvalue convergence alone is never
+    sufficient grounds for a "converged" verdict wherever eigenvector/
+    invariant-subspace comparison data is available -- a scalar
+    eigenvalue-only relative-change metric can report a false positive from
+    an eigenvalue-crossing artifact (numerically close eigenvalues that
+    belong to physically different, unstable eigenvectors). Fails the build
+    if any stored "converged" value in a sparse-spectral-comparison
+    calculation disagrees with its own recorded "joint_spectral_converged"
+    field (compiler/backends/desi_sparse.py::joint_spectral_convergence) --
+    i.e. catches any future code path that promotes the superseded
+    "eigenvalue_only_converged" value into the canonical "converged" field
+    instead of the joint-validated one."""
+    issues = []
+    n_checked = 0
+    for calc in calculations:
+        if calc.get("kind") != "desi_sparse_n_scaling_point_process_separation":
+            continue
+        for name, res in calc.get("results", {}).items():
+            if "joint_spectral_converged" not in res:
+                continue  # older/other calculation shape without subspace data
+            n_checked += 1
+            if res["converged"] != res["joint_spectral_converged"]:
+                issues.append(
+                    f"{calc['id']}/{name}: canonical 'converged'={res['converged']} disagrees "
+                    f"with the joint-validated 'joint_spectral_converged'="
+                    f"{res['joint_spectral_converged']} -- the eigenvalue-only result must never "
+                    f"be promoted over the joint (eigenvalue+eigenvector) verdict"
+                )
+    return AuditResult("spectral_validation_audit", len(issues) == 0, issues,
+                        {"n_datasets_checked": n_checked})
+
+
+def run_self_audit(registries: MDCLRegistries, required_paths: list[Path] | None = None,
+                    calculations: list[dict] | None = None) -> list[AuditResult]:
     graph = build_dependency_graph(registries)
     results = [
         dependency_audit(registries, graph),
@@ -168,4 +204,6 @@ def run_self_audit(registries: MDCLRegistries, required_paths: list[Path] | None
     ]
     if required_paths is not None:
         results.append(artifact_completeness_audit(required_paths))
+    if calculations is not None:
+        results.append(spectral_validation_audit(calculations))
     return results

@@ -1,0 +1,31 @@
+dataset,alpha,N,epsilon,avg_degree,nnz,solver,sigma,tol,maxiter,n_modes_requested,max_residual,arpack_converged,elapsed_seconds,lambda_1,lambda_2,relative_change_from_prev_N,status
+uniform_alpha0.0,0.0,4000,14.29881,2.60,501236,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.384e-19,True,0.85,3.148713e-13,3.293064e-13,,OK
+uniform_alpha0.0,0.0,8000,12.95077,3.97,1542172,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.029e-19,True,2.14,3.466969e-13,3.661673e-13,0.22062116118650224,OK
+uniform_alpha0.0,0.0,16000,11.72982,5.96,4722350,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.582e-19,True,7.50,3.847000e-13,3.917528e-13,0.14169798657125657,OK
+uniform_alpha0.0,0.0,32000,10.62397,8.86,14383040,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.651e-19,True,22.26,4.091158e-13,4.170825e-13,0.08938668224787895,OK
+uniform_alpha0.0,0.0,64000,9.62239,13.24,43475900,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,1.546e-19,True,76.02,4.213900e-13,4.322577e-13,0.05486428149131263,OK
+clustered_alpha0.0,0.0,4000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha0.0,0.0,8000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha0.0,0.0,16000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha0.0,0.0,32000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha0.0,0.0,64000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+desi_alpha0.0,0.0,4000,45.20161,2.18,361084,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,1.225e-21,False,3.48,5.283230e-17,5.840436e-17,,OK
+desi_alpha0.0,0.0,8000,40.94016,3.32,1105192,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.597e-19,True,7.73,4.271458e-17,7.390710e-17,1.346747844860744,OK
+desi_alpha0.0,0.0,16000,37.08048,5.14,3364518,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,6.158e-20,False,30.46,8.009574e-17,1.818438e-16,1.460437118176044,OK
+desi_alpha0.0,0.0,32000,33.58466,7.93,10247884,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.569e-19,True,61.49,8.157096e-17,1.937102e-16,0.5006137834534365,OK
+desi_alpha0.0,0.0,64000,30.41843,12.38,31416376,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.590e-19,True,231.33,8.423816e-17,1.992533e-16,0.1269579141900582,OK
+uniform_alpha1.0,1.0,4000,14.29881,0.43,501236,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.819e-19,True,0.90,6.510746e-14,6.632156e-14,,OK
+uniform_alpha1.0,1.0,8000,12.95077,0.27,1542172,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.164e-19,True,3.03,2.766647e-14,2.887219e-14,0.5830765234470595,OK
+uniform_alpha1.0,1.0,16000,11.72982,0.18,4722350,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.293e-19,True,8.80,1.262125e-14,1.285611e-14,0.5602161199447228,OK
+uniform_alpha1.0,1.0,32000,10.62397,0.12,14383040,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,2.152e-19,True,29.12,5.737859e-15,5.814432e-15,0.5492603682600233,OK
+uniform_alpha1.0,1.0,64000,9.62239,0.08,43475900,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.560e-19,True,98.86,2.570709e-15,2.605342e-15,0.5554367866040169,OK
+clustered_alpha1.0,1.0,4000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha1.0,1.0,8000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha1.0,1.0,16000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha1.0,1.0,32000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+clustered_alpha1.0,1.0,64000,,,,,,,,,,,,,,,ARPACK_INSUFFICIENT_CONVERGED_MODES
+desi_alpha1.0,1.0,4000,45.20161,1.06,361084,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,6.225e-21,False,3.13,3.250751e-17,8.374249e-17,,OK
+desi_alpha1.0,1.0,8000,40.94016,0.48,1105192,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.414e-19,True,5.50,1.405335e-17,3.382732e-17,0.5969173091248131,OK
+desi_alpha1.0,1.0,16000,37.08048,0.28,3364518,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.212e-19,False,28.08,5.646660e-18,1.335385e-17,0.6064536732024448,OK
+desi_alpha1.0,1.0,32000,33.58466,0.18,10247884,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,3.551e-19,True,71.62,2.355722e-18,5.512147e-18,0.5941742955560452,OK
+desi_alpha1.0,1.0,64000,30.41843,0.11,31416376,"scipy.sparse.linalg.eigsh (ARPACK, which='SA', no shift-invert, symmetric)",nan,1e-08,500,15,1.350e-19,False,256.35,9.969953e-19,2.325746e-18,0.5967686768005318,OK

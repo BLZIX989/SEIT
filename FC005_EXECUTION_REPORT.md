@@ -97,10 +97,33 @@ vectors at every point. Status `CALCULATED`.
 refinement sequence was 0.42, 0.28, 0.41, against a pre-registered
 tolerance of 0.15. Node `CONTINUUM-LIMIT-L-DESI`, status `FAIL`. This is
 the **exact failed dependency** the pipeline stopped at, per instruction.
-See `FC005_DESI_ACQUISITION_REPORT.md` for the full diagnostic (the
-tested ε values are likely not yet small relative to the sample's
-spatial extent to be in the asymptotic regime — not re-tuned to chase
-convergence).
+
+**Update — full diagnostic/closure investigation completed:** a
+dedicated investigation (`FC005_CONTINUUM_DIAGNOSTIC_REPORT.md`) audited
+graph construction, sampling density, survey boundary, redshift
+selection, bandwidth/kernel regime, N-refinement, normalization, sign
+convention, operator action, and six synthetic controls. It found and
+fixed two genuine implementation bugs (a relative-change metric floor
+artifact, and a normalization-exponent units mismatch — corrected
+`ε^(5/2)` → `ε^(d+2)=ε^5`), plus a bandwidth-rule correction (`3×median
+NN` → `1×median NN`, the standard "median heuristic"). With every
+correction applied, Gate 1 **still fails** (relative changes 0.36, 0.56,
+0.38 on the full catalogue). Controlled comparison against synthetic
+point processes isolates the leading cause as a mismatch between DESI's
+genuinely clustered (non-i.i.d.) point process and the i.i.d.-sampling
+assumption underlying graph-Laplacian convergence theorems, compounded
+by insufficient resolution at N≤4000 with a dense eigensolver (even a
+uniform i.i.d. positive control only borderline converges at this N
+range). Survey-boundary and redshift-selection effects were specifically
+tested and ruled out as the primary cause. The one standard, published
+correction targeting the clustering mechanism (Coifman-Lafon
+density-normalized graph Laplacian) was tested and does not repair
+convergence. **Final verdict: OPEN, not FALSIFIED** — `CONTINUUM-LIMIT-
+L-DESI` and `MATHEMATICAL-CONVERGENCE-DESI` remain `Status.FAIL`
+(retriable), not `FALSIFIED` (terminal), because the resolution-limit
+confound has not been separated from the point-process-mismatch effect.
+See `FC005_CONTINUUM_DIAGNOSTIC_REPORT.md` section 16 for the next
+dependency (sparse-eigensolver N-scaling test).
 
 ## E. Did the spectrum converge?
 

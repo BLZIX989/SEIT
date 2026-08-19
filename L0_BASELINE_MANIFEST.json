@@ -1,0 +1,140 @@
+{
+  "manifest_type": "L0_BASELINE_MANIFEST",
+  "purpose": "Read-only snapshot of canonical theory state taken immediately before literature ingestion begins (Part I). Nothing in the L0 phase may alter any value recorded here; if a later artifact disagrees with this manifest, the manifest is authoritative for 'what the canonical state was at L0 start', not the later artifact.",
+  "extraction_timestamp": "2026-08-19T00:00:00Z",
+  "git_commit": "743d902e0a21b5e6ed9ea0d8b6504247746c17be",
+  "git_branch": "claude/forward-mdcl-compiler-build-ng4k2k",
+  "fc005_status": {
+    "MATHEMATICAL-CONVERGENCE-DESI": "FAIL / RETRIABLE",
+    "CONTINUUM-LIMIT-L-DESI": "FAIL / RETRIABLE",
+    "CURVATURE-CLOSURE-DESI": "OPEN",
+    "PHYSICAL-VALIDATION-DESI": "OPEN",
+    "frozen": true,
+    "frozen_reference": "FC005_CHECKPOINT.md",
+    "gate_2_entered": false,
+    "gate_3_entered": false,
+    "note": "Exactly as frozen by FC005_CHECKPOINT.md. This L0 phase does not rerun, reinterpret, or promote any part of this state."
+  },
+  "node_status_counts": {
+    "OPEN": 35,
+    "PROPOSED": 35,
+    "CALCULATED": 10,
+    "VERIFIED": 12,
+    "CONDITIONAL": 3,
+    "FAIL": 3,
+    "DERIVED": 1,
+    "FALSIFIED": 1
+  },
+  "node_status_total": 100,
+  "master_validation_campaign_outputs_used_as_input": [
+    "MASTER_PHYSICS_VALIDATION_MATRIX.csv",
+    "MASTER_PHYSICS_CLOSURE_MATRIX.csv",
+    "DEPENDENCY_CLOSURE_AUDIT.csv",
+    "DEPENDENCY_CLOSURE_AUDIT.md",
+    "INVARIANT_AUDIT.md",
+    "SIGN_CONVENTION_REGISTRY.md",
+    "CLEAN_ROOM_REPRODUCTION_REPORT.md",
+    "MASTER_PHYSICS_VALIDATION_REPORT.md"
+  ],
+  "branch_inventory": [
+    {
+      "branch_id": "Primitive",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Variational",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Euler-Lagrange",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Symmetry",
+      "canonical_status": "NOT REGISTERED",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Conservation",
+      "canonical_status": "NOT REGISTERED",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Geometry",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "GR",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Statistical",
+      "canonical_status": "VERIFIED (partial -- 1 step)",
+      "executable_backend": true
+    },
+    {
+      "branch_id": "Quantum",
+      "canonical_status": "VERIFIED (partial -- 1 step)",
+      "executable_backend": true
+    },
+    {
+      "branch_id": "Thermodynamic",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Spectral",
+      "canonical_status": "VERIFIED (fully closed for its scope)",
+      "executable_backend": true
+    },
+    {
+      "branch_id": "DESI",
+      "canonical_status": "FAIL / RETRIABLE (frozen)",
+      "executable_backend": true
+    },
+    {
+      "branch_id": "Continuum",
+      "canonical_status": "FAIL / RETRIABLE (frozen)",
+      "executable_backend": true
+    },
+    {
+      "branch_id": "Curvature",
+      "canonical_status": "OPEN (code exists, never executed)",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Quantum/Gravity",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Early-universe/Cosmology",
+      "canonical_status": "OPEN",
+      "executable_backend": false
+    },
+    {
+      "branch_id": "Late-universe/Cosmology",
+      "canonical_status": "OPEN (as evolution branch); CALCULATED (as pipeline input only)",
+      "executable_backend": "partial"
+    }
+  ],
+  "zero_backend_branches": [
+    "Primitive",
+    "Variational",
+    "Euler-Lagrange",
+    "Symmetry",
+    "Conservation",
+    "Geometry",
+    "GR",
+    "Thermodynamic",
+    "Quantum/Gravity",
+    "Early-universe/Cosmology",
+    "Late-universe/Cosmology (as derivation)"
+  ],
+  "protection_statement": "Literature ingestion in this phase must not alter canonical registries, equations, dependency edges, status classifications, MDCL structure, accepted/rejected state, FC-005 state, or falsification records. Any proposed recovery produced by this phase exists only as an external/proposed artifact (L0_PROPOSED_RECOVERY_RECORDS/, CANONICAL_STATUS=PROPOSED) until independently derived and audited under the existing UOC validation rules -- a step explicitly NOT taken in this phase."
+}

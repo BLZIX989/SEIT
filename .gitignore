@@ -16,3 +16,17 @@ data/desi/dr1/fc005/raw/*
 data/desi/dr1/fc005/derived/*
 !data/desi/dr1/fc005/derived/.gitkeep
 !data/desi/dr1/fc005/validated/pilot_fixture/
+
+# External literature PDFs (arXiv preprints, third-party copyrighted
+# academic sources downloaded for L0 literature-ingestion phases): never
+# committed, same policy as raw DESI survey data above. SHA256 checksums,
+# page counts, and full provenance are recorded in
+# literature/manifests/*.json/*.md, and every extracted equation/structure
+# is preserved with page-level citation in literature/extraction/ and
+# literature/crosswalk/ -- so the ingestion is reproducible and auditable
+# without embedding the source PDFs themselves.
+literature/string_theory/*.pdf
+literature/superstring_theory/*.pdf
+literature/standard_model/*.pdf
+literature/gauge_theory/*.pdf
+literature/gauge_theory/*.html

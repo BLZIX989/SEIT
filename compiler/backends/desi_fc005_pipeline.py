@@ -495,7 +495,23 @@ def run_gate1_on_pilot_fixture(repo_root) -> dict | None:
     # slower sweep (N up to 4000) on demand, separately, on the full
     # downloaded catalogue.
     n_values = [n for n in (300, 600, 1000, 1500) if n <= n_available]
-    ref_n, ref_epsilon = 3000, 150.337  # measured in run_desi_pilot.py (3 x median NN at N=3000)
+
+    # Bandwidth rule CORRECTED (was 3 x median NN, a hardcoded literal
+    # measured once in run_desi_pilot.py): a bandwidth sweep run during
+    # the CONTINUUM-LIMIT-L-DESI Gate 1 failure investigation (see
+    # FC005_CONTINUUM_DIAGNOSTIC_REPORT.md) found that 3 x median NN
+    # produces a near-complete graph (30-65% edge density, hundreds of
+    # neighbours per node out of a few thousand) -- not a local graph
+    # suitable for approximating a differential operator. 1 x median NN
+    # ("median heuristic", Gretton et al.; standard in spectral
+    # clustering/kernel methods) gives a connected-but-local regime and
+    # is used here, measured directly on this fixture (never hardcoded)
+    # and scaled by (N_ref/N)^(1/3) -- the volume-preserving scaling for
+    # a fixed-density point process -- to the smaller N values.
+    from compiler.backends.desi_diagnostics import median_nn_distance
+    from compiler.backends.desi_graph import catalogue_to_points as _c2p
+    pts_ref = _c2p(ra, dec, z, cosmo)
+    ref_n, ref_epsilon = n_available, median_nn_distance(pts_ref)
     epsilon_values = [ref_epsilon * (ref_n / n) ** (1.0 / 3.0) for n in n_values]
 
     result = run_fc005_desi_pipeline(
@@ -505,7 +521,8 @@ def run_gate1_on_pilot_fixture(repo_root) -> dict | None:
     return {
         "fixture_path": PILOT_FIXTURE_RELATIVE_PATH, "n_fixture_objects": n_available,
         "N_values": n_values, "epsilon_values": epsilon_values,
-        "epsilon_rule": "3 x median NN separation at N=3000 (measured in run_desi_pilot.py), "
-                        "scaled by (3000/N)^(1/3)",
+        "epsilon_rule": f"1 x median NN separation (median-heuristic bandwidth), measured "
+                        f"directly on the {ref_n}-object fixture ({ref_epsilon:.3f} Mpc), "
+                        f"scaled by ({ref_n}/N)^(1/3)",
         "result": result,
     }
