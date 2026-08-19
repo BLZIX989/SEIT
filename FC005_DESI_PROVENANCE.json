@@ -122,6 +122,21 @@
       "next_dependency": "scale N beyond 4000 with a sparse iterative eigensolver to separate resolution-limit effects from point-process effects; see FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 16"
     },
     {
+      "step": "sparse_n_scaling_investigation",
+      "report": "FC005_N_SCALING_REPORT.md",
+      "raw_data": "data/desi/dr1/fc005/derived/sparse_n_scaling_full_results.json",
+      "csvs": ["FC005_SPARSE_SPECTRAL_RESULTS.csv", "FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv",
+               "FC005_POINT_PROCESS_COMPARISON.csv"],
+      "solver": "scipy.sparse.linalg.eigsh, which='SA', no shift-invert (shift-invert's sparse LU factorization was measured to hang past 100s at N=16000 for this graph family); maxiter=500 uniformly across all processes, tol=1e-8",
+      "N_values_tested": [4000, 8000, 16000, 32000, 64000],
+      "N_ceiling_reason": "N=128000 attempted for synthetic controls, timed out at 300s in a standalone test before this was the shared ceiling for all 6 (process,alpha) configurations -- computational-feasibility boundary",
+      "epsilon_scaling_correction": "eps_N = eps_ref * (N_ref/N)^(1/(d+4)) (exponent 1/7 for d=3), replacing the prior diagnostic phase's eps_N ~ N^(-1/d) rate, which was found to violate the asymptotic condition N*eps_N^(d+2) -> infinity required for graph-Laplacian convergence (verified: under the old rate this quantity shrinks as N^(-2/3); under the corrected rate it grows, verified for every tested configuration)",
+      "key_finding": "the naive eigenvalue-only relative-change metric reports DESI (alpha=0) as 'converged' at N=64000 (0.127 < 0.15 tolerance) -- but the required eigenvector/invariant-subspace comparison (spec section 12) shows this is a FALSE POSITIVE for modes 5-15: their eigenvalues coincidentally land close between N=32000 and N=64000 but their subspaces are nearly orthogonal (cosine 0.07-0.15), an eigenvalue-crossing artifact, not genuine convergence. Modes 1-4 DO show genuine joint eigenvalue+eigenvector stability (cosine 0.99+), closely paralleling but trailing the uniform IID positive control (jointly stable through mode ~11 by N=64000). The uniform positive control, only borderline convergent in the prior diagnostic phase at N<=4000, is confirmed to converge cleanly once N is scaled properly with the corrected epsilon rate -- confirming finite resolution (Category D) was the dominant limiting factor at the prior report's N range. The clustered non-i.i.d. synthetic control shows total, persistent ARPACK non-convergence at every N tested (0 eigenvalues resolved within the iteration budget) -- a qualitatively more severe failure than DESI exhibits.",
+      "operator_identification": "attempted (alpha=0 vs alpha=1 comparison at largest N) but inconclusive -- alpha=1 (Coifman-Lafon density normalization) did not converge for EITHER uniform or DESI under the epsilon-scaling rate calibrated for alpha=0, so the large alpha0-vs-alpha1 spectral difference cannot be used as evidence of a density-weighted limiting operator for DESI specifically; recorded as an open methodological question (alpha=1 likely needs its own, different epsilon-scaling exponent), not resolved in this round",
+      "final_status": "FAIL / RETRIABLE (unchanged from before this investigation) -- not CLOSED (full retained mode set 1-15 does not show joint convergence for DESI, only modes 1-4 do), not FALSIFIED (opposite: first evidence of genuine dual eigenvalue+eigenvector convergence for real DESI data, for a defensible spectral subset)",
+      "next_dependency": "extend N further for DESI specifically (real catalogue supports up to 160,150, 64000 was this session's practical ceiling not a hard limit) to test whether modes 5+ eventually stabilize the same way modes 1-4 already have; determine the correct epsilon-scaling exponent for alpha=1 independently before re-attempting operator identification; see FC005_N_SCALING_REPORT.md section 16"
+    },
+    {
       "step": "heat_trace",
       "status": "NOT COMPUTED -- Gate 1 did not pass"
     },

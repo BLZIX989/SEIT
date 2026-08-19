@@ -1734,5 +1734,93 @@
       "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
     },
     "status": "FAIL"
+  },
+  {
+    "id": "CALC-FC005-DESI-SPARSE-N-SCALING",
+    "kind": "desi_sparse_n_scaling_point_process_separation",
+    "inputs": {
+      "report": "FC005_N_SCALING_REPORT.md",
+      "raw_data": "data/desi/dr1/fc005/derived/sparse_n_scaling_full_results.json"
+    },
+    "results": {
+      "uniform_alpha0.0": {
+        "converged": true,
+        "relative_changes": [
+          0.22062116118650224,
+          0.14169798657125657,
+          0.08938668224787895,
+          0.05486428149131263
+        ],
+        "N_values_completed": [
+          4000,
+          8000,
+          16000,
+          32000,
+          64000
+        ]
+      },
+      "clustered_alpha0.0": {
+        "converged": false,
+        "relative_changes": [],
+        "N_values_completed": []
+      },
+      "desi_alpha0.0": {
+        "converged": true,
+        "relative_changes": [
+          1.346747844860744,
+          1.460437118176044,
+          0.5006137834534365,
+          0.1269579141900582
+        ],
+        "N_values_completed": [
+          4000,
+          8000,
+          16000,
+          32000,
+          64000
+        ]
+      },
+      "uniform_alpha1.0": {
+        "converged": false,
+        "relative_changes": [
+          0.5830765234470595,
+          0.5602161199447228,
+          0.5492603682600233,
+          0.5554367866040169
+        ],
+        "N_values_completed": [
+          4000,
+          8000,
+          16000,
+          32000,
+          64000
+        ]
+      },
+      "clustered_alpha1.0": {
+        "converged": false,
+        "relative_changes": [],
+        "N_values_completed": []
+      },
+      "desi_alpha1.0": {
+        "converged": false,
+        "relative_changes": [
+          0.5969173091248131,
+          0.6064536732024448,
+          0.5941742955560452,
+          0.5967686768005318
+        ],
+        "N_values_completed": [
+          4000,
+          8000,
+          16000,
+          32000,
+          64000
+        ]
+      }
+    },
+    "verification": {
+      "purpose": "separate finite-resolution failure from point-process failure for CONTINUUM-LIMIT-L-DESI, per FC005_CONTINUUM_DIAGNOSTIC_REPORT.md section 16"
+    },
+    "status": "CALCULATED"
   }
 ]

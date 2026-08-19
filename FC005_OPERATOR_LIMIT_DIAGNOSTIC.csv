@@ -1,0 +1,3 @@
+dataset,n_modes_compared,relative_spectral_difference_alpha0_vs_alpha1,interpretation
+uniform,14,0.9940,"alpha=0 and alpha=1 spectra differ substantially at the largest tested N -- consistent with (not proof of) the unnormalized operator retaining a density-dependent term distinct from pure Delta_h, per the pre-existing Coifman-Lafon (2006) derivation Delta + 2*(1-alpha)*grad(log p).grad"
+desi,13,0.9883,"alpha=0 and alpha=1 spectra differ substantially at the largest tested N -- consistent with (not proof of) the unnormalized operator retaining a density-dependent term distinct from pure Delta_h, per the pre-existing Coifman-Lafon (2006) derivation Delta + 2*(1-alpha)*grad(log p).grad"

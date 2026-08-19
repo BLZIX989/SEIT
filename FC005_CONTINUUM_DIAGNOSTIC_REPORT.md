@@ -335,6 +335,26 @@ shown sufficient to prove non-existence of the limit.
 (retriable, per `ALLOWED_TRANSITIONS`), not `Status.FALSIFIED` (terminal) — this distinction is
 deliberate and matches the evidence above. Gate 2 and Gate 3 remain `OPEN` and were never entered.
 
+## 15a. FOLLOW-UP: SPARSE N-SCALING INVESTIGATION (POST-PUBLICATION UPDATE)
+
+A dedicated follow-up (`FC005_N_SCALING_REPORT.md`) extended this investigation with a
+sparse eigensolver up to N=64000 (vs. this report's dense-`eigh` ceiling of N≤4000) and a
+corrected epsilon-scaling rate (`eps_N ~ N^(-1/(d+4))`, replacing a rate shown there to
+violate the standard asymptotic convergence condition `N·eps_N^(d+2) → ∞`). Key findings:
+the uniform IID positive control, only borderline convergent here (section 8.3), is
+confirmed to converge cleanly (joint eigenvalue+eigenvector stability through mode ~11) once
+N is scaled properly — confirming Category D (finite resolution) was the dominant limiting
+factor at this report's N range. Real DESI data shows genuine partial convergence (modes 1–4
+of 15, joint eigenvalue+eigenvector stable) at N=64000, closely paralleling but trailing the
+uniform control's own outward stabilization. A naive eigenvalue-only reading of the same
+data gives a **false positive** ("converged", driven by an eigenvalue-crossing artifact in
+the higher modes whose invariant subspaces remain unstable — cosine 0.07–0.15, nearly
+orthogonal), caught and rejected by the eigenvector/subspace test spec section 12 required.
+The clustered non-i.i.d. synthetic control shows a qualitatively more severe failure (total,
+persistent ARPACK non-convergence at every N tested) than DESI exhibits. See
+`FC005_N_SCALING_REPORT.md` for full detail. **Status unchanged: FAIL / RETRIABLE, not
+FALSIFIED, not CLOSED.**
+
 ## 16. NEXT DEPENDENCY
 
 To move this from OPEN toward a decided CLOSURE or FALSIFIED verdict, in order of expected
