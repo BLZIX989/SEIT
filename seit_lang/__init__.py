@@ -46,4 +46,19 @@ that example -- it calls heat_kernel(L, beta) without ever declaring
 beta -- which is recorded as an expected, intentional test result
 (seit_lang/tests/test_semantic.py) rather than patched silently; a
 corrected fixture (spectral_test_complete.seit) exists alongside it.
+
+Phase 3 status: the state machine is implemented (seit_lang/state.py):
+SeitState with the brief's 11 states (DECLARED, RESOLVED, CALCULATED,
+VERIFIED, DERIVED, CERTIFIED, OPEN, FAILED, FALSIFIED, SUPERSEDED,
+BLOCKED), a transition graph that structurally prevents rung-skipping
+(CALCULATED cannot jump to DERIVED, VERIFIED cannot jump to CERTIFIED),
+bidirectional reconciliation functions with compiler.core.status.Status
+that are honest about which mappings are lossy (CERTIFIED and SUPERSEDED
+have no compiler-side equivalent; CONDITIONAL and PROPOSED have no
+FMUTC-side equivalent) and about a real ordering discrepancy between the
+two systems' VERIFIED/DERIVED sequencing (documented in state.py's
+module docstring, not silently harmonized), and a SeitStateMachine that
+enforces dependency validity by reusing
+compiler/dependencies/graph.py's own EXECUTABLE_UPSTREAM_STATUSES
+constant rather than redefining what "ready" means.
 """
