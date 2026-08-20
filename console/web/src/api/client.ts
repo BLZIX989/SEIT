@@ -83,4 +83,9 @@ export const api = {
     transition: (id: string, req: { new_status: string; reason: string }) =>
       post<import("./types").Hypothesis>(`/hypotheses/${encodeURIComponent(id)}/transition`, req),
   },
+  proofs: {
+    list: () => get<import("./types").ProofRecordDetail[]>("/proofs"),
+    get: (nodeId: string) => get<import("./types").ProofRecordDetail>(`/proofs/${encodeURIComponent(nodeId)}`),
+  },
+  falsifications: () => get<import("./types").FalsificationsResponse>("/falsifications"),
 };

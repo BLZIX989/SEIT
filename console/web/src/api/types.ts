@@ -51,6 +51,11 @@ export interface FalsificationMatch {
   match_confidence: "exact_id" | "prefix_match" | "substring_match";
 }
 
+export interface CircularDependencyCheck {
+  is_circular: boolean;
+  cycle_path: string[] | null;
+}
+
 export interface NodeDetail {
   id: string;
   kind: NodeKind;
@@ -65,6 +70,31 @@ export interface NodeDetail {
   falsifications: FalsificationMatch[];
   superseding_nodes: string[];
   superseding_nodes_note: string;
+  circular_dependency: CircularDependencyCheck;
+}
+
+export interface ProofRecordDetail {
+  id: string;
+  transformation_id: string;
+  statement: string;
+  method: string;
+  status: string;
+  preconditions: string[];
+  postconditions: string[];
+  assumptions: string[];
+  dependencies: string[];
+  open_obligations: string[];
+  circular_dependency: CircularDependencyCheck;
+}
+
+export interface ProtocolReference {
+  name: string;
+  summary: string;
+}
+
+export interface FalsificationsResponse {
+  records: Record<string, unknown>[];
+  protocols: ProtocolReference[];
 }
 
 export interface AuditResult {

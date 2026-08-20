@@ -125,6 +125,22 @@ export const useCreateHypothesis = () => {
   });
 };
 
+// ---- Phase 8: Proof / Falsification Workspaces ----
+
+export const useProofs = () =>
+  useQuery({ queryKey: ["proofs"], queryFn: api.proofs.list, staleTime: DEFAULT_STALE_TIME_MS });
+
+export const useProof = (nodeId: string | undefined) =>
+  useQuery({
+    queryKey: ["proof", nodeId],
+    queryFn: () => api.proofs.get(nodeId as string),
+    enabled: Boolean(nodeId),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
+export const useFalsifications = () =>
+  useQuery({ queryKey: ["falsifications"], queryFn: api.falsifications, staleTime: DEFAULT_STALE_TIME_MS });
+
 export const useTransitionHypothesis = () => {
   const queryClient = useQueryClient();
   return useMutation({

@@ -39,6 +39,8 @@ const STUB_RESPONSES: Record<string, unknown> = {
   "/api/runs": [],
   "/api/ledger": [],
   "/api/hypotheses": [],
+  "/api/proofs": [],
+  "/api/falsifications": { records: [], protocols: [] },
 };
 
 const STUB_NODE_DETAIL = {
@@ -46,6 +48,7 @@ const STUB_NODE_DETAIL = {
   raw: {}, dependencies: [], dependents: [], provenance: null, proofs: [],
   calculations: [], falsifications: [], superseding_nodes: [],
   superseding_nodes_note: "NOT_IMPLEMENTED",
+  circular_dependency: { is_circular: false, cycle_path: null },
 };
 
 beforeEach(() => {
@@ -130,5 +133,19 @@ describe("App routing", () => {
     renderAt("/execution");
     expect(await screen.findByRole("button", { name: "[ RUN THEORY SEARCH ]" })).toBeInTheDocument();
     expect(await screen.findByText("No ledger events yet.")).toBeInTheDocument();
+  });
+
+  it("renders the Proofs screen with real (empty) data, no NOT IMPLEMENTED panel (Phase 8)", async () => {
+    renderAt("/proofs");
+    expect(await screen.findByRole("heading", { name: "Proofs" })).toBeInTheDocument();
+    expect(await screen.findByText("No proof records yet.")).toBeInTheDocument();
+    expect(screen.queryByText("NOT IMPLEMENTED")).not.toBeInTheDocument();
+  });
+
+  it("renders the Falsification screen's real protocol reference and record list alongside its remaining NOT IMPLEMENTED panel (Phase 8)", async () => {
+    renderAt("/falsification");
+    expect(await screen.findByRole("heading", { name: "Falsification" })).toBeInTheDocument();
+    expect(await screen.findByText("No falsification tests recorded yet.")).toBeInTheDocument();
+    expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
   });
 });

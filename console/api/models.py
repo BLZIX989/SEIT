@@ -78,11 +78,22 @@ class NodeDetail(BaseModel):
         "NOT_IMPLEMENTED: the compiler has no supersession-tracking field today; "
         "this list is always empty rather than guessed."
     )
+    circular_dependency: "CircularDependencyCheck"
 
 
 class FalsificationMatch(BaseModel):
     record: dict[str, Any]
     match_confidence: str  # "exact_id" | "prefix_match" | "substring_match"
+
+
+class CircularDependencyCheck(BaseModel):
+    """Proof Workspace (Phase 8): "Conclusion(T) in Premises(T)" check --
+    a live DFS through the node's own transitive dependency closure
+    looking for itself. Should always be False given the compiler's own
+    cycle-rejection guard, but is computed independently here rather
+    than assumed (see console/api/canonical/proof_check.py)."""
+    is_circular: bool
+    cycle_path: Optional[list[str]] = None
 
 
 NodeDetail.model_rebuild()
@@ -314,3 +325,41 @@ class HypothesisTransitionRequest(BaseModel):
 class HypothesisDetail(BaseModel):
     current: Hypothesis
     history: list[Hypothesis]
+
+
+# ---------------------------------------------------------------------
+# Phase 8: Proof / Falsification Workspaces.
+# ---------------------------------------------------------------------
+
+class ProtocolReference(BaseModel):
+    """One of the compiler's real falsification protocols, pulled live
+    via `inspect` from compiler/falsification/protocols.py -- never a
+    hand-typed duplicate that could silently drift out of sync."""
+    name: str
+    summary: str
+
+
+class ProofRecordDetail(BaseModel):
+    """One proof_registry.json entry, enriched with the transformation's
+    real preconditions/postconditions/assumptions and the same
+    open_obligations computation used by the chainlink view (brief
+    section XXIV) -- dependencies not yet in the admissible/closed set,
+    i.e. what is genuinely still standing between this proof and
+    closure. `circular_dependency` reuses the same per-node self-
+    reachability check as GET /api/nodes/:id."""
+    id: str
+    transformation_id: str
+    statement: str
+    method: str
+    status: str
+    preconditions: list[str] = []
+    postconditions: list[str] = []
+    assumptions: list[str] = []
+    dependencies: list[str] = []
+    open_obligations: list[str] = []
+    circular_dependency: CircularDependencyCheck
+
+
+class FalsificationsResponse(BaseModel):
+    records: list[dict[str, Any]]      # verbatim falsification_registry.json entries
+    protocols: list[ProtocolReference]  # the real, available protocol types (reference only)

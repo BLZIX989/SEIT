@@ -56,6 +56,13 @@ export function NodeDetailPanel({
             <span className="tag">role: {node.data.role}</span>
           </div>
 
+          {node.data.circular_dependency.is_circular && (
+            <div className="error-panel" style={{ margin: "0 0 12px" }}>
+              CIRCULAR_DEPENDENCY: {node.data.circular_dependency.cycle_path?.join(" → ")} -- see{" "}
+              <Link to="/proofs">Proofs</Link> before treating this node as certifiable.
+            </div>
+          )}
+
           <h4>Dependencies ({node.data.dependencies.length})</h4>
           {node.data.dependencies.length === 0 && <p className="section-note">None — root node.</p>}
           <ul className="node-ref-list">

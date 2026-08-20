@@ -18,12 +18,15 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.concurrency import run_in_threadpool
 
-from console.api.canonical import adapter, chainlink as chainlink_mod, frontier as frontier_mod
+from console.api.canonical import (
+    adapter, chainlink as chainlink_mod, frontier as frontier_mod, proof_check,
+)
 from console.api.execution import executor, ledger_store, runs_store
 from console.api.models import (
-    AuditResultModel, ChainlinkView, FrontierNode, Hypothesis, HypothesisCreateRequest,
-    HypothesisCreateResponse, HypothesisDetail, HypothesisTransitionRequest, LedgerEvent,
-    NodeDetail, NodeSummary, PossibleDuplicate, RunSnapshot, StateRollup,
+    AuditResultModel, ChainlinkView, CircularDependencyCheck, FalsificationsResponse,
+    FrontierNode, Hypothesis, HypothesisCreateRequest, HypothesisCreateResponse,
+    HypothesisDetail, HypothesisTransitionRequest, LedgerEvent, NodeDetail, NodeSummary,
+    PossibleDuplicate, ProofRecordDetail, ProtocolReference, RunSnapshot, StateRollup,
 )
 from console.api.research import hypothesis_status, hypothesis_store
 
@@ -133,6 +136,7 @@ def get_node(node_id: str) -> NodeDetail:
     proofs = adapter.find_proofs_for_node(node_id, reg["proofs"])
     calculations = adapter.find_calculations_for_node(node_id, reg["provenance"], reg["calculations"])
     falsifications = adapter.find_falsifications_for_node(node_id, reg["falsifications"])
+    circular = CircularDependencyCheck(**proof_check.check_circular_dependency(node_id, nodes))
 
     return NodeDetail(
         id=node_id, kind=node["kind"], status=node.get("status", "UNKNOWN"),
@@ -144,6 +148,7 @@ def get_node(node_id: str) -> NodeDetail:
         proofs=proofs,
         calculations=calculations,
         falsifications=falsifications,
+        circular_dependency=circular,
         superseding_nodes=[],
     )
 
@@ -198,6 +203,71 @@ def get_fc005() -> dict:
     failure/retriable/open)."""
     reg = _load_or_503()
     return reg["fc005_result"]
+
+
+# ---------------------------------------------------------------------
+# Phase 8: Proof / Falsification Workspaces. Both read-only -- neither
+# endpoint below can register a proof, mark something falsified, or
+# otherwise write a registry; they only surface real proof_registry.json
+# / falsification_registry.json content plus the live circular-
+# dependency re-check (see console/api/canonical/proof_check.py).
+# ---------------------------------------------------------------------
+
+def _build_proof_detail(proof: dict, nodes: dict, closed: set[str]) -> ProofRecordDetail:
+    transformation_id = proof["transformation_id"]
+    t = nodes.get(transformation_id, {})
+    deps = t.get("dependencies", [])
+    circular = proof_check.check_circular_dependency(transformation_id, nodes)
+    return ProofRecordDetail(
+        id=proof["id"],
+        transformation_id=transformation_id,
+        statement=proof.get("statement", ""),
+        method=proof.get("method", ""),
+        status=proof.get("status", "UNKNOWN"),
+        preconditions=t.get("preconditions", []),
+        postconditions=t.get("postconditions", []),
+        assumptions=t.get("assumptions", []),
+        dependencies=deps,
+        open_obligations=[d for d in deps if d not in closed],
+        circular_dependency=CircularDependencyCheck(**circular),
+    )
+
+
+@app.get("/api/proofs", response_model=list[ProofRecordDetail])
+def list_proofs() -> list[ProofRecordDetail]:
+    reg = _load_or_503()
+    nodes = adapter.get_all_nodes_merged()
+    closed = frontier_mod.compute_closed_set(nodes)
+    return [_build_proof_detail(p, nodes, closed) for p in reg["proofs"]]
+
+
+@app.get("/api/proofs/{node_id}", response_model=ProofRecordDetail)
+def get_proof(node_id: str) -> ProofRecordDetail:
+    reg = _load_or_503()
+    nodes = adapter.get_all_nodes_merged()
+    matches = [p for p in reg["proofs"] if p["transformation_id"] == node_id]
+    if not matches:
+        raise HTTPException(status_code=404, detail=f"no proof record for node '{node_id}'")
+    closed = frontier_mod.compute_closed_set(nodes)
+    return _build_proof_detail(matches[0], nodes, closed)
+
+
+@app.get("/api/falsifications", response_model=FalsificationsResponse)
+def list_falsifications() -> FalsificationsResponse:
+    """Every falsification record, verbatim, including failed ones --
+    "failed tests remain permanently attached" (brief: Falsification
+    Workspace) is a fact about falsification_registry.json itself
+    (compiler/run_compiler.py never filters it), not a UI promise; this
+    endpoint just doesn't add a filter that isn't already absent. The
+    `protocols` list is the compiler's real, available falsification
+    protocol types for reference -- not a menu of runnable actions, since
+    each protocol needs real per-node math wired in by hand (Phase 0
+    finding: no generic runner exists)."""
+    reg = _load_or_503()
+    return FalsificationsResponse(
+        records=reg["falsifications"],
+        protocols=[ProtocolReference(**p) for p in proof_check.falsification_protocol_reference()],
+    )
 
 
 # ---------------------------------------------------------------------
