@@ -1,0 +1,33 @@
+{
+  "manifest_type": "SCIENTIFIC_CORPUS_MANIFEST",
+  "phase": "Phase 13 A+B",
+  "artifacts": {
+    "sources": "data/scientific_corpus/sources/sources.jsonl",
+    "equations": "data/scientific_corpus/equations/equations.jsonl",
+    "operators": "data/scientific_corpus/operators/operators.jsonl",
+    "coverage_report": "data/scientific_corpus/coverage/coverage_report.json"
+  },
+  "not_yet_populated": [
+    "variables",
+    "constants",
+    "functions",
+    "commutators",
+    "algebras",
+    "groups",
+    "representations",
+    "geometries",
+    "manifolds",
+    "bundles",
+    "categories",
+    "functors",
+    "dependencies",
+    "equivalence",
+    "validation",
+    "provenance"
+  ],
+  "counts": {
+    "sources": 4,
+    "equations": 60,
+    "operators": 9
+  }
+}

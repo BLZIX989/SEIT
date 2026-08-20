@@ -1,0 +1,51 @@
+{
+  "report_type": "CORPUS_COVERAGE_REPORT",
+  "phase": "Phase 13, Phases A+B only (repository reconnaissance + existing-corpus ingestion) -- Phases C-O (external acquisition, normalization, equivalence analysis, dimensional analysis, cross-domain structure detection, UOC translation analysis, falsification, final deliverables) have NOT been run.",
+  "sources_discovered": 4,
+  "sources_acquired": 4,
+  "sources_parseable": 4,
+  "sources_equation_extractable": 4,
+  "equations_extracted": 60,
+  "equations_from_compiler": 35,
+  "equations_from_literature": 25,
+  "equations_normalized": 0,
+  "equations_verified_independently_by_this_corpus": 0,
+  "variables_extracted": 0,
+  "operators_extracted": 9,
+  "structures_extracted": 0,
+  "duplicate_clusters": 0,
+  "unresolved_equations": 54,
+  "failed_extractions": 0,
+  "inaccessible_sources": 0,
+  "license_restricted_sources": 0,
+  "domains_covered": [
+    "FC-005 reference equation set",
+    "S^3 heat-kernel control",
+    "compact Lie group theory",
+    "graph Laplacian operators",
+    "heat semigroup",
+    "information geometry",
+    "information geometry vs spacetime geometry",
+    "string theory"
+  ],
+  "domain_coverage": {
+    "FC-005 reference equation set": 29,
+    "S^3 heat-kernel control": 1,
+    "compact Lie group theory": 1,
+    "graph Laplacian operators": 1,
+    "heat semigroup": 1,
+    "information geometry": 1,
+    "information geometry vs spacetime geometry": 1,
+    "string theory": 25
+  },
+  "year_coverage": [
+    "1997",
+    "2009"
+  ],
+  "source_type_coverage": [
+    "compiler_source_code",
+    "lecture_notes_arxiv",
+    "spreadsheet_historical_workbook"
+  ],
+  "explicit_non_claim": "This corpus does NOT contain \"every equation in science\" or even every equation in this repository's own source_material/ -- it contains exactly the equations already transcribed into equation_registry.json and STRING_THEORY_LITERATURE_REGISTRY.json as of this run. See brief section II."
+}
