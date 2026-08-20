@@ -1,0 +1,86 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { App } from "./App";
+
+function renderAt(path: string) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    </QueryClientProvider>,
+  );
+}
+
+// Minimal, shape-valid stub responses per endpoint -- just enough for
+// components to render past their loading state without crashing on a
+// missing field. These are NOT used to assert canonical numbers
+// anywhere (that's console/api/tests' job against the real
+// repository); they exist only so routing/rendering tests don't need
+// a live backend.
+const STUB_RESPONSES: Record<string, unknown> = {
+  "/api/health": { status: "ok", service: "uoc-research-console-api", phase: 3 },
+  "/api/state": {
+    total_nodes: 0, by_status: {}, by_kind: {}, terminal_status: null,
+    all_audits_passed: true, audits: [], fc005_terminal_status: null,
+    frontier_size: 0, generated_from: {},
+  },
+  "/api/mdcl": { types: [], objects: [], transformations: [], equations: [], status_matrix: [] },
+  "/api/nodes": [],
+  "/api/frontier": [],
+  "/api/audits": [],
+  "/api/chainlink": { arrows: [], note: "" },
+  "/api/fc005": { terminal_status: null },
+};
+
+beforeEach(() => {
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async (input: RequestInfo | URL) => {
+      const url = typeof input === "string" ? input : input.toString();
+      const path = Object.keys(STUB_RESPONSES).find((p) => url.includes(p));
+      const body = path ? STUB_RESPONSES[path] : {};
+      return new Response(JSON.stringify(body), { status: 200 });
+    }),
+  );
+});
+
+describe("App routing", () => {
+  it("renders the Overview screen at /", async () => {
+    renderAt("/");
+    // TanStack Query resolves async even against a stubbed fetch; the
+    // heading renders once the initial query settles.
+    expect(await screen.findByRole("heading", { name: "Current Theory State" })).toBeInTheDocument();
+  });
+
+  it("renders the Dependency Graph screen and its NOT IMPLEMENTED panel", async () => {
+    renderAt("/graph");
+    expect(await screen.findByRole("heading", { name: "Dependency Graph" })).toBeInTheDocument();
+    expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
+  });
+
+  it("renders all 15 primary nav items", () => {
+    renderAt("/");
+    const expected = [
+      "Overview", "Dependency Graph", "Theory State", "Derivation Lab", "Research",
+      "Hypotheses", "Execution", "Proofs", "Falsification", "Literature", "Provenance",
+      "Audits", "Runs", "Registries", "Settings",
+    ];
+    for (const label of expected) {
+      expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
+    }
+  });
+
+  it("renders screens that have no backend yet with an explicit NOT IMPLEMENTED panel, never fake success", () => {
+    for (const path of ["/derivation-lab", "/research", "/hypotheses", "/runs", "/literature"]) {
+      const { unmount } = renderAt(path);
+      expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
+      unmount();
+    }
+  });
+});
