@@ -7,7 +7,7 @@ import json
 import csv
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 TIMESTAMP = "2026-08-19T18:51:43Z"
 COMMIT = "791d8b0e2d58784b26697c8571b9f4bf6d455e85"
 
@@ -105,13 +105,13 @@ LITERATURE_CROSSWALK_ROWS = [
          RELATIONSHIP="the quoted Polyakov action formula is correctly stated and matches the prior L0-ST phase's own independently-extracted equation (ST-008); no new derivation connects it to the rest of the corpus's claims"),
     dict(EXTERNAL_SOURCE="Chamseddine-Connes spectral action (real, published NCG physics)", CORPUS_DOCUMENT="Noncommutative Geometry and the Spectral Action PDFs (x2); DTC-RP-004_Forced_vs_Free.docx; Executive Summary.pdf",
          RELATIONSHIP="the two NCG PDFs are literature-summary documents about the real result (already so-classified in compiler/historical/register.py); DTC-RP-004 independently, honestly tests and REJECTS the specific correspondence a companion document (Executive Summary.pdf) proposed between this real physics and the corpus's own (D,T,C) grammar coefficient gamma"),
-    dict(EXTERNAL_SOURCE="Ellis/Gaillard/Nanopoulos, Higgs Boson history (prior L0 literature phase, LIT-EGN-HIGGS)", CORPUS_DOCUMENT="DTC-RP-004_Forced_vs_Free.docx",
+    dict(EXTERNAL_SOURCE="Ellis/Gaillard/Nanopoulos, Higgs Boson history (prior L0 literature phase, LIT-EGN-HIGGS)", CORPUS_DOCUMENT="source_material/DTC-RP-004_Forced_vs_Free.docx",
          RELATIONSHIP="DTC-RP-004 independently and correctly cites the same real 2007 prediction / 2012 falsification / 2012 correction episode this project's own prior literature-ingestion phase already extracted from Ellis/Gaillard/Nanopoulos -- cross-corpus corroboration of the same real historical fact from two independent document sets"),
-    dict(EXTERNAL_SOURCE="Noether's theorem (standard physics/mathematics)", CORPUS_DOCUMENT="DTC_Formal_Structure.docx",
+    dict(EXTERNAL_SOURCE="Noether's theorem (standard physics/mathematics)", CORPUS_DOCUMENT="source_material/DTC_Formal_Structure.docx",
          RELATIONSHIP="correctly and exactly recovered as the special case of the document's own category-theoretic Generalized Noether Conjecture attempt where the constraint subcategory carries a continuous Lie symmetry and a variational structure -- no distortion, no new physical content beyond the already-established theorem"),
-    dict(EXTERNAL_SOURCE="Loop Quantum Gravity area operator (established physics)", CORPUS_DOCUMENT="Functorial Gauge Unification v1.docx",
+    dict(EXTERNAL_SOURCE="Loop Quantum Gravity area operator (established physics)", CORPUS_DOCUMENT="source_material/Functorial Gauge Unification v1.docx",
          RELATIONSHIP="quoted formula is a correct standard LQG result; declared 'isomorphic' to string theory and AdS/CFT constructions with no isomorphism actually constructed"),
-    dict(EXTERNAL_SOURCE="Ryu-Takayanagi formula / AdS-CFT (established physics)", CORPUS_DOCUMENT="Functorial Gauge Unification v1.docx",
+    dict(EXTERNAL_SOURCE="Ryu-Takayanagi formula / AdS-CFT (established physics)", CORPUS_DOCUMENT="source_material/Functorial Gauge Unification v1.docx",
          RELATIONSHIP="same pattern as LQG row above"),
 ]
 
@@ -142,13 +142,13 @@ def write_csv(path: Path, rows: list[dict]):
 
 
 def main():
-    write_csv(ROOT / "MASTER_TOE_CLOSURE_MATRIX.csv", CLOSURE_ROWS)
-    write_csv(ROOT / "MASTER_TOE_CONSTANTS.csv", CONSTANTS_ROWS)
-    write_csv(ROOT / "MASTER_TOE_PARTICLES.csv", PARTICLES_ROWS)
-    write_csv(ROOT / "MASTER_TOE_COUPLINGS.csv", COUPLINGS_ROWS)
-    write_csv(ROOT / "MASTER_TOE_COSMOLOGY.csv", COSMOLOGY_ROWS)
-    write_csv(ROOT / "MASTER_TOE_LITERATURE_CROSSWALK.csv", LITERATURE_CROSSWALK_ROWS)
-    write_csv(ROOT / "MASTER_TOE_THEOREM_VALIDATION.csv", THEOREM_VALIDATION_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_CLOSURE_MATRIX.csv", CLOSURE_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_CONSTANTS.csv", CONSTANTS_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_PARTICLES.csv", PARTICLES_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_COUPLINGS.csv", COUPLINGS_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_COSMOLOGY.csv", COSMOLOGY_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_LITERATURE_CROSSWALK.csv", LITERATURE_CROSSWALK_ROWS)
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_THEOREM_VALIDATION.csv", THEOREM_VALIDATION_ROWS)
     print("wrote 7 CSVs")
 
     status_matrix = json.loads((ROOT / "status_matrix.json").read_text())
@@ -183,7 +183,7 @@ def main():
             "well enough to warrant new canonical code."
         ),
     }
-    (ROOT / "MASTER_TOE_COMPILER_EXECUTION_TRACE.json").write_text(json.dumps(exec_trace, indent=2) + "\n")
+    (ROOT / "reports/master_toe/MASTER_TOE_COMPILER_EXECUTION_TRACE.json").write_text(json.dumps(exec_trace, indent=2) + "\n")
     print("wrote MASTER_TOE_COMPILER_EXECUTION_TRACE.json")
 
     final_status = {
@@ -222,7 +222,7 @@ def main():
         "canonical_registries_modified": False,
         "fc005_rerun": False,
     }
-    (ROOT / "MASTER_TOE_STATUS.json").write_text(json.dumps(final_status, indent=2) + "\n")
+    (ROOT / "reports/master_toe/MASTER_TOE_STATUS.json").write_text(json.dumps(final_status, indent=2) + "\n")
     print("wrote MASTER_TOE_STATUS.json")
 
 

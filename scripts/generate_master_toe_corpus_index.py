@@ -18,13 +18,13 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 TIMESTAMP = "2026-08-19T18:51:43Z"
 COMMIT = "791d8b0e2d58784b26697c8571b9f4bf6d455e85"
 
 ROWS = [
     # --- Master Equation Codex (deep read, author Keith I. Blaze, June 2026) ---
-    dict(source_id="MEC-0", filename="Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
+    dict(source_id="MEC-0", filename="source_material/Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
          branch="Primitive/Spectral", section="0-1", equation_identifier="0.1-1.4",
          equation_text="U={Delta_i}; A=(A_ij); D=diag(d_i); L=D-A; L psi_n=lambda_n psi_n; J_L^2=L (Dirac-op-as-sqrt(L))",
          variables="N distinctions, adjacency A, degree D, Laplacian L, eigenpairs (lambda_n,psi_n)",
@@ -36,7 +36,7 @@ ROWS = [
          verification_status="Sections 0-1's mathematical content (L=D-A, eigenproblem) is standard, correct spectral graph theory and IS already independently reconstructed and executed in this project's Test1 pipeline -- but that reconstruction is prior work, not new work this campaign attributes to this document. Calling the square-root L^(1/2) a 'Dirac operator' (eq 1.3) is an unsubstantiated physics-interpretation claim: a positive operator's functional square root is standard math, but nothing shown establishes Clifford-algebra/spinor structure to justify the physical name.",
          falsification_status="not falsified (the graph/Laplacian/spectrum content is mathematically sound); the 'Dirac operator' naming is unsupported, not falsified",
          promotion_candidate="NO new promotion -- already covered by existing canonical Test1 nodes"),
-    dict(source_id="MEC-3", filename="Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
+    dict(source_id="MEC-3", filename="source_material/Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
          branch="Geometry", section="3", equation_identifier="3.1-3.6",
          equation_text="d(i,j)=[sum_{n in Pi}|psi_n(i)-psi_n(j)|^2]^(1/2); g_ij=lim_{x'->x} d^2 d/dx^i dx'^j; Gamma,R,G_munu standard GR formulas",
          variables="diffusion distance d(i,j), metric g_ij, Christoffel Gamma, Riemann R, Einstein G_munu",
@@ -47,7 +47,7 @@ ROWS = [
          verification_status="Eq 3.2 differentiates a discrete node-pairwise distance d(i,j) with respect to continuous coordinates x^i that are never defined -- this presupposes the very embedding this project's own Test2 pipeline found to be non-unique (METRIC-CANDIDATE, CONDITIONAL). The document does not acknowledge or resolve this; it is stated as a completed step.",
          falsification_status="the specific written equation is not well-formed (undefined x^i), which this campaign treats as a failed reconstruction attempt, not a proof of falsity of the general idea",
          promotion_candidate="NO"),
-    dict(source_id="MEC-5", filename="Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
+    dict(source_id="MEC-5", filename="source_material/Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
          branch="Gauge/Standard Model", section="5", equation_identifier="5.3",
          equation_text="G = Aut(O) x Spin(8) superset SU(3)_C x SU(2)_L x U(1)_Y",
          variables="octonion automorphism group Aut(O), Spin(8), gauge group G",
@@ -58,7 +58,7 @@ ROWS = [
          verification_status="Corpus-wide search (this project's own compiler/historical/register.py, independently re-confirmed by grep this campaign) found no executable derivation, proof object, or numerical artifact anywhere in the repository backing this claim. This is a restatement of the DTC COMPILER.docx section 4 claim already registered as T2-HISTORICAL.",
          falsification_status="not falsified (never derived to a testable form)",
          promotion_candidate="NO"),
-    dict(source_id="MEC-6", filename="Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
+    dict(source_id="MEC-6", filename="source_material/Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
          branch="Quantum", section="6", equation_identifier="6.1-6.4",
          equation_text="i hbar dPsi/dt = H Psi (asserted continuum limit of L psi_n=lambda_n psi_n)",
          variables="Schrodinger wavefunction Psi, Hamiltonian H", assumptions="the discrete graph eigenproblem has a well-defined continuum limit reproducing the Schrodinger equation",
@@ -68,7 +68,7 @@ ROWS = [
          verification_status="This project's own rigorously executed FC-005 investigation (real DESI data, sparse N-scaling to N=64,000) found genuine discrete-to-continuum convergence for only the lowest ~4 of 15 tested modes even in the best case, and explicit non-convergence for the rest -- the opposite of a general, clean continuum limit. The document's one-line assertion 'Eq 6.2 is the continuum limit of Eq 1.2' does not hold as a general, unconditional statement given this project's own empirical finding.",
          falsification_status="CONTRADICTED by this project's own FC-005 execution for the general/unconditional form of the claim",
          promotion_candidate="NO"),
-    dict(source_id="MEC-7", filename="Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
+    dict(source_id="MEC-7", filename="source_material/Master Equation Codex.pdf", source_class="B (grandiose-synthesis)",
          branch="Thermodynamic", section="7", equation_identifier="7.1-7.4",
          equation_text="R=e^{-beta L} <-> Boltzmann weight e^{-beta E}", variables="recursion parameter beta, energy E",
          assumptions="the graph heat-kernel parameter beta is physically identifiable with inverse temperature",
@@ -79,7 +79,7 @@ ROWS = [
          falsification_status="not falsified (not asserted strongly enough to test)", promotion_candidate="NO"),
 
     # --- DTC_Formal_Structure.docx (deep read, full) ---
-    dict(source_id="DTC-FS-1", filename="DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
+    dict(source_id="DTC-FS-1", filename="source_material/DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
          branch="Symmetry", section="II", equation_identifier="Constraint Necessity Theorem",
          equation_text="A freely generated category D (every morphism, including identifying/collapsing ones, admissible) has no non-trivial invariant distinguishing any two objects",
          variables="category D, subcategory C, objects A,B", assumptions="D contains at least 2 non-isomorphic objects; 'freely generated' means literally every conceivable morphism (including collapsing ones) is admissible",
@@ -89,7 +89,7 @@ ROWS = [
          verification_status="Independently re-derived by inspection this campaign: the proof is a direct, valid consequence of the definitions given (a category with every morphism, including arbitrary identifications, available has by construction no property preserved by all morphisms). This is the single cleanest genuinely-proved result located anywhere in the historical corpus.",
          falsification_status="SURVIVES -- correct as stated, though narrower than the document's own predecessor (Document 3) had informally claimed, which the document itself flags",
          promotion_candidate="CANDIDATE for registration as an external-mathematics reference (category theory), not as UOC-original physics"),
-    dict(source_id="DTC-FS-2", filename="DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
+    dict(source_id="DTC-FS-2", filename="source_material/DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
          branch="Symmetry/Conservation", section="III", equation_identifier="Generalized Noether Conjecture (GNC)",
          equation_text="conjectured: for any (D,T,C) system, a retained quantity R exists as a consequence of C alone",
          variables="constraint subcategory C, retained quantity R", assumptions="would require C to carry continuous/variational structure analogous to a Lagrangian symmetry group, which is not guaranteed for an arbitrary C",
@@ -99,7 +99,7 @@ ROWS = [
          verification_status="Independently confirmed this campaign: the document correctly identifies that Noether's proof requires a continuous Lie symmetry and a variational (Lagrangian) structure, neither of which a generic constraint subcategory C is guaranteed to carry -- so the promised generalization beyond ordinary physics does not go through, and the document says so explicitly rather than papering over it.",
          falsification_status="the GENERAL conjecture remains an open, unproved conjecture (honestly labeled as such); the CONSERVATIVE special case is simply ordinary Noether's theorem, not new content",
          promotion_candidate="NO new promotion (Noether's theorem is already established external physics; the generalization attempt did not succeed)"),
-    dict(source_id="DTC-FS-3", filename="DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
+    dict(source_id="DTC-FS-3", filename="source_material/DTC_Formal_Structure.docx", source_class="B-rigorous (self-critical, checkable)",
          branch="Primitive", section="IV", equation_identifier="Option A / Option B (self-reference)",
          equation_text="n/a (no equation; a question about whether investigator and investigated share necessary categorical structure)",
          variables="n/a", assumptions="would require an independently-specified (D,T,C) decomposition of cognition itself, not smuggled in from the conclusion it would support",
@@ -110,7 +110,7 @@ ROWS = [
          falsification_status="not applicable (an acknowledged open problem, not a tested claim)", promotion_candidate="NO"),
 
     # --- DTC-RP-004_Forced_vs_Free.docx (deep read, full) ---
-    dict(source_id="DTC-RP4-1", filename="DTC-RP-004_Forced_vs_Free.docx", source_class="B-rigorous (self-falsification test)",
+    dict(source_id="DTC-RP4-1", filename="source_material/DTC-RP-004_Forced_vs_Free.docx", source_class="B-rigorous (self-falsification test)",
          branch="Quantum/Gravity", section="2-4", equation_identifier="Tr(Y^4)/Tr(Y^2)^2 forcing-test",
          equation_text="Tr(Y^4)/Tr(Y^2)^2 = (m_t^4+m_b^4+m_tau^4)/(m_t^2+m_b^2+m_tau^2)^2, evaluated = 0.9986 (measured masses) / 1 (top-dominance limit); tested against the grammar's own candidate coefficient gamma in dPhi/dt=alphaJ-betaPhi-gammaPhi^3+D Phi nabla^2 Phi",
          variables="Yukawa trace ratio, fermion masses m_t/m_b/m_tau, grammar coefficient gamma",
@@ -125,7 +125,7 @@ ROWS = [
          promotion_candidate="NO (this is itself a negative result -- nothing to promote, and the document correctly does not claim otherwise)"),
 
     # --- DTC COMPILER.docx (deep read of section 5, the numerology) ---
-    dict(source_id="DTC-C-5.1", filename="DTC COMPILER.docx", source_class="B (grandiose-synthesis, contains a falsified numerical claim)",
+    dict(source_id="DTC-C-5.1", filename="source_material/DTC COMPILER.docx", source_class="B (grandiose-synthesis, contains a falsified numerical claim)",
          branch="Constants", section="5.1", equation_identifier="alpha = Vol(S^1)/Vol(CP^2)",
          equation_text="alpha = 2 pi / (pi^2/2) = 4/pi [then, asserted without derivation:] alpha^-1 ~ 137.035999",
          variables="fine-structure constant alpha, S^1 and CP^2 topological volumes",
@@ -135,7 +135,7 @@ ROWS = [
          executable="the stated formula is directly checkable: 4/pi ~= 1.2732", verification_status="Directly recomputed this campaign: 2*pi/(pi^2/2) = 4/pi ~ 1.2732, NOT 137.035999 and not its reciprocal (pi/4 ~ 0.7854) either. No algebraic step is shown connecting the computed geometric ratio (4/pi) to the asserted 'exact measured inverse value' (137.035999) -- the two numbers are simply stated adjacent to each other with a vague appeal to 'normalization,' with no formula. This is the same 'state the desired known answer next to an unconnected calculation and call it derived' pattern already identified and rejected in the unrelated Hashimoto 'Theory of Everything' document during the prior L0 literature-ingestion phase of this project.",
          falsification_status="FALSIFIED as a derivation -- the claimed equality does not follow from the shown mathematics",
          promotion_candidate="NO, and flagged as a corpus reliability warning for this document"),
-    dict(source_id="DTC-C-5.2", filename="DTC COMPILER.docx", source_class="B (grandiose-synthesis, contains a falsified numerical claim)",
+    dict(source_id="DTC-C-5.2", filename="source_material/DTC COMPILER.docx", source_class="B (grandiose-synthesis, contains a falsified numerical claim)",
          branch="Constants", section="5.2", equation_identifier="lambda_1 = m_e/M_Planck",
          equation_text="lambda_1 = m_e/M_Planck = 4.18575e-23 [claimed to come from] 'evaluating the constrained boundary condition of the hypergraph's stable topological twists'",
          variables="electron mass m_e, Planck mass M_Planck, eigenvalue lambda_1",
@@ -179,7 +179,7 @@ ROWS = [
          promotion_candidate="NO promotion without the above two checks; explicitly flagged in MASTER_TOE_PREDICTIONS.md as the priority follow-up"),
 
     # --- Functorial Gauge Unification v1.docx (deep read, full, 93 lines) ---
-    dict(source_id="FGU-1", filename="Functorial Gauge Unification v1.docx", source_class="B (grandiose-synthesis)",
+    dict(source_id="FGU-1", filename="source_material/Functorial Gauge Unification v1.docx", source_class="B (grandiose-synthesis)",
          branch="Quantum/Gravity", section="I-VI", equation_identifier="T:Category(ER)~=Category(EPR); various restated GR/QFT/LQG/AdS-CFT formulas",
          equation_text="restates the Einstein field equations, the LQG area operator, the Ryu-Takayanagi formula, and the Polyakov string action side-by-side and declares them isomorphic images of one functor T",
          variables="Grothendieck topos E, transport functors T_1/T_2/T_3, adaptive multiplicity M*",
@@ -193,7 +193,7 @@ ROWS = [
          promotion_candidate="NO"),
 
     # --- geometric unification paper.docx (partial read, first 60 lines) ---
-    dict(source_id="GUP-1", filename="geometric unification paper.docx", source_class="B (grandiose-synthesis)",
+    dict(source_id="GUP-1", filename="source_material/geometric unification paper.docx", source_class="B (grandiose-synthesis)",
          branch="Variational", section="1-2", equation_identifier="Universal Persistence Field Equation (via delta C_Pi=0)",
          equation_text="not fully captured in the excerpt read this campaign (equation set formatting was not preserved in plain-text extraction for this specific block)",
          variables="Recursive Distinction Omega, informational cost functional C_Pi, Fisher Information Transport Cost I_F",
@@ -205,7 +205,7 @@ ROWS = [
          falsification_status="NOT ASSESSED THIS CAMPAIGN", promotion_candidate="NO (insufficient inspection to consider; flagged for a future deeper pass)"),
 
     # --- DTC_Rosetta_Stone_TOE_v2.docx (grep-context read of its own open-problems section) ---
-    dict(source_id="DTC-RS2-10", filename="DTC_Rosetta_Stone_TOE_v2.docx", source_class="B-rigorous (self-critical, honest open-problems section)",
+    dict(source_id="DTC-RS2-10", filename="source_material/DTC_Rosetta_Stone_TOE_v2.docx", source_class="B-rigorous (self-critical, honest open-problems section)",
          branch="Constants", section="10 (Open Problems)", equation_identifier="n/a (prose)",
          equation_text="n/a", variables="n/a",
          assumptions="n/a", dependencies="this document's own section 5 (gauge-group derivation)",
@@ -232,26 +232,26 @@ ROWS = [
 ]
 
 REMAINING_DOCS = [
-    ("Beyond the Theory of Everything.pdf", "B (not deep-read; largest remaining document, 7223 lines extracted)"),
-    ("Consciousness_and_the_Universe__Quantum_Ph_-_Roger_Penrose.pdf", "C (genuine external Penrose book; consciousness/quantum-mind topic, tangential to core physics derivation; not read this campaign)"),
-    ("Constraint Core Brief.pdf", "B (referenced by DTC_Formal_Structure.docx as 'Scientific Brief 001'; not deep-read this campaign)"),
-    ("Executive Summary.pdf", "B (the document DTC-RP-004 tests and finds non-forced; not independently deep-read this campaign beyond DTC-RP-004's own quotes from it)"),
-    ("Spectral Codex Volume I Genesis.pdf", "B (not deep-read; TOC/title suggests overlap with Master Equation Codex sections 0-2)"),
-    ("Spectral Codex Volume II Gravity.pdf", "B (not deep-read; TOC/title suggests overlap with Master Equation Codex section 3-4)"),
-    ("Spectral Codex Volumes.docx", "B (largest single file in the corpus, 359KB extracted text; not deep-read this campaign)"),
-    ("Spectral Emergence Framework v2.pdf", "B (not deep-read this campaign)"),
-    ("Spectral Emergence Information Theory.pdf", "B (not deep-read this campaign)"),
-    ("Spectral_Emergence_Framework_Specification.docx", "B (not deep-read this campaign)"),
-    ("Spectral Equations Random.docx", "B (filename itself signals a scratch/dump document; not deep-read this campaign)"),
-    ("Unified Spectral Codex.pdf", "B (not deep-read this campaign)"),
-    ("Theory of Everything Equation Set.docx", "B (not deep-read this campaign; largest raw equation-dump document by size, 903KB)"),
-    ("Unified Field Theory.docx", "B (not deep-read this campaign)"),
-    ("MasterRosettaStone TOE Paper.pdf", "B (not deep-read this campaign)"),
-    ("Unified_Rosetta_Stone_TOE_v3.docx", "B (not deep-read this campaign)"),
-    ("Universal_Rosetta_Ch1_Remainder.docx", "B (not deep-read this campaign)"),
-    ("JOI Reformatted.docx", "B (not deep-read this campaign; title pattern resembles the already-rejected Hashimoto 'Journal of Innovations' pseudoscience document from the prior L0 phase -- flagged for cautious handling in any future pass, not confirmed either way)"),
-    ("DTC Logic of Inquiry.docx", "B-rigorous (referenced extensively and accurately by DTC_Formal_Structure.docx, which this campaign confirms is careful/self-critical; not independently deep-read itself this campaign)"),
-    ("DTC Metaphysics of Structure.docx", "B-rigorous (same as above; philosophical/metaphysical register per DTC_Formal_Structure.docx's own description, not a source of physics equations)"),
+    ("source_material/Beyond the Theory of Everything.pdf", "B (not deep-read; largest remaining document, 7223 lines extracted)"),
+    ("source_material/Consciousness_and_the_Universe__Quantum_Ph_-_Roger_Penrose.pdf", "C (genuine external Penrose book; consciousness/quantum-mind topic, tangential to core physics derivation; not read this campaign)"),
+    ("source_material/Constraint Core Brief.pdf", "B (referenced by DTC_Formal_Structure.docx as 'Scientific Brief 001'; not deep-read this campaign)"),
+    ("source_material/Executive Summary.pdf", "B (the document DTC-RP-004 tests and finds non-forced; not independently deep-read this campaign beyond DTC-RP-004's own quotes from it)"),
+    ("source_material/Spectral Codex Volume I Genesis.pdf", "B (not deep-read; TOC/title suggests overlap with Master Equation Codex sections 0-2)"),
+    ("source_material/Spectral Codex Volume II Gravity.pdf", "B (not deep-read; TOC/title suggests overlap with Master Equation Codex section 3-4)"),
+    ("source_material/Spectral Codex Volumes.docx", "B (largest single file in the corpus, 359KB extracted text; not deep-read this campaign)"),
+    ("source_material/Spectral Emergence Framework v2.pdf", "B (not deep-read this campaign)"),
+    ("source_material/Spectral Emergence Information Theory.pdf", "B (not deep-read this campaign)"),
+    ("source_material/Spectral_Emergence_Framework_Specification.docx", "B (not deep-read this campaign)"),
+    ("source_material/Spectral Equations Random.docx", "B (filename itself signals a scratch/dump document; not deep-read this campaign)"),
+    ("source_material/Unified Spectral Codex.pdf", "B (not deep-read this campaign)"),
+    ("source_material/Theory of Everything Equation Set.docx", "B (not deep-read this campaign; largest raw equation-dump document by size, 903KB)"),
+    ("source_material/Unified Field Theory.docx", "B (not deep-read this campaign)"),
+    ("source_material/MasterRosettaStone TOE Paper.pdf", "B (not deep-read this campaign)"),
+    ("source_material/Unified_Rosetta_Stone_TOE_v3.docx", "B (not deep-read this campaign)"),
+    ("source_material/Universal_Rosetta_Ch1_Remainder.docx", "B (not deep-read this campaign)"),
+    ("source_material/JOI Reformatted.docx", "B (not deep-read this campaign; title pattern resembles the already-rejected Hashimoto 'Journal of Innovations' pseudoscience document from the prior L0 phase -- flagged for cautious handling in any future pass, not confirmed either way)"),
+    ("source_material/DTC Logic of Inquiry.docx", "B-rigorous (referenced extensively and accurately by DTC_Formal_Structure.docx, which this campaign confirms is careful/self-critical; not independently deep-read itself this campaign)"),
+    ("source_material/DTC Metaphysics of Structure.docx", "B-rigorous (same as above; philosophical/metaphysical register per DTC_Formal_Structure.docx's own description, not a source of physics equations)"),
 ]
 
 
@@ -284,7 +284,7 @@ def build_dependency_graph():
     comparison nodes assessed this campaign. All new nodes are role=comparison,
     never wired as upstream dependencies of the canonical forward chain."""
     import csv as csvmod
-    existing = list(csvmod.DictReader((ROOT / "DEPENDENCY_CLOSURE_AUDIT.csv").open()))
+    existing = list(csvmod.DictReader((ROOT / "reports/physics_validation/DEPENDENCY_CLOSURE_AUDIT.csv").open()))
     nodes = [dict(id=r["id"], kind=r["kind"], status=r["status"], category=r["category"],
                   source="canonical (object_registry.json / transformation_registry.json)")
              for r in existing]
@@ -300,7 +300,7 @@ def build_dependency_graph():
         dict(id="DTC-FS-GNC", kind="HistoricalConjecture", status="OPEN_HONEST", category="comparison",
              source="DTC_Formal_Structure.docx section III"),
         dict(id="DTC-RP4-FORCING-TEST", kind="HistoricalFalsificationTest", status="NEGATIVE_RESULT", category="comparison",
-             source="DTC-RP-004_Forced_vs_Free.docx"),
+             source="source_material/DTC-RP-004_Forced_vs_Free.docx"),
         dict(id="DTC-C-ALPHA-CLAIM", kind="HistoricalClaim", status="FALSIFIED_NONSEQUITUR", category="comparison",
              source="DTC COMPILER.docx section 5.1"),
         dict(id="DTC-C-ELECTRON-MASS-CLAIM", kind="HistoricalClaim", status="FALSIFIED_REVERSE_FIT", category="comparison",
@@ -310,7 +310,7 @@ def build_dependency_graph():
         dict(id="SEIT-AXION-GW-SOLITON-PREDICTIONS", kind="HistoricalPrediction", status="UNTESTED_STRUCTURALLY_LEGITIMATE",
              category="comparison", source="SEIT v2.pdf section VI"),
         dict(id="FGU-ISOMORPHISM-CLAIM", kind="HistoricalClaim", status="UNSUBSTANTIATED_UNFALSIFIABLE", category="comparison",
-             source="Functorial Gauge Unification v1.docx"),
+             source="source_material/Functorial Gauge Unification v1.docx"),
         dict(id="NCG-EXTERNAL-SPECTRAL-ACTION", kind="ExternalLiteratureReference", status="PROPOSED", category="comparison",
              source="already registered as NCG-BRIDGE-EXTERNAL-REFERENCE in canonical registry"),
     ]
@@ -333,13 +333,13 @@ def build_dependency_graph():
 
 def main():
     rows = build_index_rows()
-    write_csv(ROOT / "MASTER_THEORY_CORPUS_INDEX.csv", rows)
+    write_csv(ROOT / "reports/master_theory/MASTER_THEORY_CORPUS_INDEX.csv", rows)
     print(f"wrote MASTER_THEORY_CORPUS_INDEX.csv ({len(rows)} rows)")
 
     graph = build_dependency_graph()
-    (ROOT / "MASTER_TOE_DEPENDENCY_GRAPH.json").write_text(json.dumps(graph, indent=2) + "\n")
+    (ROOT / "reports/master_toe/MASTER_TOE_DEPENDENCY_GRAPH.json").write_text(json.dumps(graph, indent=2) + "\n")
     print(f"wrote MASTER_TOE_DEPENDENCY_GRAPH.json ({len(graph['nodes'])} nodes)")
-    write_csv(ROOT / "MASTER_TOE_DEPENDENCY_GRAPH.csv", graph["nodes"])
+    write_csv(ROOT / "reports/master_toe/MASTER_TOE_DEPENDENCY_GRAPH.csv", graph["nodes"])
     print("wrote MASTER_TOE_DEPENDENCY_GRAPH.csv")
 
 

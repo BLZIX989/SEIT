@@ -42,7 +42,7 @@ from compiler.backends.desi_sparse import (
     joint_spectral_convergence, sparse_graph_laplacian, sparse_low_eigen,
 )
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw" / "LRG_SGC_clustering.dat.fits"
 D = 3
 N_SMALL, N_LARGE = 4000, 8000
@@ -51,7 +51,7 @@ SEED = 20250819
 
 
 def load_desi_points():
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)

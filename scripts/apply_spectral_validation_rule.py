@@ -18,7 +18,7 @@ from pathlib import Path
 
 from compiler.backends.desi_sparse import joint_spectral_convergence
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RESULTS_PATH = ROOT / "data" / "desi" / "dr1" / "fc005" / "derived" / "sparse_n_scaling_full_results.json"
 
 
@@ -49,7 +49,7 @@ def main():
     print(f"\nrewrote {RESULTS_PATH} (converged field now = joint_spectral_converged)")
 
     # ---- Regenerate FC005_POINT_PROCESS_COMPARISON.csv ----
-    with open(ROOT / "FC005_POINT_PROCESS_COMPARISON.csv", "w", newline="") as f:
+    with open(ROOT / "reports/fc005/FC005_POINT_PROCESS_COMPARISON.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["dataset", "alpha", "N_sequence", "epsilon_sequence",
                     "N_eps_pow_d_increasing", "N_eps_pow_d_plus_2_increasing",
@@ -65,10 +65,10 @@ def main():
                         res["relative_changes"], res["eigenvalue_only_converged"],
                         res["joint_spectral_converged"], res["converged"],
                         res["relative_changes"][-1] if res["relative_changes"] else ""])
-    print(f"wrote {ROOT / 'FC005_POINT_PROCESS_COMPARISON.csv'}")
+    print(f"wrote {ROOT / 'reports/fc005/FC005_POINT_PROCESS_COMPARISON.csv'}")
 
     # ---- Regenerate FC005_SPARSE_SPECTRAL_RESULTS.csv (unchanged data, same as before) ----
-    with open(ROOT / "FC005_SPARSE_SPECTRAL_RESULTS.csv", "w", newline="") as f:
+    with open(ROOT / "reports/fc005/FC005_SPARSE_SPECTRAL_RESULTS.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["dataset", "alpha", "N", "epsilon", "avg_degree", "nnz", "solver",
                     "sigma", "tol", "maxiter", "n_modes_requested", "max_residual",
@@ -92,7 +92,7 @@ def main():
                             f"{eig[1]:.6e}" if len(eig) > 1 else "",
                             f"{eig[2]:.6e}" if len(eig) > 2 else "", fit, "OK"])
                 j += 1
-    print(f"wrote {ROOT / 'FC005_SPARSE_SPECTRAL_RESULTS.csv'}")
+    print(f"wrote {ROOT / 'reports/fc005/FC005_SPARSE_SPECTRAL_RESULTS.csv'}")
 
 
 if __name__ == "__main__":

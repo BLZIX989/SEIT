@@ -52,7 +52,7 @@ from run_desi_diagnostics import (
     relative_changes_fixed,
 )
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw" / "LRG_SGC_clustering.dat.fits"
 
 
@@ -115,7 +115,7 @@ def run_sequence_alpha(points_source, weights_source, N_values, *, exponent: flo
 
 
 def main():
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)

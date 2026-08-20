@@ -28,7 +28,7 @@ from compiler.backends.desi_graph import (
 )
 from compiler.backends.desi_schema import apply_redshift_cut, load_d_desi
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw" / "LRG_SGC_clustering.dat.fits"
 N_VALUES = [800, 1500, 2500, 4000]
 BANDWIDTH_MULT = 1.0
@@ -169,7 +169,7 @@ def make_desi_like_radial_selection(N_max: int, box: float, seed: int, z_like_pr
 
 
 def main():
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)
@@ -219,7 +219,7 @@ def main():
           f"rel_changes={all_results['synthetic_desi_radial_selection']['relative_changes']}")
 
     # ---- Write CSV matrix ----
-    csv_path = ROOT / "FC005_CONTINUUM_FAILURE_MATRIX.csv"
+    csv_path = ROOT / "reports/fc005/FC005_CONTINUUM_FAILURE_MATRIX.csv"
     with open(csv_path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["dataset", "exponent", "N", "epsilon", "k_or_bandwidth_mult", "connected",

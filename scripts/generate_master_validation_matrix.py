@@ -11,7 +11,7 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 NR = "not reachable / not executed"
 NA = "n/a -- no executable backend registered"
 
@@ -442,7 +442,7 @@ def main():
     sm = {e["id"]: e["status"] for e in load("status_matrix.json")}
     build_gate_rows(sm)
 
-    csv_path = ROOT / "MASTER_PHYSICS_CLOSURE_MATRIX.csv"
+    csv_path = ROOT / "reports/physics_validation/MASTER_PHYSICS_CLOSURE_MATRIX.csv"
     with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
@@ -489,13 +489,13 @@ def main():
             "blocking_reason": blocked_reason or
                                ("N/A -- independently reachable" if not depends_on_fc005 else ""),
         })
-    with open(ROOT / "BRANCH_FC005_DEPENDENCY_SUMMARY.csv", "w", newline="") as f:
+    with open(ROOT / "reports/branch_recovery/BRANCH_FC005_DEPENDENCY_SUMMARY.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["branch", "representative_node_ids",
                                           "depends_on_CONTINUUM_LIMIT_L_DESI",
                                           "blocked_by_FC005", "blocking_reason"])
         w.writeheader()
         w.writerows(closure_rows)
-    print(f"wrote {ROOT / 'BRANCH_FC005_DEPENDENCY_SUMMARY.csv'} ({len(closure_rows)} rows)")
+    print(f"wrote {ROOT / 'reports/branch_recovery/BRANCH_FC005_DEPENDENCY_SUMMARY.csv'} ({len(closure_rows)} rows)")
 
 
 if __name__ == "__main__":

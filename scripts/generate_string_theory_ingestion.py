@@ -16,7 +16,7 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 TIMESTAMP = "2026-08-19T17:30:00Z"
 
 TONG_ST = "LIT-TONG-ST"

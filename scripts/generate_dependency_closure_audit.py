@@ -20,7 +20,7 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 
 CLOSED_LIKE = {"VERIFIED", "DERIVED", "CALCULATED"}
 FIELDS = ["id", "kind", "status", "is_leaf", "is_intermediate", "n_dependencies",
@@ -110,7 +110,7 @@ def main():
             "blocking_dependencies": ";".join(blocking) if blocking else "",
         })
 
-    csv_path = ROOT / "DEPENDENCY_CLOSURE_AUDIT.csv"
+    csv_path = ROOT / "reports/physics_validation/DEPENDENCY_CLOSURE_AUDIT.csv"
     with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()

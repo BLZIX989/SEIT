@@ -7,7 +7,7 @@ physics-supported) versus invented for the fiction.
 import csv
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 
 ROWS = [
     dict(component="Graph Laplacian L=D-W, eigendecomposition",
@@ -148,7 +148,7 @@ def main():
     fieldnames = ["component", "counterfactual_result", "repository_support",
                   "established_physics_support", "new_assumption_required",
                   "actual_derivation_exists", "status"]
-    with (ROOT / "COUNTERFACTUAL_TO_REALITY_GAP_MATRIX.csv").open("w", newline="") as f:
+    with (ROOT / "reports/counterfactual/COUNTERFACTUAL_TO_REALITY_GAP_MATRIX.csv").open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
         for row in ROWS:

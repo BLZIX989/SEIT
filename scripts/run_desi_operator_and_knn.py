@@ -30,7 +30,7 @@ from compiler.backends.desi_graph import (
 from compiler.backends.desi_schema import apply_redshift_cut, load_d_desi
 from run_desi_diagnostics import SEED, make_uniform_box
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw" / "LRG_SGC_clustering.dat.fits"
 
 
@@ -81,7 +81,7 @@ def run_operator_action_test():
               f"interior-only relative_residual={interior_residual:.4f}")
         results[name] = {"whole_domain": full["relative_residual"], "interior_only": interior_residual}
 
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)
@@ -120,7 +120,7 @@ def build_knn_graph(points, k, sigma=None):
 
 def run_knn_sweep():
     print("\n=== kNN graph sweep (spec section 7) ===")
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)

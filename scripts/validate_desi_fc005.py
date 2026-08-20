@@ -14,8 +14,8 @@ from pathlib import Path
 import numpy as np
 from astropy.io import fits
 
-ROOT = Path(__file__).resolve().parent
-MANIFEST_PATH = ROOT / "FC005_DESI_CATALOG_MANIFEST.json"
+ROOT = Path(__file__).resolve().parent.parent
+MANIFEST_PATH = ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json"
 RAW_DIR = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw"
 
 REQUIRED_COLUMNS = ["TARGETID", "RA", "DEC", "Z", "WEIGHT", "WEIGHT_FKP", "WEIGHT_SYS"]
@@ -127,7 +127,7 @@ def main() -> int:
         schema_report["column_formats"] = {
             name: hdul[1].columns[name].format for name in hdul[1].columns.names
         }
-    (ROOT / "FC005_DESI_SCHEMA_REPORT.json").write_text(json.dumps(schema_report, indent=2))
+    (ROOT / "reports/fc005/FC005_DESI_SCHEMA_REPORT.json").write_text(json.dumps(schema_report, indent=2))
 
     lines = ["# FC-005 DESI Validation Report", "",
              f"File: `{result['file']}`", f"Rows: {result['n_rows']}",
@@ -139,7 +139,7 @@ def main() -> int:
         lines.append(f"| {c['check']} | {mark} | {c['detail']} |")
     lines.append("")
     lines.append(f"**Overall: {'PASSED' if result['all_passed'] else 'FAILED'}**")
-    (ROOT / "FC005_DESI_VALIDATION_REPORT.md").write_text("\n".join(lines))
+    (ROOT / "reports/fc005/FC005_DESI_VALIDATION_REPORT.md").write_text("\n".join(lines))
 
     print(f"Wrote FC005_DESI_SCHEMA_REPORT.json and FC005_DESI_VALIDATION_REPORT.md")
     print(f"Overall: {'PASSED' if result['all_passed'] else 'FAILED'}")

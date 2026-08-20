@@ -39,7 +39,7 @@ from compiler.backends.desi_sparse import (
     sparse_graph_laplacian, sparse_low_eigen, verify_asymptotic_conditions,
 )
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw" / "LRG_SGC_clustering.dat.fits"
 D = 3
 N_REF = 4000
@@ -194,7 +194,7 @@ def make_nonuniform_clustered(N_max: int, box: float, seed: int) -> np.ndarray:
 
 
 def main():
-    manifest = json.loads((ROOT / "FC005_DESI_CATALOG_MANIFEST.json").read_text())
+    manifest = json.loads((ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json").read_text())
     primary = next(e for e in manifest["entries"] if e["role"] == "SELECTED_PRIMARY_DATA")
     table = load_d_desi(RAW, source_url=primary["url"], checksum_sha256=primary["checksum_sha256"])
     binned = apply_redshift_cut(table, 0.4, 0.6)
@@ -242,7 +242,7 @@ def main():
     print(f"\nwrote {out_path}")
 
     # ---- FC005_SPARSE_SPECTRAL_RESULTS.csv ----
-    with open(ROOT / "FC005_SPARSE_SPECTRAL_RESULTS.csv", "w", newline="") as f:
+    with open(ROOT / "reports/fc005/FC005_SPARSE_SPECTRAL_RESULTS.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["dataset", "alpha", "N", "epsilon", "avg_degree", "nnz", "solver",
                     "sigma", "tol", "maxiter", "n_modes_requested", "max_residual",
@@ -266,10 +266,10 @@ def main():
                             f"{eig[1]:.6e}" if len(eig) > 1 else "",
                             f"{eig[2]:.6e}" if len(eig) > 2 else "", fit, "OK"])
                 j += 1
-    print(f"wrote {ROOT / 'FC005_SPARSE_SPECTRAL_RESULTS.csv'}")
+    print(f"wrote {ROOT / 'reports/fc005/FC005_SPARSE_SPECTRAL_RESULTS.csv'}")
 
     # ---- FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv ----
-    with open(ROOT / "FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv", "w", newline="") as f:
+    with open(ROOT / "reports/fc005/FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["dataset", "n_modes_compared", "relative_spectral_difference_alpha0_vs_alpha1",
                     "interpretation"])
@@ -283,10 +283,10 @@ def main():
                 w.writerow([label, comp["n_modes_compared"],
                             f"{comp['relative_spectral_difference_alpha0_vs_alpha1']:.4f}",
                             comp["interpretation"]])
-    print(f"wrote {ROOT / 'FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv'}")
+    print(f"wrote {ROOT / 'reports/fc005/FC005_OPERATOR_LIMIT_DIAGNOSTIC.csv'}")
 
     # ---- FC005_POINT_PROCESS_COMPARISON.csv ----
-    with open(ROOT / "FC005_POINT_PROCESS_COMPARISON.csv", "w", newline="") as f:
+    with open(ROOT / "reports/fc005/FC005_POINT_PROCESS_COMPARISON.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["dataset", "alpha", "N_sequence", "epsilon_sequence",
                     "N_eps_pow_d_increasing", "N_eps_pow_d_plus_2_increasing",
@@ -300,7 +300,7 @@ def main():
                         ac[0]["N_eps_d_plus_2_increasing_overall"] if ac else "",
                         res["relative_changes"], res["converged"],
                         res["relative_changes"][-1] if res["relative_changes"] else ""])
-    print(f"wrote {ROOT / 'FC005_POINT_PROCESS_COMPARISON.csv'}")
+    print(f"wrote {ROOT / 'reports/fc005/FC005_POINT_PROCESS_COMPARISON.csv'}")
 
 
 if __name__ == "__main__":

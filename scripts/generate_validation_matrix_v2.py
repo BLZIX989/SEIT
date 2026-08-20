@@ -17,7 +17,7 @@ import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 NA = "n/a -- no executable backend registered in this compiler"
 NR = "not reachable / not executed"
 
@@ -234,7 +234,7 @@ ROWS = [
          "N*eps^(d+2)->infinity",
          canonical_variables="N, epsilon, C_K, d",
          dependencies="OPERATOR-L-DESI (CALCULATED)",
-         derivation_source="FC005_N_SCALING_REPORT.md",
+         derivation_source="reports/fc005/FC005_N_SCALING_REPORT.md",
          independent_reexecution="frozen, not rerun this campaign",
          invariant_checks="asymptotic condition N*eps_N^(d+2) -> infinity verified to hold "
          "at every tested N for the corrected eps_N ~ N^(-1/(d+4)) rate",
@@ -329,7 +329,7 @@ ROWS = [
 
 
 def main():
-    csv_path = ROOT / "MASTER_PHYSICS_VALIDATION_MATRIX.csv"
+    csv_path = ROOT / "reports/physics_validation/MASTER_PHYSICS_VALIDATION_MATRIX.csv"
     with open(csv_path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()

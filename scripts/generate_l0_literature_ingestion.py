@@ -19,7 +19,7 @@ import json
 import subprocess
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 TIMESTAMP = "2026-08-19T00:00:00Z"
 
 
@@ -57,7 +57,7 @@ def build_baseline_manifest() -> dict:
             "CURVATURE-CLOSURE-DESI": "OPEN",
             "PHYSICAL-VALIDATION-DESI": "OPEN",
             "frozen": True,
-            "frozen_reference": "FC005_CHECKPOINT.md",
+            "frozen_reference": "reports/fc005/FC005_CHECKPOINT.md",
             "gate_2_entered": False,
             "gate_3_entered": False,
             "note": (
@@ -68,14 +68,14 @@ def build_baseline_manifest() -> dict:
         "node_status_counts": status_counts,
         "node_status_total": len(status_matrix),
         "master_validation_campaign_outputs_used_as_input": [
-            "MASTER_PHYSICS_VALIDATION_MATRIX.csv",
-            "MASTER_PHYSICS_CLOSURE_MATRIX.csv",
-            "DEPENDENCY_CLOSURE_AUDIT.csv",
-            "DEPENDENCY_CLOSURE_AUDIT.md",
-            "INVARIANT_AUDIT.md",
-            "SIGN_CONVENTION_REGISTRY.md",
-            "CLEAN_ROOM_REPRODUCTION_REPORT.md",
-            "MASTER_PHYSICS_VALIDATION_REPORT.md",
+            "reports/physics_validation/MASTER_PHYSICS_VALIDATION_MATRIX.csv",
+            "reports/physics_validation/MASTER_PHYSICS_CLOSURE_MATRIX.csv",
+            "reports/physics_validation/DEPENDENCY_CLOSURE_AUDIT.csv",
+            "reports/physics_validation/DEPENDENCY_CLOSURE_AUDIT.md",
+            "reports/physics_validation/INVARIANT_AUDIT.md",
+            "reports/physics_validation/SIGN_CONVENTION_REGISTRY.md",
+            "reports/physics_validation/CLEAN_ROOM_REPRODUCTION_REPORT.md",
+            "reports/physics_validation/MASTER_PHYSICS_VALIDATION_REPORT.md",
         ],
         "branch_inventory": [
             {"branch_id": "Primitive", "canonical_status": "OPEN", "executable_backend": False},
@@ -799,29 +799,29 @@ def write_csv(path: Path, rows: list[dict]):
 
 def main():
     manifest = build_baseline_manifest()
-    (ROOT / "L0_BASELINE_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (ROOT / "reports/l0/L0_BASELINE_MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"wrote L0_BASELINE_MANIFEST.json (commit {manifest['git_commit']})")
 
-    write_csv(ROOT / "L0_BRANCH_BACKEND_GAP_MATRIX.csv", GAP_MATRIX_ROWS)
+    write_csv(ROOT / "reports/l0/L0_BRANCH_BACKEND_GAP_MATRIX.csv", GAP_MATRIX_ROWS)
     print(f"wrote L0_BRANCH_BACKEND_GAP_MATRIX.csv ({len(GAP_MATRIX_ROWS)} rows)")
 
     extraction = build_extraction_registry()
-    (ROOT / "LITERATURE_EXTRACTION_REGISTRY.json").write_text(json.dumps(extraction, indent=2) + "\n")
+    (ROOT / "reports/l0/LITERATURE_EXTRACTION_REGISTRY.json").write_text(json.dumps(extraction, indent=2) + "\n")
     print(f"wrote LITERATURE_EXTRACTION_REGISTRY.json ({len(extraction)} items)")
 
-    write_csv(ROOT / "LITERATURE_MDCL_CROSSWALK.csv", CROSSWALK_ROWS)
+    write_csv(ROOT / "reports/l0/LITERATURE_MDCL_CROSSWALK.csv", CROSSWALK_ROWS)
     print(f"wrote LITERATURE_MDCL_CROSSWALK.csv ({len(CROSSWALK_ROWS)} rows)")
 
-    write_csv(ROOT / "LITERATURE_IMPLEMENTATION_CROSSWALK.csv", IMPLEMENTATION_CROSSWALK_ROWS)
+    write_csv(ROOT / "reports/l0/LITERATURE_IMPLEMENTATION_CROSSWALK.csv", IMPLEMENTATION_CROSSWALK_ROWS)
     print(f"wrote LITERATURE_IMPLEMENTATION_CROSSWALK.csv ({len(IMPLEMENTATION_CROSSWALK_ROWS)} rows)")
 
-    write_csv(ROOT / "BRANCH_RECOVERY_MAP.csv", RECOVERY_MAP_ROWS)
+    write_csv(ROOT / "reports/branch_recovery/BRANCH_RECOVERY_MAP.csv", RECOVERY_MAP_ROWS)
     print(f"wrote BRANCH_RECOVERY_MAP.csv ({len(RECOVERY_MAP_ROWS)} rows)")
 
-    write_csv(ROOT / "L0_RECOVERY_PRIORITY_MATRIX.csv", PRIORITY_MATRIX_ROWS + PRIMITIVE_CHAIN_NOTE_ROWS)
+    write_csv(ROOT / "reports/l0/L0_RECOVERY_PRIORITY_MATRIX.csv", PRIORITY_MATRIX_ROWS + PRIMITIVE_CHAIN_NOTE_ROWS)
     print(f"wrote L0_RECOVERY_PRIORITY_MATRIX.csv ({len(PRIORITY_MATRIX_ROWS) + len(PRIMITIVE_CHAIN_NOTE_ROWS)} rows)")
 
-    records_dir = ROOT / "L0_PROPOSED_RECOVERY_RECORDS"
+    records_dir = ROOT / "reports/l0/L0_PROPOSED_RECOVERY_RECORDS"
     records_dir.mkdir(exist_ok=True)
     for rec in build_recovery_records():
         p = records_dir / f"{rec['RECOVERY_ID']}.json"

@@ -18,8 +18,8 @@ from pathlib import Path
 
 import requests
 
-ROOT = Path(__file__).resolve().parent
-MANIFEST_PATH = ROOT / "FC005_DESI_CATALOG_MANIFEST.json"
+ROOT = Path(__file__).resolve().parent.parent
+MANIFEST_PATH = ROOT / "reports/fc005/FC005_DESI_CATALOG_MANIFEST.json"
 DEFAULT_DEST = ROOT / "data" / "desi" / "dr1" / "fc005" / "raw"
 
 
