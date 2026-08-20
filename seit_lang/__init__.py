@@ -283,4 +283,26 @@ constructs a real KO=6 antisymmetric matrix and checks `verify
 symmetric(mu);` genuinely reports failure, not a stub. A real
 subprocess invocation confirms the CLI's own execution never modifies
 any canonical registry file.
+
+Phase 14 status: reproducibility manifests are implemented
+(seit_lang/manifest.py, reachable via the CLI's new `manifest`
+subcommand): build_manifest()/write_manifest() bundle everything the
+brief asks for into one combined, on-disk, machine-readable JSON file
+-- execution manifest, dependency DAG, equation/variable/operator/
+status registries, provenance record, numerical outputs, and audit
+results. The operator registry is a genuinely new piece: it
+cross-references every Call actually made in the program against the
+active target's transformation registry, including each
+PrimitiveBinding's own `source` string (Phases 5-12's dotted path back
+to the real compiler/backends/... or scientific_corpus/derivation/...
+function), so the manifest records not just what was computed but which
+real implementation computed it -- and only transformations actually
+called appear, confirmed by a test that a registered-but-unused
+transformation is absent. Reproducibility is verified directly, not
+just claimed: two build_manifest() calls on the same file produce
+byte-identical output once the timestamp field is excluded, and
+supplying different declared inputs (different B matrices for the
+milestone fixture) produces correspondingly different numerical_outputs
+-- the manifest is a pure function of (source file contents, target,
+declared inputs), with no hidden state.
 """

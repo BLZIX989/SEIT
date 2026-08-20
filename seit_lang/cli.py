@@ -367,10 +367,22 @@ def cmd_report(file: str, target: str = "default") -> dict:
     }
 
 
+def cmd_manifest(file: str, target: str = "default", output_dir: str = ".") -> dict:
+    """Phase 14: writes the combined reproducibility manifest (execution
+    manifest, dependency DAG, equation/variable/operator/status
+    registries, provenance, numerical outputs, audit results) to
+    `output_dir`. Implemented in seit_lang.manifest, kept out of this
+    module to avoid a circular import (manifest.py itself reuses this
+    module's stage helpers)."""
+    from .manifest import write_manifest
+    path = write_manifest(file, output_dir, target)
+    return {"ok": True, "manifest_path": str(path)}
+
+
 _COMMANDS = {
     "parse": cmd_parse, "check": cmd_check, "build": cmd_build, "run": cmd_run,
     "verify": cmd_verify, "audit": cmd_audit, "status": cmd_status, "graph": cmd_graph,
-    "report": cmd_report,
+    "report": cmd_report, "manifest": cmd_manifest,
 }
 
 
@@ -381,13 +393,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
         sub = subparsers.add_parser(name)
         sub.add_argument("file")
         sub.add_argument("--target", choices=sorted(TARGET_PRESETS), default="default")
+        if name == "manifest":
+            sub.add_argument("--output-dir", default=".")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
     handler = _COMMANDS[args.command]
-    result = handler(args.file, args.target)
+    if args.command == "manifest":
+        result = handler(args.file, args.target, args.output_dir)
+    else:
+        result = handler(args.file, args.target)
     print(json.dumps(result, indent=2))
     return 0 if result.get("ok") else 1
 
