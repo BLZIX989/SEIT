@@ -61,4 +61,22 @@ module docstring, not silently harmonized), and a SeitStateMachine that
 enforces dependency validity by reusing
 compiler/dependencies/graph.py's own EXECUTABLE_UPSTREAM_STATUSES
 constant rather than redefining what "ready" means.
+
+Phase 4 status: dependency-graph compilation is implemented
+(seit_lang/dag.py): compile_dag() walks a checked Program, builds
+implicit edges from every derive/calculate/definition/constant/
+equation/theorem/lemma/assumption target to the free identifiers in its
+expression, adds explicit `dependency` statement edges, and feeds all
+of it into a real compiler.dependencies.graph.DependencyGraph (cycle
+rejection is the real DependencyGraph's, not reimplemented) while
+driving each produced node through seit_lang.state.SeitStateMachine.
+Each edge is annotated with source/target/transformation/proof
+obligation (cross-referenced from the program's own `verify`
+statements, or explicitly marked UNSTATED when none exist)/status/
+provenance. Running this against the brief's own milestone example
+honestly reports L as BLOCKED, not CALCULATED: B is only ever
+`variable`-declared, never assigned a value by any derive/calculate/
+definition statement, so it never leaves SeitState.DECLARED -- supplying
+real input data is Phase 5's job (physics-kernel bindings), and Phase 4
+does not fabricate a placeholder to make the example look further along.
 """
