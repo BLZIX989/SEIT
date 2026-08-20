@@ -141,4 +141,26 @@ no heat-kernel coefficients are extracted here. A full Phases-1-7
 project to a persistent sector, restrict the Laplacian, build the
 restricted heat operator and its trace) type-checks and executes end to
 end with zero external inputs.
+
+Phase 8 status: the continuum-bridge branch (KC-003a/b/c/d, VR-001) is
+represented explicitly as OPEN dependencies (seit_lang/
+continuum_bridge.py), building on -- not modifying --
+scientific_corpus/derivation/kc003_vr001.py. The design problem this
+phase exists to solve: naively wrapping kc003_decomposition() as an
+ordinary primitive and `derive`-ing it into a node named after the
+claim would mechanically advance that node to SeitState.CALCULATED the
+moment the Python call succeeds -- which it always would, since the
+call runs fine and returns a dict whose CONTENT says "open." That would
+fabricate closure at the DAG-execution level even though nothing was
+actually resolved (test_the_fabrication_trap_this_module_avoids_is_real
+demonstrates this concretely rather than just asserting it). The fix:
+generate_continuum_bridge_declarations() emits `.seit` source using
+`variable` + `status` (never `derive`), so KC-003a/d honestly stay at
+SeitState.DECLARED in the DAG while still carrying the real status
+label and provenance text as source-level metadata -- read from
+kc003_decomposition()'s own status TEXT via a small classifier
+(_seit_status_label), not a hand-maintained table that could drift from
+the real findings. The `.seit` `status` statement is documented as
+descriptive metadata only, never a substitute for the DAG's
+independently tracked real execution state.
 """
