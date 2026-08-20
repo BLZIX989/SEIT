@@ -163,4 +163,33 @@ kc003_decomposition()'s own status TEXT via a small classifier
 the real findings. The `.seit` `status` statement is documented as
 descriptive metadata only, never a substitute for the DAG's
 independently tracked real execution state.
+
+Phase 9 status: the NCG (KO-dimension) branch is exposed as executable
+`.seit` primitives (seit_lang/ncg_branch.py): a parameterized
+construct_intersection_matrix(KO_mod_8, n, seed) builds an actual
+A_F-style intersection matrix mu with the symmetry class
+ko_dimension.ko_dimension_parameter_scan() associates with a given KO
+mod 8 (ANTISYMMETRIC for KO in {2,6}, SYMMETRIC for KO in {0,4}), typed
+plain "Matrix" so a `.seit` program can compose it directly with Phase
+5's generic det()/transpose()/symmetric(). intersection_matrix_report()
+reports rank/determinant/transpose relation/signature (signature
+computed only for the symmetric case; explicitly reported as None with
+a note, not approximated, for the antisymmetric case, since a real
+antisymmetric matrix's eigenvalues are non-real). KO=6 combined with
+odd n gets an explicit audit_flag (det(mu) forced to exactly zero,
+matching ko_dimension.py's own symbolic identity) -- KO=2 shares the
+same zero-forcing mechanism but deliberately does NOT get the flag,
+since the brief calls out KO=6 specifically; KO=0 and KO=4 are
+covered by separate, independently named tests, never merged into one
+parameterized assertion. Every report states plainly that a nonzero
+determinant is necessary-but-not-sufficient and never substitutes for
+the real fermion-representation matrix this project has not
+constructed. This phase deliberately does NOT compute or state specific
+epsilon/epsilon'/epsilon'' sign values -- ko_dimension.py's own module
+docstring already warns that citing Connes' classification table from
+memory risks an unverified claim, and its real code only ever computed
+two derived consequences (grading-commutation, intersection-form
+symmetry), never the full three-way table; this phase respects that
+same boundary rather than fabricating sign values just because the
+brief's prose lists them.
 """
