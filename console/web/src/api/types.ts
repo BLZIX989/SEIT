@@ -124,3 +124,63 @@ export interface Fc005Result {
   all_self_audits_passed?: boolean;
   [key: string]: unknown;
 }
+
+export interface NodeStatusChange {
+  id: string;
+  old_status: string | null;
+  new_status: string;
+}
+
+export interface RunDiff {
+  nodes_added: string[];
+  nodes_status_changed: NodeStatusChange[];
+  nodes_unchanged: number;
+  new_falsifications: string[];
+  new_calculations: string[];
+  audit_deltas: string[];
+}
+
+export type StoppedReason =
+  | "completed"
+  | "no_admissible_frontier"
+  | "dependency_failed"
+  | "proof_obligation_unsatisfied"
+  | "external_dependency_unavailable"
+  | "resource_limit"
+  | "user_stopped"
+  | "error";
+
+export interface RunSnapshot {
+  run_id: string;
+  started_at: string;
+  completed_at: string | null;
+  trigger: "full_rebuild";
+  scope: "full_rebuild";
+  target_node_ids: string[];
+  pre_state_hash: string;
+  post_state_hash: string | null;
+  diff: RunDiff | null;
+  test_suite_result: Record<string, unknown> | null;
+  self_audit_result: AuditResult[] | null;
+  terminal_status: string | null;
+  stopped_reason: StoppedReason | null;
+  error: string | null;
+}
+
+export interface LedgerEvent {
+  event_id: string;
+  timestamp: string;
+  run_id: string | null;
+  actor: "system" | "user" | "research_engine";
+  node_id: string | null;
+  action:
+    | "RUN_STARTED" | "NODE_SELECTED" | "LITERATURE_SEARCH" | "SOURCE_ACQUIRED"
+    | "CANDIDATE_CREATED" | "DERIVATION_EXECUTED" | "PROOF_ATTEMPTED"
+    | "TEST_EXECUTED" | "FALSIFICATION" | "PROMOTION" | "REJECTION"
+    | "SUPERSESSION" | "AUDIT_COMPLETED" | "RUN_COMPLETED";
+  inputs: Record<string, unknown>;
+  outputs: Record<string, unknown>;
+  status: string;
+  provenance: Record<string, unknown>;
+  content_hash: string | null;
+}

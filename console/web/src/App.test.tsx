@@ -36,6 +36,8 @@ const STUB_RESPONSES: Record<string, unknown> = {
   "/api/audits": [],
   "/api/chainlink": { arrows: [], note: "" },
   "/api/fc005": { terminal_status: null },
+  "/api/runs": [],
+  "/api/ledger": [],
 };
 
 const STUB_NODE_DETAIL = {
@@ -95,10 +97,23 @@ describe("App routing", () => {
   });
 
   it("renders screens that have no backend yet with an explicit NOT IMPLEMENTED panel, never fake success", () => {
-    for (const path of ["/derivation-lab", "/research", "/hypotheses", "/runs", "/literature"]) {
+    for (const path of ["/derivation-lab", "/research", "/hypotheses", "/literature"]) {
       const { unmount } = renderAt(path);
       expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
       unmount();
     }
+  });
+
+  it("renders the Runs screen with real (empty) history, no NOT IMPLEMENTED panel (Phase 6)", async () => {
+    renderAt("/runs");
+    expect(await screen.findByRole("heading", { name: "Runs" })).toBeInTheDocument();
+    expect(await screen.findByText("No runs yet. Trigger one from the Execution Console.")).toBeInTheDocument();
+    expect(screen.queryByText("NOT IMPLEMENTED")).not.toBeInTheDocument();
+  });
+
+  it("renders the Execution screen with a real RUN THEORY SEARCH trigger (Phase 6)", async () => {
+    renderAt("/execution");
+    expect(await screen.findByRole("button", { name: "[ RUN THEORY SEARCH ]" })).toBeInTheDocument();
+    expect(await screen.findByText("No ledger events yet.")).toBeInTheDocument();
   });
 });

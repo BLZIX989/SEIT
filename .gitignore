@@ -30,3 +30,10 @@ literature/superstring_theory/*.pdf
 literature/standard_model/*.pdf
 literature/gauge_theory/*.pdf
 literature/gauge_theory/*.html
+
+# UOC Research Console operational state (append-only run history and
+# research ledger, not canonical theory content) -- gitignored by
+# default per UOC_RESEARCH_CONSOLE_ARCHITECTURE.md section 7, same
+# treatment as the other generated-artifact directories above.
+console_runs/
+console_research/

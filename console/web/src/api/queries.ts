@@ -6,7 +6,7 @@
  * management") -- the console must never become a second source of
  * truth.
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { api } from "./client";
 
 // Canonical state can change between two requests only via a real
@@ -46,3 +46,53 @@ export const useChainlink = () =>
 
 export const useFc005 = () =>
   useQuery({ queryKey: ["fc005"], queryFn: api.fc005, staleTime: DEFAULT_STALE_TIME_MS });
+
+export const useRuns = () =>
+  useQuery({ queryKey: ["runs"], queryFn: api.runs.list, staleTime: DEFAULT_STALE_TIME_MS });
+
+export const useRun = (runId: string | undefined) =>
+  useQuery({
+    queryKey: ["run", runId],
+    queryFn: () => api.runs.get(runId as string),
+    enabled: Boolean(runId),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
+// Ledger is polled, not pushed -- there is no websocket/SSE
+// infrastructure here (per the brief's "do not introduce unnecessary
+// infrastructure if a simpler architecture is sufficient"), so a
+// short refetchInterval is what "live tail" means in this app: the
+// Execution screen's ledger panel visibly updates within a few seconds
+// of a run completing, without the user reloading the page.
+export const useLedger = (limit = 50) =>
+  useQuery({
+    queryKey: ["ledger", limit],
+    queryFn: () => api.ledger(limit),
+    staleTime: 2_000,
+    refetchInterval: 3_000,
+  });
+
+/**
+ * The one mutation in the whole app. On success it invalidates every
+ * query that a real compiler run could have changed -- state, nodes,
+ * frontier, audits, chainlink, fc005, runs, ledger -- so the UI
+ * reflects the new canonical state within one refetch cycle, never a
+ * stale cached view papering over what just happened on disk.
+ */
+export const useCreateRun = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: api.runs.create,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["state"] });
+      queryClient.invalidateQueries({ queryKey: ["nodes"] });
+      queryClient.invalidateQueries({ queryKey: ["node"] });
+      queryClient.invalidateQueries({ queryKey: ["frontier"] });
+      queryClient.invalidateQueries({ queryKey: ["audits"] });
+      queryClient.invalidateQueries({ queryKey: ["chainlink"] });
+      queryClient.invalidateQueries({ queryKey: ["fc005"] });
+      queryClient.invalidateQueries({ queryKey: ["runs"] });
+      queryClient.invalidateQueries({ queryKey: ["ledger"] });
+    },
+  });
+};

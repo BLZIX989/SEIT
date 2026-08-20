@@ -6,13 +6,15 @@ section 4.1) — the intent is that these models are load-bearing
 documentation of `compiler/core/ir.py`'s dataclasses and the on-disk
 registry shapes, not an independent design.
 
-These are all read models. Nothing in this module, or anywhere in
-Phase 2, accepts a payload that could mutate canonical state — Phase 2
-is read-only by design (see console/api/main.py's route list).
+Phases 2-5 are read-only. Phase 6 (RunSnapshot/RunDiff/LedgerEvent
+below) introduces the one and only write path in the whole API:
+`POST /api/runs`, which does nothing but invoke the real
+`compiler.run_compiler.build_and_run()` and record what actually
+changed on disk -- see console/api/execution/executor.py.
 """
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Any, Literal, Optional
 
 from pydantic import BaseModel
 
@@ -164,3 +166,74 @@ class ChainlinkView(BaseModel):
         "Spec(L)→...) is a conceptual relabeling of these real node ids for "
         "display, not a separate or more-derived chain."
     )
+
+
+class NodeStatusChange(BaseModel):
+    id: str
+    old_status: Optional[str]   # null if the node did not exist before this run
+    new_status: str
+
+
+class RunDiff(BaseModel):
+    """Computed by re-reading the registry files before and after the
+    run and comparing actual content -- never from what the run
+    "intended" to do (architecture doc section 6, point 3)."""
+    nodes_added: list[str] = []
+    nodes_status_changed: list[NodeStatusChange] = []
+    nodes_unchanged: int = 0
+    new_falsifications: list[str] = []
+    new_calculations: list[str] = []
+    audit_deltas: list[str] = []   # audit names whose passed/failed flipped
+
+
+class RunSnapshot(BaseModel):
+    """One row of GET /api/runs -- written once at completion to
+    console_runs/{run_id}.json and never edited afterward (architecture
+    doc section 4.2: 'never overwrite prior states', enforced by the
+    store refusing to overwrite an existing run_id)."""
+    run_id: str
+    started_at: str    # ISO 8601
+    completed_at: Optional[str] = None
+    trigger: Literal["full_rebuild"] = "full_rebuild"
+    scope: Literal["full_rebuild"] = "full_rebuild"   # see architecture doc section 6, point 2:
+                                                        # no scoped single-node execution exists in
+                                                        # the compiler yet, so every run is a full
+                                                        # rebuild and the API says so explicitly
+    target_node_ids: list[str] = []   # always [] until a scoped execution function exists
+    pre_state_hash: str
+    post_state_hash: Optional[str] = None
+    diff: Optional[RunDiff] = None
+    test_suite_result: Optional[dict[str, Any]] = None   # not run per-request (see executor.py); always null today
+    self_audit_result: Optional[list[AuditResultModel]] = None
+    terminal_status: Optional[str] = None
+    stopped_reason: Optional[Literal[
+        "completed", "no_admissible_frontier", "dependency_failed",
+        "proof_obligation_unsatisfied", "external_dependency_unavailable",
+        "resource_limit", "user_stopped", "error",
+    ]] = None
+    error: Optional[str] = None   # populated iff stopped_reason == "error"
+
+
+class LedgerEvent(BaseModel):
+    """One append-only line of console_research/ledger.jsonl (brief
+    section XII / architecture doc section 4.3). Only RUN_STARTED and
+    RUN_COMPLETED are emitted today -- the remaining action types
+    (LITERATURE_SEARCH, CANDIDATE_CREATED, PROOF_ATTEMPTED, ...) belong
+    to the research engine and proof/falsification workspaces (Phases
+    7-8), which do not exist yet, so this module never emits them."""
+    event_id: str
+    timestamp: str
+    run_id: Optional[str] = None
+    actor: Literal["system", "user", "research_engine"] = "system"
+    node_id: Optional[str] = None
+    action: Literal[
+        "RUN_STARTED", "NODE_SELECTED", "LITERATURE_SEARCH", "SOURCE_ACQUIRED",
+        "CANDIDATE_CREATED", "DERIVATION_EXECUTED", "PROOF_ATTEMPTED",
+        "TEST_EXECUTED", "FALSIFICATION", "PROMOTION", "REJECTION",
+        "SUPERSESSION", "AUDIT_COMPLETED", "RUN_COMPLETED",
+    ]
+    inputs: dict[str, Any] = {}
+    outputs: dict[str, Any] = {}
+    status: str = ""
+    provenance: dict[str, Any] = {}
+    content_hash: Optional[str] = None

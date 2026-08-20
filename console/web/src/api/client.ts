@@ -4,10 +4,11 @@
  * hard-coded absolute origin here -- production builds should be
  * served behind a reverse proxy on the same rule.
  *
- * This client only ever issues GET requests in Phase 3, matching the
- * backend's Phase 2 read-only scope. There is intentionally no
- * post()/mutate() helper here yet -- adding one is a Phase 6 decision,
- * not an accidental side effect of scaffolding the client.
+ * Phase 6 adds the one and only mutating call: `api.runs.create()`,
+ * a POST to /api/runs. It exists to trigger a real
+ * `compiler.run_compiler.build_and_run()` on the backend -- nothing in
+ * this client (or anywhere else in the app) can set a node's status or
+ * write a registry file directly.
  */
 
 export class ApiError extends Error {
@@ -19,8 +20,7 @@ export class ApiError extends Error {
   }
 }
 
-async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`/api${path}`);
+async function handleResponse<T>(res: Response): Promise<T> {
   if (!res.ok) {
     let detail = res.statusText;
     try {
@@ -34,6 +34,16 @@ async function get<T>(path: string): Promise<T> {
   return res.json() as Promise<T>;
 }
 
+async function get<T>(path: string): Promise<T> {
+  const res = await fetch(`/api${path}`);
+  return handleResponse<T>(res);
+}
+
+async function post<T>(path: string): Promise<T> {
+  const res = await fetch(`/api${path}`, { method: "POST" });
+  return handleResponse<T>(res);
+}
+
 export const api = {
   health: () => get<{ status: string; service: string; phase: number }>("/health"),
   state: () => get<import("./types").StateRollup>("/state"),
@@ -44,4 +54,10 @@ export const api = {
   audits: () => get<import("./types").AuditResult[]>("/audits"),
   chainlink: () => get<import("./types").ChainlinkView>("/chainlink"),
   fc005: () => get<import("./types").Fc005Result>("/fc005"),
+  runs: {
+    list: () => get<import("./types").RunSnapshot[]>("/runs"),
+    get: (runId: string) => get<import("./types").RunSnapshot>(`/runs/${encodeURIComponent(runId)}`),
+    create: () => post<import("./types").RunSnapshot>("/runs"),
+  },
+  ledger: (limit = 50) => get<import("./types").LedgerEvent[]>(`/ledger?limit=${limit}`),
 };

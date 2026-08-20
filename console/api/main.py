@@ -1,32 +1,36 @@
-"""UOC Research Console API -- Phase 2: read-only canonical-state adapters.
+"""UOC Research Console API.
 
 Run with:  uvicorn console.api.main:app --reload --port 8000  (from repo root)
 
-Phase 2 scope, per UOC_RESEARCH_CONSOLE_ARCHITECTURE.md section 9: read
-endpoints only. There is intentionally no route anywhere in this module
-that can set a node's status, write a registry file, or otherwise
-mutate canonical state -- that capability does not exist yet (Phase 6),
-and when it is added it will only ever be a thin wrapper that invokes
-the real `compiler.run_compiler` and reports the resulting diff, never
-a direct write.
+Phases 2-5 are read-only. Phase 6 adds the one and only write route in
+the whole API -- `POST /api/runs` -- and it is a thin wrapper that does
+nothing but invoke the real `compiler.run_compiler.build_and_run()` and
+report the resulting diff (see console/api/execution/executor.py).
+There is still no route anywhere that can set a node's status directly
+or write a registry file itself: every other route remains GET.
 """
 from __future__ import annotations
 
+import asyncio
 from typing import Any
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.concurrency import run_in_threadpool
 
 from console.api.canonical import adapter, chainlink as chainlink_mod, frontier as frontier_mod
+from console.api.execution import executor, ledger_store, runs_store
 from console.api.models import (
-    AuditResultModel, ChainlinkView, FrontierNode, NodeDetail, NodeSummary, StateRollup,
+    AuditResultModel, ChainlinkView, FrontierNode, LedgerEvent, NodeDetail, NodeSummary,
+    RunSnapshot, StateRollup,
 )
 
 app = FastAPI(
     title="UOC Research Console API",
-    description="Read-only interface over the Forward-MDCL compiler's canonical state. "
-                "The compiler and its registries remain the sole source of truth.",
-    version="0.1.0-phase2",
+    description="Interface over the Forward-MDCL compiler's canonical state. The compiler "
+                "and its registries remain the sole source of truth; the one write route "
+                "(POST /api/runs) only ever invokes the compiler itself.",
+    version="0.1.0-phase6",
 )
 
 # Permissive CORS for local dev only (console/web running on a separate
@@ -34,7 +38,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
 
@@ -183,3 +187,48 @@ def get_fc005() -> dict:
     failure/retriable/open)."""
     reg = _load_or_503()
     return reg["fc005_result"]
+
+
+# ---------------------------------------------------------------------
+# Phase 6: Execution Console. POST /api/runs is the only mutating route
+# in this API, and it is a thin wrapper around
+# compiler.run_compiler.build_and_run() -- see execution/executor.py's
+# module docstring for the full contract. A module-level lock rejects a
+# second run while one is already in flight, since build_and_run()
+# writes the same registry files a concurrent run would also write to.
+# ---------------------------------------------------------------------
+
+_run_lock = asyncio.Lock()
+
+
+@app.post("/api/runs", response_model=RunSnapshot, status_code=201)
+async def create_run() -> RunSnapshot:
+    if _run_lock.locked():
+        raise HTTPException(status_code=409, detail="a run is already in progress")
+    async with _run_lock:
+        # build_and_run() is synchronous and can take real time (full
+        # MDCL rebuild + self-audit) -- run it off the event loop so
+        # the API stays responsive to other requests (e.g. GET
+        # /api/ledger polling) while it executes.
+        snapshot = await run_in_threadpool(executor.execute_full_rebuild_run)
+    return RunSnapshot(**snapshot)
+
+
+@app.get("/api/runs", response_model=list[RunSnapshot])
+def list_runs() -> list[RunSnapshot]:
+    return [RunSnapshot(**s) for s in runs_store.load_all()]
+
+
+@app.get("/api/runs/{run_id}", response_model=RunSnapshot)
+def get_run(run_id: str) -> RunSnapshot:
+    snapshot = runs_store.load(run_id)
+    if snapshot is None:
+        raise HTTPException(status_code=404, detail=f"no run with id '{run_id}'")
+    return RunSnapshot(**snapshot)
+
+
+@app.get("/api/ledger", response_model=list[LedgerEvent])
+def get_ledger(limit: int = 50) -> list[LedgerEvent]:
+    """Tail of the append-only research ledger, newest last. Empty (not
+    an error) until the first run has happened."""
+    return [LedgerEvent(**e) for e in ledger_store.tail(limit)]

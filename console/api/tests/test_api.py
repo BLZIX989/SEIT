@@ -157,13 +157,18 @@ def test_fc005_endpoint_is_verbatim_and_never_implies_closure():
     )
 
 
-def test_no_mutating_routes_exist_in_phase_2():
-    """Brief section XVII: no 'mark as verified' button. At the route
-    level, this means: every registered API route must be GET-only."""
-    methods_seen = set()
+def test_only_post_runs_is_a_mutating_route():
+    """Brief section XVII: no 'mark as verified' button, no
+    PATCH /api/nodes/:id/status. Phase 6 adds exactly one mutating
+    route -- POST /api/runs, which does nothing but invoke the real
+    compiler (see console/api/execution/executor.py) -- every other
+    route must stay GET-only forever."""
+    mutating = {}
     for route in app.routes:
-        methods = getattr(route, "methods", None)
-        if methods:
-            methods_seen |= methods
-    disallowed = methods_seen - {"GET", "HEAD", "OPTIONS"}
-    assert not disallowed, f"Phase 2 must be read-only; found mutating methods: {disallowed}"
+        methods = getattr(route, "methods", None) or set()
+        non_safe = methods - {"GET", "HEAD", "OPTIONS"}
+        if non_safe:
+            mutating[route.path] = non_safe
+    assert mutating == {"/api/runs": {"POST"}}, (
+        f"expected the only mutating route to be POST /api/runs, found: {mutating}"
+    )
