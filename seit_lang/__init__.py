@@ -120,4 +120,25 @@ symmetric(L_A)) now type-checks and executes end to end with zero
 external inputs, cross-checked against compiler/backends/
 graph_laplacian.py's independent D-A construction and against exact
 block-squaring and anticommutation identities computed on real values.
+
+Phase 7 status: the persistence/heat-kernel branch is exposed as
+executable `.seit` primitives (seit_lang/persistence_kernel.py):
+P_lambda_c (persistence_projector), L_Pi (restricted_laplacian), H_Pi
+(beta) (persistent_heat_operator -- the actual restricted heat OPERATOR
+P e^{-beta L} P, built from Phase 5's real heat_operator, not a new
+formula), K_Pi(beta) (persistent_heat_trace -- its trace, kept as a
+SEPARATE primitive from H_Pi per the brief listing them separately),
+and d_{Pi,beta} (persistent_distance_pair), all calling
+scientific_corpus/derivation/persistence.py's real functions rather
+than reimplementing them. K_Pi(beta) computed via the actual matrix
+trace is cross-checked against persistence.py's own eigenvalue-sum
+shortcut on real data, not assumed equivalent. The module docstring
+states plainly, per the brief's own requirement, that this finite
+discrete heat trace (an exact finite sum at fixed N and beta) is NOT
+the continuum Seeley-DeWitt small-beta asymptotic expansion, and that
+no heat-kernel coefficients are extracted here. A full Phases-1-7
+`.seit` program (build a graph, compute its Laplacian and spectrum,
+project to a persistent sector, restrict the Laplacian, build the
+restricted heat operator and its trace) type-checks and executes end to
+end with zero external inputs.
 """
