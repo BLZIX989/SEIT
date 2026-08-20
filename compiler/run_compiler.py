@@ -18,10 +18,16 @@ from compiler.falsification.protocols import (
     FalsificationRecord, representation_invariance_test,
 )
 from compiler.historical.register import register_historical_nodes
+from compiler.ir.discrete_curvature import register_discrete_curvature
 from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
+from compiler.ir.toe_closure_hypotheses import (
+    TYPE_DEFS_TOE_CLOSURE, register_toe_closure_hypotheses,
+)
+from compiler.protocol.build_protocols import build_protocol_registry
+from compiler.protocol.derivation_chainlinks import build_derivation_chainlinks
 from compiler.verification.self_audit import run_self_audit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,6 +46,8 @@ TYPE_DEFS = [
     ("diffusion_distance", "d_t(i,j) built from Spec(L)", "mathematical_object"),
     ("geometry_candidate", "a candidate metric/geometry, status never above CONDITIONAL "
                            "without an analytic proof", "mathematical_object"),
+    ("discrete_curvature", "Ollivier-Ricci discrete graph curvature, computed independently "
+                           "of any non-unique metric candidate", "mathematical_object"),
     ("historical_claim", "a prose claim from a pre-compiler source document", None),
     ("reproduction_attempt", "an attempt to re-execute a historical claim in this compiler", None),
     ("forward_derivation_attempt", "an attempt at a target-independent forward derivation", None),
@@ -81,22 +89,35 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005:
+    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE:
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
     test_results = register_executable_tests(registries)
+    curvature_results = register_discrete_curvature(registries)
     register_historical_nodes(registries)
     fc005_results = register_fc005(registries, ROOT)
+    toe_closure_results = register_toe_closure_hypotheses(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
+    falsifications.extend(curvature_results["falsifications"])
     falsifications.extend(fc005_results["falsifications"])
+    falsifications.extend(toe_closure_results["falsifications"])
 
-    all_calculations = list(test_results["calculations"]) + list(fc005_results["calculations"])
+    all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
+                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"]))
+
+    # Phase 12: Chainlink/Protocol projection layer -- read-only, built
+    # entirely from the registries/falsifications above; adds no new
+    # numerical claims (see compiler/protocol/__init__.py).
+    chainlinks = build_derivation_chainlinks(registries, falsifications)
+    protocols = build_protocol_registry(chainlinks)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     registries.dump_all(OUT_DIR)
+    chainlinks.dump_json(OUT_DIR / "chainlink_registry.json")
+    protocols.dump_json(OUT_DIR / "protocol_registry.json")
 
     proof_registry = []
     for t in registries.transformations:
@@ -168,7 +189,7 @@ def build_and_run() -> dict:
         "equation_registry.json", "status_matrix.json", "proof_registry.json",
         "calculation_registry.json", "falsification_registry.json",
         "provenance_registry.json", "target_independence.json", "master_mdcl.json",
-        "fc005_result.json",
+        "fc005_result.json", "chainlink_registry.json", "protocol_registry.json",
     )]
     audit_results = run_self_audit(registries, required_paths=required_paths,
                                     calculations=all_calculations)
@@ -204,6 +225,8 @@ def build_and_run() -> dict:
         "all_audits_passed": all_audits_passed,
         "all_test1_passed": all_test1_passed,
         "terminal_status": terminal,
+        "chainlinks": chainlinks,
+        "protocols": protocols,
     }
 
 

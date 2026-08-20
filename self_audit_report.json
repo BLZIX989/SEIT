@@ -4,8 +4,8 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_nodes": 100,
-      "topological_order_len": 100
+      "n_nodes": 107,
+      "topological_order_len": 107
     }
   },
   {
@@ -21,7 +21,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_types": 25
+      "n_types": 27
     }
   },
   {
@@ -35,7 +35,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_findings": 13,
+      "n_findings": 16,
       "n_flagged": 0
     }
   },
@@ -50,7 +50,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_active_nodes_checked": 23
+      "n_active_nodes_checked": 25
     }
   },
   {
@@ -64,7 +64,7 @@
     "passed": true,
     "issues": [],
     "details": {
-      "n_required": 12
+      "n_required": 14
     }
   },
   {

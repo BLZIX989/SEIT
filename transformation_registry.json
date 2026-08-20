@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "SELECTION-SIGMA",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.849665+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.890595+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -49,8 +49,8 @@
       "dependency_ids": [],
       "transformation_id": "T-GRAPH-TO-OPERATOR",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.027508+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.151858+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -89,8 +89,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-SPECTRUM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.029445+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.154036+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -129,8 +129,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.033060+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.155895+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -169,8 +169,8 @@
       "dependency_ids": [],
       "transformation_id": "T-HEATFLOW-TO-KERNEL",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.037051+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.157684+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -212,8 +212,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.202248+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.330814+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -247,8 +247,8 @@
       "dependency_ids": [],
       "transformation_id": "T-DIFFUSION-TO-METRIC",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.205120+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.332813+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -270,6 +270,43 @@
     "proof": ""
   },
   {
+    "id": "T-OPERATOR-TO-CURVATURE",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/ollivier_ricci.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-OPERATOR-TO-CURVATURE",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:29.715444+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "max_duality_gap": 4.440892098500626e-16
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "OPERATOR-L",
+    "codomain": "CURVATURE-OLLIVIER-RICCI",
+    "action": "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y)",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "W1 solved as an exact discrete optimal-transport LP (primal transportation formulation) and independently cross-checked via its Kantorovich-Rubinstein LP dual (strong duality); max primal/dual gap over every swept edge = 4.44e-16. Two edges hand-verified by direct calculation (path interior edge and star leaf edge, both kappa=0) confirm the implementation against the definition, not merely internal LP self-consistency."
+  },
+  {
     "id": "T-FC005-S3-CONTROL-CHAIN",
     "status": "VERIFIED",
     "dependencies": [
@@ -284,8 +321,8 @@
       "dependency_ids": [],
       "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.389274+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.278985+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",

@@ -1,0 +1,208 @@
+[
+  {
+    "chainlink_id": "CL-G-TO-L",
+    "source_node": "GRAPH-G-SEED",
+    "target_node": "OPERATOR-L",
+    "transformation": "L = D - A",
+    "mathematical_statement": "L = D - A for graph G=(V,E)",
+    "dependencies": [
+      "GRAPH-G-SEED"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/pipeline_graph_heatflow.py",
+    "reproducibility": "EXACT_DEFINITIONAL",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "numeric residual exceeds registered tolerance",
+      "sympy exact cross-check disagrees with numeric result (n<=8 cases)"
+    ],
+    "provenance_source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-L-TO-SPECL",
+    "source_node": "OPERATOR-L",
+    "target_node": "SPECTRUM-L",
+    "transformation": "L phi_n = lambda_n phi_n",
+    "mathematical_statement": "L phi_n = lambda_n phi_n",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "TESTED_SURVIVED",
+    "executable_backend": "compiler/backends/pipeline_graph_heatflow.py",
+    "reproducibility": "NUMERIC_WITH_EXACT_CROSSCHECK_N<=8",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "numeric residual exceeds registered tolerance",
+      "sympy exact cross-check disagrees with numeric result (n<=8 cases)"
+    ],
+    "provenance_source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-SPECL-TO-HEATFLOW",
+    "source_node": "SPECTRUM-L",
+    "target_node": "HEAT-FLOW-R",
+    "transformation": "R(t) = e^{-tL}",
+    "mathematical_statement": "R(t) = e^{-tL}",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/pipeline_graph_heatflow.py",
+    "reproducibility": "NUMERIC_TOLERANCE_1E-6",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "numeric residual exceeds registered tolerance",
+      "sympy exact cross-check disagrees with numeric result (n<=8 cases)"
+    ],
+    "provenance_source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-HEATFLOW-TO-KERNEL",
+    "source_node": "HEAT-FLOW-R",
+    "target_node": "KERNEL-PROJECTOR",
+    "transformation": "lim_{t->inf} e^{-tL} = P_ker(L)",
+    "mathematical_statement": "lim_{t->inf} e^{-tL} = P_ker(L)",
+    "dependencies": [
+      "HEAT-FLOW-R"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/pipeline_graph_heatflow.py",
+    "reproducibility": "NUMERIC_TOLERANCE_1E-6",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "numeric residual exceeds registered tolerance",
+      "sympy exact cross-check disagrees with numeric result (n<=8 cases)"
+    ],
+    "provenance_source": "compiler/backends/pipeline_graph_heatflow.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-SPECL-TO-DIFFUSION",
+    "source_node": "SPECTRUM-L",
+    "target_node": "DIFFUSION-DISTANCE",
+    "transformation": "d_t(i,j)",
+    "mathematical_statement": "d_t(i,j)^2 = sum_n e^{-2t lambda_n}(phi_n(i)-phi_n(j))^2",
+    "dependencies": [
+      "SPECTRUM-L"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/diffusion_metric.py",
+    "reproducibility": "EXACT_DEFINITIONAL",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "numeric residual exceeds registered tolerance",
+      "sympy exact cross-check disagrees with numeric result (n<=8 cases)"
+    ],
+    "provenance_source": "compiler/backends/diffusion_metric.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-DIFFUSION-TO-METRIC",
+    "source_node": "DIFFUSION-DISTANCE",
+    "target_node": "METRIC-CANDIDATE",
+    "transformation": "refinement-sweep metric candidate",
+    "mathematical_statement": "candidate g_ij from diffusion-distance refinement sweep",
+    "dependencies": [
+      "DIFFUSION-DISTANCE"
+    ],
+    "assumptions": [],
+    "status": "CONDITIONAL",
+    "proof_status": "NO_PROOF_REGISTERED",
+    "calculation_status": "CONDITIONAL",
+    "falsification_status": "TESTED_FAILED",
+    "executable_backend": "compiler/backends/diffusion_metric.py",
+    "reproducibility": "NUMERIC_NON_UNIQUE",
+    "literature_support": [],
+    "open_obligations": [
+      "T-DIFFUSION-TO-METRIC status is CONDITIONAL, not admissible for downstream chainlinks"
+    ],
+    "failure_conditions": [
+      "classification reported as 'non_unique' or 'divergent' for a swept topology"
+    ],
+    "provenance_source": "compiler/backends/diffusion_metric.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-OPERATOR-TO-CURVATURE-DISCRETE",
+    "source_node": "OPERATOR-L",
+    "target_node": "CURVATURE-OLLIVIER-RICCI",
+    "transformation": "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y)",
+    "mathematical_statement": "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y) (Ollivier-Ricci, alpha=0)",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [
+      "This is an INDEPENDENT route around CL-METRIC-TO-CONNECTION, not a resolution of it: Ollivier-Ricci curvature is a discrete graph-curvature notion computed directly from OPERATOR-L's own random-walk structure (established mathematics, Ollivier 2009), not a continuum Levi-Civita connection built from METRIC-CANDIDATE. CL-METRIC-TO-CONNECTION remains OPEN."
+    ],
+    "status": "CALCULATED",
+    "proof_status": "NUMERIC_WITH_HAND_VERIFIED_CASES",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "TESTED_SURVIVED",
+    "executable_backend": "compiler/backends/ollivier_ricci.py",
+    "reproducibility": "NUMERIC_WITH_LP_DUALITY_CROSSCHECK",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "primal/dual LP duality gap exceeds 1e-6 on any swept edge"
+    ],
+    "provenance_source": "compiler/backends/ollivier_ricci.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-METRIC-TO-CONNECTION",
+    "source_node": "METRIC-CANDIDATE",
+    "target_node": "CONNECTION-NODE",
+    "transformation": "Levi-Civita-type connection from candidate metric g_ij (NOT REGISTERED)",
+    "mathematical_statement": "Gamma^k_ij = 1/2 g^kl (d_i g_jl + d_j g_il - d_l g_ij) (continuum form; no discrete analogue is registered for this candidate)",
+    "dependencies": [
+      "METRIC-CANDIDATE"
+    ],
+    "assumptions": [
+      "METRIC-CANDIDATE's own status is CONDITIONAL with an explicit non-uniqueness finding (see falsification_registry.json FALS-METRIC-UNIQUENESS-*): the diffusion-distance candidate depends on a free time parameter t, so there is no single admissible metric to differentiate."
+    ],
+    "status": "OPEN",
+    "proof_status": "OPEN",
+    "calculation_status": "OPEN",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": null,
+    "reproducibility": "N/A_NOT_EXECUTED",
+    "literature_support": [],
+    "open_obligations": [
+      "no admissible, non-arbitrary construction of a connection from a non-unique metric candidate is registered in this compiler",
+      "CL-OPERATOR-TO-CURVATURE-DISCRETE registers a real Ollivier-Ricci discrete curvature computed independently of METRIC-CANDIDATE (parameter-free, survives real RIT/MIT falsification runs) -- but that is a DIFFERENT construction, not a resolution of this chainlink. This chainlink remains OPEN: no connection has been built FROM METRIC-CANDIDATE specifically."
+    ],
+    "failure_conditions": [
+      "any candidate connection construction that depends on an arbitrary, unjustified choice of the diffusion-time parameter t is inadmissible by the same non-arbitrariness requirement METRIC-CANDIDATE itself was already held to"
+    ],
+    "provenance_source": "compiler/protocol/derivation_chainlinks.py (Phase 12 frontier audit)",
+    "source_document_status": "N/A"
+  }
+]

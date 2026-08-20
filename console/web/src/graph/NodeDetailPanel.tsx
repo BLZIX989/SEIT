@@ -1,0 +1,157 @@
+import { Link } from "react-router-dom";
+import { StatusBadge } from "../components/StatusBadge";
+import { useHypotheses, useNode } from "../api/queries";
+import { HYPOTHESIS_STATUS_COLORS } from "../hypotheses/hypothesisStatus";
+
+/**
+ * Large detail panel shown on node selection (brief section VII).
+ * Every field is a real value from GET /api/nodes/:id -- dependencies,
+ * dependents, provenance, proofs, calculations, falsification matches
+ * (with honest match-confidence tiers) -- nothing here is inferred or
+ * fabricated for display purposes.
+ */
+export function NodeDetailPanel({
+  nodeId,
+  onSelectNode,
+  onClose,
+  showOpenLink = false,
+}: {
+  nodeId: string | null;
+  onSelectNode: (id: string) => void;
+  onClose: () => void;
+  /** Show a "Open full inspector" deep link (used from the embedded graph panel, not the standalone Node Inspector page itself). */
+  showOpenLink?: boolean;
+}) {
+  const node = useNode(nodeId ?? undefined);
+  const hypotheses = useHypotheses(nodeId ? { target_node_id: nodeId } : undefined);
+
+  if (!nodeId) {
+    return (
+      <div className="node-detail-panel node-detail-panel--empty">
+        <p className="section-note">Select a node to inspect its dependencies, provenance, proofs, and falsification matches.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="node-detail-panel">
+      <div className="node-detail-panel__header">
+        <h3><code>{nodeId}</code></h3>
+        <div className="node-detail-panel__header-actions">
+          {showOpenLink && (
+            <Link className="link-button" to={`/nodes/${encodeURIComponent(nodeId)}`}>Open inspector ↗</Link>
+          )}
+          <button className="btn-close" onClick={onClose} aria-label="Close detail panel">×</button>
+        </div>
+      </div>
+
+      {node.isLoading && <p>Loading node…</p>}
+      {node.isError && <div className="error-panel">Failed to load node: {String(node.error)}</div>}
+
+      {node.data && (
+        <>
+          <div className="node-detail-panel__meta">
+            <StatusBadge status={node.data.status} />
+            <span className="tag">{node.data.kind}</span>
+            <span className="tag">role: {node.data.role}</span>
+          </div>
+
+          {node.data.circular_dependency.is_circular && (
+            <div className="error-panel" style={{ margin: "0 0 12px" }}>
+              CIRCULAR_DEPENDENCY: {node.data.circular_dependency.cycle_path?.join(" → ")} -- see{" "}
+              <Link to="/proofs">Proofs</Link> before treating this node as certifiable.
+            </div>
+          )}
+
+          <h4>Dependencies ({node.data.dependencies.length})</h4>
+          {node.data.dependencies.length === 0 && <p className="section-note">None — root node.</p>}
+          <ul className="node-ref-list">
+            {node.data.dependencies.map((d) => (
+              <li key={d}><button className="link-button" onClick={() => onSelectNode(d)}>{d}</button></li>
+            ))}
+          </ul>
+
+          <h4>Dependents ({node.data.dependents.length})</h4>
+          {node.data.dependents.length === 0 && <p className="section-note">None — nothing downstream depends on this node yet.</p>}
+          <ul className="node-ref-list">
+            {node.data.dependents.map((d) => (
+              <li key={d}><button className="link-button" onClick={() => onSelectNode(d)}>{d}</button></li>
+            ))}
+          </ul>
+
+          <h4>Provenance</h4>
+          {node.data.provenance ? (
+            <table className="data-table">
+              <tbody>
+                <tr><td>Source</td><td>{node.data.provenance.source || "—"}</td></tr>
+                <tr><td>Status (provenance record)</td><td>{node.data.provenance.status}</td></tr>
+                <tr><td>Execution timestamp</td><td>{node.data.provenance.execution_timestamp || "—"}</td></tr>
+                <tr><td>Git commit</td><td><code>{node.data.provenance.git_commit || "—"}</code></td></tr>
+                <tr><td>Calculation ID</td><td>{node.data.provenance.calculation_id || "—"}</td></tr>
+              </tbody>
+            </table>
+          ) : <p className="section-note">No provenance record.</p>}
+
+          <h4>Proofs ({node.data.proofs.length})</h4>
+          {node.data.proofs.length === 0 && <p className="section-note">No proof record referencing this node as a transformation_id.</p>}
+          {node.data.proofs.length > 0 && (
+            <pre className="audit-card__details">{JSON.stringify(node.data.proofs, null, 2)}</pre>
+          )}
+
+          <h4>Calculations ({node.data.calculations.length})</h4>
+          {node.data.calculations.length === 0 && <p className="section-note">No calculation linked via provenance.calculation_id.</p>}
+          {node.data.calculations.length > 0 && (
+            <pre className="audit-card__details">{JSON.stringify(node.data.calculations, null, 2)}</pre>
+          )}
+
+          <h4>Falsification matches ({node.data.falsifications.length})</h4>
+          {node.data.falsifications.length === 0 && <p className="section-note">No falsification record text-matches this node.</p>}
+          {node.data.falsifications.map((f, i) => (
+            <div key={i} className="audit-card">
+              <div className="audit-card__header">
+                <span className="tag">{f.match_confidence}</span>
+              </div>
+              <pre className="audit-card__details">{JSON.stringify(f.record, null, 2)}</pre>
+            </div>
+          ))}
+
+          <h4>Hypotheses ({(hypotheses.data ?? []).length})</h4>
+          {(hypotheses.data ?? []).length === 0 && (
+            <p className="section-note">
+              No hypotheses proposed for this node yet. <Link to="/hypotheses">Propose one →</Link>
+            </p>
+          )}
+          {(hypotheses.data ?? []).length > 0 && (
+            <ul className="node-ref-list" style={{ display: "block" }}>
+              {(hypotheses.data ?? []).map((h) => (
+                <li key={h.id} style={{ marginBottom: 4 }}>
+                  <Link to="/hypotheses" className="tag" style={{ backgroundColor: HYPOTHESIS_STATUS_COLORS[h.status], color: "#fff", marginRight: 6 }}>
+                    {h.status}
+                  </Link>
+                  {h.statement}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <h4>Literature crosswalk ({node.data.literature_crosswalk.length})</h4>
+          {node.data.literature_crosswalk.length === 0 && (
+            <p className="section-note">
+              No literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv row names this node.{" "}
+              <Link to="/literature">Literature →</Link>
+            </p>
+          )}
+          {node.data.literature_crosswalk.map((c, i) => (
+            <p key={i} className="section-note">{c.raw.STRUCTURAL_CORRESPONDENCE} ({c.raw.STATUS})</p>
+          ))}
+
+          <h4>Supersession</h4>
+          <p className="section-note">{node.data.superseding_nodes_note}</p>
+
+          <h4>Raw registry entry</h4>
+          <pre className="audit-card__details">{JSON.stringify(node.data.raw, null, 2)}</pre>
+        </>
+      )}
+    </div>
+  );
+}

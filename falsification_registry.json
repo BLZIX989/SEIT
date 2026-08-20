@@ -61,6 +61,27 @@
     }
   },
   {
+    "id": "FALS-CURVATURE-RELABELING-RIT",
+    "protocol": "representation_invariance",
+    "target": "CURVATURE-OLLIVIER-RICCI for cycle(n=12)",
+    "passed": true,
+    "detail": "invariant under all tested representations",
+    "evidence": {
+      "n_representations": 5
+    }
+  },
+  {
+    "id": "FALS-CURVATURE-RELABELING-MIT",
+    "protocol": "mathematical_invariance",
+    "target": "CURVATURE-OLLIVIER-RICCI for cycle(n=12)",
+    "passed": true,
+    "detail": "invariant preserved under all 4 tested transformations",
+    "evidence": {
+      "n_transformations": 4,
+      "n_mismatches": 0
+    }
+  },
+  {
     "id": "FALS-FC005-FISHER-LORENTZIAN",
     "protocol": "mathematical_invariance",
     "target": "Fisher-Rao metric F = Lorentzian spacetime metric g_munu",
@@ -84,6 +105,53 @@
       "n_confirmed": 25,
       "n_trials": 25,
       "spectra_match_max_residual": 8.881784197001252e-16
+    }
+  },
+  {
+    "id": "FALS-H4-G2-TRIALITY-RANK-OBSTRUCTION",
+    "protocol": "mathematical_invariance_test (rank of compact Lie subgroups)",
+    "target": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+    "passed": false,
+    "detail": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent.",
+    "evidence": {
+      "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+      "standard_lie_theory_facts_used": {
+        "G2": {
+          "dim": 14,
+          "rank": 2,
+          "note": "Aut(octonions), the smallest exceptional simple Lie group"
+        },
+        "Spin(8)": {
+          "dim": 28,
+          "rank": 4,
+          "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+        },
+        "SU(3)": {
+          "dim": 8,
+          "rank": 2
+        },
+        "SU(2)": {
+          "dim": 3,
+          "rank": 1
+        },
+        "U(1)": {
+          "dim": 1,
+          "rank": 1
+        }
+      },
+      "triality_fixed_subgroup_of_Spin(8)": "G2",
+      "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+      "rank_argument": {
+        "rank(G2)": 2,
+        "rank(SU(3)xSU(2)xU(1))": 4,
+        "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+        "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+      },
+      "distinct_from_repository_original_direct_product_claim": {
+        "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+        "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+      },
+      "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
     }
   }
 ]

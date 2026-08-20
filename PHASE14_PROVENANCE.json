@@ -1,0 +1,96 @@
+{
+  "counts": {
+    "crosswalk_rows": 56,
+    "equations": 25,
+    "operators": 54,
+    "relations": 4,
+    "review_queue": 1086,
+    "structures": 16,
+    "variables": 285
+  },
+  "extraction_methods": {
+    "LATEX_SOURCE": 25
+  },
+  "extraction_quality": {
+    "EXACT_LATEX": 25
+  },
+  "pdf_extraction_stats": {
+    "SRC-ARXIV-5ced2c5a7cfb": {
+      "candidate_lines": 27,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 357
+    },
+    "SRC-ARXIV-600935e8f211": {
+      "candidate_lines": 188,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 610
+    },
+    "SRC-ARXIV-a837b5dee25d": {
+      "candidate_lines": 133,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 582
+    },
+    "SRC-ARXIV-b58e77da930e": {
+      "candidate_lines": 229,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 658
+    },
+    "SRC-ARXIV-c3b49eb8efd2": {
+      "candidate_lines": 67,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 472
+    },
+    "SRC-ARXIV-ce178130a868": {
+      "candidate_lines": 239,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 1305
+    },
+    "SRC-ARXIV-d148d1274ff9": {
+      "candidate_lines": 12,
+      "pages_failed": 0,
+      "pages_processed": 7,
+      "total_lines": 317
+    },
+    "SRC-ARXIV-d4791023cdac": {
+      "candidate_lines": 139,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 595
+    },
+    "SRC-ARXIV-e8c0403ff09e": {
+      "candidate_lines": 34,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 484
+    },
+    "SRC-ARXIV-ed4270394386": {
+      "candidate_lines": 18,
+      "pages_failed": 0,
+      "pages_processed": 10,
+      "total_lines": 364
+    }
+  },
+  "phase": "Phase 14: Mathematical Extraction Layer",
+  "sources": {
+    "literature_registry": "literature/extraction/STRING_THEORY_LITERATURE_REGISTRY.json",
+    "pdf_documents": [
+      "SRC-ARXIV-5ced2c5a7cfb",
+      "SRC-ARXIV-600935e8f211",
+      "SRC-ARXIV-a837b5dee25d",
+      "SRC-ARXIV-b58e77da930e",
+      "SRC-ARXIV-c3b49eb8efd2",
+      "SRC-ARXIV-ce178130a868",
+      "SRC-ARXIV-d148d1274ff9",
+      "SRC-ARXIV-d4791023cdac",
+      "SRC-ARXIV-e8c0403ff09e",
+      "SRC-ARXIV-ed4270394386"
+    ],
+    "status_matrix_snapshot": "status_matrix.json"
+  }
+}

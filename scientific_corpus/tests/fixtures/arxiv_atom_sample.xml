@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <title>ArXiv Query: search_query=all:graph laplacian spectral</title>
+  <id>http://arxiv.org/api/test</id>
+  <updated>2026-08-20T17:05:27Z</updated>
+  <opensearch:totalResults>288630</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <opensearch:itemsPerPage>2</opensearch:itemsPerPage>
+  <entry>
+    <id>http://arxiv.org/abs/1301.6896v1</id>
+    <updated>2013-01-29T11:35:35Z</updated>
+    <published>2013-01-29T11:35:35Z</published>
+    <title>Laplacians on periodic discrete graphs</title>
+    <summary>We consider Laplacians on periodic discrete graphs and describe the spectrum.</summary>
+    <author><name>Test Author One</name></author>
+    <author><name>Test Author Two</name></author>
+    <link href="http://arxiv.org/abs/1301.6896v1" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/1301.6896v1" rel="related" type="application/pdf"/>
+    <category term="math.SP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="math-ph" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/0908.0333v3</id>
+    <updated>2012-02-23T00:00:00Z</updated>
+    <published>2009-08-03T00:00:00Z</published>
+    <title>String Theory</title>
+    <summary>Lecture notes on string theory.</summary>
+    <author><name>David Tong</name></author>
+    <link href="http://arxiv.org/abs/0908.0333v3" rel="alternate" type="text/html"/>
+    <link title="pdf" href="http://arxiv.org/pdf/0908.0333v3" rel="related" type="application/pdf"/>
+    <category term="hep-th" scheme="http://arxiv.org/schemas/atom"/>
+  </entry>
+</feed>

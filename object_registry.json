@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.852064+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.892926+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -50,8 +50,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.854020+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.894955+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -86,8 +86,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.857111+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.897112+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -123,8 +123,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.861107+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.899027+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -159,8 +159,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.865121+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.901048+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -195,8 +195,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.869144+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.903172+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -231,8 +231,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.873083+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.905124+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -267,8 +267,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.877089+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.906831+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -303,8 +303,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.881220+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.908642+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -339,8 +339,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.885175+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.910771+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -375,8 +375,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.889153+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.912660+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -411,8 +411,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.893332+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.914541+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -447,8 +447,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.897131+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.916510+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -483,8 +483,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.901158+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.918383+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -519,8 +519,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.905144+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.920190+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -555,8 +555,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.911536+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.922124+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -591,8 +591,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.917679+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.923811+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -627,8 +627,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.920449+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.925457+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -663,8 +663,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.922537+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.927102+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -699,8 +699,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.925154+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.928801+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -733,8 +733,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:41.927025+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:28.930457+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -767,8 +767,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-T1-OPERATOR",
-      "execution_timestamp": "2026-08-19T16:51:42.004994+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.140668+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -804,8 +804,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-T1-SPECTRUM",
-      "execution_timestamp": "2026-08-19T16:51:42.009463+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.143084+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -841,8 +841,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-T1-HEATFLOW",
-      "execution_timestamp": "2026-08-19T16:51:42.017210+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.145127+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -878,8 +878,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-T1-KERNEL",
-      "execution_timestamp": "2026-08-19T16:51:42.021288+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.150027+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -915,8 +915,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.197679+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.326450+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -952,8 +952,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.200147+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:29.328788+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -978,6 +978,57 @@
     "constraints": []
   },
   {
+    "id": "CURVATURE-OLLIVIER-RICCI",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [
+      "alpha=0 (non-lazy) one-step random-walk convention, uniform over immediate neighbors -- the canonical Ollivier-Ricci definition, chosen because it requires no freely-tunable parameter (unlike the diffusion-distance construction it is an alternative to).",
+      "This does not construct a continuum Levi-Civita connection or Riemann curvature tensor; it is a discrete graph-curvature notion (Ollivier 2009)."
+    ],
+    "provenance": {
+      "source": "compiler/backends/ollivier_ricci.py",
+      "source_version": "",
+      "object_id": "CURVATURE-OLLIVIER-RICCI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:29.713048+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "n_graphs": 9,
+        "max_duality_gap": 4.440892098500626e-16,
+        "mean_kappa_by_graph": {
+          "cycle(n=3)": 0.5,
+          "cycle(n=6)": 0.0,
+          "cycle(n=20)": 0.0,
+          "path(n=6)": 0.0,
+          "path(n=20)": 0.0,
+          "complete(n=5)": 0.75,
+          "complete(n=6)": 0.8000000000000003,
+          "star(n=8)": 2.220446049250313e-16,
+          "grid2d(n=16)": 4.625929269271485e-18
+        }
+      }
+    },
+    "role": "upstream_construction",
+    "type": "discrete_curvature",
+    "carrier": "Ollivier-Ricci (alpha=0) edge curvature kappa(x,y)=1-W1(m_x,m_y)/d(x,y), computed across 9 graphs (topologies: complete, cycle, grid2d, path, star); primal/dual LP duality gap <= 4.44e-16 on every swept edge. Independent of the free diffusion-time parameter that made METRIC-CANDIDATE non-unique -- this is a DIFFERENT construction, not a resolution of CL-METRIC-TO-CONNECTION.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
     "id": "T2-HISTORICAL",
     "status": "PROPOSED",
     "dependencies": [],
@@ -993,8 +1044,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.217138+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.122838+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1030,8 +1081,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.219140+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.125341+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1065,8 +1116,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.221076+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.127341+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1099,8 +1150,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.223031+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.129515+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1136,8 +1187,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.225006+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.131637+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1204,8 +1255,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.229131+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.133781+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1272,8 +1323,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.233155+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.135721+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1340,8 +1391,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.237193+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.137614+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1375,8 +1426,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:42.241615+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.139642+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1499,8 +1550,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.377489+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.267621+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1533,8 +1584,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.379647+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.269576+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1567,8 +1618,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.381588+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.271533+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1603,8 +1654,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.383625+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.273756+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1639,8 +1690,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-S3-CONTROL",
-      "execution_timestamp": "2026-08-19T16:51:42.385497+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:30.275455+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1675,8 +1726,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.838269+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.945525+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1712,8 +1763,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.840817+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.950450+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1754,8 +1805,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.845359+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.952480+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1796,8 +1847,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.847528+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.954422+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1838,8 +1889,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.849527+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.956438+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1882,8 +1933,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.851573+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.961882+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1926,8 +1977,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.857147+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.966143+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -1970,8 +2021,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.861149+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.969891+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2014,8 +2065,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.865202+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.973890+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2058,8 +2109,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.867150+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.977978+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2105,8 +2156,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.871924+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.981922+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2158,8 +2209,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.877116+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.986184+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2209,8 +2260,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.881339+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.988070+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2255,8 +2306,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.885315+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.990017+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2291,8 +2342,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:43.887402+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:31.993945+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2323,8 +2374,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-19T16:51:44.063729+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:32.380184+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2357,8 +2408,8 @@
       "dependency_ids": [],
       "transformation_id": "",
       "calculation_id": "CALC-FC005-EIGEN-UNIQUENESS",
-      "execution_timestamp": "2026-08-19T16:51:44.074238+00:00",
-      "git_commit": "6818acd4d5f4a85252aadc22980f88594c727b36",
+      "execution_timestamp": "2026-08-20T16:48:32.389804+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -2375,6 +2426,252 @@
     "role": "upstream_construction",
     "type": "operator_uniqueness_counterexample",
     "carrier": "Spec(H) does NOT determine H: 25/25 random trials confirm H' = U H U^dagger has identical spectrum (max residual 8.88e-16) while H' != H.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "H1-SELECTION-WELLPOSEDNESS",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "Tests whether G*=argmax_G Pi(G)/S(G) is a well-posed optimization problem given the compiler's own actual definitions (or absence thereof) of Mathset, Pi, and S."
+    ],
+    "provenance": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h1_selection_wellposedness_analysis",
+      "source_version": "",
+      "object_id": "H1-SELECTION-WELLPOSEDNESS",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:32.392959+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "hypothesis": "H1 -- Selection Closure: G* = argmax_{G in Mathset} Pi(G)/S(G)",
+        "mathset_formally_defined_in_repo": false,
+        "mathset_repo_occurrences": "only as the bare string 'M in Mathset' inside a code comment in compiler/ir/forward_chain.py -- never as a class, set, type, or constructive definition anywhere in the compiler",
+        "pi_and_s_implemented_in_repo": true,
+        "pi_and_s_repo_status": "Pi (persistence functional) and S (structural cost) are described only in prose in Master Equation Codex section 2 ('retained distinction per unit structural cost') -- no formula, no code, anywhere in this repository or its historical corpus",
+        "well_posedness_requirements": [
+          "(a) Mathset must be a genuine set (not a proper class) for 'for all M in Mathset' to be meaningful under ZFC -- 'the collection of all mathematical structures' is NOT a set without further restriction (Russell-paradox-adjacent)",
+          "(b) Pi and S must be well-defined, real-valued functions on that domain",
+          "(c) existence of the argmax requires either a finite/compact domain with continuous Pi/S, or an independent boundedness argument for an infinite domain",
+          "(d) uniqueness requires the maximizer to be non-degenerate (no ties)",
+          "(e) computability requires an effective (halting) search procedure"
+        ],
+        "finding": "NONE of (a)-(e) is satisfied by anything currently in this repository. (a) fails outright: no set-theoretic domain is defined. (b) fails: Pi and S have no formula or implementation. Consequently (c)-(e) cannot even be evaluated -- there is no well-defined optimization problem to test for existence, uniqueness, or computability. If Mathset is restricted to graphs on at most N_max vertices (the only way to trivially guarantee (a) and (c) -- a finite set always attains its max), this introduces a new, unmotivated free parameter N_max, which the selection principle was specifically invoked to avoid needing. This is not merely 'not yet done' -- the DEFINITION itself is incomplete prior to any existence or uniqueness argument.",
+        "verdict": "H1 DOES NOT CLOSE. Obstruction is at the level of definition, not proof."
+      }
+    },
+    "role": "comparison",
+    "type": "closure_hypothesis_test",
+    "carrier": "H1 DOES NOT CLOSE. Obstruction is at the level of definition, not proof.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "H2-SPECTRAL-TRIPLE-LOCALITY",
+    "status": "FAIL",
+    "dependencies": [],
+    "assumptions": [
+      "Tests the structural locality prerequisite for D+=sqrt(L) to serve as a genuine Dirac-type operator in a spectral triple; does not attempt the full axiom-by-axiom certification (fixing a specific algebra A and computing the first-order condition directly), noted as future work."
+    ],
+    "provenance": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h2_spectral_triple_locality_check",
+      "source_version": "",
+      "object_id": "H2-SPECTRAL-TRIPLE-LOCALITY",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:32.400413+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "hypothesis": "H2 -- Spectral-triple / Dirac-operator closure for D+=sqrt(L)",
+        "test_graph": "n=200 nearest-neighbour ring, k=3 (local connectivity, structurally representative of this project's own sparse geometric graphs)",
+        "L_self_adjoint_real_symmetric": true,
+        "L_sparsity_fraction": 0.035,
+        "D_plus_self_adjoint": true,
+        "D_plus_sparsity_fraction_strict": 1.0,
+        "D_plus_sparsity_fraction_relative_1e-3_of_max": 0.235,
+        "D_plus_row0_decay_by_graph_distance": {
+          "0": 2.3478289210816,
+          "1": 0.2899664965484017,
+          "2": 0.2797631237589523,
+          "3": 0.26754457807320975,
+          "10": 0.0121647881586752,
+          "50": 0.0005880766019412597,
+          "100": 0.0002939111165989169
+        },
+        "axioms_checked": {
+          "self_adjointness_of_D": "HOLDS -- sqrt of a real symmetric PSD matrix is real symmetric, standard linear algebra",
+          "compact_resolvent": "TRIVIALLY HOLDS in finite dimension (not a discriminating test at finite N; becomes meaningful only in an actual continuum limit, which does not exist here -- see H3)",
+          "bounded_commutators_[D,a]": "TRIVIALLY HOLDS in finite dimension for the same reason -- every finite matrix is bounded",
+          "locality_of_commutators_(prerequisite_for_Connes_distance_formula_and_the_first_order_condition)": "FAILS structurally. L itself is local/sparse (nonzero only for graph-adjacent pairs), but D+=sqrt(L) is measured here to be effectively DENSE: 100% nonzero to floating precision, still 23.5% nonzero at a generous 0.1%-of-peak threshold, with slowly-decaying weight extending far beyond the original local neighbourhood (nonzero at graph-distance 50 and 100 on a ring where L itself only connects distance <= 3). The matrix square root of a sparse operator is generically dense -- this is a known fact of spectral calculus, not an artifact of this particular test graph.",
+          "real_structure_J_and_KO_dimension": "The natural candidate J = complex conjugation on R^n gives J D+ = D+ J (since D+ is real) and J^2 = +1 -- this corresponds to KO-dimension 0 mod 8 in Connes' classification table for a triple with no grading. The physically required Standard-Model spectral triple (Chamseddine-Connes-Marcolli) needs the FINITE internal factor to carry KO-dimension 6 mod 8 specifically, so that it combines correctly with a 4-dimensional Riemannian/Lorentzian continuum factor (KO-dimension 4 mod 8) to give the required total. A generic finite real graph's natural real structure does not have a mechanism to select KO-dimension 6 rather than 0 -- this would need to be independently engineered, not derived."
+        },
+        "verdict": "H2 DOES NOT CLOSE. The trivial finite-dimensional axioms (self-adjointness, bounded commutators, compact resolvent) hold but are non-discriminating at finite N. The one substantive, checkable structural prerequisite tested here -- locality of D+'s commutator support, needed for the operator to encode a genuine metric via Connes' distance formula -- FAILS: sqrt(L) is measurably non-local. The KO-dimension required for the real Standard-Model spectral-triple construction (6 mod 8) is not naturally produced by this construction (which gives 0 mod 8) and was never independently derived anywhere in this project's corpus."
+      }
+    },
+    "role": "comparison",
+    "type": "closure_hypothesis_test",
+    "carrier": "H2 DOES NOT CLOSE. The trivial finite-dimensional axioms (self-adjointness, bounded commutators, compact resolvent) hold but are non-discriminating at finite N. The one substantive, checkable structural prerequisite tested here -- locality of D+'s commutator support, needed for the operator to encode a genuine metric via Connes' distance formula -- FAILS: sqrt(L) is measurably non-local. The KO-dimension required for the real Standard-Model spectral-triple construction (6 mod 8) is not naturally produced by this construction (which gives 0 mod 8) and was never independently derived anywhere in this project's corpus.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "H3-FC005-CORRECTION-TEST",
+    "status": "FAIL",
+    "dependencies": [
+      "CONTINUUM-LIMIT-L-DESI"
+    ],
+    "assumptions": [
+      "Additional diagnostic evidence extending (not overwriting) the frozen FC005_CHECKPOINT.md state. Tested against real DESI DR1 LRG SGC data at N=4000->8000, a smaller N pair than the frozen checkpoint's own best-case N=32000->64000 result, so this is not a direct re-run of the checkpoint's own claim, but an independent test of correction hypotheses."
+    ],
+    "provenance": {
+      "source": "run_fc005_h3_correction_test.py -> FC005_H3_CORRECTION_TEST_RESULTS.json",
+      "source_version": "",
+      "object_id": "H3-FC005-CORRECTION-TEST",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:32.402638+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "hypothesis": "H3 -- Discrete-to-continuum kernel-correction closure",
+        "test_performed_against": "real DESI DR1 LRG SGC pilot catalogue (data/desi/dr1/fc005/raw/), N=4000->8000 nested subsample",
+        "baseline_joint_converged": false,
+        "candidate_A_tighter_arpack_tolerance": {
+          "joint_converged": false,
+          "result_identical_to_baseline": false,
+          "interpretation": "Result changed under tighter tolerance -- inconclusive, may indicate a genuine precision sensitivity requiring further investigation."
+        },
+        "candidate_B_bandwidth_sweep": {
+          "0.5": {
+            "joint_converged": false,
+            "reason": "no eigenvector/subspace data available (e.g. ARPACK never resolved enough modes to compare)"
+          },
+          "1.0": {
+            "joint_converged": false,
+            "reason": "5 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9877)"
+          },
+          "2.0": {
+            "joint_converged": false,
+            "reason": "1 of 3 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[5, 15], classification=both, subspace_cosine=0.0195)"
+          }
+        },
+        "candidate_B_interpretation": "Doubling the bandwidth (epsilon x2.0) measurably stabilized the low modes (cluster [1,3] became eigenvalue+eigenvector stable, an improvement over the baseline's 5/5 failing clusters) but did NOT stabilize the higher modes (cluster [5,15] remained 'both' unstable with subspace cosine 0.0195, essentially orthogonal) -- consistent with, not a resolution of, this project's existing real FC005_N_SCALING_REPORT.md finding that higher modes fail for a structural reason, not merely insufficient resolution in the already-explored range.",
+        "candidate_C_curvature_kernel_correction": {
+          "attempted_numerically": false,
+          "reason": "CIRCULAR AS STATED, ruled out analytically before any computation: the counterfactual manuscript's proposed K_corrected = K_Gaussian * (1 + c2*eps^2*R(x) + O(eps^4)) requires R(x), the target-space Ricci scalar curvature, as an INPUT to the kernel used to construct the very operator whose spectrum is meant to DERIVE R(x) in the first place (per the master equation's own a2 heat-kernel term, Sec. 5 of the counterfactual manuscript). No independent, non-circular source for R(x) exists anywhere in this pipeline prior to the continuum limit this correction is supposed to help achieve. This is exactly the target-conditioned-input failure mode Section XI/XVII of the campaign instruction requires flagging, not attempting to route around by inventing a value for R(x)."
+        },
+        "verdict": "H3 DOES NOT CLOSE. Two genuine, non-circular corrections were tested against real data: neither achieves joint convergence for the higher modes. A third, the curvature-dependent kernel correction proposed in the counterfactual manuscript, is analytically CIRCULAR (requires the target curvature R(x) as an input) and was correctly not attempted. This is new, real, negative evidence beyond what FC005_CHECKPOINT.md already recorded -- it does not overturn that frozen checkpoint, it extends it."
+      }
+    },
+    "role": "comparison",
+    "type": "closure_hypothesis_test",
+    "carrier": "H3 DOES NOT CLOSE. Two genuine, non-circular corrections were tested against real data: neither achieves joint convergence for the higher modes. A third, the curvature-dependent kernel correction proposed in the counterfactual manuscript, is analytically CIRCULAR (requires the target curvature R(x) as an input) and was correctly not attempted. This is new, real, negative evidence beyond what FC005_CHECKPOINT.md already recorded -- it does not overturn that frozen checkpoint, it extends it.",
+    "operations": [],
+    "relations": [],
+    "constraints": []
+  },
+  {
+    "id": "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED",
+    "status": "OPEN",
+    "dependencies": [],
+    "assumptions": [
+      "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+    ],
+    "provenance": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h4_g2_spin8_construction_check",
+      "source_version": "",
+      "object_id": "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-20T16:48:32.406551+00:00",
+      "git_commit": "21ee4c3e87cb4710727a4444baec8acf8aa5dc60",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+        "standard_lie_theory_facts_used": {
+          "G2": {
+            "dim": 14,
+            "rank": 2,
+            "note": "Aut(octonions), the smallest exceptional simple Lie group"
+          },
+          "Spin(8)": {
+            "dim": 28,
+            "rank": 4,
+            "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+          },
+          "SU(3)": {
+            "dim": 8,
+            "rank": 2
+          },
+          "SU(2)": {
+            "dim": 3,
+            "rank": 1
+          },
+          "U(1)": {
+            "dim": 1,
+            "rank": 1
+          }
+        },
+        "triality_fixed_subgroup_of_Spin(8)": "G2",
+        "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+        "rank_argument": {
+          "rank(G2)": 2,
+          "rank(SU(3)xSU(2)xU(1))": 4,
+          "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+          "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+        },
+        "distinct_from_repository_original_direct_product_claim": {
+          "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+          "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+        },
+        "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
+      }
+    },
+    "role": "comparison",
+    "type": "closure_hypothesis_test",
+    "carrier": "The repository's own original claim (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1), a direct product, not an intersection) is NOT ruled out by the H4 rank argument, but remains completely unconstructed anywhere in this repository -- no embedding, decomposition, or uniqueness argument exists.",
     "operations": [],
     "relations": [],
     "constraints": []

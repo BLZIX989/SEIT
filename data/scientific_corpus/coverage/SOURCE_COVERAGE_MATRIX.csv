@@ -1,0 +1,23 @@
+domain,subdomain,structure_target,discovery_queries,sources_discovered,sources_metadata_acquired,sources_fulltext_acquired,machine_readable_sources,latex_sources,xml_sources,mathml_sources,pdf_sources,inaccessible_sources,acquisition_failures,coverage_status
+mathematics,Clifford algebra,Clifford algebra,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,Hodge theory,Hodge theory,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,Lie theory,Lie theory,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,algebraic topology,algebraic topology,1,5,5,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,category theory,category theory,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,differential geometry,differential geometry,1,6,6,1,0,0,0,0,1,0,0,MACHINE_READABLE
+mathematics,information geometry,information geometry,1,6,6,1,0,0,0,0,1,0,0,MACHINE_READABLE
+mathematics,noncommutative geometry,noncommutative geometry,1,6,6,1,0,0,0,0,1,0,0,MACHINE_READABLE
+mathematics,operator theory,operator theory,1,5,5,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,probability,probability,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+mathematics,spectral graph theory,spectral graph theory,3,13,13,3,0,0,0,0,3,0,0,MACHINE_READABLE
+physics,Hamiltonian mechanics,Hamiltonian mechanics,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,Standard Model,Standard Model,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,classical mechanics,classical mechanics,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,condensed matter,condensed matter,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,electromagnetism,electromagnetism,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,gauge theory,gauge theory,1,5,5,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,general relativity,general relativity,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,quantum field theory,quantum field theory,1,5,5,0,0,0,0,0,0,0,0,DISCOVERY_ONLY
+physics,quantum mechanics,quantum mechanics,1,6,6,1,0,0,0,0,1,0,0,MACHINE_READABLE
+physics,statistical mechanics,statistical mechanics,1,6,6,3,0,0,0,0,3,0,0,MACHINE_READABLE
+physics,variational field theory,variational field theory,1,6,6,0,0,0,0,0,0,0,0,DISCOVERY_ONLY

@@ -1,0 +1,2687 @@
+{
+  "generated_from": "provenance_registry.json (compiler/run_compiler.py output, this campaign's run)",
+  "n_entries": 105,
+  "provenance": {
+    "FOUNDATION": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "FOUNDATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.558959+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "EMPTYSET": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "EMPTYSET",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.561214+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "MATH-UNIVERSE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "MATH-UNIVERSE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.563362+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "PHYSICAL-CANDIDATE-SET": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "PHYSICAL-CANDIDATE-SET",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.566102+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "VACUUM": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "VACUUM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.570081+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "DISTINCTION": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "DISTINCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.574076+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "RELATION": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "RELATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.578158+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "TRANSFORMATION-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "TRANSFORMATION-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.580280+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "CONSTRAINT": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "CONSTRAINT",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.586131+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "PERSISTENCE-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "PERSISTENCE-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.588337+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "OPERATOR-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "OPERATOR-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.590394+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "SPECTRUM-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "SPECTRUM-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.592458+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "GEOMETRY-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "GEOMETRY-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.598097+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "VARIATIONAL-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "VARIATIONAL-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.600276+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "QUANTUM-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "QUANTUM-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.602325+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "GAUGE-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "GAUGE-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.604446+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "MATTER-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "MATTER-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.612431+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "THERMODYNAMICS-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "THERMODYNAMICS-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.614883+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "COSMOLOGY-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "COSMOLOGY-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.617278+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "OBSERVABLES-NODE": {
+      "source": "spec section 6 (forward architecture template)",
+      "source_version": "",
+      "object_id": "OBSERVABLES-NODE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.622196+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "GRAPH-G-SEED": {
+      "source": "spec section 31",
+      "source_version": "",
+      "object_id": "GRAPH-G-SEED",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.624418+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {}
+    },
+    "OPERATOR-L": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "OPERATOR-L",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-OPERATOR",
+      "execution_timestamp": "2026-08-19T20:39:01.750093+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "SPECTRUM-L": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "SPECTRUM-L",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-SPECTRUM",
+      "execution_timestamp": "2026-08-19T20:39:01.752932+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "HEAT-FLOW-R": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "HEAT-FLOW-R",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-HEATFLOW",
+      "execution_timestamp": "2026-08-19T20:39:01.755216+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "KERNEL-PROJECTOR": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "KERNEL-PROJECTOR",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-T1-KERNEL",
+      "execution_timestamp": "2026-08-19T20:39:01.757345+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14
+      }
+    },
+    "DIFFUSION-DISTANCE": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "DIFFUSION-DISTANCE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.933714+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "METRIC-CANDIDATE": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "METRIC-CANDIDATE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.936055+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {
+        "reports": [
+          "non_unique",
+          "non_unique",
+          "non_unique"
+        ]
+      }
+    },
+    "T2-HISTORICAL": {
+      "source": "DTC COMPILER.docx; README.md",
+      "source_version": "",
+      "object_id": "T2-HISTORICAL",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.950188+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "artifact_found": false,
+        "note": "prose assertion only"
+      }
+    },
+    "T2-REPRODUCTION": {
+      "source": "this compiler build",
+      "source_version": "",
+      "object_id": "T2-REPRODUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.952344+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "T2-FORWARD-DERIVATION": {
+      "source": "this compiler build",
+      "source_version": "",
+      "object_id": "T2-FORWARD-DERIVATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.958123+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "NCG-BRIDGE-EXTERNAL-REFERENCE": {
+      "source": "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf; Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf",
+      "source_version": "",
+      "object_id": "NCG-BRIDGE-EXTERNAL-REFERENCE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.960207+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "artifact_found": false,
+        "note": "literature review document, not executed derivation"
+      }
+    },
+    "NCG-ABELIAN-BRIDGE-OBSTRUCTION": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-ABELIAN-BRIDGE-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.962131+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-ASYMMETRIC-ABELIAN-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.964242+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION": {
+      "source": "compiler-build repository audit (spec section 2/36)",
+      "source_version": "",
+      "object_id": "NCG-NONABELIAN-COMMUTANT-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.966118+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "artifact_found": false,
+        "audited_sources": [
+          "README.md",
+          "DTC COMPILER.docx",
+          "Functorial Gauge Unification v1.docx",
+          "DTC_Formal_Structure.docx",
+          "DTC Logic of Inquiry.docx",
+          "DTC Metaphysics of Structure.docx",
+          "DTC-RP-004_Forced_vs_Free.docx",
+          "DTC_Rosetta_Stone_TOE_v2.docx",
+          "Unified_Rosetta_Stone_TOE_v3.docx",
+          "Universal_Rosetta_Ch1_Remainder.docx",
+          "JOI Reformatted.docx",
+          "Theory of Everything Equation Set.docx",
+          "Unified Field Theory.docx",
+          "geometric unification paper.docx",
+          "Spectral Codex Volumes.docx",
+          "Spectral Codex Volume I Genesis.pdf",
+          "Spectral Codex Volume II Gravity.pdf",
+          "Spectral Emergence Framework v2.pdf",
+          "Spectral Emergence Information Theory.pdf",
+          "Unified Spectral Codex.pdf",
+          "SEIT Unified Derivation.pdf",
+          "SEIT Unified Derivation v2.pdf",
+          "SEIT v2.pdf",
+          "Master Equation Codex.pdf",
+          "MasterRosettaStone TOE Paper.pdf",
+          "Constraint Core Brief.pdf",
+          "Executive Summary.pdf",
+          "Beyond the Theory of Everything.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified TOE.pdf",
+          "Noncommutative Geometry and the Spectral Action_ Toward a Unified Theory.pdf"
+        ]
+      }
+    },
+    "DTC-CIRCULARITY-OBSTRUCTION": {
+      "source": "DTC_Formal_Structure.docx (section 4.2)",
+      "source_version": "",
+      "object_id": "DTC-CIRCULARITY-OBSTRUCTION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.968082+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {}
+    },
+    "FC005-WORKBOOK-RECONCILIATION": {
+      "source": "fc005_source_workbooks/ (4 files)",
+      "source_version": "",
+      "object_id": "FC005-WORKBOOK-RECONCILIATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.970853+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "discrepancy_audit": {
+          "sheets_compared": [
+            "Equations",
+            "Variables",
+            "Dependency DAG",
+            "Status Matrix",
+            "Master Chainlink",
+            "Closure Tests",
+            "Rejected Branches",
+            "Constants & Assumptions",
+            "Provenance",
+            "Proofs",
+            "Four Branch Matrix"
+          ],
+          "comparisons_made": [
+            "01_vs_02",
+            "02_vs_03",
+            "03_vs_04"
+          ],
+          "discrepancies_found": 0,
+          "method": "line-for-line diff of each sheet exported to CSV via openpyxl (data_only=True), compared pairwise across the nested chain",
+          "conclusion": "The four supplied workbooks are a strictly nested provenance chain, not four independent/conflicting sources. No discrepancy record was required for equation/dependency/status content. The one real discrepancy found is administrative, not physical: the filenames given in the FC-005 build command do not exactly match the filenames of the four files actually supplied; see module docstring."
+        },
+        "filename_discrepancies": [
+          {
+            "requested_name": "final_physics_derivation_workbook_FC005_full_execution.xlsx",
+            "requested_role": "PRIMARY",
+            "resolved_repo_path": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx",
+            "resolution_reason": "exact filename match to the uploaded file"
+          },
+          {
+            "requested_name": "final_physics_derivation_workbook_FC005_final_execution.xlsx",
+            "requested_role": "SECONDARY (latest numerical runner/input-state material)",
+            "resolved_repo_path": "fc005_source_workbooks/03_fc005_earlier_execution_spec.xlsx",
+            "resolution_reason": "no file with this exact name was supplied; the closest candidate by content (an FC-005 spec lacking the full-execution/audit/control-validation sheets that the PRIMARY file has) is the file resolved here as rank 3"
+          },
+          {
+            "requested_name": "final_physics_derivation_workbook(2).xlsx",
+            "requested_role": "original derivation/source workbook",
+            "resolved_repo_path": "fc005_source_workbooks/01_original_derivation_workbook.xlsx",
+            "resolution_reason": "no file with this exact name was supplied; resolved to the workbook with the earliest embedded modification timestamp and smallest sheet set, matching the described role"
+          },
+          {
+            "requested_name": "final_physics_derivation_workbook_FC005.xlsx",
+            "requested_role": "earlier FC-005 specification -- historical/supporting",
+            "resolved_repo_path": "fc005_source_workbooks/03_fc005_earlier_execution_spec.xlsx",
+            "resolution_reason": "exact filename match to the uploaded file"
+          }
+        ],
+        "chain": [
+          {
+            "rank": 1,
+            "role": "ORIGINAL",
+            "level": "LEVEL 4 (earlier workbook version) / provenance recovery source",
+            "repo_path": "fc005_source_workbooks/01_original_derivation_workbook.xlsx",
+            "as_uploaded": "d115f512-final_physics_derivation_workbook1.xlsx",
+            "modified_utc": "2026-08-19T02:36:01",
+            "n_sheets": 15,
+            "note": "Earliest of the four (smallest, fewest sheets). Contains the core equation/dependency/status/provenance sheets only, no FC-005 execution machinery."
+          },
+          {
+            "rank": 2,
+            "role": "CANONICAL_DERIVATION",
+            "level": "LEVEL 2 (later canonical derivation workbook)",
+            "repo_path": "fc005_source_workbooks/02_canonical_derivation_workbook.xlsx",
+            "as_uploaded": "677216f9-final_physics_derivation_workbook.xlsx",
+            "modified_utc": "2026-08-19T02:41:16",
+            "n_sheets": 30,
+            "note": "Superset of (1): adds the Recovery sheets (Foundation/Physical/Statistical/Thermodynamic/Variational Quantum/Gauge Matter), Cosmology Observation, Discrete Continuum, Interface Reduction, Seven Structure Dependency, Canonical Variables, Audit Ledger, FINAL MASTER CHAINLINK, Status Legend. Every sheet shared with (1) is byte-identical."
+          },
+          {
+            "rank": 3,
+            "role": "FC005_EARLIER_SPEC",
+            "level": "LEVEL 4 (earlier FC-005 specification) -- historical/supporting",
+            "repo_path": "fc005_source_workbooks/03_fc005_earlier_execution_spec.xlsx",
+            "as_uploaded": "05018c9b-final_physics_derivation_workbook_FC005.xlsx",
+            "modified_utc": "2026-08-19T02:49:45",
+            "n_sheets": 32,
+            "note": "Superset of (2): adds 'FC-005 Execution' and 'FC-005 Run Registry'. Every sheet shared with (2) is byte-identical. Superseded by (4), which adds the audit/control-validation sheets this one lacks."
+          },
+          {
+            "rank": 4,
+            "role": "PRIMARY",
+            "level": "LEVEL 3 (FC-005 execution specification) -- CANONICAL for this build",
+            "repo_path": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx",
+            "as_uploaded": "4e6464f3-final_physics_derivation_workbook_FC005_full_execution.xlsx",
+            "modified_utc": "2026-08-19T02:52:29",
+            "n_sheets": 35,
+            "note": "Superset of (3): adds 'FC-005 Full Execution Index', 'FC-005 Workbook Audit', 'FC-005 Control Validation' (the S^3 regression control this build independently reproduces). Every sheet shared with (3) is byte-identical. This is the workbook this build treats as the source-of-truth for FC-005 equations/dependencies/status."
+          }
+        ]
+      }
+    },
+    "S3-MANIFOLD": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "S3-MANIFOLD",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.111159+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {}
+    },
+    "S3-SPECTRUM": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "S3-SPECTRUM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.113650+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "S3-HEAT-TRACE": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "S3-HEAT-TRACE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.115747+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "S3-HEAT-COEFFICIENTS": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "S3-HEAT-COEFFICIENTS",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.117852+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "max_abs_e_kappa": 1.0192723588153818e-05
+      }
+    },
+    "S3-CURVATURE-CLOSURE": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "S3-CURVATURE-CLOSURE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.120047+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "max_abs_e_kappa": 1.0192723588153818e-05
+      }
+    },
+    "DESI-CATALOGUE": {
+      "source": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/LRG_SGC_clustering.dat.fits",
+      "source_version": "",
+      "object_id": "DESI-CATALOGUE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.869811+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "catalogue_found": true,
+        "checksum_sha256": "ae478557d9ef70257cc689197052515f5ebbc0b23359c81159a8ad3289332e69"
+      }
+    },
+    "GRAPH-G-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "GRAPH-G-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.873060+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "OPERATOR-L-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "OPERATOR-L-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.875291+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "CONTINUUM-LIMIT-L-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "CONTINUUM-LIMIT-L-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.877482+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "DESI-SPECTRUM": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "DESI-SPECTRUM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.882085+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "DESI-HEAT-TRACE": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "DESI-HEAT-TRACE",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.884312+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "DESI-HEAT-COEFFICIENTS": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "DESI-HEAT-COEFFICIENTS",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.886364+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "KAPPA-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "KAPPA-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.888404+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "E-KAPPA-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "E-KAPPA-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.894015+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK": {
+      "source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+      "source_version": "",
+      "object_id": "DELTA-KAPPA-COSMOLOGICAL-CROSSCHECK",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.898064+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "failed_dependency": "CONTINUUM-LIMIT-L-DESI"
+      }
+    },
+    "MATHEMATICAL-CONVERGENCE-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py",
+      "source_version": "",
+      "object_id": "MATHEMATICAL-CONVERGENCE-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.904385+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "N_values": [
+          300,
+          600,
+          1000,
+          1500
+        ],
+        "tolerance": 0.15
+      }
+    },
+    "CURVATURE-CLOSURE-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py",
+      "source_version": "",
+      "object_id": "CURVATURE-CLOSURE-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.906713+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "N_values": [
+          300,
+          600,
+          1000,
+          1500
+        ],
+        "tolerance": 0.15
+      }
+    },
+    "PHYSICAL-VALIDATION-DESI": {
+      "source": "compiler/backends/desi_fc005_pipeline.py",
+      "source_version": "",
+      "object_id": "PHYSICAL-VALIDATION-DESI",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.909137+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "gate1_converged": false,
+        "relative_changes": [
+          0.5586585860767282,
+          1.3502457414283322,
+          0.7027972128580907
+        ],
+        "N_values": [
+          300,
+          600,
+          1000,
+          1500
+        ],
+        "tolerance": 0.15
+      }
+    },
+    "SEMICLASSICAL-EINSTEIN-EQUATION": {
+      "source": "established semiclassical gravity literature",
+      "source_version": "",
+      "object_id": "SEMICLASSICAL-EINSTEIN-EQUATION",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.911299+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {}
+    },
+    "SEMICLASSICAL-RESIDUAL-E-SC": {
+      "source": "spec section 18 (FC-005 build command)",
+      "source_version": "",
+      "object_id": "SEMICLASSICAL-RESIDUAL-E-SC",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:03.913426+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "FISHER-STATISTICAL-FAMILY": {
+      "source": "compiler/verification/fisher_information.py",
+      "source_version": "",
+      "object_id": "FISHER-STATISTICAL-FAMILY",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.086115+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {}
+    },
+    "SPEC-H-UNIQUENESS": {
+      "source": "compiler/falsification/eigen_uniqueness.py",
+      "source_version": "",
+      "object_id": "SPEC-H-UNIQUENESS",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-EIGEN-UNIQUENESS",
+      "execution_timestamp": "2026-08-19T20:39:04.096511+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "n_confirmed": 25,
+        "n_trials": 25
+      }
+    },
+    "H1-SELECTION-WELLPOSEDNESS": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h1_selection_wellposedness_analysis",
+      "source_version": "",
+      "object_id": "H1-SELECTION-WELLPOSEDNESS",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.100042+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "hypothesis": "H1 -- Selection Closure: G* = argmax_{G in Mathset} Pi(G)/S(G)",
+        "mathset_formally_defined_in_repo": false,
+        "mathset_repo_occurrences": "only as the bare string 'M in Mathset' inside a code comment in compiler/ir/forward_chain.py -- never as a class, set, type, or constructive definition anywhere in the compiler",
+        "pi_and_s_implemented_in_repo": true,
+        "pi_and_s_repo_status": "Pi (persistence functional) and S (structural cost) are described only in prose in Master Equation Codex section 2 ('retained distinction per unit structural cost') -- no formula, no code, anywhere in this repository or its historical corpus",
+        "well_posedness_requirements": [
+          "(a) Mathset must be a genuine set (not a proper class) for 'for all M in Mathset' to be meaningful under ZFC -- 'the collection of all mathematical structures' is NOT a set without further restriction (Russell-paradox-adjacent)",
+          "(b) Pi and S must be well-defined, real-valued functions on that domain",
+          "(c) existence of the argmax requires either a finite/compact domain with continuous Pi/S, or an independent boundedness argument for an infinite domain",
+          "(d) uniqueness requires the maximizer to be non-degenerate (no ties)",
+          "(e) computability requires an effective (halting) search procedure"
+        ],
+        "finding": "NONE of (a)-(e) is satisfied by anything currently in this repository. (a) fails outright: no set-theoretic domain is defined. (b) fails: Pi and S have no formula or implementation. Consequently (c)-(e) cannot even be evaluated -- there is no well-defined optimization problem to test for existence, uniqueness, or computability. If Mathset is restricted to graphs on at most N_max vertices (the only way to trivially guarantee (a) and (c) -- a finite set always attains its max), this introduces a new, unmotivated free parameter N_max, which the selection principle was specifically invoked to avoid needing. This is not merely 'not yet done' -- the DEFINITION itself is incomplete prior to any existence or uniqueness argument.",
+        "verdict": "H1 DOES NOT CLOSE. Obstruction is at the level of definition, not proof."
+      }
+    },
+    "H2-SPECTRAL-TRIPLE-LOCALITY": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h2_spectral_triple_locality_check",
+      "source_version": "",
+      "object_id": "H2-SPECTRAL-TRIPLE-LOCALITY",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.107456+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "hypothesis": "H2 -- Spectral-triple / Dirac-operator closure for D+=sqrt(L)",
+        "test_graph": "n=200 nearest-neighbour ring, k=3 (local connectivity, structurally representative of this project's own sparse geometric graphs)",
+        "L_self_adjoint_real_symmetric": true,
+        "L_sparsity_fraction": 0.035,
+        "D_plus_self_adjoint": true,
+        "D_plus_sparsity_fraction_strict": 1.0,
+        "D_plus_sparsity_fraction_relative_1e-3_of_max": 0.235,
+        "D_plus_row0_decay_by_graph_distance": {
+          "0": 2.3478289210816,
+          "1": 0.2899664965484017,
+          "2": 0.2797631237589523,
+          "3": 0.26754457807320975,
+          "10": 0.0121647881586752,
+          "50": 0.0005880766019412597,
+          "100": 0.0002939111165989169
+        },
+        "axioms_checked": {
+          "self_adjointness_of_D": "HOLDS -- sqrt of a real symmetric PSD matrix is real symmetric, standard linear algebra",
+          "compact_resolvent": "TRIVIALLY HOLDS in finite dimension (not a discriminating test at finite N; becomes meaningful only in an actual continuum limit, which does not exist here -- see H3)",
+          "bounded_commutators_[D,a]": "TRIVIALLY HOLDS in finite dimension for the same reason -- every finite matrix is bounded",
+          "locality_of_commutators_(prerequisite_for_Connes_distance_formula_and_the_first_order_condition)": "FAILS structurally. L itself is local/sparse (nonzero only for graph-adjacent pairs), but D+=sqrt(L) is measured here to be effectively DENSE: 100% nonzero to floating precision, still 23.5% nonzero at a generous 0.1%-of-peak threshold, with slowly-decaying weight extending far beyond the original local neighbourhood (nonzero at graph-distance 50 and 100 on a ring where L itself only connects distance <= 3). The matrix square root of a sparse operator is generically dense -- this is a known fact of spectral calculus, not an artifact of this particular test graph.",
+          "real_structure_J_and_KO_dimension": "The natural candidate J = complex conjugation on R^n gives J D+ = D+ J (since D+ is real) and J^2 = +1 -- this corresponds to KO-dimension 0 mod 8 in Connes' classification table for a triple with no grading. The physically required Standard-Model spectral triple (Chamseddine-Connes-Marcolli) needs the FINITE internal factor to carry KO-dimension 6 mod 8 specifically, so that it combines correctly with a 4-dimensional Riemannian/Lorentzian continuum factor (KO-dimension 4 mod 8) to give the required total. A generic finite real graph's natural real structure does not have a mechanism to select KO-dimension 6 rather than 0 -- this would need to be independently engineered, not derived."
+        },
+        "verdict": "H2 DOES NOT CLOSE. The trivial finite-dimensional axioms (self-adjointness, bounded commutators, compact resolvent) hold but are non-discriminating at finite N. The one substantive, checkable structural prerequisite tested here -- locality of D+'s commutator support, needed for the operator to encode a genuine metric via Connes' distance formula -- FAILS: sqrt(L) is measurably non-local. The KO-dimension required for the real Standard-Model spectral-triple construction (6 mod 8) is not naturally produced by this construction (which gives 0 mod 8) and was never independently derived anywhere in this project's corpus."
+      }
+    },
+    "H3-FC005-CORRECTION-TEST": {
+      "source": "run_fc005_h3_correction_test.py -> FC005_H3_CORRECTION_TEST_RESULTS.json",
+      "source_version": "",
+      "object_id": "H3-FC005-CORRECTION-TEST",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.110008+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FAIL",
+      "verification": {
+        "hypothesis": "H3 -- Discrete-to-continuum kernel-correction closure",
+        "test_performed_against": "real DESI DR1 LRG SGC pilot catalogue (data/desi/dr1/fc005/raw/), N=4000->8000 nested subsample",
+        "baseline_joint_converged": false,
+        "candidate_A_tighter_arpack_tolerance": {
+          "joint_converged": false,
+          "result_identical_to_baseline": false,
+          "interpretation": "Result changed under tighter tolerance -- inconclusive, may indicate a genuine precision sensitivity requiring further investigation."
+        },
+        "candidate_B_bandwidth_sweep": {
+          "0.5": {
+            "joint_converged": false,
+            "reason": "no eigenvector/subspace data available (e.g. ARPACK never resolved enough modes to compare)"
+          },
+          "1.0": {
+            "joint_converged": false,
+            "reason": "5 of 5 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[1, 3], classification=eigenvalue-only, subspace_cosine=0.9877)"
+          },
+          "2.0": {
+            "joint_converged": false,
+            "reason": "1 of 3 mode cluster(s) eigenvector-unstable or worse (first: mode_range=[5, 15], classification=both, subspace_cosine=0.0195)"
+          }
+        },
+        "candidate_B_interpretation": "Doubling the bandwidth (epsilon x2.0) measurably stabilized the low modes (cluster [1,3] became eigenvalue+eigenvector stable, an improvement over the baseline's 5/5 failing clusters) but did NOT stabilize the higher modes (cluster [5,15] remained 'both' unstable with subspace cosine 0.0195, essentially orthogonal) -- consistent with, not a resolution of, this project's existing real FC005_N_SCALING_REPORT.md finding that higher modes fail for a structural reason, not merely insufficient resolution in the already-explored range.",
+        "candidate_C_curvature_kernel_correction": {
+          "attempted_numerically": false,
+          "reason": "CIRCULAR AS STATED, ruled out analytically before any computation: the counterfactual manuscript's proposed K_corrected = K_Gaussian * (1 + c2*eps^2*R(x) + O(eps^4)) requires R(x), the target-space Ricci scalar curvature, as an INPUT to the kernel used to construct the very operator whose spectrum is meant to DERIVE R(x) in the first place (per the master equation's own a2 heat-kernel term, Sec. 5 of the counterfactual manuscript). No independent, non-circular source for R(x) exists anywhere in this pipeline prior to the continuum limit this correction is supposed to help achieve. This is exactly the target-conditioned-input failure mode Section XI/XVII of the campaign instruction requires flagging, not attempting to route around by inventing a value for R(x)."
+        },
+        "verdict": "H3 DOES NOT CLOSE. Two genuine, non-circular corrections were tested against real data: neither achieves joint convergence for the higher modes. A third, the curvature-dependent kernel correction proposed in the counterfactual manuscript, is analytically CIRCULAR (requires the target curvature R(x) as an input) and was correctly not attempted. This is new, real, negative evidence beyond what FC005_CHECKPOINT.md already recorded -- it does not overturn that frozen checkpoint, it extends it."
+      }
+    },
+    "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h4_g2_spin8_construction_check",
+      "source_version": "",
+      "object_id": "H4-DIRECT-PRODUCT-CLAIM-UNCONSTRUCTED",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.116278+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {
+        "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+        "standard_lie_theory_facts_used": {
+          "G2": {
+            "dim": 14,
+            "rank": 2,
+            "note": "Aut(octonions), the smallest exceptional simple Lie group"
+          },
+          "Spin(8)": {
+            "dim": 28,
+            "rank": 4,
+            "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+          },
+          "SU(3)": {
+            "dim": 8,
+            "rank": 2
+          },
+          "SU(2)": {
+            "dim": 3,
+            "rank": 1
+          },
+          "U(1)": {
+            "dim": 1,
+            "rank": 1
+          }
+        },
+        "triality_fixed_subgroup_of_Spin(8)": "G2",
+        "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+        "rank_argument": {
+          "rank(G2)": 2,
+          "rank(SU(3)xSU(2)xU(1))": 4,
+          "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+          "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+        },
+        "distinct_from_repository_original_direct_product_claim": {
+          "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+          "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+        },
+        "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
+      }
+    },
+    "SELECTION-SIGMA": {
+      "source": "spec section 10",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "SELECTION-SIGMA",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.556522+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "OPEN",
+      "verification": {}
+    },
+    "T-GRAPH-TO-OPERATOR": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-GRAPH-TO-OPERATOR",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.759375+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "T-OPERATOR-TO-SPECTRUM": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-OPERATOR-TO-SPECTRUM",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.761541+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "T-SPECTRUM-TO-HEATFLOW": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.768617+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "T-HEATFLOW-TO-KERNEL": {
+      "source": "compiler/backends/pipeline_graph_heatflow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-HEATFLOW-TO-KERNEL",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.770773+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "n_passed": 14,
+        "max_eigen_equation_residual": 9.526997726205572e-15,
+        "max_heat_eigen_action_residual": 1.7106873223162943e-15
+      }
+    },
+    "T-SPECTRUM-TO-DIFFUSION": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.938115+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {}
+    },
+    "T-DIFFUSION-TO-METRIC": {
+      "source": "compiler/backends/diffusion_metric.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-DIFFUSION-TO-METRIC",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.940208+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CONDITIONAL",
+      "verification": {}
+    },
+    "T-FC005-S3-CONTROL-CHAIN": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.124305+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "passed": true
+      }
+    },
+    "EQ-LAPLACIAN-ROW-SUM-ZERO": {
+      "source": "compiler/ir/executable_tests.py:_prove_laplacian_row_sum_zero",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-LAPLACIAN-ROW-SUM-ZERO",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.943220+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "DERIVED",
+      "verification": {
+        "n_cases": 5,
+        "all_passed": true
+      }
+    },
+    "EQ-HEAT-KERNEL-EIGEN-ACTION": {
+      "source": "compiler/backends/heat_flow.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-HEAT-KERNEL-EIGEN-ACTION",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:01.945355+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "n_cases": 14,
+        "all_passed": true
+      }
+    },
+    "EQ-001": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-001",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-001",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.041198+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-002": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-002",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-002",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.043501+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-003": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-003",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-003",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.045988+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-004": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-004",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-004",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.048040+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-005": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-005",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-005",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.050177+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-006": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-006",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-006",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.052337+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-007": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-007",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-007",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.054418+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-008": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-008",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-008",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.056485+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-009": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-009",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-009",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.058512+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-010": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-010",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-010",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.060682+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "EQ-011": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-011",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-011",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.062807+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "EQ-012": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-012",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-012",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.064952+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "TEST"
+      }
+    },
+    "EQ-013": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-013",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-013",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.067227+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CONDITIONAL"
+      }
+    },
+    "EQ-014": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-014",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-014",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.069466+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CONDITIONAL"
+      }
+    },
+    "EQ-015": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-015",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-015",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.071545+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "EQ-016": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-016",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-016",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.073609+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-017": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-017",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-017",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.075773+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "ASSUMPTION"
+      }
+    },
+    "EQ-018": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-018",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-018",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.077953+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "DERIVED"
+      }
+    },
+    "EQ-019": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-019",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-019",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.079944+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-020": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-020",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-020",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.081894+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-021": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-021",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-021",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.084054+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-022": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-022",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-022",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.086305+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED*"
+      }
+    },
+    "EQ-023": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-023",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-023",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.088569+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-024": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-024",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-024",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.090629+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "PROOF"
+      }
+    },
+    "EQ-025": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-025",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-025",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.092695+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-026": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-026",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-026",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.094906+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "ESTABLISHED"
+      }
+    },
+    "EQ-027": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-027",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-027",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.097041+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "FALSIFIED"
+      }
+    },
+    "EQ-028": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-028",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-028",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.099184+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "CLOSED"
+      }
+    },
+    "EQ-029": {
+      "source": "fc005_source_workbooks/04_fc005_primary_full_execution.xlsx::Equations::EQ-029",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-029",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:02.101318+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "PROPOSED",
+      "verification": {
+        "workbook_claimed_status": "TEST"
+      }
+    },
+    "EQ-FC005-S3-CURVATURE-RESIDUAL": {
+      "source": "compiler/backends/heat_kernel_sphere.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-S3-CURVATURE-RESIDUAL",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-S3-CONTROL",
+      "execution_timestamp": "2026-08-19T20:39:02.122138+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "passed": true
+      }
+    },
+    "EQ-FC005-FISHER-PSD": {
+      "source": "compiler/verification/fisher_information.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-FISHER-PSD",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "CALC-FC005-FISHER-PSD",
+      "execution_timestamp": "2026-08-19T20:39:04.088640+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "is_positive_semidefinite": true
+      }
+    },
+    "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION": {
+      "source": "compiler/verification/fisher_information.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "EQ-FC005-FISHER-LORENTZIAN-OBSTRUCTION",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.090846+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FALSIFIED",
+      "verification": {
+        "conclusion": "F is positive semidefinite for every tested sigma (all sampled v^T F v >= 0, eigenvalues at sigma=1: [1.0, 2.0]); a Lorentzian-signature metric requires a strictly negative eigenvalue, which is impossible for a PSD matrix under any basis change (signature is basis-independent). F = g_munu (Lorentzian) is therefore FALSIFIED as a direct identification, for this family and in general."
+      }
+    },
+    "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM": {
+      "source": "compiler/backends/toe_closure_hypotheses.py::h4_g2_spin8_construction_check",
+      "source_version": "",
+      "object_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-19T20:39:04.114155+00:00",
+      "git_commit": "01f70d95b9b4d24f36008794870b9178281620b3",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "FALSIFIED",
+      "verification": {
+        "hypothesis": "H4 -- Gauge/internal-algebra closure: does G2/Spin(8)/triality select SU(3)xSU(2)xU(1)?",
+        "standard_lie_theory_facts_used": {
+          "G2": {
+            "dim": 14,
+            "rank": 2,
+            "note": "Aut(octonions), the smallest exceptional simple Lie group"
+          },
+          "Spin(8)": {
+            "dim": 28,
+            "rank": 4,
+            "note": "double cover of SO(8); Out(Spin(8)) = S3 (triality)"
+          },
+          "SU(3)": {
+            "dim": 8,
+            "rank": 2
+          },
+          "SU(2)": {
+            "dim": 3,
+            "rank": 1
+          },
+          "U(1)": {
+            "dim": 1,
+            "rank": 1
+          }
+        },
+        "triality_fixed_subgroup_of_Spin(8)": "G2",
+        "counterfactual_manuscript_claim_tested": "G2 (intersection via triality) Spin(8) = SU(3)xSU(2)xU(1)",
+        "rank_argument": {
+          "rank(G2)": 2,
+          "rank(SU(3)xSU(2)xU(1))": 4,
+          "compact_Lie_group_fact_used": "For a closed subgroup H of a compact Lie group G, rank(H) <= rank(G) -- a maximal torus of H can always be conjugated into a maximal torus of G (standard consequence of the maximal torus theorem).",
+          "conclusion": "rank(SU(3)xSU(2)xU(1)) = 4 > rank(G2) = 2, therefore SU(3)xSU(2)xU(1) CANNOT be realized as a subgroup of G2 under any embedding whatsoever. This rules out the counterfactual manuscript's specific claim that the triality-fixed subgroup of Spin(8) (which is G2 itself, a real, standard fact of Lie theory, dim 14) equals SU(3)xSU(2)xU(1) (dim 12): even setting dimension aside, the rank obstruction is decisive and dimension-independent."
+        },
+        "distinct_from_repository_original_direct_product_claim": {
+          "the_repository_own_original_formulation": "Master Equation Codex 5.3 and DTC COMPILER.docx section 4 state 'G = Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)' -- a DIRECT PRODUCT ambient group, not an intersection.",
+          "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
+        },
+        "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
+      }
+    }
+  }
+}

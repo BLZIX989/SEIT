@@ -1,0 +1,39 @@
+{
+  "THEORY": {
+    "name": "SEIT_MASTER_THEORY_CANDIDATE",
+    "status": "NO COMPLETE TOE THEOREM OBTAINED",
+    "primitives": [
+      "Graph G (vertices, weighted edges)",
+      "Graph Laplacian L=D-W"
+    ],
+    "master_object": "L (graph Laplacian) -- the only object with a fully VERIFIED forward chain (G -> L -> Spec(L) -> R(t)=e^{-tL} -> P_ker(L))",
+    "master_functional": null,
+    "master_functional_note": "No candidate master functional/action closes; the spectral action S[D]=Tr f(D/Lambda)+<psi,D psi> (Chamseddine-Connes, real, established, correctly cited) is the strongest external candidate on record but D+=sqrt(L) fails the locality prerequisite for D to be a genuine Dirac operator (H2).",
+    "axioms": {
+      "asserted_and_verified": [
+        "L is symmetric PSD for undirected weighted graphs (linear algebra)"
+      ],
+      "asserted_but_undefined": [
+        "Persistence Selection Principle G*=argmax Pi(G)/S(G) -- Pi, S, Mathset undefined (H1)"
+      ],
+      "asserted_but_disproved": [
+        "G2 intersect(triality) Spin(8) = SU(3)xSU(2)xU(1) (H4)"
+      ]
+    },
+    "derived_equations": [
+      "L=D-W",
+      "L phi_n = lambda_n phi_n",
+      "R(t)=e^{-tL}",
+      "lim_{t->inf} R(t) = P_ker(L)"
+    ],
+    "representations": "graph-native only; no continuum manifold representation achieved (H3)",
+    "geometry": "OPEN -- Gate 2 (curvature) never entered; DESI continuum limit FAIL/RETRIABLE",
+    "gauge_group": "SU(3)xSU(2)xU(1) preserved as EXTERNAL established physics, NOT derived from this project's primitives; the one attempted specific derivation route (H4, intersection via triality) is FALSIFIED",
+    "matter_content": "OPEN -- no particle-spectrum derivation in the corpus survives scrutiny",
+    "constants": "OPEN -- alpha and m_e derivation claims in DTC COMPILER.docx actively FALSIFIED (Phase B)",
+    "predictions": "none certified beyond the graph-Laplacian spectral cascade's own scope; see MASTER_THEORY_PREDICTIONS.md",
+    "falsification_conditions": "see MASTER_THEORY_FALSIFICATION_REGISTRY.json",
+    "dependencies": "see MASTER_THEORY_DEPENDENCY_DAG.json",
+    "provenance": "see MASTER_THEORY_PROVENANCE_REGISTRY.json"
+  }
+}

@@ -30,3 +30,19 @@ literature/superstring_theory/*.pdf
 literature/standard_model/*.pdf
 literature/gauge_theory/*.pdf
 literature/gauge_theory/*.html
+
+# Phase 13 scientific-corpus source acquisition (scripts/
+# generate_scientific_corpus_phase_cd.py): same policy as the literature
+# PDFs above -- acquired arXiv PDFs are never committed. SHA256 hashes,
+# filenames, sizes, and retrieval provenance are recorded in
+# data/scientific_corpus/sources/manifests/acquisition_manifests.jsonl,
+# which is reproducible/auditable without embedding the PDF bytes.
+data/scientific_corpus/sources/raw/*
+!data/scientific_corpus/sources/raw/.gitkeep
+
+# UOC Research Console operational state (append-only run history and
+# research ledger, not canonical theory content) -- gitignored by
+# default per UOC_RESEARCH_CONSOLE_ARCHITECTURE.md section 7, same
+# treatment as the other generated-artifact directories above.
+console_runs/
+console_research/

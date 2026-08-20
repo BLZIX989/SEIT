@@ -45,6 +45,11 @@
     "parent": "mathematical_object"
   },
   {
+    "name": "discrete_curvature",
+    "description": "Ollivier-Ricci discrete graph curvature, computed independently of any non-unique metric candidate",
+    "parent": "mathematical_object"
+  },
+  {
     "name": "historical_claim",
     "description": "a prose claim from a pre-compiler source document",
     "parent": null
@@ -122,6 +127,11 @@
   {
     "name": "workbook_reconciliation_record",
     "description": "provenance/precedence record for the four supplied FC-005 workbooks",
+    "parent": null
+  },
+  {
+    "name": "closure_hypothesis_test",
+    "description": "an executed test of one of the four primary load-bearing hypotheses (H1-H4) required to decounterfactualize the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING manuscript",
     "parent": null
   }
 ]

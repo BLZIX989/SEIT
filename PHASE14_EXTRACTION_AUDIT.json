@@ -1,0 +1,46 @@
+{
+  "all_passed": true,
+  "audits": {
+    "canonical_isolation_audit": {
+      "changed_files": [],
+      "passed": true
+    },
+    "dimensional_metadata_audit": {
+      "equations_with_fabricated_dimensions": [],
+      "passed": true
+    },
+    "duplicate_audit": {
+      "duplicates": {},
+      "passed": true
+    },
+    "extraction_completeness_audit": {
+      "missing_literature_items": [],
+      "passed": true
+    },
+    "extraction_determinism_audit": {
+      "passed": true
+    },
+    "operator_audit": {
+      "missing_operator_refs": [],
+      "passed": true
+    },
+    "relation_audit": {
+      "orphan_relations": [],
+      "passed": true
+    },
+    "source_provenance_audit": {
+      "issues": [],
+      "n_issues": 0,
+      "passed": true
+    },
+    "symbol_collision_audit": {
+      "collisions": {},
+      "passed": true
+    },
+    "uoc_chain_crosswalk_audit": {
+      "metric_nonequivalence_caveat_present": true,
+      "missing_positions": [],
+      "passed": true
+    }
+  }
+}
