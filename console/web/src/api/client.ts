@@ -63,6 +63,10 @@ export const api = {
     list: () => get<import("./types").RunSnapshot[]>("/runs"),
     get: (runId: string) => get<import("./types").RunSnapshot>(`/runs/${encodeURIComponent(runId)}`),
     create: () => post<import("./types").RunSnapshot>("/runs"),
+    compare: (fromRunId: string, toRunId: string) =>
+      get<import("./types").RunComparison>(
+        `/runs/compare?from_run_id=${encodeURIComponent(fromRunId)}&to_run_id=${encodeURIComponent(toRunId)}`,
+      ),
   },
   ledger: (limit = 50) => get<import("./types").LedgerEvent[]>(`/ledger?limit=${limit}`),
   hypotheses: {

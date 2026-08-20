@@ -235,6 +235,19 @@ export interface RunSnapshot {
   error: string | null;
 }
 
+export interface RunComparison {
+  from_run_id: string;
+  to_run_id: string;
+  runs_in_range: string[];
+  nodes_added: string[];
+  nodes_status_changed: NodeStatusChange[];
+  new_falsifications: string[];
+  new_calculations: string[];
+  audit_deltas: string[];
+  from_terminal_status: string | null;
+  to_terminal_status: string | null;
+}
+
 export interface LedgerEvent {
   event_id: string;
   timestamp: string;

@@ -58,6 +58,14 @@ export const useRun = (runId: string | undefined) =>
     staleTime: DEFAULT_STALE_TIME_MS,
   });
 
+export const useRunComparison = (fromRunId: string | undefined, toRunId: string | undefined) =>
+  useQuery({
+    queryKey: ["run-comparison", fromRunId ?? null, toRunId ?? null],
+    queryFn: () => api.runs.compare(fromRunId as string, toRunId as string),
+    enabled: Boolean(fromRunId && toRunId && fromRunId !== toRunId),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
 // Ledger is polled, not pushed -- there is no websocket/SSE
 // infrastructure here (per the brief's "do not introduce unnecessary
 // infrastructure if a simpler architecture is sufficient"), so a

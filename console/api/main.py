@@ -21,14 +21,14 @@ from starlette.concurrency import run_in_threadpool
 from console.api.canonical import (
     adapter, chainlink as chainlink_mod, frontier as frontier_mod, proof_check,
 )
-from console.api.execution import executor, ledger_store, runs_store
+from console.api.execution import executor, ledger_store, run_comparison, runs_store
 from console.api.literature import adapter as literature_adapter
 from console.api.models import (
     AuditResultModel, ChainlinkView, CircularDependencyCheck, FalsificationsResponse,
     FrontierNode, Hypothesis, HypothesisCreateRequest, HypothesisCreateResponse,
     HypothesisDetail, HypothesisTransitionRequest, LedgerEvent, LiteratureCrosswalkEntry,
     LiteratureItem, LiteratureRecovery, NodeDetail, NodeSummary, PossibleDuplicate,
-    ProofRecordDetail, ProtocolReference, RunSnapshot, StateRollup,
+    ProofRecordDetail, ProtocolReference, RunComparison, RunSnapshot, StateRollup,
 )
 from console.api.research import hypothesis_status, hypothesis_store
 
@@ -344,6 +344,21 @@ async def create_run() -> RunSnapshot:
 @app.get("/api/runs", response_model=list[RunSnapshot])
 def list_runs() -> list[RunSnapshot]:
     return [RunSnapshot(**s) for s in runs_store.load_all()]
+
+
+# Registered before /api/runs/{run_id} -- FastAPI matches path routes in
+# registration order, and {run_id} would otherwise greedily capture the
+# literal "compare" segment.
+@app.get("/api/runs/compare", response_model=RunComparison)
+def compare_runs(from_run_id: str, to_run_id: str) -> RunComparison:
+    """Phase 10: merges the real, already-stored diffs of every run
+    strictly after `from_run_id` up to and including `to_run_id` -- see
+    console/api/execution/run_comparison.py."""
+    try:
+        result = run_comparison.compare_runs(from_run_id, to_run_id)
+    except run_comparison.RunComparisonError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    return RunComparison(**result)
 
 
 @app.get("/api/runs/{run_id}", response_model=RunSnapshot)

@@ -244,6 +244,25 @@ class RunSnapshot(BaseModel):
     error: Optional[str] = None   # populated iff stopped_reason == "error"
 
 
+class RunComparison(BaseModel):
+    """GET /api/runs/compare (Phase 10, brief section XXVI). Merges the
+    real, already-stored diffs of every run strictly after `from_run_id`
+    up to and including `to_run_id` -- see
+    console/api/execution/run_comparison.py for exactly how nodes that
+    changed more than once, or netted back to their starting status,
+    are handled honestly rather than approximated."""
+    from_run_id: str
+    to_run_id: str
+    runs_in_range: list[str]
+    nodes_added: list[str]
+    nodes_status_changed: list[NodeStatusChange]
+    new_falsifications: list[str]
+    new_calculations: list[str]
+    audit_deltas: list[str]
+    from_terminal_status: Optional[str] = None
+    to_terminal_status: Optional[str] = None
+
+
 class LedgerEvent(BaseModel):
     """One append-only line of console_research/ledger.jsonl (brief
     section XII / architecture doc section 4.3). Only RUN_STARTED and
