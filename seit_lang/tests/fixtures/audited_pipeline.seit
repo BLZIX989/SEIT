@@ -1,0 +1,7 @@
+module audited_pipeline;
+constant x: Scalar = 2.0;
+definition y = x * x;
+audit y;
+status y = VERIFIED;
+verify y == y;
+report;

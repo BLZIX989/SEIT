@@ -260,4 +260,27 @@ assumptions produce each coefficient") and states plainly, per
 persistence_kernel.py's identical caution for K_Pi(beta), that these
 finite trace moments are NOT continuum Seeley-DeWitt coefficients and
 carry no physical interpretation in this corpus.
+
+Phase 13 status: the `seit` CLI is implemented (seit_lang/cli.py,
+runnable via `python3 -m seit_lang.cli <command> <file> [--target ...]`
+or `python3 -m seit_lang`): parse/check/build/run/verify/audit/status/
+graph/report subcommands, each returning machine-readable JSON (via a
+_json_safe serializer that turns real numpy ndarrays -- real and
+complex -- numpy scalars, SeitState values, and Phases 5-12's
+dataclasses into JSON-safe structures, not a generic stringify
+fallback) and each carrying a provenance dict (source file, sha256 of
+its exact contents, target, UTC timestamp). --target default/NCG/
+geometry select real, populated primitive-registry subsets built across
+Phases 5-12; --target FC005 is honest about a real, current gap --
+this project's DESI-specific pipeline (compiler/backends/desi_*.py) has
+never been exposed to `.seit`, so the CLI falls back to Phase 5's
+generic registry and says so explicitly via `target_note`, rather than
+silently mapping the name to something unrelated. `verify` and `report`
+newly execute `.seit` `verify` statements against real computed values
+(work Phase 5's own evaluator explicitly deferred to this phase) and
+report genuine pass/fail per statement -- confirmed by a test that
+constructs a real KO=6 antisymmetric matrix and checks `verify
+symmetric(mu);` genuinely reports failure, not a stub. A real
+subprocess invocation confirms the CLI's own execution never modifies
+any canonical registry file.
 """

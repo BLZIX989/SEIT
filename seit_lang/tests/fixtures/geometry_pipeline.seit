@@ -1,0 +1,8 @@
+module geometry_pipeline;
+derive G = build_graph("cycle", 12);
+derive A = graph_adjacency(G);
+derive L = graph_laplacian(A);
+derive S = spectrum(L);
+verify symmetric(L);
+verify positive_semidefinite(L);
+report;
