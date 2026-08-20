@@ -7,6 +7,7 @@ import { Execution } from "./screens/Execution";
 import { Falsification } from "./screens/Falsification";
 import { Hypotheses } from "./screens/Hypotheses";
 import { Literature } from "./screens/Literature";
+import { NodeInspector } from "./screens/NodeInspector";
 import { Overview } from "./screens/Overview";
 import { Proofs } from "./screens/Proofs";
 import { Provenance } from "./screens/Provenance";
@@ -22,6 +23,7 @@ export function App() {
       <Route element={<Layout />}>
         <Route index element={<Overview />} />
         <Route path="graph" element={<DependencyGraph />} />
+        <Route path="nodes/:id" element={<NodeInspector />} />
         <Route path="theory-state" element={<TheoryState />} />
         <Route path="derivation-lab" element={<DerivationLab />} />
         <Route path="research" element={<Research />} />

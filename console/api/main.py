@@ -172,6 +172,7 @@ def get_chainlink() -> ChainlinkView:
         arrow["calculations"] = adapter.find_calculations_for_node(
             arrow["to_id"], reg["provenance"], reg["calculations"]
         )
+        arrow["failures"] = adapter.find_falsifications_for_node(arrow["to_id"], reg["falsifications"])
     return ChainlinkView(arrows=arrows)
 
 

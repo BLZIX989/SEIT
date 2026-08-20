@@ -38,11 +38,21 @@ const STUB_RESPONSES: Record<string, unknown> = {
   "/api/fc005": { terminal_status: null },
 };
 
+const STUB_NODE_DETAIL = {
+  id: "A-001", kind: "Object", status: "VERIFIED", role: "upstream_construction",
+  raw: {}, dependencies: [], dependents: [], provenance: null, proofs: [],
+  calculations: [], falsifications: [], superseding_nodes: [],
+  superseding_nodes_note: "NOT_IMPLEMENTED",
+};
+
 beforeEach(() => {
   vi.stubGlobal(
     "fetch",
     vi.fn(async (input: RequestInfo | URL) => {
       const url = typeof input === "string" ? input : input.toString();
+      if (/\/api\/nodes\/[^/]+$/.test(url)) {
+        return new Response(JSON.stringify(STUB_NODE_DETAIL), { status: 200 });
+      }
       const path = Object.keys(STUB_RESPONSES).find((p) => url.includes(p));
       const body = path ? STUB_RESPONSES[path] : {};
       return new Response(JSON.stringify(body), { status: 200 });
@@ -76,6 +86,12 @@ describe("App routing", () => {
     for (const label of expected) {
       expect(screen.getByRole("link", { name: label })).toBeInTheDocument();
     }
+  });
+
+  it("renders the standalone Node Inspector at /nodes/:id with live data (Phase 5)", async () => {
+    renderAt("/nodes/A-001");
+    expect(await screen.findByRole("heading", { name: "Node Inspector" })).toBeInTheDocument();
+    expect(await screen.findByText("A-001")).toBeInTheDocument();
   });
 
   it("renders screens that have no backend yet with an explicit NOT IMPLEMENTED panel, never fake success", () => {

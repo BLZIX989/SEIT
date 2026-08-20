@@ -126,7 +126,7 @@ export function MdclGraph() {
             />
           </ReactFlow>
         </div>
-        <NodeDetailPanel nodeId={selectedId} onSelectNode={setSelectedId} onClose={() => setSelectedId(null)} />
+        <NodeDetailPanel nodeId={selectedId} onSelectNode={setSelectedId} onClose={() => setSelectedId(null)} showOpenLink />
       </div>
 
       <p className="section-note">

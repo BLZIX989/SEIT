@@ -134,10 +134,22 @@ class ChainlinkArrow(BaseModel):
     to_symbol: str
     status: str                 # status of the `to_id` node
     der_id: Optional[str] = None
+    der_id_note: str = (
+        "NOT_IMPLEMENTED: this compiler has no DER-id concept -- always null."
+    )
     proof: list[dict[str, Any]] = []
     dependencies: list[str] = []
     assumptions: list[str] = []
     calculations: list[dict[str, Any]] = []
+    failures: list[FalsificationMatch] = []          # falsification_registry.json matches for to_id
+    open_obligations: list[str] = []                 # to_id's dependencies not yet in the admissible/closed set
+    literature: list[dict[str, Any]] = []             # always [] -- see literature_note
+    literature_note: str = (
+        "NOT_IMPLEMENTED: LITERATURE_EXTRACTION_REGISTRY.json has no node/equation "
+        "linkage field (unlike falsification_registry.json's free-text `target`), so "
+        "there is no honest way to match a literature item to this node without "
+        "guessing. Left empty rather than fabricating a match."
+    )
     execution_status: str       # "EXECUTED" | "NOT_IMPLEMENTED" -- brief section XIII's rule:
                                  # never imply a stage ran when it did not
 

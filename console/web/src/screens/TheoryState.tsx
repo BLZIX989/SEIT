@@ -1,6 +1,6 @@
 import { NotImplemented } from "../components/NotImplemented";
-import { StatusBadge } from "../components/StatusBadge";
-import { useChainlink, useMdcl, useStateRollup } from "../api/queries";
+import { ChainlinkView } from "../graph/ChainlinkView";
+import { useMdcl, useStateRollup } from "../api/queries";
 
 /**
  * Brief section VIII's formal Theory State object T_t = (P,O,E,D,C,F,V,R).
@@ -12,7 +12,6 @@ import { useChainlink, useMdcl, useStateRollup } from "../api/queries";
 export function TheoryState() {
   const mdcl = useMdcl();
   const state = useStateRollup();
-  const chainlink = useChainlink();
 
   const objects = (mdcl.data?.objects as unknown[] | undefined)?.length ?? null;
   const equations = (mdcl.data?.equations as unknown[] | undefined)?.length ?? null;
@@ -44,31 +43,10 @@ export function TheoryState() {
       <h2>Master Chainlink (brief section XXIV)</h2>
       <p className="section-note">
         Rendered from the real compiler/ir/forward_chain.py template chain -- not a separate,
-        hand-maintained view. Every arrow below is a genuine registered dependency edge.
+        hand-maintained view. Click any arrow for its full detail (status, DER ID, proof,
+        assumptions, calculation, dependencies, literature, failures, open obligations).
       </p>
-      {chainlink.isLoading && <p>Loading chainlink…</p>}
-      {chainlink.data && (
-        <table className="data-table">
-          <thead>
-            <tr><th>From</th><th>→</th><th>To</th><th>Status</th><th>Execution</th></tr>
-          </thead>
-          <tbody>
-            {chainlink.data.arrows.map((a) => (
-              <tr key={`${a.from_id}->${a.to_id}`}>
-                <td>{a.from_symbol} <code>{a.from_id}</code></td>
-                <td>→</td>
-                <td>{a.to_symbol} <code>{a.to_id}</code></td>
-                <td><StatusBadge status={a.status} /></td>
-                <td>{a.execution_status === "NOT_IMPLEMENTED"
-                  ? <span className="tag tag--not-implemented">NOT IMPLEMENTED</span>
-                  : <span className="tag tag--executed">EXECUTED</span>}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {chainlink.data && <p className="section-note">{chainlink.data.note}</p>}
+      <ChainlinkView />
 
       <NotImplemented
         feature="T₀ → T₁ → T₂ → … state evolution history"

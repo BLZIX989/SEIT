@@ -26,6 +26,8 @@ from compiler.ir.forward_chain import (  # noqa: E402
     SELECTION_NODE_ID, TEMPLATE_CHAIN, TEMPLATE_EDGES,
 )
 
+from console.api.canonical.frontier import compute_closed_set  # noqa: E402
+
 # Display-only labels. Not looked up anywhere except by this dict.
 # Several TEMPLATE_CHAIN nodes have no single classical-notation
 # counterpart (e.g. CONSTRAINT, PERSISTENCE-NODE) -- those get an
@@ -74,6 +76,11 @@ def build_chainlink_view(nodes: dict[str, dict]) -> list[dict[str, Any]]:
     for child, parent in TEMPLATE_EDGES:
         edge_map.setdefault(child, []).append(parent)
 
+    # Same admissible-status set the frontier/compiler use -- an "open
+    # obligation" is a dependency that has not yet reached that set, i.e.
+    # something still standing between this arrow's target and closure.
+    closed = compute_closed_set(nodes)
+
     ordered_ids = [nid for nid, _ in TEMPLATE_CHAIN]
     arrows: list[dict[str, Any]] = []
 
@@ -86,6 +93,7 @@ def build_chainlink_view(nodes: dict[str, dict]) -> list[dict[str, Any]]:
         if from_id not in declared_parents:
             continue
         to_node = nodes.get(to_id, {})
+        to_deps = to_node.get("dependencies", declared_parents)
         arrows.append({
             "from_id": from_id,
             "to_id": to_id,
@@ -94,9 +102,11 @@ def build_chainlink_view(nodes: dict[str, dict]) -> list[dict[str, Any]]:
             "status": to_node.get("status", "UNKNOWN"),
             "der_id": None,  # NOT_IMPLEMENTED upstream: no DER-id concept in this compiler
             "proof": [],     # populated by the caller via find_proofs_for_node if desired
-            "dependencies": to_node.get("dependencies", declared_parents),
+            "dependencies": to_deps,
             "assumptions": to_node.get("assumptions", []),
             "calculations": [],
+            "failures": [],  # populated by the caller via find_falsifications_for_node
+            "open_obligations": [d for d in to_deps if d not in closed],
             "execution_status": "EXECUTED" if to_id in EXECUTED_TEMPLATE_NODE_IDS else "NOT_IMPLEMENTED",
         })
 
@@ -104,6 +114,7 @@ def build_chainlink_view(nodes: dict[str, dict]) -> list[dict[str, Any]]:
     # not a positional element of TEMPLATE_CHAIN -- surface it as its own
     # arrow rather than silently folding it into MATH-UNIVERSE -> PHYSICAL-CANDIDATE-SET.
     sigma = nodes.get(SELECTION_NODE_ID, {})
+    sigma_deps = sigma.get("dependencies", [])
     arrows.insert(3, {
         "from_id": "MATH-UNIVERSE",
         "to_id": SELECTION_NODE_ID,
@@ -112,9 +123,11 @@ def build_chainlink_view(nodes: dict[str, dict]) -> list[dict[str, Any]]:
         "status": sigma.get("status", "UNKNOWN"),
         "der_id": None,
         "proof": [],
-        "dependencies": sigma.get("dependencies", []),
+        "dependencies": sigma_deps,
         "assumptions": sigma.get("assumptions", []),
         "calculations": [],
+        "failures": [],
+        "open_obligations": [d for d in sigma_deps if d not in closed],
         "execution_status": "NOT_IMPLEMENTED",
     })
     return arrows

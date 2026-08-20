@@ -102,10 +102,15 @@ export interface ChainlinkArrow {
   to_symbol: string;
   status: string;
   der_id: string | null;
+  der_id_note: string;
   proof: Record<string, unknown>[];
   dependencies: string[];
   assumptions: string[];
   calculations: Record<string, unknown>[];
+  failures: FalsificationMatch[];
+  open_obligations: string[];
+  literature: Record<string, unknown>[];
+  literature_note: string;
   execution_status: "EXECUTED" | "NOT_IMPLEMENTED";
 }
 

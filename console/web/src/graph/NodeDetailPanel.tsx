@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { StatusBadge } from "../components/StatusBadge";
 import { useNode } from "../api/queries";
 
@@ -12,10 +13,13 @@ export function NodeDetailPanel({
   nodeId,
   onSelectNode,
   onClose,
+  showOpenLink = false,
 }: {
   nodeId: string | null;
   onSelectNode: (id: string) => void;
   onClose: () => void;
+  /** Show a "Open full inspector" deep link (used from the embedded graph panel, not the standalone Node Inspector page itself). */
+  showOpenLink?: boolean;
 }) {
   const node = useNode(nodeId ?? undefined);
 
@@ -31,7 +35,12 @@ export function NodeDetailPanel({
     <div className="node-detail-panel">
       <div className="node-detail-panel__header">
         <h3><code>{nodeId}</code></h3>
-        <button className="btn-close" onClick={onClose} aria-label="Close detail panel">×</button>
+        <div className="node-detail-panel__header-actions">
+          {showOpenLink && (
+            <Link className="link-button" to={`/nodes/${encodeURIComponent(nodeId)}`}>Open inspector ↗</Link>
+          )}
+          <button className="btn-close" onClick={onClose} aria-label="Close detail panel">×</button>
+        </div>
       </div>
 
       {node.isLoading && <p>Loading node…</p>}

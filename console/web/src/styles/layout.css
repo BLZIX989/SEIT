@@ -428,6 +428,11 @@ h2 {
   justify-content: space-between;
 }
 .node-detail-panel__header h3 { margin: 0; font-size: 14px; }
+.node-detail-panel__header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .node-detail-panel__meta {
   display: flex;
   gap: 6px;
@@ -513,3 +518,54 @@ h2 {
 .mdcl-node--dependent { box-shadow: 0 0 0 2px #c9942f; }
 .mdcl-node--frontier { box-shadow: 0 0 0 2px #2e7d5b; }
 .mdcl-node--match { box-shadow: 0 0 0 2px #fff; }
+
+/* ---- Chainlink view (Phase 5) ---- */
+
+.chainlink-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.chainlink-arrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-1);
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  padding: 6px 10px;
+  color: var(--text-0);
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+.chainlink-arrow-chip:hover { border-color: var(--accent); }
+.chainlink-arrow-chip--selected {
+  border-color: var(--accent);
+  background: rgba(77, 143, 214, 0.12);
+}
+.chainlink-arrow-chip__symbol { font-weight: 700; }
+.chainlink-arrow-chip__glyph { color: var(--text-2); }
+
+.chainlink-arrow-detail {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-top: 12px;
+  max-width: 720px;
+}
+.chainlink-arrow-detail h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-2);
+  margin: 14px 0 6px;
+}
+
+.node-inspector-screen .node-detail-panel {
+  width: auto;
+  max-width: 720px;
+}

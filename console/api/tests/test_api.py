@@ -119,6 +119,34 @@ def test_chainlink_arrows_reference_real_registered_nodes():
         assert arrow["execution_status"] in ("EXECUTED", "NOT_IMPLEMENTED")
 
 
+def test_chainlink_arrows_expose_open_obligations_and_honest_gaps():
+    """Phase 5: every arrow must carry open_obligations (real dependency
+    gap, computed against the same admissible-status set as /api/frontier)
+    plus honest NOT_IMPLEMENTED markers for der_id and literature -- never
+    a fabricated DER id or a guessed literature match."""
+    r = client.get("/api/chainlink")
+    assert r.status_code == 200
+    nodes = {n["id"]: n for n in client.get("/api/nodes").json()}
+    admissible = {"VERIFIED", "DERIVED", "CALCULATED", "CONDITIONAL"}
+    for arrow in r.json()["arrows"]:
+        assert "open_obligations" in arrow
+        assert "failures" in arrow
+        to_node = nodes.get(arrow["to_id"])
+        if to_node is not None:
+            expected = [d for d in arrow["dependencies"] if nodes.get(d, {}).get("status") not in admissible]
+            assert set(arrow["open_obligations"]) == set(expected), (
+                f"open_obligations for {arrow['to_id']} disagree with a direct recomputation "
+                f"against the real node statuses"
+            )
+        # der_id/literature are never fabricated -- always empty/None with
+        # an explanatory note, since the compiler has no DER-id concept
+        # and the literature registry has no per-node linkage field.
+        assert arrow["der_id"] is None
+        assert arrow["der_id_note"]
+        assert arrow["literature"] == []
+        assert arrow["literature_note"]
+
+
 def test_fc005_endpoint_is_verbatim_and_never_implies_closure():
     r = client.get("/api/fc005")
     assert r.status_code == 200
