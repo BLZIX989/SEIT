@@ -1,0 +1,6 @@
+operator_id,operator,linearity_selfadjointness,locality,algebraic_property
+OP-D14-001,d1 (boundary C1->C0),linear,local (incidence-structured),d1 d2 = 0 (exact)
+OP-D14-002,d2 (boundary C2->C1),linear,local,d1 d2 = 0 (exact)
+OP-D14-003,"D=[[0,d1],[d1^T,0]]","linear, self-adjoint (verified)",exactly local (H2B),"D^2=diag(L0,d1^Td1)"
+OP-D14-004,D+=sqrt(L),"linear, self-adjoint (existing H2)",DENSE / non-local (existing H2 FAIL),D+^2=L
+OP-D14-005,gamma^mu (Dirac basis),"linear, Hermitian for mu=0",N/A (finite-dim representation),"{gamma^mu,gamma^nu}=2g^{mu nu}I (verified exact)"

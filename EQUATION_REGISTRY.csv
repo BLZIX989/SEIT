@@ -1,0 +1,9 @@
+equation_id,equation,description,status
+EQ-D14-001,L = D - A,graph Laplacian,VERIFIED_EXACT (existing compiler)
+EQ-D14-002,"D^2 = diag(L0, d1^T d1)",block-incidence Dirac squaring,VERIFIED_EXACT (TFT-002)
+EQ-D14-003,"D^2 = diag(L0, L1, L2)",3-graded Hodge-Dirac squaring,"VERIFIED_EXACT (TFT-002B, external)"
+EQ-D14-004,m_n = m_0 sqrt(lambda_n),spectral mass formula,"COMPUTED, no predictive content established"
+EQ-D14-005,"{gamma^mu,gamma^nu} = 2 g^{mu nu} I",Clifford anticommutator,VERIFIED_EXACT (external)
+EQ-D14-006,"[T_a,[T_b,T_c]]+cyc.=0",su(2) Jacobi identity,VERIFIED_EXACT (external)
+EQ-D14-007,"d_t^2(i,j) = sum_k exp(-2 lambda_k t)(phi_k(i)-phi_k(j))^2",diffusion distance,"existing compiler, CONDITIONAL (free t)"
+EQ-D14-008,D_mu = partial_mu + i g A_mu,gauge covariant derivative,"dimensionally consistent, not computed against real data"

@@ -1,0 +1,10 @@
+variable_id,symbol,description,type_and_dimension
+VAR-D14-001,L,graph Laplacian operator,"matrix, dimensionless"
+VAR-D14-002,lambda_n,n-th Laplacian eigenvalue,"scalar, dimensionless"
+VAR-D14-003,m_n,n-th predicted mass,"scalar, [mass]"
+VAR-D14-004,m_0,mass-formula scale parameter,"scalar, [mass] -- carries ALL dimensional content"
+VAR-D14-005,d1,boundary operator C1->C0 (incidence matrix),"matrix, dimensionless"
+VAR-D14-006,d2,boundary operator C2->C1,"matrix, dimensionless"
+VAR-D14-007,D_Dirac,block-incidence Dirac operator,matrix (operator on C0(+)C1)
+VAR-D14-008,g,gauge coupling constant,"scalar, [length]^-1/[A_mu] by convention"
+VAR-D14-009,t,diffusion time parameter,"scalar, free/unfixed (source of METRIC-CANDIDATE non-uniqueness)"
