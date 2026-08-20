@@ -22,11 +22,13 @@ from console.api.canonical import (
     adapter, chainlink as chainlink_mod, frontier as frontier_mod, proof_check,
 )
 from console.api.execution import executor, ledger_store, runs_store
+from console.api.literature import adapter as literature_adapter
 from console.api.models import (
     AuditResultModel, ChainlinkView, CircularDependencyCheck, FalsificationsResponse,
     FrontierNode, Hypothesis, HypothesisCreateRequest, HypothesisCreateResponse,
-    HypothesisDetail, HypothesisTransitionRequest, LedgerEvent, NodeDetail, NodeSummary,
-    PossibleDuplicate, ProofRecordDetail, ProtocolReference, RunSnapshot, StateRollup,
+    HypothesisDetail, HypothesisTransitionRequest, LedgerEvent, LiteratureCrosswalkEntry,
+    LiteratureItem, LiteratureRecovery, NodeDetail, NodeSummary, PossibleDuplicate,
+    ProofRecordDetail, ProtocolReference, RunSnapshot, StateRollup,
 )
 from console.api.research import hypothesis_status, hypothesis_store
 
@@ -137,6 +139,10 @@ def get_node(node_id: str) -> NodeDetail:
     calculations = adapter.find_calculations_for_node(node_id, reg["provenance"], reg["calculations"])
     falsifications = adapter.find_falsifications_for_node(node_id, reg["falsifications"])
     circular = CircularDependencyCheck(**proof_check.check_circular_dependency(node_id, nodes))
+    lit_crosswalk = [
+        LiteratureCrosswalkEntry(**row) for row in literature_adapter.get_crosswalk(nodes)
+        if row["mdcl_node_id"] == node_id
+    ]
 
     return NodeDetail(
         id=node_id, kind=node["kind"], status=node.get("status", "UNKNOWN"),
@@ -149,6 +155,7 @@ def get_node(node_id: str) -> NodeDetail:
         calculations=calculations,
         falsifications=falsifications,
         circular_dependency=circular,
+        literature_crosswalk=lit_crosswalk,
         superseding_nodes=[],
     )
 
@@ -187,12 +194,20 @@ def get_chainlink() -> ChainlinkView:
     arrows = chainlink_mod.build_chainlink_view(nodes)
     # enrich with real proofs where a proof exists for the target node
     reg = adapter.load_all()
+    crosswalk = literature_adapter.get_crosswalk(nodes)
     for arrow in arrows:
         arrow["proof"] = adapter.find_proofs_for_node(arrow["to_id"], reg["proofs"])
         arrow["calculations"] = adapter.find_calculations_for_node(
             arrow["to_id"], reg["provenance"], reg["calculations"]
         )
         arrow["failures"] = adapter.find_falsifications_for_node(arrow["to_id"], reg["falsifications"])
+        lit_matches = [row["raw"] for row in crosswalk if row["mdcl_node_id"] == arrow["to_id"]]
+        arrow["literature"] = lit_matches
+        if lit_matches:
+            arrow["literature_note"] = (
+                f"{len(lit_matches)} curated crosswalk row(s) name this node as their "
+                f"MDCL_NODE_ID (literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv)."
+            )
     return ChainlinkView(arrows=arrows)
 
 
@@ -268,6 +283,37 @@ def list_falsifications() -> FalsificationsResponse:
         records=reg["falsifications"],
         protocols=[ProtocolReference(**p) for p in proof_check.falsification_protocol_reference()],
     )
+
+
+# ---------------------------------------------------------------------
+# Phase 9: Literature Workspace, wired to the existing literature/
+# ingestion architecture. Read-only, and it makes no network calls --
+# external literature search is explicitly out of scope (not requested,
+# see console/api/literature/adapter.py's module docstring).
+# ---------------------------------------------------------------------
+
+@app.get("/api/literature/sources", response_model=list[dict[str, Any]])
+def list_literature_sources() -> list[dict[str, Any]]:
+    return literature_adapter.get_sources()
+
+
+@app.get("/api/literature/items", response_model=list[LiteratureItem])
+def list_literature_items() -> list[LiteratureItem]:
+    return [LiteratureItem(**item) for item in literature_adapter.get_items()]
+
+
+@app.get("/api/literature/crosswalk", response_model=list[LiteratureCrosswalkEntry])
+def list_literature_crosswalk(node_id: str | None = None) -> list[LiteratureCrosswalkEntry]:
+    nodes = adapter.get_all_nodes_merged()
+    rows = literature_adapter.get_crosswalk(nodes)
+    if node_id:
+        rows = [r for r in rows if r["mdcl_node_id"] == node_id]
+    return [LiteratureCrosswalkEntry(**r) for r in rows]
+
+
+@app.get("/api/literature/recoveries", response_model=list[LiteratureRecovery])
+def list_literature_recoveries() -> list[LiteratureRecovery]:
+    return [LiteratureRecovery(**r) for r in literature_adapter.get_recoveries()]
 
 
 # ---------------------------------------------------------------------

@@ -134,6 +134,17 @@ export function NodeDetailPanel({
             </ul>
           )}
 
+          <h4>Literature crosswalk ({node.data.literature_crosswalk.length})</h4>
+          {node.data.literature_crosswalk.length === 0 && (
+            <p className="section-note">
+              No literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv row names this node.{" "}
+              <Link to="/literature">Literature →</Link>
+            </p>
+          )}
+          {node.data.literature_crosswalk.map((c, i) => (
+            <p key={i} className="section-note">{c.raw.STRUCTURAL_CORRESPONDENCE} ({c.raw.STATUS})</p>
+          ))}
+
           <h4>Supersession</h4>
           <p className="section-note">{node.data.superseding_nodes_note}</p>
 

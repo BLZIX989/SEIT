@@ -88,4 +88,13 @@ export const api = {
     get: (nodeId: string) => get<import("./types").ProofRecordDetail>(`/proofs/${encodeURIComponent(nodeId)}`),
   },
   falsifications: () => get<import("./types").FalsificationsResponse>("/falsifications"),
+  literature: {
+    sources: () => get<import("./types").LiteratureSource[]>("/literature/sources"),
+    items: () => get<import("./types").LiteratureItem[]>("/literature/items"),
+    crosswalk: (nodeId?: string) =>
+      get<import("./types").LiteratureCrosswalkEntry[]>(
+        `/literature/crosswalk${nodeId ? `?node_id=${encodeURIComponent(nodeId)}` : ""}`,
+      ),
+    recoveries: () => get<import("./types").LiteratureRecovery[]>("/literature/recoveries"),
+  },
 };

@@ -141,6 +141,24 @@ export const useProof = (nodeId: string | undefined) =>
 export const useFalsifications = () =>
   useQuery({ queryKey: ["falsifications"], queryFn: api.falsifications, staleTime: DEFAULT_STALE_TIME_MS });
 
+// ---- Phase 9: Literature Workspace ----
+
+export const useLiteratureSources = () =>
+  useQuery({ queryKey: ["literature-sources"], queryFn: api.literature.sources, staleTime: DEFAULT_STALE_TIME_MS });
+
+export const useLiteratureItems = () =>
+  useQuery({ queryKey: ["literature-items"], queryFn: api.literature.items, staleTime: DEFAULT_STALE_TIME_MS });
+
+export const useLiteratureCrosswalk = (nodeId?: string) =>
+  useQuery({
+    queryKey: ["literature-crosswalk", nodeId ?? null],
+    queryFn: () => api.literature.crosswalk(nodeId),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
+export const useLiteratureRecoveries = () =>
+  useQuery({ queryKey: ["literature-recoveries"], queryFn: api.literature.recoveries, staleTime: DEFAULT_STALE_TIME_MS });
+
 export const useTransitionHypothesis = () => {
   const queryClient = useQueryClient();
   return useMutation({

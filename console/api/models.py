@@ -79,6 +79,7 @@ class NodeDetail(BaseModel):
         "this list is always empty rather than guessed."
     )
     circular_dependency: "CircularDependencyCheck"
+    literature_crosswalk: list["LiteratureCrosswalkEntry"] = []
 
 
 class FalsificationMatch(BaseModel):
@@ -94,6 +95,20 @@ class CircularDependencyCheck(BaseModel):
     than assumed (see console/api/canonical/proof_check.py)."""
     is_circular: bool
     cycle_path: Optional[list[str]] = None
+
+
+class LiteratureCrosswalkEntry(BaseModel):
+    """One row of literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv
+    (Phase 9) -- a curated correspondence between a literature item and
+    an MDCL node, via a real MDCL_NODE_ID column (not free-text
+    matching like falsification's `target`). `node_is_registered` is
+    computed against the live node set: several crosswalk rows
+    deliberately name a node the compiler doesn't register yet (e.g.
+    "NOETHER-SYMMETRY (not registered)") -- reported honestly rather
+    than hidden or treated as a broken link."""
+    raw: dict[str, str]
+    mdcl_node_id: str
+    node_is_registered: bool
 
 
 NodeDetail.model_rebuild()
@@ -158,12 +173,14 @@ class ChainlinkArrow(BaseModel):
     calculations: list[dict[str, Any]] = []
     failures: list[FalsificationMatch] = []          # falsification_registry.json matches for to_id
     open_obligations: list[str] = []                 # to_id's dependencies not yet in the admissible/closed set
-    literature: list[dict[str, Any]] = []             # always [] -- see literature_note
+    literature: list[dict[str, Any]] = []             # real literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv
+                                                        # rows whose MDCL_NODE_ID exactly equals to_id (Phase 9);
+                                                        # empty when no such curated row exists -- see literature_note
     literature_note: str = (
-        "NOT_IMPLEMENTED: LITERATURE_EXTRACTION_REGISTRY.json has no node/equation "
-        "linkage field (unlike falsification_registry.json's free-text `target`), so "
-        "there is no honest way to match a literature item to this node without "
-        "guessing. Left empty rather than fabricating a match."
+        "No literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv row names this node as its "
+        "MDCL_NODE_ID. This crosswalk is curated (a real column, not free-text matching), so an "
+        "empty result here means no correspondence has been recorded yet, not that matching was "
+        "skipped."
     )
     execution_status: str       # "EXECUTED" | "NOT_IMPLEMENTED" -- brief section XIII's rule:
                                  # never imply a stage ran when it did not
@@ -363,3 +380,34 @@ class ProofRecordDetail(BaseModel):
 class FalsificationsResponse(BaseModel):
     records: list[dict[str, Any]]      # verbatim falsification_registry.json entries
     protocols: list[ProtocolReference]  # the real, available protocol types (reference only)
+
+
+# ---------------------------------------------------------------------
+# Phase 9: Literature Workspace, wired to the existing literature/
+# directory content -- acquisition manifests, extraction registries,
+# the MDCL crosswalk, and proposed recovery records. External
+# literature search is explicitly out of scope (not requested) and is
+# never simulated here.
+# ---------------------------------------------------------------------
+
+class LiteratureItem(BaseModel):
+    """One extracted literature item, from either
+    literature/extraction/STRING_THEORY_LITERATURE_REGISTRY.json
+    (corpus="string_theory") or reports/l0/LITERATURE_EXTRACTION_REGISTRY.json
+    (corpus="general") -- two real but differently-shaped extraction
+    schemas, kept verbatim in `raw` rather than forced into one lossy
+    common shape."""
+    id: str
+    source_id: str
+    corpus: Literal["string_theory", "general"]
+    raw: dict[str, Any]
+
+
+class LiteratureRecovery(BaseModel):
+    """One proposed-recovery record from
+    literature/recovery/STRING_THEORY_PROPOSED_RECOVERIES/*.json --
+    "proposed" in its own name: recording a recovery attempt's target
+    node, sources, and required inputs is not the same as the recovery
+    being complete or canonical. Never promotes anything."""
+    id: str
+    raw: dict[str, Any]

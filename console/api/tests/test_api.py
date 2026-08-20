@@ -122,12 +122,16 @@ def test_chainlink_arrows_reference_real_registered_nodes():
 def test_chainlink_arrows_expose_open_obligations_and_honest_gaps():
     """Phase 5: every arrow must carry open_obligations (real dependency
     gap, computed against the same admissible-status set as /api/frontier)
-    plus honest NOT_IMPLEMENTED markers for der_id and literature -- never
-    a fabricated DER id or a guessed literature match."""
+    plus an honest NOT_IMPLEMENTED marker for der_id (this compiler has
+    no DER-id concept) and real literature crosswalk matches only where
+    literature/crosswalk/STRING_THEORY_MDCL_CROSSWALK.csv actually names
+    the node (Phase 9) -- never a fabricated link either way."""
     r = client.get("/api/chainlink")
     assert r.status_code == 200
     nodes = {n["id"]: n for n in client.get("/api/nodes").json()}
     admissible = {"VERIFIED", "DERIVED", "CALCULATED", "CONDITIONAL"}
+    crosswalk = client.get("/api/literature/crosswalk").json()
+    crosswalk_node_ids = {row["mdcl_node_id"] for row in crosswalk}
     for arrow in r.json()["arrows"]:
         assert "open_obligations" in arrow
         assert "failures" in arrow
@@ -138,12 +142,13 @@ def test_chainlink_arrows_expose_open_obligations_and_honest_gaps():
                 f"open_obligations for {arrow['to_id']} disagree with a direct recomputation "
                 f"against the real node statuses"
             )
-        # der_id/literature are never fabricated -- always empty/None with
-        # an explanatory note, since the compiler has no DER-id concept
-        # and the literature registry has no per-node linkage field.
         assert arrow["der_id"] is None
         assert arrow["der_id_note"]
-        assert arrow["literature"] == []
+        expected_has_literature = arrow["to_id"] in crosswalk_node_ids
+        assert bool(arrow["literature"]) == expected_has_literature, (
+            f"literature presence for {arrow['to_id']} disagrees with a direct recomputation "
+            f"against the real crosswalk"
+        )
         assert arrow["literature_note"]
 
 

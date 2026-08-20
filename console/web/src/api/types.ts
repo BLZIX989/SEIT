@@ -71,6 +71,7 @@ export interface NodeDetail {
   superseding_nodes: string[];
   superseding_nodes_note: string;
   circular_dependency: CircularDependencyCheck;
+  literature_crosswalk: LiteratureCrosswalkEntry[];
 }
 
 export interface ProofRecordDetail {
@@ -95,6 +96,42 @@ export interface ProtocolReference {
 export interface FalsificationsResponse {
   records: Record<string, unknown>[];
   protocols: ProtocolReference[];
+}
+
+export interface LiteratureSource {
+  SOURCE_ID: string;
+  TITLE: string;
+  AUTHOR: string;
+  SOURCE_URL: string;
+  DOWNLOAD_URL: string;
+  DOWNLOAD_TIMESTAMP: string;
+  FILE_NAME: string;
+  FILE_PATH: string;
+  FILE_SIZE_BYTES: number;
+  SHA256: string;
+  CONTENT_TYPE: string;
+  PAGE_COUNT: number;
+  VERSION_IF_IDENTIFIABLE: string;
+  PRIMARY_OR_MIRROR: string;
+  LICENSE_OR_USAGE_NOTE: string;
+}
+
+export interface LiteratureItem {
+  id: string;
+  source_id: string;
+  corpus: "string_theory" | "general";
+  raw: Record<string, unknown>;
+}
+
+export interface LiteratureCrosswalkEntry {
+  raw: Record<string, string>;
+  mdcl_node_id: string;
+  node_is_registered: boolean;
+}
+
+export interface LiteratureRecovery {
+  id: string;
+  raw: Record<string, unknown>;
 }
 
 export interface AuditResult {

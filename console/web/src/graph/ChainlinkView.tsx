@@ -120,8 +120,11 @@ function ArrowDetail({ arrow, onClose }: { arrow: ChainlinkArrow; onClose: () =>
         </div>
       ))}
 
-      <h4>Literature</h4>
+      <h4>Literature ({arrow.literature.length})</h4>
       <p className="section-note">{arrow.literature_note}</p>
+      {arrow.literature.length > 0 && (
+        <pre className="audit-card__details">{JSON.stringify(arrow.literature, null, 2)}</pre>
+      )}
 
       <Link className="link-button" to={`/nodes/${encodeURIComponent(arrow.to_id)}`}>Open {arrow.to_id} in Node Inspector ↗</Link>
     </div>

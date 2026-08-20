@@ -41,6 +41,10 @@ const STUB_RESPONSES: Record<string, unknown> = {
   "/api/hypotheses": [],
   "/api/proofs": [],
   "/api/falsifications": { records: [], protocols: [] },
+  "/api/literature/sources": [],
+  "/api/literature/items": [],
+  "/api/literature/crosswalk": [],
+  "/api/literature/recoveries": [],
 };
 
 const STUB_NODE_DETAIL = {
@@ -49,6 +53,7 @@ const STUB_NODE_DETAIL = {
   calculations: [], falsifications: [], superseding_nodes: [],
   superseding_nodes_note: "NOT_IMPLEMENTED",
   circular_dependency: { is_circular: false, cycle_path: null },
+  literature_crosswalk: [],
 };
 
 beforeEach(() => {
@@ -101,7 +106,7 @@ describe("App routing", () => {
   });
 
   it("renders screens that have no backend yet with an explicit NOT IMPLEMENTED panel, never fake success", () => {
-    for (const path of ["/derivation-lab", "/literature"]) {
+    for (const path of ["/derivation-lab"]) {
       const { unmount } = renderAt(path);
       expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
       unmount();
@@ -146,6 +151,14 @@ describe("App routing", () => {
     renderAt("/falsification");
     expect(await screen.findByRole("heading", { name: "Falsification" })).toBeInTheDocument();
     expect(await screen.findByText("No falsification tests recorded yet.")).toBeInTheDocument();
+    expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
+  });
+
+  it("renders the Literature screen's real sections alongside its remaining NOT IMPLEMENTED panel for external search (Phase 9)", async () => {
+    renderAt("/literature");
+    expect(await screen.findByRole("heading", { name: "Literature" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Acquired sources (0)" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "MDCL crosswalk (0 of 0)" })).toBeInTheDocument();
     expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
   });
 });
