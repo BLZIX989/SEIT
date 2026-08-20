@@ -236,4 +236,28 @@ SEIT-7's required (3,2,1) degeneracy -- never searching for or
 selecting a graph to produce a match, and explicit that neither a match
 nor a non-match would establish or falsify SEIT-7, since no specific
 graph has ever been asserted as the required one.
+
+Phase 12 status: the spectral action is exposed as executable `.seit`
+primitives (seit_lang/spectral_action.py), gated by the brief's own
+literal requirement -- "only after spectral-triple prerequisites
+satisfied." spectral_triple_prerequisites_report() checks exactly what
+CAN be structurally checked for a candidate Dirac operator D
+(self-adjointness; {D,gamma}=0 if a grading is supplied) and reports
+the rest (a real structure J, the first-order condition) as explicitly
+NOT CHECKED -- never assumed. Exercised on this project's own D_B
+(Phase 6's block_dirac + grading_operator), the report correctly shows
+D_is_self_adjoint=True and D_anticommutes_with_grading=True (both
+already verified in Phase 6) while all_prerequisites_satisfied stays
+False, since J and the first-order condition remain unconstructed
+anywhere in this corpus -- the gate holds even on a real,
+previously-audited object. spectral_action_trace() (Tr f(D/Lambda)) and
+finite_spectral_moment() (Tr(D^k)) still compute real, finite,
+numerically well-defined values regardless of gate status, exactly as
+H2B already computed real numbers about D_B without spectral-triple
+verification; finite_moment_report() tracks a separate
+assumptions_used list per coefficient (the brief's own "track which
+assumptions produce each coefficient") and states plainly, per
+persistence_kernel.py's identical caution for K_Pi(beta), that these
+finite trace moments are NOT continuum Seeley-DeWitt coefficients and
+carry no physical interpretation in this corpus.
 """
