@@ -1,0 +1,6 @@
+KO_mod_8,real_structure_commutes_with_grading,intersection_form_symmetry,odd_dim_determinant_forced_zero,source
+0,True,SYMMETRIC,False,"external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+1,N/A (no grading at KO=1),N/A,N/A,"external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+2,False,ANTISYMMETRIC,True,"external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+4,True,SYMMETRIC,False,"external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+6,False,ANTISYMMETRIC,True,"external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"

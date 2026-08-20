@@ -1,0 +1,48 @@
+{
+  "git_commit": "959e0d3df7cc59f276de6b27e4f715cb7540509a",
+  "run_timestamp": "2026-08-20T21:08:12.023698+00:00",
+  "python_version": "3.11.15 (main, Mar  3 2026, 09:26:23) [GCC 13.3.0]",
+  "platform": "Linux-6.18.5-fc-v20-x86_64-with-glibc2.39",
+  "source_files": [
+    "scientific_corpus/derivation/__init__.py",
+    "scientific_corpus/derivation/categorical.py",
+    "scientific_corpus/derivation/clifford_derivation.py",
+    "scientific_corpus/derivation/convergence.py",
+    "scientific_corpus/derivation/dimensional_audit.py",
+    "scientific_corpus/derivation/dirac_candidates.py",
+    "scientific_corpus/derivation/gauge_rank.py",
+    "scientific_corpus/derivation/kc003_vr001.py",
+    "scientific_corpus/derivation/ko_dimension.py",
+    "scientific_corpus/derivation/mass_spectrum.py",
+    "scientific_corpus/derivation/operator_algebra.py",
+    "scientific_corpus/derivation/persistence.py",
+    "scientific_corpus/derivation/run_all.py",
+    "scientific_corpus/derivation/run_incidence_clifford.py",
+    "scientific_corpus/derivation/simplicial.py",
+    "scientific_corpus/derivation/write_reports.py"
+  ],
+  "input_data_files_read": [
+    "data/desi/dr1/fc005/derived/sparse_n_scaling_full_results.json",
+    "chainlink_registry.json",
+    "object_registry.json",
+    "transformation_registry.json",
+    "equation_registry.json"
+  ],
+  "outputs": [
+    "DERIVATION_FRONTIER.md",
+    "MATHEMATICAL_CLAIM_REGISTRY.json",
+    "EQUATION_REGISTRY.csv",
+    "VARIABLE_REGISTRY.csv",
+    "OPERATOR_REGISTRY.csv",
+    "CONVERGENCE_AUDIT.md",
+    "DIRAC_OPERATOR_AUDIT.md",
+    "MASS_SPECTRUM_AUDIT.md",
+    "GAUGE_STRUCTURE_AUDIT.md",
+    "TFT_BRIDGE_THEOREMS.md",
+    "OPERATOR_ALGEBRA_AUDIT.md",
+    "CATEGORY_TRANSLATION_AUDIT.md",
+    "DIMENSIONAL_TYPE_AUDIT.md",
+    "OBSERVATIONAL_CLOSURE.md",
+    "COUNTEREXAMPLE_REGISTRY.jsonl"
+  ]
+}

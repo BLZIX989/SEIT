@@ -1,0 +1,504 @@
+[
+  {
+    "CLAIM_ID": "TFT-002",
+    "CLAIM": "D=[[0,d1],[d1^T,0]] satisfies D^2=diag(L0,d1^Td1) exactly",
+    "SOURCE": "This from That sec.5.1 / SEIT-6",
+    "STATUS": "VERIFIED_EXACT",
+    "EVIDENCE": {
+      "claim": "TFT-002: D=[[0,d1],[d1^T,0]] satisfies D^2 = diag(L0, d1^T d1) exactly (This from That section 5.1, SEIT-6)",
+      "holds_exactly": true,
+      "D_is_self_adjoint_real_symmetric": true,
+      "note": "d1^T d1 equals the FULL edge-space Hodge Laplacian L1 = d1^T d1 + d2 d2^T only when the complex has no 2-cells (d2 is the zero map / empty). When 2-cells exist, this two-block Dirac's square omits the d2 d2^T ('up') term entirely -- it is not wrong as literally stated in SEIT-6, but it is a restricted special case, not the operator whose square is the full graded Hodge Laplacian."
+    }
+  },
+  {
+    "CLAIM_ID": "TFT-002B",
+    "CLAIM": "3-graded Hodge-Dirac operator squares to diag(L0,L1,L2) on a complex with 2-cells",
+    "SOURCE": "external, established DEC",
+    "STATUS": "VERIFIED_EXACT (external math)",
+    "EVIDENCE": {
+      "claim": "TFT-002B: the standard (established, external) 3-graded Hodge-Dirac operator D=d+delta satisfies D^2 = diag(L0,L1,L2) exactly on a complex with nonempty 2-cells",
+      "external_established_mathematics": true,
+      "holds_exactly": true,
+      "n_triangles_in_test_complex": 4
+    }
+  },
+  {
+    "CLAIM_ID": "TFT-003",
+    "CLAIM": "Discrete Cartan identity / Weitzenbock curvature term",
+    "SOURCE": "This from That sec.5.1-5.2",
+    "STATUS": "NOT_COMPUTABLE_FROM_AVAILABLE_DEFINITIONS",
+    "EVIDENCE": {
+      "claim": "This from That section 5.2's antisymmetric/curvature term: R_ab = iota_{e_a} L_{e_b} - iota_{e_b} L_{e_a}, requiring a discrete directional Lie derivative L_e along a specific combinatorial vector field e",
+      "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+      "missing_object": "A concrete combinatorial definition of the discrete Lie derivative operator L_e (as a matrix/operator on cochains) for a specific choice of discrete vector field e on the simplicial complex, satisfying Cartan's formula L_e = d.iota_e + iota_e.d by construction (not merely asserted). This-from-That section 5.1 states the desired adjoint relations (<d a,b> = <a, delta b>, (e^.)^dagger = iota_e) and 'evaluates the inner product sum over arbitrary test cochains' to arrive at the Cartan identity, but never gives L_e, iota_e, or the vector field e as explicit matrices/maps on a concrete complex the way d1 and d2 are given here -- so this half of the claimed derivation cannot be independently re-run; it can only be re-run once a specific discrete vector-field/Lie-derivative construction (several exist in the discrete exterior calculus literature, e.g. Desbrun-Hirani-Leok-Marsden's flat/sharp-operator-based discrete Lie derivative) is chosen and cited as the definition actually being used.",
+      "what_IS_computable_and_was_computed_instead": "The symmetric term of the same Weitzenbock decomposition (the D^2 = diag(L0, L1) identity for the full 3-graded Hodge-Dirac operator) requires no Lie derivative at all -- it is pure boundary-operator algebra, and is verified exactly above (TFT-002B)."
+    }
+  },
+  {
+    "CLAIM_ID": "H2B",
+    "CLAIM": "Block-incidence Dirac operator locality (independent of D+=sqrt(L))",
+    "SOURCE": "SEIT-6, new construction",
+    "STATUS": "COMPUTED",
+    "EVIDENCE": {
+      "claim_id": "H2B",
+      "hypothesis": "H2B -- locality of the block-incidence Dirac operator D=[[0,d1],[d1^T,0]] on the SAME graph H2 tested (independent of, and not overwriting, H2-SPECTRAL-TRIPLE-LOCALITY=FAIL for D+=sqrt(L))",
+      "test_graph": "n=200 nearest-neighbour ring, k=3 -- identical construction to H2",
+      "n_triangles_available_as_2_cells": 600,
+      "D_self_adjoint": true,
+      "D_squared_equals_diag(L0,d1^T_d1)_exactly": true,
+      "D_sparsity_fraction_strict": 0.00375,
+      "D_sparsity_fraction_relative_1e-3_of_max": 0.00375,
+      "D_row0_decay_by_graph_distance_vertex_block": {
+        "0": 1.0,
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "10": 0.0,
+        "50": 0.0,
+        "100": 0.0
+      },
+      "comparison_to_H2_D_plus_sqrt_L": {
+        "D_plus_sparsity_fraction_relative_1e-3_of_max_FROM_H2": "0.235 (23.5%), per H2's own recorded result",
+        "D_block_sparsity_fraction_relative_1e-3_of_max_HERE": 0.00375,
+        "interpretation": "By construction (built directly from the local incidence matrix d1, never from spectral/functional calculus on L), D is exactly as sparse as d1 itself -- each nonzero entry connects a vertex to an edge it is literally an endpoint of, i.e. locality is exact and structural, not merely 'improved relative to sqrt(L)'. This directly resolves the specific locality failure mode H2 found in D+=sqrt(L) (which was dense: 100% strict, 23.5% at the same 0.1%-of-peak threshold, with weight extending to graph-distance 50+)."
+      },
+      "what_this_DOES_NOT_establish": "Locality alone does not make D a valid Dirac operator for a Standard-Model-type spectral triple. H2's other findings stand unchanged and apply equally here: the KO-dimension this construction naturally produces has not been shown to be 6 mod 8 (the value the Chamseddine-Connes-Marcolli construction requires), and no algebra representation A, grading, or real structure J compatible with the first-order condition [[D,a],JbJ^-1]=0 has been constructed here or anywhere in the corpus. D2's D^2=diag(L0, d1^T d1) also only recovers the RESTRICTED (2-cell-omitting) Laplacian term, per simplicial.py::check_two_block_dirac_squaring -- see TFT-002 vs TFT-002B."
+    }
+  },
+  {
+    "CLAIM_ID": "H_MASS",
+    "CLAIM": "m_n = m_0 sqrt(lambda_n)",
+    "SOURCE": "Spectral Codex",
+    "STATUS": "COMPUTED_NO_PREDICTIVE_CONTENT_ESTABLISHED",
+    "EVIDENCE": {
+      "dimensional_analysis": {
+        "claim": "m_n = m_0 sqrt(lambda_n)",
+        "lhs_dimension": "[mass] (or [energy] in natural units)",
+        "rhs_dimension_of_sqrt(lambda_n)": "The combinatorial graph Laplacian L=D-A is dimensionless (a pure adjacency-count object); its eigenvalues lambda_n are therefore dimensionless pure numbers, and sqrt(lambda_n) is also dimensionless.",
+        "conclusion": "m_0 must carry the ENTIRE dimensional content [mass] of the formula by itself. The graph/spectral construction supplies only a dimensionless shape (the relative pattern of the sqrt(lambda_n) sequence) -- it cannot, by dimensional analysis alone, supply an absolute mass scale. This is not a flaw specific to this project; it is true of every eigenvalue-ratio mass formula in physics (e.g. Regge trajectories) -- but it means the formula's entire falsifiable content is in the RATIOS m_n/m_1 = sqrt(lambda_n/lambda_1), never in the absolute values, however m_0 is chosen."
+      },
+      "structural_test": {
+        "test": "zero-parameter structural test: sqrt(lambda_2/lambda_1) vs real tau/mu = 16.8170, across every topology/size the compiler already implements, no fitting",
+        "results": {
+          "path_n6": {
+            "n_nonzero_modes": 5,
+            "lambda_1": 0.2679491924311227,
+            "lambda_2": 0.9999999999999996,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.9318516525781362,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 14.885173780326394
+          },
+          "path_n10": {
+            "n_nonzero_modes": 9,
+            "lambda_1": 0.09788696740969276,
+            "lambda_2": 0.3819660112501052,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.9753766811902767,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 14.841648751714253
+          },
+          "path_n20": {
+            "n_nonzero_modes": 19,
+            "lambda_1": 0.024623318809724182,
+            "lambda_2": 0.09788696740969258,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.993834667466268,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 14.82319076543826
+          },
+          "cycle_n6": {
+            "n_nonzero_modes": 5,
+            "lambda_1": 0.9999999999999991,
+            "lambda_2": 1.0000000000000004,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000007,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "cycle_n10": {
+            "n_nonzero_modes": 9,
+            "lambda_1": 0.3819660112501051,
+            "lambda_2": 0.38196601125010565,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000007,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "cycle_n20": {
+            "n_nonzero_modes": 19,
+            "lambda_1": 0.09788696740969273,
+            "lambda_2": 0.09788696740969369,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000049,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.817025432904524
+          },
+          "complete_n6": {
+            "n_nonzero_modes": 5,
+            "lambda_1": 5.999999999999999,
+            "lambda_2": 6.0,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "complete_n10": {
+            "n_nonzero_modes": 9,
+            "lambda_1": 9.999999999999995,
+            "lambda_2": 9.999999999999998,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000002,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "complete_n20": {
+            "n_nonzero_modes": 19,
+            "lambda_1": 19.99999999999997,
+            "lambda_2": 19.999999999999986,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000002,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "star_n6": {
+            "n_nonzero_modes": 5,
+            "lambda_1": 0.9999999999999996,
+            "lambda_2": 0.9999999999999999,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000002,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "star_n10": {
+            "n_nonzero_modes": 9,
+            "lambda_1": 0.9999999999999984,
+            "lambda_2": 0.9999999999999993,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000004,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "star_n20": {
+            "n_nonzero_modes": 19,
+            "lambda_1": 0.9999999999999987,
+            "lambda_2": 0.999999999999999,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000002,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290453
+          },
+          "grid2d_n6": {
+            "n_nonzero_modes": 35,
+            "lambda_1": 0.26794919243112225,
+            "lambda_2": 0.26794919243112436,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000038,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.817025432904526
+          },
+          "grid2d_n10": {
+            "n_nonzero_modes": 99,
+            "lambda_1": 0.09788696740969216,
+            "lambda_2": 0.09788696740969344,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.0000000000000064,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.817025432904522
+          },
+          "grid2d_n20": {
+            "n_nonzero_modes": 399,
+            "lambda_1": 0.024623318809720855,
+            "lambda_2": 0.024623318809727648,
+            "predicted_m3/m2_ratio_sqrt(lambda2/lambda1)": 1.000000000000138,
+            "real_tau/mu_ratio": 16.81702543290453,
+            "absolute_residual": 15.81702543290439
+          }
+        },
+        "erdos_renyi_50_seed_sweep_best_match": {
+          "seed": 45,
+          "predicted_ratio": 1.9133549905568898,
+          "absolute_residual": 14.90367044234764
+        },
+        "erdos_renyi_interpretation": "This ran counter to the expected 'go fishing' outcome and is reported as found, not adjusted after the fact: sweeping 50 random seeds at n=20 did NOT find a materially better match than the fixed path topology (best residual 14.904 vs path_n6's 14.885) -- the sqrt(lambda_2/lambda_1) ratio for random graphs at this size and edge density stays clustered near ~2, essentially the same range as path. This is itself a real, useful negative finding: for adjacent nonzero eigenvalues at modest n, achieving a ratio as large as the real tau/mu=16.8 may not be a matter of hunting through more topologies at fixed size, but could require either much larger n, a qualitatively different eigenvalue-selection rule (not simply 'the 2nd and 3rd nonzero modes'), or a differently normalized Laplacian. This is an open structural question this test surfaces, not one it resolves."
+      },
+      "degrees_of_freedom_analysis": {
+        "target": "2 independent real numbers to fit: mu/e and tau/e mass ratios (206.77, 3477.23)",
+        "free_choices_available_to_the_formula_as_stated_anywhere_in_the_corpus": [
+          "graph topology (unconstrained -- no construction rule ties a specific graph to 'the lepton sector' anywhere in the corpus)",
+          "graph size n (unconstrained)",
+          "which 2 of the (up to n-1) nonzero eigenvalues get assigned to 'muon' and 'tau' respectively (unconstrained -- no ordering/selection rule is given beyond 'the spectrum')",
+          "m_0 (cancels in ratios, but is an extra free real parameter for absolute mass)"
+        ],
+        "verdict": "The fixed, parameter-free topologies (path/cycle/complete/star/grid2d) all fail badly at reproducing tau/mu=16.8 from adjacent nonzero eigenvalues (residuals 14.8-15.8 -- cycle/complete/star all have near-degenerate lambda_1~lambda_2, giving a predicted ratio near 1.0, and path gets only to ~2.0). Adding a free random-seed parameter (erdos_renyi, 50 seeds swept) did NOT materially improve this at n=20 -- see erdos_renyi_50_seed_sweep_best_match and its interpretation. So the theoretical 'enough free parameters to fit anything' concern this test was designed to check is NOT what was actually found here: at this graph size, the adjacent-nonzero-eigenvalue ratio appears structurally capped well below the real tau/mu hierarchy regardless of topology or randomization, which is a more specific and more useful negative result than a generic overfitting warning. What remains genuinely unconstrained by the corpus -- and is therefore still an open predictive-content gap, independent of this particular finding -- is any rule for WHICH graph/size represents 'the lepton sector' and WHICH eigenvalues (not necessarily adjacent, not necessarily the 2nd/3rd) map to which generation. Without such a rule, no comparison to real masses is a genuine out-of-sample test.",
+        "what_would_resolve_this": "A specific, independently-motivated rule (e.g. 'the lepton sector graph is exactly the one produced by running the compiler's own Delta->Gamma->G construction on [specific real input data]', with a fixed, pre-declared eigenvalue-to-generation assignment) stated and fixed BEFORE comparing to known masses, so the comparison is a genuine out-of-sample test rather than a fit."
+      }
+    }
+  },
+  {
+    "CLAIM_ID": "H4B",
+    "CLAIM": "SU(3)xSU(2)xU(1) subset Aut(O)xSpin(8): sub-embeddings",
+    "SOURCE": "repository original / Spectral Codex Eq.21",
+    "STATUS": "PARTIALLY_CONDITIONALLY_SUPPORTED",
+    "EVIDENCE": {
+      "su3_in_g2": {
+        "claim": "SU(3) subset G2 (maximal subgroup, standard external Lie theory)",
+        "external_established_mathematics": true,
+        "rank_check": "rank(SU(3))=2 <= rank(G2)=2: CONSISTENT",
+        "dimension_check": "dim(G2)-dim(SU(3)) = 14-8 = 6, matching the known dimension of the coset space G2/SU(3) = S^6 (the 6-sphere) -- consistent with the standard fact, not an independent proof of it (that requires the actual root-system embedding, which is standard but not reproduced here).",
+        "status": "CONDITIONALLY SUPPORTED -- real, standard mathematics; NOT independently re-derived by this project, cited as established external fact."
+      },
+      "su2xu1_in_spin8": {
+        "claim": "SU(2)xU(1) subset Spin(8)",
+        "rank_check": "rank(SU(2)xU(1))=2 <= rank(Spin(8))=4: NECESSARY CONDITION SATISFIED",
+        "dimension_check": "dim(SU(2)xU(1))=4 <= dim(Spin(8))=28: NECESSARY CONDITION SATISFIED",
+        "status": "UNRESOLVED -- rank and dimension are NECESSARY, not sufficient, conditions for subgroup embedding. Spin(8) does contain many rank-2 subgroups (e.g. SU(2)xSU(2)xSU(2)xSU(2) is a maximal-rank-4 subgroup via the D4 root system; SU(2)xU(1) embeds inside various of Spin(8)'s maximal subgroups by further restriction), so infeasibility is NOT the finding here -- but no SPECIFIC embedding tied to this project's actual spectral/graph construction has been given anywhere in the corpus, so 'feasible in principle' must not be read as 'constructed'."
+      },
+      "missing_link_to_compiler_spectrum_H4C": {
+        "claim_id": "H4C",
+        "claim": "SEIT-7: Aut(L_Gamma) = product of U(m_k) via Schur's Lemma, IF the low-lying spectrum of L_Gamma has eigenvalue-multiplicity pattern (3,2,1)",
+        "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+        "missing_object": "A specific graph construction (topology, size, edge-weight rule) that the corpus asserts represents 'the physical vacuum state' or equivalent, whose low-lying Laplacian spectrum is claimed to exhibit degeneracy (3,2,1). No such construction rule exists anywhere in the accessible corpus -- Vol.4 Ch.23 itself states this is 'the central open question for SEIT's derivation of the Standard Model gauge structure' and marks it [Conjecture]. Once such a graph is specified, this IS directly computable with the compiler's existing eigh()-based spectral backend (compiler/backends/spectral.py) -- eigenvalue multiplicities are a standard, cheap linear-algebra computation, not a conceptual obstacle."
+      }
+    }
+  },
+  {
+    "CLAIM_ID": "H4C",
+    "CLAIM": "SEIT-7 commutant-algebra (3,2,1) gauge mechanism",
+    "SOURCE": "Universal Rosetta Vol.4 Ch.23 [Conjecture]",
+    "STATUS": "NOT_COMPUTABLE_FROM_AVAILABLE_DEFINITIONS",
+    "EVIDENCE": {
+      "claim_id": "H4C",
+      "claim": "SEIT-7: Aut(L_Gamma) = product of U(m_k) via Schur's Lemma, IF the low-lying spectrum of L_Gamma has eigenvalue-multiplicity pattern (3,2,1)",
+      "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+      "missing_object": "A specific graph construction (topology, size, edge-weight rule) that the corpus asserts represents 'the physical vacuum state' or equivalent, whose low-lying Laplacian spectrum is claimed to exhibit degeneracy (3,2,1). No such construction rule exists anywhere in the accessible corpus -- Vol.4 Ch.23 itself states this is 'the central open question for SEIT's derivation of the Standard Model gauge structure' and marks it [Conjecture]. Once such a graph is specified, this IS directly computable with the compiler's existing eigh()-based spectral backend (compiler/backends/spectral.py) -- eigenvalue multiplicities are a standard, cheap linear-algebra computation, not a conceptual obstacle."
+    }
+  },
+  {
+    "CLAIM_ID": "CONV-001",
+    "CLAIM": "Mosco-type convergence of the real DESI N-scaling graph sequence",
+    "SOURCE": "This from That / SEIT continuum-limit claim",
+    "STATUS": "COMPUTED_MIXED_RESULT",
+    "EVIDENCE": {
+      "per_dataset_results": {
+        "uniform_alpha0.0": {
+          "dataset": "uniform_alpha0.0",
+          "N_values": [
+            4000,
+            8000,
+            16000,
+            32000,
+            64000
+          ],
+          "lambda_1_sequence": [
+            3.148712910404291e-13,
+            3.466968761094354e-13,
+            3.846999889129024e-13,
+            4.0911580114137957e-13,
+            4.2138998445455144e-13
+          ],
+          "lambda_2_sequence": [
+            3.2930640570319235e-13,
+            3.6616732241561535e-13,
+            3.917528017899407e-13,
+            4.170825434244665e-13,
+            4.322577224036903e-13
+          ],
+          "convergence_rate_fit": {
+            "fit_possible": true,
+            "relative_change_sequence": [
+              0.22062116118650224,
+              0.14169798657125657,
+              0.08938668224787895,
+              0.05486428149131263
+            ],
+            "successive_ratios": [
+              0.6422683382192521,
+              0.6308253519391294,
+              0.6137858583806483
+            ],
+            "mean_successive_ratio": 0.6289598495130099,
+            "monotone_decreasing": true,
+            "interpretation": "mean successive ratio 0.629 < 1 -- consistent with geometric convergence (Cauchy-like behavior)"
+          },
+          "status": "NUMERICAL_EVIDENCE_FOR_CONVERGENCE"
+        },
+        "clustered_alpha0.0": {
+          "dataset": "clustered_alpha0.0",
+          "status": "NO_CONVERGED_MODES_AT_ANY_N",
+          "n_failed_of_total": "5/5",
+          "interpretation": "ARPACK failed to produce converged low modes at every N tested (ARPACK_INSUFFICIENT_CONVERGED_MODES) -- this is a STRONGER form of non-convergence evidence than a slowly-decaying relative change: the solver could not even resolve stable low eigenmodes to compare across N, consistent with the existing CONTINUUM-LIMIT-L-DESI=FAIL finding for this class of geometry."
+        },
+        "desi_alpha0.0": {
+          "dataset": "desi_alpha0.0",
+          "N_values": [
+            4000,
+            8000,
+            16000,
+            32000,
+            64000
+          ],
+          "lambda_1_sequence": [
+            5.2832302027217625e-17,
+            4.271457614799666e-17,
+            8.009574204582597e-17,
+            8.157096114587777e-17,
+            8.423816103150552e-17
+          ],
+          "lambda_2_sequence": [
+            5.840435684782282e-17,
+            7.390710206684225e-17,
+            1.818437772220841e-16,
+            1.9371020828307886e-16,
+            1.9925333609200045e-16
+          ],
+          "convergence_rate_fit": {
+            "fit_possible": true,
+            "relative_change_sequence": [
+              1.346747844860744,
+              1.460437118176044,
+              0.5006137834534365,
+              0.1269579141900582
+            ],
+            "successive_ratios": [
+              1.0844176389434326,
+              0.34278352503027215,
+              0.25360451187390626
+            ],
+            "mean_successive_ratio": 0.5602685586158703,
+            "monotone_decreasing": false,
+            "interpretation": "mean successive ratio 0.560 < 1 -- consistent with geometric convergence (Cauchy-like behavior)"
+          },
+          "status": "NUMERICAL_EVIDENCE_AGAINST_CONVERGENCE_AT_TESTED_N"
+        },
+        "uniform_alpha1.0": {
+          "dataset": "uniform_alpha1.0",
+          "N_values": [
+            4000,
+            8000,
+            16000,
+            32000,
+            64000
+          ],
+          "lambda_1_sequence": [
+            6.510746107723053e-14,
+            2.7666469126172854e-14,
+            1.2621248646767333e-14,
+            5.737858698981835e-15,
+            2.5707085122201344e-15
+          ],
+          "lambda_2_sequence": [
+            6.632155528110812e-14,
+            2.887219133130323e-14,
+            1.285610958698555e-14,
+            5.814432388650403e-15,
+            2.6053422496180784e-15
+          ],
+          "convergence_rate_fit": {
+            "fit_possible": true,
+            "relative_change_sequence": [
+              0.5830765234470595,
+              0.5602161199447228,
+              0.5492603682600233,
+              0.5554367866040169
+            ],
+            "successive_ratios": [
+              0.9607934763567747,
+              0.980443705036941,
+              1.0112449736061597
+            ],
+            "mean_successive_ratio": 0.9841607183332918,
+            "monotone_decreasing": false,
+            "interpretation": "mean successive ratio 0.984 < 1 -- consistent with geometric convergence (Cauchy-like behavior)"
+          },
+          "status": "NUMERICAL_EVIDENCE_AGAINST_CONVERGENCE_AT_TESTED_N"
+        },
+        "clustered_alpha1.0": {
+          "dataset": "clustered_alpha1.0",
+          "status": "NO_CONVERGED_MODES_AT_ANY_N",
+          "n_failed_of_total": "5/5",
+          "interpretation": "ARPACK failed to produce converged low modes at every N tested (ARPACK_INSUFFICIENT_CONVERGED_MODES) -- this is a STRONGER form of non-convergence evidence than a slowly-decaying relative change: the solver could not even resolve stable low eigenmodes to compare across N, consistent with the existing CONTINUUM-LIMIT-L-DESI=FAIL finding for this class of geometry."
+        },
+        "desi_alpha1.0": {
+          "dataset": "desi_alpha1.0",
+          "N_values": [
+            4000,
+            8000,
+            16000,
+            32000,
+            64000
+          ],
+          "lambda_1_sequence": [
+            3.2507505277591003e-17,
+            1.405334872694277e-17,
+            5.646659671652133e-18,
+            2.35572232457639e-18,
+            9.969952713844526e-19
+          ],
+          "lambda_2_sequence": [
+            8.374249049827709e-17,
+            3.382732008923688e-17,
+            1.3353853124958049e-17,
+            5.512146501254908e-18,
+            2.3257463939092907e-18
+          ],
+          "convergence_rate_fit": {
+            "fit_possible": true,
+            "relative_change_sequence": [
+              0.5969173091248131,
+              0.6064536732024448,
+              0.5941742955560452,
+              0.5967686768005318
+            ],
+            "successive_ratios": [
+              1.015976022024916,
+              0.9797521588391789,
+              1.0043663639842562
+            ],
+            "mean_successive_ratio": 1.0000315149494503,
+            "monotone_decreasing": false,
+            "interpretation": "mean successive ratio 1.000 >= 1 -- NOT decaying, inconsistent with convergence at the N range tested"
+          },
+          "status": "NUMERICAL_EVIDENCE_AGAINST_CONVERGENCE_AT_TESTED_N"
+        }
+      },
+      "mosco_condition_note": {
+        "rigorous_mosco_M1_M2_check": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+        "missing_object": "A stated identification/embedding map iota_n: H_n -> H (or a common ambient Hilbert space with fixed inner product that all H_n, of varying dimension N, embed into) is required before the quadratic-form liminf/recovery-sequence conditions (M1/M2) are even well-posed questions. Neither the This-from-That whitepaper nor any compiler module (compiler/backends/desi_sparse.py, desi_graph.py, desi_fc005_pipeline.py) defines such a map -- each N is treated as an independent finite-dimensional problem with its own R^N, not as a term in a sequence embedded in a fixed limiting space. This is the exact, precise dependency gap the brief's section V asks to be identified rather than hand-waved past.",
+        "what_WAS_computed_instead": "Numerical convergence/divergence evidence on the low-eigenvalue trajectories actually recorded for each real dataset (uniform/clustered/desi, alpha in {0.0, 1.0}) across the real N=4000->64000 sequence already run by scripts/run_desi_sparse_n_scaling.py -- see per-dataset results above."
+      }
+    }
+  },
+  {
+    "CLAIM_ID": "OPALG-001",
+    "CLAIM": "Clifford anticommutator {gamma^mu,gamma^nu}=2g^{mu nu}I",
+    "SOURCE": "external, established",
+    "STATUS": "VERIFIED_EXACT",
+    "EVIDENCE": {
+      "claim": "{gamma^mu, gamma^nu} = 2 g^{mu nu} I (Dirac basis, signature (+,-,-,-))",
+      "external_established_mathematics": true,
+      "holds_exactly_for_all_16_mu_nu_pairs": true,
+      "failures": []
+    }
+  },
+  {
+    "CLAIM_ID": "OPALG-002",
+    "CLAIM": "su(2) Jacobi identity",
+    "SOURCE": "external, established",
+    "STATUS": "VERIFIED_EXACT",
+    "EVIDENCE": {
+      "claim": "Jacobi identity [T_a,[T_b,T_c]] + [T_b,[T_c,T_a]] + [T_c,[T_a,T_b]] = 0 for T_a = sigma_a/2 (su(2) fundamental representation)",
+      "external_established_mathematics": true,
+      "holds_exactly_for_all_27_abc_triples": true
+    }
+  },
+  {
+    "CLAIM_ID": "CAT-001",
+    "CLAIM": "Chainlink projection is structure-preserving",
+    "SOURCE": "This from That / Universal Rosetta translation claim",
+    "STATUS": "VERIFIED",
+    "EVIDENCE": {
+      "claim": "The Chainlink projection is a faithful structure-preserving map: every (source_node, target_node) edge it draws corresponds either to a real dependency edge already present in the canonical registries, or to a chainlink that explicitly self-documents its target as an intentionally unregistered open frontier gap (never silently fabricated).",
+      "n_chainlinks_total": 8,
+      "n_faithful_against_real_registry_dependency": 7,
+      "n_self_documented_open_gaps": 1,
+      "self_documented_open_gaps": [
+        {
+          "chainlink_id": "CL-METRIC-TO-CONNECTION",
+          "target_node": "CONNECTION-NODE",
+          "note": "target_node is deliberately a placeholder for a frontier gap the chainlink's own transformation/open_obligations text explicitly labels unregistered -- not a fabricated or accidental reference."
+        }
+      ],
+      "n_genuine_violations": 0,
+      "violations": [],
+      "verdict": "STRUCTURE-PRESERVATION HOLDS. 7/8 chainlinks are directly backed by a real canonical dependency edge; the 8th (CL-METRIC-TO-CONNECTION) references a target ('CONNECTION-NODE') that is not in any canonical registry, but its own transformation field says so explicitly ('(NOT REGISTERED)') and its open_obligations text states plainly that 'no admissible, non-arbitrary construction of a connection from a non-unique metric candidate is registered' -- this is the chainlink honestly marking an open frontier boundary, exactly the behavior compiler/protocol/derivation_chainlinks.py's own docstring promises ('this module only reads t.status/t.proof/t.dependencies off the already-built registries'), not a fabricated relationship."
+    }
+  }
+]
