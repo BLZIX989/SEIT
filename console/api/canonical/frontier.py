@@ -15,6 +15,19 @@ from __future__ import annotations
 # Mirrors compiler/dependencies/graph.py::EXECUTABLE_UPSTREAM_STATUSES exactly.
 ADMISSIBLE_STATUSES = {"VERIFIED", "DERIVED", "CALCULATED", "CONDITIONAL"}
 
+# FALSIFIED is the one status with zero allowed outgoing transitions
+# (compiler/core/status.py::ALLOWED_TRANSITIONS[Status.FALSIFIED] == set()):
+# a falsified node can never become admissible again, so it must never
+# appear in the frontier as if it were a fresh "next thing to
+# investigate" (Phase 11 audit finding -- confirmed live against the
+# real MDCL, where a FALSIFIED node was leaking into /api/frontier).
+# FAIL is deliberately NOT excluded here: the compiler's own transition
+# table explicitly allows FAIL -> OPEN/PROPOSED ("may be retried
+# upstream"), so a FAIL node with resolved dependencies is a genuine
+# retry candidate -- it belongs in the frontier, with its real status
+# visible in the `status` field rather than disguised as untried.
+EXCLUDED_FROM_FRONTIER_STATUSES = {"FALSIFIED"}
+
 
 def compute_closed_set(nodes: dict[str, dict]) -> set[str]:
     return {nid for nid, n in nodes.items() if n.get("status") in ADMISSIBLE_STATUSES}
@@ -36,7 +49,7 @@ def compute_frontier(nodes: dict[str, dict], reverse_deps: dict[str, list[str]])
     closed = compute_closed_set(nodes)
     frontier = []
     for nid, node in nodes.items():
-        if nid in closed:
+        if nid in closed or node.get("status") in EXCLUDED_FROM_FRONTIER_STATUSES:
             continue
         deps = node.get("dependencies", [])
         unresolved = [d for d in deps if d not in closed]

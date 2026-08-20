@@ -95,6 +95,32 @@ def test_frontier_excludes_already_admissible_nodes():
     assert result == [], "VERIFIED/CALCULATED nodes must never appear in the frontier"
 
 
+def test_frontier_excludes_falsified_but_retains_retriable_fail(monkeypatch):
+    """Phase 11 audit finding: FALSIFIED has zero allowed outgoing
+    transitions (compiler/core/status.py), so it can never become
+    admissible again and must never appear as a frontier candidate.
+    FAIL, by contrast, is explicitly retriable
+    (ALLOWED_TRANSITIONS[Status.FAIL] == {OPEN, PROPOSED}) and must
+    stay in the frontier once its dependencies resolve."""
+    from compiler.core.status import ALLOWED_TRANSITIONS, Status
+
+    # Assert the real compiler semantics this fix relies on, rather than
+    # just asserting our own constant -- if the compiler ever changes
+    # FALSIFIED's transitions, this test should fail loudly.
+    assert ALLOWED_TRANSITIONS[Status.FALSIFIED] == set()
+    assert Status.OPEN in ALLOWED_TRANSITIONS[Status.FAIL] or Status.PROPOSED in ALLOWED_TRANSITIONS[Status.FAIL]
+
+    nodes = {
+        "A": {"kind": "Object", "status": "VERIFIED", "dependencies": []},
+        "RETRIABLE": {"kind": "Object", "status": "FAIL", "dependencies": ["A"]},
+        "DEAD-END": {"kind": "Object", "status": "FALSIFIED", "dependencies": ["A"]},
+    }
+    reverse = adapter.build_reverse_dependency_index(nodes)
+    result = frontier.compute_frontier(nodes, reverse)
+    ids = [e["id"] for e in result]
+    assert ids == ["RETRIABLE"], f"expected only the retriable FAIL node, got {ids}"
+
+
 def test_falsification_matching_confidence_levels():
     fals = [
         {"id": "F1", "target": "NODE-X"},

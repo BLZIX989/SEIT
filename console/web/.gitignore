@@ -2,3 +2,5 @@ node_modules/
 dist/
 *.local
 tsconfig.tsbuildinfo
+test-results/
+playwright-report/

@@ -83,6 +83,81 @@ def test_frontier_only_contains_non_admissible_nodes():
         )
 
 
+def test_frontier_never_contains_falsified_nodes():
+    """Brief testing item 17 (architecture doc section 8): a falsified
+    candidate must never appear in the frontier as if it were an open
+    target for new investigation. Checked against the real registries
+    -- confirms the Phase 11 fix against the actual FALSIFIED nodes
+    that exist in this repository, not just a synthetic fixture."""
+    nodes_raw = client.get("/api/nodes").json()
+    falsified_ids = {n["id"] for n in nodes_raw if n["status"] == "FALSIFIED"}
+    assert falsified_ids, "expected at least one real FALSIFIED node in this repository to test against"
+
+    frontier_ids = {e["id"] for e in client.get("/api/frontier").json()}
+    assert not (falsified_ids & frontier_ids), (
+        f"FALSIFIED node(s) leaked into the frontier: {falsified_ids & frontier_ids}"
+    )
+
+
+def test_falsified_and_failed_nodes_remain_queryable_but_never_deleted():
+    """Brief testing item 17: excluded from the frontier is not the same
+    as excluded from the system. A falsified/failed node must remain
+    fully queryable via GET /api/nodes/:id forever."""
+    nodes_raw = client.get("/api/nodes").json()
+    terminal_ids = [n["id"] for n in nodes_raw if n["status"] in ("FAIL", "FALSIFIED")]
+    assert terminal_ids, "expected at least one real FAIL/FALSIFIED node in this repository to test against"
+    for nid in terminal_ids:
+        r = client.get(f"/api/nodes/{nid}")
+        assert r.status_code == 200
+        assert r.json()["status"] in ("FAIL", "FALSIFIED")
+
+
+def test_retriable_fail_nodes_remain_frontier_eligible():
+    """The Phase 11 fix excludes only FALSIFIED (compiler's own
+    ALLOWED_TRANSITIONS shows it has zero outgoing transitions) --
+    FAIL is explicitly retriable and must NOT be swept out along with
+    it. Confirmed against real FAIL nodes with fully-resolved
+    dependencies in this repository."""
+    nodes_raw = client.get("/api/nodes").json()
+    status_by_id = {n["id"]: n["status"] for n in nodes_raw}
+    admissible = {"VERIFIED", "DERIVED", "CALCULATED", "CONDITIONAL"}
+    fail_ids_with_resolved_deps = {
+        n["id"] for n in nodes_raw
+        if n["status"] == "FAIL" and all(status_by_id.get(d) in admissible for d in n["dependencies"])
+    }
+    assert fail_ids_with_resolved_deps, "expected at least one real FAIL node with resolved dependencies"
+
+    frontier_ids = {e["id"] for e in client.get("/api/frontier").json()}
+    assert fail_ids_with_resolved_deps <= frontier_ids, (
+        f"retriable FAIL node(s) incorrectly excluded from frontier: {fail_ids_with_resolved_deps - frontier_ids}"
+    )
+
+
+def test_failed_dependency_propagation_blocks_downstream_frontier_eligibility():
+    """Brief testing item 16's real console-side equivalent: this
+    compiler has no scoped single-node execution endpoint to return a
+    409 from (architecture doc section 6, point 2 -- every run is a
+    full rebuild), so the observable form of "a FAIL/FALSIFIED upstream
+    dependency blocks downstream execution" here is frontier exclusion,
+    which mirrors the same admissibility check
+    compiler/dependencies/graph.py::ExecutionGuard uses. Verified
+    against a real chain in this repository: DESI-HEAT-TRACE depends on
+    DESI-SPECTRUM, whose own status is FAIL -- so DESI-HEAT-TRACE must
+    never appear in the frontier, and the blocking dependency's real
+    (non-admissible) status must be visible, not hidden."""
+    nodes_raw = client.get("/api/nodes").json()
+    status_by_id = {n["id"]: n["status"] for n in nodes_raw}
+    assert status_by_id.get("DESI-SPECTRUM") == "FAIL"
+
+    downstream = next(n for n in nodes_raw if n["id"] == "DESI-HEAT-TRACE")
+    assert "DESI-SPECTRUM" in downstream["dependencies"]
+
+    frontier_ids = {e["id"] for e in client.get("/api/frontier").json()}
+    assert "DESI-HEAT-TRACE" not in frontier_ids, (
+        "DESI-HEAT-TRACE depends on FAIL node DESI-SPECTRUM but appeared in the frontier anyway"
+    )
+
+
 def test_frontier_every_dependency_actually_resolved():
     """For every frontier entry, every listed resolved_dependencies id
     must itself have an admissible status in the live registries --
