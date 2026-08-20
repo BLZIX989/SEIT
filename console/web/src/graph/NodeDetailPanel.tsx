@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { StatusBadge } from "../components/StatusBadge";
-import { useNode } from "../api/queries";
+import { useHypotheses, useNode } from "../api/queries";
+import { HYPOTHESIS_STATUS_COLORS } from "../hypotheses/hypothesisStatus";
 
 /**
  * Large detail panel shown on node selection (brief section VII).
@@ -22,6 +23,7 @@ export function NodeDetailPanel({
   showOpenLink?: boolean;
 }) {
   const node = useNode(nodeId ?? undefined);
+  const hypotheses = useHypotheses(nodeId ? { target_node_id: nodeId } : undefined);
 
   if (!nodeId) {
     return (
@@ -105,6 +107,25 @@ export function NodeDetailPanel({
               <pre className="audit-card__details">{JSON.stringify(f.record, null, 2)}</pre>
             </div>
           ))}
+
+          <h4>Hypotheses ({(hypotheses.data ?? []).length})</h4>
+          {(hypotheses.data ?? []).length === 0 && (
+            <p className="section-note">
+              No hypotheses proposed for this node yet. <Link to="/hypotheses">Propose one →</Link>
+            </p>
+          )}
+          {(hypotheses.data ?? []).length > 0 && (
+            <ul className="node-ref-list" style={{ display: "block" }}>
+              {(hypotheses.data ?? []).map((h) => (
+                <li key={h.id} style={{ marginBottom: 4 }}>
+                  <Link to="/hypotheses" className="tag" style={{ backgroundColor: HYPOTHESIS_STATUS_COLORS[h.status], color: "#fff", marginRight: 6 }}>
+                    {h.status}
+                  </Link>
+                  {h.statement}
+                </li>
+              ))}
+            </ul>
+          )}
 
           <h4>Supersession</h4>
           <p className="section-note">{node.data.superseding_nodes_note}</p>

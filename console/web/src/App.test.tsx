@@ -38,6 +38,7 @@ const STUB_RESPONSES: Record<string, unknown> = {
   "/api/fc005": { terminal_status: null },
   "/api/runs": [],
   "/api/ledger": [],
+  "/api/hypotheses": [],
 };
 
 const STUB_NODE_DETAIL = {
@@ -97,11 +98,25 @@ describe("App routing", () => {
   });
 
   it("renders screens that have no backend yet with an explicit NOT IMPLEMENTED panel, never fake success", () => {
-    for (const path of ["/derivation-lab", "/research", "/hypotheses", "/literature"]) {
+    for (const path of ["/derivation-lab", "/literature"]) {
       const { unmount } = renderAt(path);
       expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
       unmount();
     }
+  });
+
+  it("renders the Research screen's real frontier table alongside its remaining NOT IMPLEMENTED panel (Phase 7)", async () => {
+    renderAt("/research");
+    expect(await screen.findByRole("heading", { name: "Research" })).toBeInTheDocument();
+    expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
+  });
+
+  it("renders the Hypotheses screen with a real propose form, no NOT IMPLEMENTED panel (Phase 7)", async () => {
+    renderAt("/hypotheses");
+    expect(await screen.findByRole("heading", { name: "Hypotheses" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Propose hypothesis" })).toBeInTheDocument();
+    expect(await screen.findByText("No hypotheses yet -- propose one above.")).toBeInTheDocument();
+    expect(screen.queryByText("NOT IMPLEMENTED")).not.toBeInTheDocument();
   });
 
   it("renders the Runs screen with real (empty) history, no NOT IMPLEMENTED panel (Phase 6)", async () => {

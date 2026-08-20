@@ -157,18 +157,24 @@ def test_fc005_endpoint_is_verbatim_and_never_implies_closure():
     )
 
 
-def test_only_post_runs_is_a_mutating_route():
+def test_only_the_known_mutating_routes_exist():
     """Brief section XVII: no 'mark as verified' button, no
-    PATCH /api/nodes/:id/status. Phase 6 adds exactly one mutating
-    route -- POST /api/runs, which does nothing but invoke the real
-    compiler (see console/api/execution/executor.py) -- every other
-    route must stay GET-only forever."""
+    PATCH /api/nodes/:id/status -- and critically, no route anywhere
+    that can set a node's status directly. Phase 6 added POST /api/runs
+    (invokes the real compiler, nothing else). Phase 7 adds two more,
+    both scoped to the Hypothesis Engine's own file
+    (console_research/hypotheses.jsonl) and neither able to touch a
+    registry: POST /api/hypotheses and POST /api/hypotheses/:id/transition.
+    Every other route must stay GET-only forever."""
     mutating = {}
     for route in app.routes:
         methods = getattr(route, "methods", None) or set()
         non_safe = methods - {"GET", "HEAD", "OPTIONS"}
         if non_safe:
             mutating[route.path] = non_safe
-    assert mutating == {"/api/runs": {"POST"}}, (
-        f"expected the only mutating route to be POST /api/runs, found: {mutating}"
-    )
+    expected = {
+        "/api/runs": {"POST"},
+        "/api/hypotheses": {"POST"},
+        "/api/hypotheses/{hypothesis_id}/transition": {"POST"},
+    }
+    assert mutating == expected, f"expected exactly {expected}, found: {mutating}"

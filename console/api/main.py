@@ -21,16 +21,19 @@ from starlette.concurrency import run_in_threadpool
 from console.api.canonical import adapter, chainlink as chainlink_mod, frontier as frontier_mod
 from console.api.execution import executor, ledger_store, runs_store
 from console.api.models import (
-    AuditResultModel, ChainlinkView, FrontierNode, LedgerEvent, NodeDetail, NodeSummary,
-    RunSnapshot, StateRollup,
+    AuditResultModel, ChainlinkView, FrontierNode, Hypothesis, HypothesisCreateRequest,
+    HypothesisCreateResponse, HypothesisDetail, HypothesisTransitionRequest, LedgerEvent,
+    NodeDetail, NodeSummary, PossibleDuplicate, RunSnapshot, StateRollup,
 )
+from console.api.research import hypothesis_status, hypothesis_store
 
 app = FastAPI(
     title="UOC Research Console API",
     description="Interface over the Forward-MDCL compiler's canonical state. The compiler "
-                "and its registries remain the sole source of truth; the one write route "
-                "(POST /api/runs) only ever invokes the compiler itself.",
-    version="0.1.0-phase6",
+                "and its registries remain the sole source of truth; POST /api/runs only ever "
+                "invokes the compiler itself, and the Hypothesis Engine (POST /api/hypotheses*) "
+                "writes only to console_research/hypotheses.jsonl, never to a registry.",
+    version="0.1.0-phase7",
 )
 
 # Permissive CORS for local dev only (console/web running on a separate
@@ -148,11 +151,19 @@ def get_node(node_id: str) -> NodeDetail:
 @app.get("/api/frontier", response_model=list[FrontierNode])
 def get_frontier() -> list[FrontierNode]:
     """F_t = {x not in C_t : Pred(x) subset C_t} -- brief section VII.
-    C_t reuses compiler/dependencies/graph.py's own admissible-status set."""
+    C_t reuses compiler/dependencies/graph.py's own admissible-status set.
+    `historical_failure_rate` (Phase 7) is the one enrichment layered on
+    top of the pure canonical computation: a real rate computed from
+    terminal Hypothesis records in console_research/hypotheses.jsonl,
+    left null (not 0.0) for a node with no terminal hypothesis yet."""
     _load_or_503()
     nodes = adapter.get_all_nodes_merged()
     reverse = adapter.build_reverse_dependency_index(nodes)
-    return [FrontierNode(**e) for e in frontier_mod.compute_frontier(nodes, reverse)]
+    failure_rates = hypothesis_store.historical_failure_rates()
+    entries = frontier_mod.compute_frontier(nodes, reverse)
+    for e in entries:
+        e["historical_failure_rate"] = failure_rates.get(e["id"])
+    return [FrontierNode(**e) for e in entries]
 
 
 @app.get("/api/audits", response_model=list[AuditResultModel])
@@ -232,3 +243,103 @@ def get_ledger(limit: int = 50) -> list[LedgerEvent]:
     """Tail of the append-only research ledger, newest last. Empty (not
     an error) until the first run has happened."""
     return [LedgerEvent(**e) for e in ledger_store.tail(limit)]
+
+
+# ---------------------------------------------------------------------
+# Phase 7: Hypothesis Engine. Writes only to
+# console_research/hypotheses.jsonl -- never to a canonical registry.
+# A Hypothesis's status is informational: nothing here can promote the
+# MDCL node it targets (see console/api/research/hypothesis_status.py's
+# module docstring, architecture doc section 4.4).
+# ---------------------------------------------------------------------
+
+def _now_iso() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat()
+
+
+@app.post("/api/hypotheses", response_model=HypothesisCreateResponse, status_code=201)
+def create_hypothesis(req: HypothesisCreateRequest) -> HypothesisCreateResponse:
+    nodes = adapter.get_all_nodes_merged()
+    if req.target_node_id not in nodes:
+        raise HTTPException(
+            status_code=400,
+            detail=f"no such node '{req.target_node_id}' in the current MDCL -- a hypothesis "
+                   f"must target a real, currently-registered node",
+        )
+    possible_duplicates = hypothesis_store.find_possible_duplicates(req.target_node_id, req.statement)
+
+    now = _now_iso()
+    record = {
+        "id": hypothesis_store.next_hypothesis_id(),
+        "statement": req.statement,
+        "target_node_id": req.target_node_id,
+        "dependencies": req.dependencies,
+        "assumptions": req.assumptions,
+        "evidence": [e.model_dump() for e in req.evidence],
+        "tests": [],
+        "status": "PROPOSED",
+        "created_at": now,
+        "updated_at": now,
+        "provenance": req.provenance,
+        "superseded_by": None,
+    }
+    hypothesis_store.append(record)
+    return HypothesisCreateResponse(
+        hypothesis=Hypothesis(**record),
+        possible_duplicates=[PossibleDuplicate(**d) for d in possible_duplicates],
+    )
+
+
+@app.post("/api/hypotheses/{hypothesis_id}/transition", response_model=Hypothesis)
+def transition_hypothesis(hypothesis_id: str, req: HypothesisTransitionRequest) -> Hypothesis:
+    current = hypothesis_store.load_current(hypothesis_id)
+    if current is None:
+        raise HTTPException(status_code=404, detail=f"no hypothesis with id '{hypothesis_id}'")
+    if not hypothesis_status.can_transition(current["status"], req.new_status):
+        raise HTTPException(
+            status_code=409,
+            detail=f"cannot transition {hypothesis_id} from {current['status']} to {req.new_status} "
+                   f"(allowed: {sorted(hypothesis_status.ALLOWED_TRANSITIONS.get(current['status'], set()))})",
+        )
+
+    record = dict(current)
+    record["status"] = req.new_status
+    record["updated_at"] = _now_iso()
+    if req.evidence:
+        record["evidence"] = list(current.get("evidence", [])) + [e.model_dump() for e in req.evidence]
+    if req.tests:
+        record["tests"] = list(current.get("tests", [])) + [t.model_dump() for t in req.tests]
+    if req.superseded_by is not None:
+        record["superseded_by"] = req.superseded_by
+    # The reason is preserved permanently -- it's never lost, because
+    # every prior line (with its own provenance) stays in the jsonl
+    # history forever; this just records the reason for *this* line.
+    record["provenance"] = {**current.get("provenance", {}), "last_transition_reason": req.reason}
+
+    hypothesis_store.append(record)
+    return Hypothesis(**record)
+
+
+@app.get("/api/hypotheses", response_model=list[Hypothesis])
+def list_hypotheses(target_node_id: str | None = None, status: str | None = None) -> list[Hypothesis]:
+    """Current (latest) state of every hypothesis, optionally filtered.
+    Answers the brief's "what have we already tried for this node"
+    question directly: GET /api/hypotheses?target_node_id=X."""
+    records = hypothesis_store.load_current_all()
+    if target_node_id:
+        records = [r for r in records if r["target_node_id"] == target_node_id]
+    if status:
+        records = [r for r in records if r["status"] == status]
+    return [Hypothesis(**r) for r in records]
+
+
+@app.get("/api/hypotheses/{hypothesis_id}", response_model=HypothesisDetail)
+def get_hypothesis(hypothesis_id: str) -> HypothesisDetail:
+    history = hypothesis_store.load_history(hypothesis_id)
+    if not history:
+        raise HTTPException(status_code=404, detail=f"no hypothesis with id '{hypothesis_id}'")
+    return HypothesisDetail(
+        current=Hypothesis(**history[-1]),
+        history=[Hypothesis(**h) for h in history],
+    )

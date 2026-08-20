@@ -93,6 +93,7 @@ export interface FrontierNode {
   unresolved_dependency_count: number;
   resolved_dependencies: string[];
   downstream_unlock_count: number;
+  historical_failure_rate: number | null;
 }
 
 export interface ChainlinkArrow {
@@ -183,4 +184,52 @@ export interface LedgerEvent {
   status: string;
   provenance: Record<string, unknown>;
   content_hash: string | null;
+}
+
+export type HypothesisStatus =
+  | "PROPOSED" | "TESTING" | "SUPPORTED" | "DERIVED" | "VERIFIED"
+  | "REJECTED" | "FALSIFIED" | "SUPERSEDED" | "BLOCKED";
+
+export interface EvidenceRef {
+  description: string;
+  kind: "ledger_event" | "run" | "external" | "other";
+  ref_id: string | null;
+}
+
+export interface TestRef {
+  description: string;
+  result: "pass" | "fail" | "pending" | null;
+}
+
+export interface Hypothesis {
+  id: string;
+  statement: string;
+  target_node_id: string;
+  dependencies: string[];
+  assumptions: string[];
+  evidence: EvidenceRef[];
+  tests: TestRef[];
+  status: HypothesisStatus;
+  created_at: string;
+  updated_at: string;
+  provenance: Record<string, unknown>;
+  superseded_by: string | null;
+}
+
+export interface PossibleDuplicate {
+  id: string;
+  statement: string;
+  status: string;
+  match_confidence: "exact_normalized_match" | "word_overlap";
+  similarity: number;
+}
+
+export interface HypothesisCreateResponse {
+  hypothesis: Hypothesis;
+  possible_duplicates: PossibleDuplicate[];
+}
+
+export interface HypothesisDetail {
+  current: Hypothesis;
+  history: Hypothesis[];
 }

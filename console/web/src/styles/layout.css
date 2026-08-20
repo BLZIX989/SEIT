@@ -569,3 +569,52 @@ h2 {
   width: auto;
   max-width: 720px;
 }
+
+/* ---- Hypothesis Engine (Phase 7) ---- */
+
+.hypothesis-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 560px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin: 10px 0 20px;
+}
+.hypothesis-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-1);
+}
+.hypothesis-form select,
+.hypothesis-form input,
+.hypothesis-form textarea {
+  background: var(--bg-2);
+  border: 1px solid var(--border-strong);
+  color: var(--text-0);
+  border-radius: 4px;
+  padding: 6px 9px;
+  font-size: 13px;
+  font-family: var(--sans);
+}
+.hypothesis-form textarea {
+  resize: vertical;
+}
+
+.duplicate-warning {
+  background: #2a2414;
+  border: 1px solid var(--status-warn);
+  color: #d8c48a;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.duplicate-warning ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}

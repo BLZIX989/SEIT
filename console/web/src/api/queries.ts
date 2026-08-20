@@ -73,11 +73,11 @@ export const useLedger = (limit = 50) =>
   });
 
 /**
- * The one mutation in the whole app. On success it invalidates every
- * query that a real compiler run could have changed -- state, nodes,
- * frontier, audits, chainlink, fc005, runs, ledger -- so the UI
- * reflects the new canonical state within one refetch cycle, never a
- * stale cached view papering over what just happened on disk.
+ * Triggers a real compiler run. On success it invalidates every query
+ * that run could have changed -- state, nodes, frontier, audits,
+ * chainlink, fc005, runs, ledger -- so the UI reflects the new
+ * canonical state within one refetch cycle, never a stale cached view
+ * papering over what just happened on disk.
  */
 export const useCreateRun = () => {
   const queryClient = useQueryClient();
@@ -93,6 +93,47 @@ export const useCreateRun = () => {
       queryClient.invalidateQueries({ queryKey: ["fc005"] });
       queryClient.invalidateQueries({ queryKey: ["runs"] });
       queryClient.invalidateQueries({ queryKey: ["ledger"] });
+    },
+  });
+};
+
+// ---- Phase 7: Hypothesis Engine ----
+
+export const useHypotheses = (filters?: { target_node_id?: string; status?: string }) =>
+  useQuery({
+    queryKey: ["hypotheses", filters ?? {}],
+    queryFn: () => api.hypotheses.list(filters),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
+export const useHypothesis = (id: string | undefined) =>
+  useQuery({
+    queryKey: ["hypothesis", id],
+    queryFn: () => api.hypotheses.get(id as string),
+    enabled: Boolean(id),
+    staleTime: DEFAULT_STALE_TIME_MS,
+  });
+
+export const useCreateHypothesis = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: api.hypotheses.create,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["hypotheses"] });
+      queryClient.invalidateQueries({ queryKey: ["frontier"] });  // historical_failure_rate can change
+    },
+  });
+};
+
+export const useTransitionHypothesis = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, req }: { id: string; req: { new_status: string; reason: string } }) =>
+      api.hypotheses.transition(id, req),
+    onSuccess: (_data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["hypotheses"] });
+      queryClient.invalidateQueries({ queryKey: ["hypothesis", variables.id] });
+      queryClient.invalidateQueries({ queryKey: ["frontier"] });
     },
   });
 };

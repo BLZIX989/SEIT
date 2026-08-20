@@ -119,6 +119,8 @@ class FrontierNode(BaseModel):
     resolved_dependencies: list[str]
     downstream_unlock_count: int      # len(descendants(id)) -- transparent "why this node" input,
                                        # per brief section XV; NOT a synthesized significance score
+    historical_failure_rate: Optional[float] = None   # from real Hypothesis records (Phase 7);
+                                                        # None (not 0.0) if no terminal hypothesis exists yet
 
 
 class ChainlinkArrow(BaseModel):
@@ -237,3 +239,78 @@ class LedgerEvent(BaseModel):
     status: str = ""
     provenance: dict[str, Any] = {}
     content_hash: Optional[str] = None
+
+
+# ---------------------------------------------------------------------
+# Phase 7: Hypothesis Engine (brief section XI, architecture doc 4.4).
+# Stored in console_research/hypotheses.jsonl -- net-new state, never
+# written back into the canonical registries, and a Hypothesis's status
+# never promotes the MDCL node it targets (see
+# console/api/research/hypothesis_status.py's module docstring).
+# ---------------------------------------------------------------------
+
+HYPOTHESIS_STATUSES = Literal[
+    "PROPOSED", "TESTING", "SUPPORTED", "DERIVED", "VERIFIED",
+    "REJECTED", "FALSIFIED", "SUPERSEDED", "BLOCKED",
+]
+
+
+class EvidenceRef(BaseModel):
+    description: str
+    kind: Literal["ledger_event", "run", "external", "other"] = "other"
+    ref_id: Optional[str] = None   # e.g. a run_id or ledger event_id, when kind supports it
+
+
+class TestRef(BaseModel):
+    description: str
+    result: Optional[Literal["pass", "fail", "pending"]] = None
+
+
+class Hypothesis(BaseModel):
+    id: str
+    statement: str
+    target_node_id: str
+    dependencies: list[str] = []
+    assumptions: list[str] = []
+    evidence: list[EvidenceRef] = []
+    tests: list[TestRef] = []
+    status: HYPOTHESIS_STATUSES
+    created_at: str
+    updated_at: str
+    provenance: dict[str, Any] = {}
+    superseded_by: Optional[str] = None
+
+
+class PossibleDuplicate(BaseModel):
+    id: str
+    statement: str
+    status: str
+    match_confidence: Literal["exact_normalized_match", "word_overlap"]
+    similarity: float
+
+
+class HypothesisCreateRequest(BaseModel):
+    statement: str
+    target_node_id: str
+    dependencies: list[str] = []
+    assumptions: list[str] = []
+    evidence: list[EvidenceRef] = []
+    provenance: dict[str, Any] = {}
+
+
+class HypothesisCreateResponse(BaseModel):
+    hypothesis: Hypothesis
+    possible_duplicates: list[PossibleDuplicate] = []
+
+
+class HypothesisTransitionRequest(BaseModel):
+    new_status: HYPOTHESIS_STATUSES
+    reason: str
+    evidence: list[EvidenceRef] = []
+    tests: list[TestRef] = []
+    superseded_by: Optional[str] = None
+
+
+class HypothesisDetail(BaseModel):
+    current: Hypothesis
+    history: list[Hypothesis]

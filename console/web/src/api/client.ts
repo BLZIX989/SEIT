@@ -4,11 +4,12 @@
  * hard-coded absolute origin here -- production builds should be
  * served behind a reverse proxy on the same rule.
  *
- * Phase 6 adds the one and only mutating call: `api.runs.create()`,
- * a POST to /api/runs. It exists to trigger a real
- * `compiler.run_compiler.build_and_run()` on the backend -- nothing in
- * this client (or anywhere else in the app) can set a node's status or
- * write a registry file directly.
+ * Phase 6 added the first mutating call, `api.runs.create()` (POST
+ * /api/runs, triggers a real compiler.run_compiler.build_and_run()).
+ * Phase 7 adds `api.hypotheses.create()`/`.transition()` -- both write
+ * only to console_research/hypotheses.jsonl. Nothing in this client
+ * (or anywhere else in the app) can set a node's status or write a
+ * registry file directly.
  */
 
 export class ApiError extends Error {
@@ -39,8 +40,12 @@ async function get<T>(path: string): Promise<T> {
   return handleResponse<T>(res);
 }
 
-async function post<T>(path: string): Promise<T> {
-  const res = await fetch(`/api${path}`, { method: "POST" });
+async function post<T>(path: string, body?: unknown): Promise<T> {
+  const res = await fetch(`/api${path}`, {
+    method: "POST",
+    headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  });
   return handleResponse<T>(res);
 }
 
@@ -60,4 +65,22 @@ export const api = {
     create: () => post<import("./types").RunSnapshot>("/runs"),
   },
   ledger: (limit = 50) => get<import("./types").LedgerEvent[]>(`/ledger?limit=${limit}`),
+  hypotheses: {
+    list: (filters?: { target_node_id?: string; status?: string }) => {
+      const params = new URLSearchParams();
+      if (filters?.target_node_id) params.set("target_node_id", filters.target_node_id);
+      if (filters?.status) params.set("status", filters.status);
+      const qs = params.toString();
+      return get<import("./types").Hypothesis[]>(`/hypotheses${qs ? `?${qs}` : ""}`);
+    },
+    get: (id: string) => get<import("./types").HypothesisDetail>(`/hypotheses/${encodeURIComponent(id)}`),
+    create: (req: {
+      statement: string;
+      target_node_id: string;
+      dependencies?: string[];
+      assumptions?: string[];
+    }) => post<import("./types").HypothesisCreateResponse>("/hypotheses", req),
+    transition: (id: string, req: { new_status: string; reason: string }) =>
+      post<import("./types").Hypothesis>(`/hypotheses/${encodeURIComponent(id)}/transition`, req),
+  },
 };
