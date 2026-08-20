@@ -101,4 +101,23 @@ Running the milestone example itself still honestly raises
 UnboundInputError for B when evaluated with no supplied input,
 consistent with Phase 4's BLOCKED finding -- and computes correctly once
 a real B is supplied.
+
+Phase 6 status: the incidence/Clifford branch is exposed as executable
+`.seit` primitives (seit_lang/incidence_clifford.py): B (as
+ring_incidence_matrix, parameterized the same honest way Phase 5's
+build_graph is, since `.seit` still has no list-literal syntax for an
+arbitrary edge list), L_A=BB^T, L_B=B^TB, D_B=[[0,B],[B^T,0]], and gamma
+(the natural Z/2 grading) are separate, composable primitives -- built
+on, not by modifying, the already-verified
+scientific_corpus/derivation/dirac_candidates.py (H2B), which is also
+exposed unchanged as its own primitive (h2b_block_dirac_report). D_B's
+.seit return type is deliberately "Operator", not "SpectralTriple" --
+promoting it would require the algebra/real-structure/first-order-
+condition machinery dirac_candidates.py's own report already says is
+absent from the corpus, and this phase does not change that. A full
+Phases-1-6 `.seit` program (build B, derive L_A/L_B/D_B/gamma, verify
+symmetric(L_A)) now type-checks and executes end to end with zero
+external inputs, cross-checked against compiler/backends/
+graph_laplacian.py's independent D-A construction and against exact
+block-squaring and anticommutation identities computed on real values.
 """
