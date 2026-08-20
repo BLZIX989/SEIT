@@ -79,4 +79,26 @@ honestly reports L as BLOCKED, not CALCULATED: B is only ever
 definition statement, so it never leaves SeitState.DECLARED -- supplying
 real input data is Phase 5's job (physics-kernel bindings), and Phase 4
 does not fabricate a placeholder to make the example look further along.
+
+Phase 5 status: physics-kernel primitive bindings are implemented
+(seit_lang/primitives.py: real execution semantics for the 7
+transformation signatures Phase 2 declared type-only -- transpose,
+symmetric, positive_semidefinite, det, norm, spectrum, heat_kernel --
+plus 5 new primitives, build_graph/graph_adjacency/graph_laplacian/
+spectral_gap/kernel_projector, all bound directly to real
+compiler/backends/graph_laplacian.py, spectral.py, and heat_flow.py
+functions, never reimplemented) and a value-level evaluator
+(seit_lang/evaluate.py: evaluate_program() executes a compiled DAG's
+producing statements in topological order with real numpy values). A
+program that constructs its own graph (build_graph("cycle", 6); ...)
+has no unset leaf inputs and now computes end to end with zero
+externally supplied values -- the first genuinely complete Phases-1-5
+run in this package. Fixed a real bug caught by writing this test: `*`
+between two Matrix-family values must be matrix multiplication (B @ B.T
+for the milestone's own `B * transpose(B)`), not numpy's default
+elementwise `*`, which would have silently computed the wrong physics.
+Running the milestone example itself still honestly raises
+UnboundInputError for B when evaluated with no supplied input,
+consistent with Phase 4's BLOCKED finding -- and computes correctly once
+a real B is supplied.
 """

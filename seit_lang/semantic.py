@@ -127,10 +127,25 @@ class CheckResult:
 
 
 class SemanticChecker:
-    def __init__(self) -> None:
+    def __init__(self, extra_transformations: dict[str, TransformationSignature] | None = None) -> None:
+        """`extra_transformations` (Phase 5+) supplies additional
+        registered transformations beyond BUILTIN_TRANSFORMATIONS --
+        e.g. real physics-kernel bindings from seit_lang.primitives. If
+        a name collides with an existing signature that DIFFERS, this
+        is a setup-time configuration error (raised immediately, not
+        deferred to check()) -- Phase 5 must not silently redefine a
+        signature Phase 2 already declared (see seit_lang/primitives.py
+        module docstring)."""
         self.symbols: dict[str, str] = {}
         self.kinds: dict[str, str] = {}
         self.transformations: dict[str, TransformationSignature] = dict(BUILTIN_TRANSFORMATIONS)
+        for name, sig in (extra_transformations or {}).items():
+            existing = self.transformations.get(name)
+            if existing is not None and existing != sig:
+                raise ValueError(
+                    f"extra_transformations[{name!r}] = {sig!r} conflicts with an "
+                    f"already-registered signature {existing!r}")
+            self.transformations[name] = sig
         self.unresolved_calls: list[UnresolvedCall] = []
         self.dependency_edges: list[tuple[str, str]] = []
         self.module_name: str | None = None
@@ -358,10 +373,14 @@ class SemanticChecker:
         raise TypeError(f"unhandled statement node: {type(stmt).__name__}")  # pragma: no cover
 
 
-def check_program(program: ast.Program) -> CheckResult:
+def check_program(
+    program: ast.Program,
+    extra_transformations: dict[str, TransformationSignature] | None = None,
+) -> CheckResult:
     """Type-check a parsed `.seit` Program. Raises a SemanticError
     subclass on the first hard error encountered; otherwise returns a
     CheckResult describing the final symbol table, the transformation
-    registry (built-ins plus any `operator` declarations), and any
-    unresolved-transformation calls encountered."""
-    return SemanticChecker().check(program)
+    registry (built-ins, any `extra_transformations` supplied by a
+    caller such as seit_lang.primitives, plus any `operator`
+    declarations), and any unresolved-transformation calls encountered."""
+    return SemanticChecker(extra_transformations).check(program)
