@@ -1,53 +1,22 @@
-import { NotImplemented } from "../components/NotImplemented";
-import { StatusBadge } from "../components/StatusBadge";
-import { useFrontier, useNodes } from "../api/queries";
+import { MdclGraph } from "../graph/MdclGraph";
 
 /**
- * Phase 3 stub: real node/frontier data rendered as a table, since
- * that already exists via /api/nodes and /api/frontier. The
- * interactive pan/zoom/cluster graph itself (brief section VII) is
- * Phase 4 work and is not faked here with a static image or a
- * non-interactive placeholder graphic.
+ * Interactive MDCL dependency graph (Phase 4, brief section VII).
+ * All node/edge/status/role/frontier data comes from GET /api/nodes and
+ * GET /api/frontier -- the same live registries every other screen
+ * reads. Layout is dagre over the real dependency edges (no
+ * force-directed approximation, no invented thematic clustering).
  */
 export function DependencyGraph() {
-  const nodes = useNodes();
-  const frontier = useFrontier();
-  const frontierIds = new Set((frontier.data ?? []).map((f) => f.id));
-
   return (
-    <div>
+    <div className="dependency-graph-screen">
       <h1>Dependency Graph</h1>
-      <NotImplemented
-        feature="Interactive MDCL graph (pan/zoom/search/filter/clusters)"
-        reason="Phase 4 of the implementation plan. The data this view will render already exists
-          and is shown below as a plain table in the meantime -- real node/status/dependency data,
-          not a mock graph."
-      />
-      {nodes.isLoading && <p>Loading nodes…</p>}
-      {nodes.data && (
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Kind</th>
-              <th>Status</th>
-              <th>Dependencies</th>
-              <th>Frontier?</th>
-            </tr>
-          </thead>
-          <tbody>
-            {nodes.data.map((n) => (
-              <tr key={n.id} className={frontierIds.has(n.id) ? "row--frontier" : undefined}>
-                <td><code>{n.id}</code></td>
-                <td>{n.kind}</td>
-                <td><StatusBadge status={n.status} /></td>
-                <td>{n.dependencies.length ? n.dependencies.join(", ") : "—"}</td>
-                <td>{frontierIds.has(n.id) ? "yes" : ""}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <p className="section-note">
+        Every node, edge, status color, and dependency arrow below is read live from the canonical
+        registries. Click a node to inspect it; dependency/dependent highlighting and frontier mode
+        (F_t) use the same admissibility rule the compiler itself uses to decide what can execute next.
+      </p>
+      <MdclGraph />
     </div>
   );
 }

@@ -58,10 +58,12 @@ describe("App routing", () => {
     expect(await screen.findByRole("heading", { name: "Current Theory State" })).toBeInTheDocument();
   });
 
-  it("renders the Dependency Graph screen and its NOT IMPLEMENTED panel", async () => {
+  it("renders the Dependency Graph screen with live node/frontier data (Phase 4, no NOT IMPLEMENTED panel)", async () => {
     renderAt("/graph");
     expect(await screen.findByRole("heading", { name: "Dependency Graph" })).toBeInTheDocument();
-    expect(screen.getByText("NOT IMPLEMENTED")).toBeInTheDocument();
+    // Phase 4 replaced the placeholder table with a real React Flow
+    // graph -- this screen must not show NOT IMPLEMENTED anymore.
+    expect(screen.queryByText("NOT IMPLEMENTED")).not.toBeInTheDocument();
   });
 
   it("renders all 15 primary nav items", () => {

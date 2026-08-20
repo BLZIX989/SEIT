@@ -4,7 +4,7 @@
  * invent its own color-to-status association (brief section VII: "Node
  * colors/status must come from canonical status").
  */
-const STATUS_COLORS: Record<string, string> = {
+export const STATUS_COLORS: Record<string, string> = {
   VERIFIED: "#2e7d5b",
   DERIVED: "#3d7fb0",
   CALCULATED: "#5b6fb0",
