@@ -1,0 +1,238 @@
+{
+  "h2b_reused_from_prior_phase": {
+    "claim_id": "H2B",
+    "hypothesis": "H2B -- locality of the block-incidence Dirac operator D=[[0,d1],[d1^T,0]] on the SAME graph H2 tested (independent of, and not overwriting, H2-SPECTRAL-TRIPLE-LOCALITY=FAIL for D+=sqrt(L))",
+    "test_graph": "n=200 nearest-neighbour ring, k=3 -- identical construction to H2",
+    "n_triangles_available_as_2_cells": 600,
+    "D_self_adjoint": true,
+    "D_squared_equals_diag(L0,d1^T_d1)_exactly": true,
+    "D_sparsity_fraction_strict": 0.00375,
+    "D_sparsity_fraction_relative_1e-3_of_max": 0.00375,
+    "D_row0_decay_by_graph_distance_vertex_block": {
+      "0": 1.0,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "10": 0.0,
+      "50": 0.0,
+      "100": 0.0
+    },
+    "comparison_to_H2_D_plus_sqrt_L": {
+      "D_plus_sparsity_fraction_relative_1e-3_of_max_FROM_H2": "0.235 (23.5%), per H2's own recorded result",
+      "D_block_sparsity_fraction_relative_1e-3_of_max_HERE": 0.00375,
+      "interpretation": "By construction (built directly from the local incidence matrix d1, never from spectral/functional calculus on L), D is exactly as sparse as d1 itself -- each nonzero entry connects a vertex to an edge it is literally an endpoint of, i.e. locality is exact and structural, not merely 'improved relative to sqrt(L)'. This directly resolves the specific locality failure mode H2 found in D+=sqrt(L) (which was dense: 100% strict, 23.5% at the same 0.1%-of-peak threshold, with weight extending to graph-distance 50+)."
+    },
+    "what_this_DOES_NOT_establish": "Locality alone does not make D a valid Dirac operator for a Standard-Model-type spectral triple. H2's other findings stand unchanged and apply equally here: the KO-dimension this construction naturally produces has not been shown to be 6 mod 8 (the value the Chamseddine-Connes-Marcolli construction requires), and no algebra representation A, grading, or real structure J compatible with the first-order condition [[D,a],JbJ^-1]=0 has been constructed here or anywhere in the corpus. D2's D^2=diag(L0, d1^T d1) also only recovers the RESTRICTED (2-cell-omitting) Laplacian term, per simplicial.py::check_two_block_dirac_squaring -- see TFT-002 vs TFT-002B."
+  },
+  "persistent_sector": {
+    "claim": "Persistence projection P_lambda_c, restricted Laplacian L_Pi, and heat trace K_Pi(beta) -- exact finite-dimensional linear algebra, computed on a real compiler-built graph (not a synthetic toy unrelated to the project's own construction)",
+    "test_graph": "erdos_renyi(n=60, seed=0)",
+    "by_lambda_c": {
+      "lambda_c_frac_0.1": {
+        "lambda_c": 3.6998774593296533,
+        "n_persistent_modes": 1,
+        "P_idempotent": true,
+        "P_self_adjoint": true,
+        "L_Pi_equals_P_L_P_reconstruction": true,
+        "K_Pi_beta_sweep": {
+          "0.1": 1.0,
+          "1.0": 1.0,
+          "5.0": 1.0,
+          "20.0": 1.0
+        },
+        "K_Pi_monotone_nonincreasing_in_beta": true,
+        "K_Pi_beta_to_infinity_limit_equals_dim_ker_L_within_sector": true
+      },
+      "lambda_c_frac_0.25": {
+        "lambda_c": 9.249693648324133,
+        "n_persistent_modes": 1,
+        "P_idempotent": true,
+        "P_self_adjoint": true,
+        "L_Pi_equals_P_L_P_reconstruction": true,
+        "K_Pi_beta_sweep": {
+          "0.1": 1.0,
+          "1.0": 1.0,
+          "5.0": 1.0,
+          "20.0": 1.0
+        },
+        "K_Pi_monotone_nonincreasing_in_beta": true,
+        "K_Pi_beta_to_infinity_limit_equals_dim_ker_L_within_sector": true
+      },
+      "lambda_c_frac_0.5": {
+        "lambda_c": 18.499387296648266,
+        "n_persistent_modes": 8,
+        "P_idempotent": true,
+        "P_self_adjoint": true,
+        "L_Pi_equals_P_L_P_reconstruction": true,
+        "K_Pi_beta_sweep": {
+          "0.1": 2.3960325777404057,
+          "1.0": 1.000001744884711,
+          "5.0": 1.0,
+          "20.0": 1.0
+        },
+        "K_Pi_monotone_nonincreasing_in_beta": true,
+        "K_Pi_beta_to_infinity_limit_equals_dim_ker_L_within_sector": true
+      }
+    }
+  },
+  "persistent_distance_beta_limits": {
+    "claim": "d_{Pi,beta} -> d_Pi as beta->0; d_{Pi,beta} is monotone nonincreasing in beta",
+    "beta_near_0_matches_unweighted_persistent_distance": true,
+    "distances_by_beta": {
+      "0.0001": 1.0458435896979006,
+      "0.1": 1.0025275408491825,
+      "1.0": 0.7601759839466078,
+      "5.0": 0.5016834654518911,
+      "20.0": 0.23763609322420273
+    },
+    "monotone_nonincreasing_in_beta": true,
+    "note": "beta cannot be taken to infinity for a nontrivial geometry -- confirmed here: d(20.0) = 0.237636, approaching but not exactly reaching 0 for finite beta, consistent with beta acting as a finite coarse-graining scale rather than a limit to be maximized."
+  },
+  "kc003_decomposition": {
+    "KC-003a_measure_convergence": {
+      "statement": "empirical point measure mu_N -> continuum measure mu as N->infinity",
+      "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+      "missing_object": "The real DESI sparse N-scaling data (data/desi/dr1/fc005/derived/sparse_n_scaling_full_results.json) records only summary spectral quantities per N (epsilon, avg_degree, nnz, low_eigenvalues) -- not the underlying point coordinates/density weights at each N needed to directly test empirical-measure weak convergence against a stated target continuum measure."
+    },
+    "KC-003b_operator_convergence": {
+      "statement": "L_N -> L (in an appropriate operator-norm or resolvent sense) as N->infinity",
+      "status": "PARTIALLY ADDRESSED via CONV-001's numerical relative-change evidence (see convergence.py) -- NOT a rigorous operator-norm/resolvent proof, which requires the same missing H_n->H identification map CONV-001 already identified as absent from the corpus."
+    },
+    "KC-003c_spectral_convergence": {
+      "statement": "lambda_k(L_N) -> lambda_k(L) for each fixed k as N->infinity",
+      "status": "COMPUTED (CONV-001) -- see convergence.py's per-dataset results: uniform synthetic data shows decaying relative change consistent with spectral convergence; real DESI/clustered data does not."
+    },
+    "KC-003d_geometric_convergence": {
+      "statement": "the reconstructed metric/geometric quantities (distance, curvature) converge to their continuum values",
+      "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS -- blocked by the same d(i,j)->g_munu gap already identified in DERIVATION_FRONTIER.md (no g_munu construction from d(i,j) exists to test convergence of)."
+    }
+  },
+  "vr001_known_manifold_control": {
+    "claim": "VR-001 methodology test on a KNOWN manifold (S^1) where the correct answer is analytically known -- NOT a claim about real DESI data (see KC-003a/d above for why that specific case remains open)",
+    "results": {
+      "uniform": {
+        "100": {
+          "lambda_first_nonzero": 0.019717140514500648,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 1.0,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 1.0000000000000002,
+          "converged_close_to_1": true
+        },
+        "300": {
+          "lambda_first_nonzero": 0.0039586717655819385,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 0.9996536357702163,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 0.9998162939720504,
+          "converged_close_to_1": true
+        },
+        "800": {
+          "lambda_first_nonzero": 0.000863559311097575,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 1.0000000000000004,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 1.0000000000000009,
+          "converged_close_to_1": true
+        }
+      },
+      "nonuniform": {
+        "100": {
+          "lambda_first_nonzero": 0.016704350198722056,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 0.018763527271636347,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 0.1831602900831886,
+          "converged_close_to_1": false
+        },
+        "300": {
+          "lambda_first_nonzero": 0.0032395664803156975,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 0.45464021447258374,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 0.15693505225061277,
+          "converged_close_to_1": false
+        },
+        "800": {
+          "lambda_first_nonzero": 0.000852462163600318,
+          "cos_theta_projection_norm_onto_computed_eigenspace": 0.07095949287230136,
+          "sin_theta_projection_norm_onto_computed_eigenspace": 0.25470864628334194,
+          "converged_close_to_1": false
+        }
+      }
+    },
+    "interpretation": "Under uniform sampling, the computed low eigenspace should increasingly align with the true span{cos(theta),sin(theta)} as N grows (projection norms -> 1). Under nonuniform (clustered) sampling with the SAME unnormalized graph Laplacian, density bias is expected to degrade this convergence -- exactly the known diffusion-map-theory distinction the corpus's own FC-005 investigation already turns on (density-normalized vs raw constructions)."
+  },
+  "ko_skew_symmetric_determinant": {
+    "claim": "For every odd n, det(A)=0 identically for ANY real skew-symmetric n x n matrix A (a general algebraic identity, not a property of one example)",
+    "results": {
+      "3": {
+        "symbolic_determinant": "0",
+        "identically_zero": true
+      },
+      "5": {
+        "symbolic_determinant": "0",
+        "identically_zero": true
+      },
+      "7": {
+        "symbolic_determinant": "0",
+        "identically_zero": true
+      }
+    },
+    "all_odd_n_confirm_identically_zero": true
+  },
+  "ko_symmetric_example": {
+    "claim": "Real symmetric n x n matrices are NOT identically forced to have determinant zero (unlike the odd-n skew-symmetric case)",
+    "example_matrix": "[[2, 1, 0], [1, 2, 1], [0, 1, 2]]",
+    "determinant": 4,
+    "nonzero": true,
+    "what_this_DOES_NOT_show": "This shows nonzero-determinant symmetric 3x3 matrices EXIST, i.e. the obstruction that makes the odd-n skew-symmetric case impossible does not apply to the symmetric case in general. It does NOT show that the SPECIFIC multiplicity matrix this project's own construction would produce (which requires an actual fermion-representation assignment for A_F = C (+) H (+) M_3(C), not present anywhere in this repository) has nonzero determinant -- that remains OPEN, exactly as the user's own instruction states."
+  },
+  "ko_parameter_scan": [
+    {
+      "KO_mod_8": 0,
+      "real_structure_commutes_with_grading": true,
+      "intersection_form_symmetry": "SYMMETRIC",
+      "odd_dim_determinant_forced_zero": false,
+      "source": "external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+    },
+    {
+      "KO_mod_8": 1,
+      "real_structure_commutes_with_grading": "N/A (no grading at KO=1)",
+      "intersection_form_symmetry": "N/A",
+      "odd_dim_determinant_forced_zero": "N/A",
+      "source": "external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+    },
+    {
+      "KO_mod_8": 2,
+      "real_structure_commutes_with_grading": false,
+      "intersection_form_symmetry": "ANTISYMMETRIC",
+      "odd_dim_determinant_forced_zero": true,
+      "source": "external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+    },
+    {
+      "KO_mod_8": 4,
+      "real_structure_commutes_with_grading": true,
+      "intersection_form_symmetry": "SYMMETRIC",
+      "odd_dim_determinant_forced_zero": false,
+      "source": "external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+    },
+    {
+      "KO_mod_8": 6,
+      "real_structure_commutes_with_grading": false,
+      "intersection_form_symmetry": "ANTISYMMETRIC",
+      "odd_dim_determinant_forced_zero": true,
+      "source": "external, established (Connes' KO-dimension classification table, as used in Chamseddine-Connes-Marcolli 2007) -- NOT independently re-derived from K-theory first principles in this module"
+    }
+  ],
+  "spin6_su4": {
+    "claim": "Spin(6) ~= SU(4) (standard exceptional isomorphism, D3 ~= A3 Dynkin diagrams)",
+    "external_established_mathematics": true,
+    "dim_match": true,
+    "rank_match": true,
+    "note": "Dimension/rank match is consistent with, but does not independently prove, the isomorphism (that requires the actual D3=A3 root-system identification, standard but not reproduced here). Cited as external established fact."
+  },
+  "clifford_rank_forcing": {
+    "claim": "Cl(6) is the Clifford algebra forced by this project's own incidence/Dirac construction (B, D_B=[[0,B],[B^T,0]], L=D_B^2)",
+    "status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS -- dimension is UNFORCED",
+    "evidence": "B is defined generically as an n x m bipartite incidence matrix (n, m arbitrary, set by whatever graph/hypergraph the compiler is given -- compiler/backends/graph_laplacian.py builds B-equivalent incidence structure for graphs of any size n, never a fixed n=6). D_B and L=D_B^2 inherit this same unforced dimensionality. Nothing anywhere in the corpus (compiler/, scientific_corpus/, or the newly-read Universal Rosetta/This-from-That/Spectral-Codex documents) ties the SPECIFIC value 6 to any property of B, D_B, or L -- the number 6 enters only because the EXTERNAL Chamseddine-Connes-Marcolli Standard Model construction happens to require KO-dimension 6 mod 8 for its finite algebra factor, a target imported from outside this project's own graph/Dirac construction, not derived from it.",
+    "recommended_treatment": "Per the user's own instruction (Sec.9): retain Cl(n) parametrically rather than asserting Cl(6). If a future construction genuinely forces n=6 from this project's own objects (e.g. a specific hypergraph rank, a specific number of independent incidence generators tied to a real dataset), that would need its own derivation and its own claim ID -- not assumed by importing the Standard Model's own target number."
+  },
+  "su4_to_sm_breaking": {
+    "claim": "Spin(6) ~= SU(4) -> [representation breaking] -> SU(3) x SU(2) x U(1)",
+    "spin6_su4_isomorphism": "external, established (see ko_dimension.py)",
+    "su4_to_sm_breaking_status": "NOT COMPUTABLE FROM AVAILABLE DEFINITIONS",
+    "evidence": "SU(4) does contain SU(3)xU(1) as a standard maximal-subgroup breaking (rank(SU(3)xU(1))=2+1=3=rank(SU(4)), consistent by the same necessary-condition check used for H4B) -- but recovering the FULL SU(3)xSU(2)xU(1) with the correct hypercharge normalization additionally requires either (a) starting from a larger ambient group with an SU(2) factor already present (e.g. the standard Pati-Salam SU(4)xSU(2)_LxSU(2)_R route, external established GUT model-building, not what this project's Cl(6)->Spin(6) route as literally stated produces), or (b) an explicit symmetry-breaking mechanism (a vacuum expectation value / explicit subgroup selection) tied to this project's own construction. Neither exists anywhere in the corpus. This is the SAME kind of gap H4 already found for the Aut(O)xSpin(8) route -- group containment/breaking possibility is not group derivation.",
+    "verdict": "Structurally analogous to H4's finding: rank/dimension-level plausibility without an actual constructed derivation. Does not overwrite H4; this is the SU(4) route specifically, a different starting point than Aut(O)xSpin(8)."
+  }
+}
