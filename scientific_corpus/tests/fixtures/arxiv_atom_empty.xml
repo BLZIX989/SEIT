@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns="http://www.w3.org/2005/Atom">
+  <title>ArXiv Query: no results</title>
+  <id>http://arxiv.org/api/test-empty</id>
+  <updated>2026-08-20T17:05:27Z</updated>
+  <opensearch:totalResults>0</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <opensearch:itemsPerPage>0</opensearch:itemsPerPage>
+</feed>
