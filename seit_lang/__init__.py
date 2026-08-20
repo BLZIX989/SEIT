@@ -216,4 +216,24 @@ _seit_status_label classifier (not a second, possibly-diverging
 implementation) to emit `.seit` source labeling Cl(6) OPEN, never
 DERIVED, per the brief's explicit "only promote Cl(6) to DERIVED if
 actually forced" requirement.
+
+Phase 11 status: the gauge branch is exposed as executable `.seit`
+primitives (seit_lang/gauge_branch.py), building on -- not modifying --
+scientific_corpus/derivation/gauge_rank.py. su3_in_g2_check(),
+su2xu1_in_spin8_check(), and h4c_missing_link_report() expose the
+existing, unchanged findings (SU(3) subset G2: real established Lie
+theory; SU(2)xU(1) subset Spin(8): rank/dimension necessary-condition
+check only, never claimed sufficient; H4C: no rule exists anywhere in
+the corpus for which graph represents "the physical vacuum state").
+Per the brief's explicit "do NOT insert SU(3)xSU(2)xU(1) as a target
+condition," this phase adds a MEASUREMENT tool, not a search:
+eigenvalue_multiplicity_pattern() reports the actual eigenvalue
+multiplicities of a GIVEN, independently-constructed graph's spectrum
+(cross-checked against the well-known exact K_5 Laplacian spectrum:
+eigenvalue 0 once, eigenvalue 5 four times), and
+h4c_pattern_match_report() compares that observed pattern against
+SEIT-7's required (3,2,1) degeneracy -- never searching for or
+selecting a graph to produce a match, and explicit that neither a match
+nor a non-match would establish or falsify SEIT-7, since no specific
+graph has ever been asserted as the required one.
 """
