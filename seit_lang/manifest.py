@@ -67,7 +67,7 @@ def build_manifest(file: str, target: str = "default", inputs: dict | None = Non
     try:
         program = cli._stage_parse(path, prov)
         check_result = cli._stage_check(program, preset, prov)
-        dag = cli._stage_build(program, check_result, prov)
+        dag = cli._stage_build(program, check_result, prov, inputs)
     except cli._StageFailure as fail:
         return {
             "execution_manifest": {

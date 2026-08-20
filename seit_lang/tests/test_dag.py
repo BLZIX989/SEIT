@@ -169,3 +169,42 @@ def test_topological_order_respects_dependency_edges():
     dag = compile_dag(parse(src))
     order = dag.topological_order()
     assert order.index("x") < order.index("y") < order.index("z")
+
+
+# --- supplied_inputs (Phase 16) ---------------------------------------------
+
+def test_without_supplied_inputs_L_stays_blocked_default_unchanged():
+    src = "variable B: IncidenceMatrix; variable L: Laplacian; derive L = B * transpose(B);"
+    dag = compile_dag(parse(src))
+    assert dag.states["L"] == SeitState.BLOCKED
+
+
+def test_supplied_inputs_as_a_set_of_names_unblocks_dependents():
+    src = "variable B: IncidenceMatrix; variable L: Laplacian; derive L = B * transpose(B);"
+    dag = compile_dag(parse(src), supplied_inputs={"B"})
+    assert dag.states["B"] == SeitState.CALCULATED
+    assert dag.states["L"] == SeitState.CALCULATED
+    assert dag.blocked == {}
+
+
+def test_supplied_inputs_as_a_dict_also_works():
+    # a caller typically has real input VALUES (e.g. seit_lang.evaluate's
+    # own inputs= dict) -- compile_dag only needs the key set, and must
+    # accept a dict directly rather than forcing every caller to strip it.
+    src = "variable B: IncidenceMatrix; variable L: Laplacian; derive L = B * transpose(B);"
+    dag = compile_dag(parse(src), supplied_inputs={"B": object()})
+    assert dag.states["L"] == SeitState.CALCULATED
+
+
+def test_supplied_inputs_naming_an_unknown_symbol_is_harmless():
+    dag = compile_dag(parse("variable L: Laplacian;"), supplied_inputs={"nonexistent"})
+    assert dag.states["L"] == SeitState.DECLARED  # unaffected, no crash
+
+
+def test_supplied_input_still_does_not_fabricate_a_downstream_edges_proof_obligation():
+    # unblocking B must not retroactively invent a `verify` statement
+    # that was never written -- proof_obligation stays UNSTATED.
+    src = "variable B: IncidenceMatrix; variable L: Laplacian; derive L = B * transpose(B);"
+    dag = compile_dag(parse(src), supplied_inputs={"B"})
+    edge = dag.edges[("B", "L")]
+    assert "UNSTATED" in edge.proof_obligation

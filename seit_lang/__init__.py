@@ -329,4 +329,52 @@ Phases 5-12's primitives TOGETHER in one dependency graph -- type-
 checks, compiles with zero blocked nodes, executes end to end with zero
 external inputs, passes all its `verify` statements, and produces a
 reproducible manifest recording every phase's operator by name.
+
+Phase 16 status (FIRST MILESTONE, complete): the brief's own
+spectral_test.seit is actually executable via `seit run`, producing a
+real machine-readable result -- not a design document.
+seit_lang/tests/test_phase16_milestone.py runs it two ways, both
+honest: the LITERAL, byte-for-byte brief text (spectral_test.seit)
+still fails at `seit run` for the exact reason Phase 2's tests already
+found (heat_kernel(L, beta) references an undeclared beta) -- that
+finding is not papered over here, it is reconfirmed through the real
+CLI. The one-line-corrected version (spectral_test_complete.seit,
+Phase 1) now genuinely runs end to end, over real subprocess
+invocations of `python -m seit_lang.cli run` and `python -m seit_lang
+run` (the closest thing this un-packaged repository has to an
+installed `seit` executable), given a real, concretely constructed
+incidence matrix via a new `--inputs <file.json>` CLI flag
+(cli._load_inputs).
+
+Building that flag surfaced a genuine, previously undetected gap
+between Phase 4 (static DAG compilation) and Phase 5 (evaluation):
+compile_dag() computed states before any --inputs were even read, so a
+node like B -- correctly BLOCKED by default, per Phase 4's own
+documented finding -- stayed reported as BLOCKED even after
+evaluate_program() successfully computed real values for everything
+depending on it, because the DAG had no way to know an external value
+was coming. Fixed by giving compile_dag() an optional
+`supplied_inputs` parameter (seit_lang/dag.py, with its own new direct
+tests in test_dag.py) that lets a genuinely-supplied node reach
+CALCULATED -- not a relaxation of the original dependency-validity
+rule, only a distinction between "no value at all" (still BLOCKED) and
+"a real value is coming from outside the program text" (now
+CALCULATED). This is exactly the kind of thing this project's
+verify-computed-results discipline exists to catch: the bug was found
+by writing a real end-to-end test and reading its honest failure, not
+assumed away.
+
+With all 16 phases complete, `.seit` is a real, working, tested
+execution-interface layer over the existing Forward-MDCL compiler and
+scientific_corpus/derivation/ mathematics: lexer, parser, AST, semantic
+type system, state machine, dependency DAG, physics-kernel primitive
+bindings across eight branches (generic kernel, incidence/Clifford,
+persistence, continuum bridge, NCG, Clifford derivation, gauge,
+spectral action), a CLI with nine subcommands, reproducibility
+manifests, and a genuinely executable milestone program -- built
+incrementally, phase by phase, with the full existing compiler and
+corpus test suite kept green throughout, never modifying compiler/core,
+compiler/dependencies, compiler/backends, compiler/falsification,
+compiler/verification, compiler/ir, run_compiler.py, or any canonical
+registry outside their own real execution paths.
 """

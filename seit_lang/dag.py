@@ -40,6 +40,18 @@ CALCULATED, until something actually supplies B a value -- which is
 exactly the physics-kernel data-ingestion work Phase 5 exists to do.
 Phase 4 does not fabricate a placeholder value for an unset input to
 make the milestone example look further along than it is.
+
+UPDATE (Phase 16): compile_dag() gained an optional `supplied_inputs`
+parameter for exactly the case above, once a caller genuinely intends
+to supply B externally (e.g. seit_lang.cli's `--inputs` flag). Passing
+the same input names used at evaluation time lets that node reach
+CALCULATED here too, so the DAG's reported state matches what actually
+gets computed -- this does not relax the dependency-validity rule
+above (a supplied input's value still comes from outside the program
+text, never from a producing statement); it only distinguishes "no
+producing statement AND no value at all" (still honestly BLOCKED, the
+default when supplied_inputs is omitted) from "no producing statement
+but a real value is coming from the caller" (now correctly CALCULATED).
 """
 from __future__ import annotations
 
@@ -168,7 +180,11 @@ def _collect_provenance(program: ast.Program) -> dict[str, str]:
     return {stmt.target: stmt.value for stmt in program.statements if isinstance(stmt, ast.ProvenanceStmt)}
 
 
-def compile_dag(program: ast.Program, check_result: CheckResult | None = None) -> SeitDAG:
+def compile_dag(
+    program: ast.Program,
+    check_result: CheckResult | None = None,
+    supplied_inputs: set[str] | dict | None = None,
+) -> SeitDAG:
     """Compile a parsed `.seit` Program into a SeitDAG. Runs
     seit_lang.semantic.check_program first unless an already-computed
     CheckResult is supplied (so callers who already type-checked the
@@ -177,9 +193,29 @@ def compile_dag(program: ast.Program, check_result: CheckResult | None = None) -
     `dependency` statements plus the implicit edges from every
     `derive`/`calculate`/`definition`/`constant`/`equation`/`theorem`/
     `lemma`/`assumption` target to the free identifiers in its
-    expression) contain a cycle."""
+    expression) contain a cycle.
+
+    `supplied_inputs` (Phase 16): names of `variable`/`primitive`
+    declarations that will be given a real value from OUTSIDE the
+    program text at evaluation time (seit_lang.evaluate.evaluate_program's
+    own `inputs=` dict, or just its key set). Without this, a node like
+    the brief's own `variable B: IncidenceMatrix;` -- which has no
+    producing statement in the source, by design -- stays honestly
+    BLOCKED even when the caller fully intends to supply B externally,
+    because static compilation has no way to know that on its own (this
+    is exactly what seit_lang/tests/test_phase16_milestone.py's own
+    development surfaced: `seit run spectral_test_complete.seit
+    --inputs ...` genuinely computed L, yet the DAG's reported state for
+    L stayed BLOCKED, because compile_dag ran before --inputs was even
+    read). Passing the same input names used at evaluation time lets a
+    supplied node reach SeitState.CALCULATED here too -- its value
+    still comes from outside, not from a producing statement, so this
+    is not a relaxation of Phase 4's original dependency-validity rule,
+    only an acknowledgment that "no producing statement" and "no value
+    at all" are not the same claim."""
     if check_result is None:
         check_result = check_program(program)
+    supplied = set(supplied_inputs) if supplied_inputs else set()
 
     graph = DependencyGraph()
     machine = SeitStateMachine()
@@ -190,6 +226,10 @@ def compile_dag(program: ast.Program, check_result: CheckResult | None = None) -
     for name in check_result.symbols:
         graph.add_node(name)
         machine.declare(name)
+    for name in supplied:
+        if name in machine.states:
+            machine.transition(name, SeitState.RESOLVED)
+            machine.transition(name, SeitState.CALCULATED)
 
     edges: dict[tuple[str, str], EdgeInfo] = {}
 

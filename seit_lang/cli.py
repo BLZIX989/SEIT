@@ -119,6 +119,21 @@ def _json_safe(value):
     return value
 
 
+def _load_inputs(path: str | None) -> dict:
+    """Phase 16: loads declared external input VALUES from a JSON file
+    (a flat {name: value} mapping; a JSON array becomes a numpy array,
+    e.g. for a Matrix/IncidenceMatrix-typed `variable`). This is what
+    makes `seit run` able to actually execute a program like the
+    brief's own milestone example, whose `variable B: IncidenceMatrix;`
+    is never assigned by any derive/calculate statement (see
+    seit_lang.dag's Phase 4 module docstring) -- real input data has to
+    come from somewhere outside the program text itself."""
+    if path is None:
+        return {}
+    raw = json.loads(Path(path).read_text())
+    return {k: (np.array(v) if isinstance(v, list) else v) for k, v in raw.items()}
+
+
 def _provenance(path: Path, target: str) -> dict:
     text = path.read_text()
     return {
@@ -148,16 +163,17 @@ def _stage_check(program: ast.Program, preset: dict, prov: dict) -> CheckResult:
         raise _StageFailure({"ok": False, "stage": "check", "error": str(exc), "provenance": prov})
 
 
-def _stage_build(program: ast.Program, check_result: CheckResult, prov: dict) -> SeitDAG:
+def _stage_build(program: ast.Program, check_result: CheckResult, prov: dict,
+                  supplied_inputs: dict | None = None) -> SeitDAG:
     try:
-        return compile_dag(program, check_result)
+        return compile_dag(program, check_result, supplied_inputs)
     except DagCompileError as exc:
         raise _StageFailure({"ok": False, "stage": "build", "error": str(exc), "provenance": prov})
 
 
-def _stage_run(dag: SeitDAG, program: ast.Program, preset: dict, prov: dict) -> dict:
+def _stage_run(dag: SeitDAG, program: ast.Program, preset: dict, prov: dict, inputs: dict | None = None) -> dict:
     try:
-        return evaluate_program(dag, program, inputs={}, bindings=preset["bindings"])
+        return evaluate_program(dag, program, inputs=inputs or {}, bindings=preset["bindings"])
     except (UnboundInputError, UnboundTransformationError) as exc:
         raise _StageFailure({"ok": False, "stage": "run", "error": str(exc),
                               "error_type": type(exc).__name__, "provenance": prov})
@@ -245,31 +261,33 @@ def cmd_build(file: str, target: str = "default") -> dict:
     }
 
 
-def cmd_run(file: str, target: str = "default") -> dict:
+def cmd_run(file: str, target: str = "default", inputs_path: str | None = None) -> dict:
     path = Path(file)
     preset = _target_preset(target)
     prov = _provenance(path, target)
+    inputs = _load_inputs(inputs_path)
     try:
         program = _stage_parse(path, prov)
         result = _stage_check(program, preset, prov)
-        dag = _stage_build(program, result, prov)
-        env = _stage_run(dag, program, preset, prov)
+        dag = _stage_build(program, result, prov, inputs)
+        env = _stage_run(dag, program, preset, prov, inputs)
     except _StageFailure as fail:
         return fail.payload
     return {"ok": True, "environment": _json_safe(env),
             "states": {k: v.value for k, v in dag.states.items()},
-            "provenance": prov}
+            "declared_inputs": sorted(inputs), "provenance": prov}
 
 
-def cmd_verify(file: str, target: str = "default") -> dict:
+def cmd_verify(file: str, target: str = "default", inputs_path: str | None = None) -> dict:
     path = Path(file)
     preset = _target_preset(target)
     prov = _provenance(path, target)
+    inputs = _load_inputs(inputs_path)
     try:
         program = _stage_parse(path, prov)
         result = _stage_check(program, preset, prov)
-        dag = _stage_build(program, result, prov)
-        env = _stage_run(dag, program, preset, prov)
+        dag = _stage_build(program, result, prov, inputs)
+        env = _stage_run(dag, program, preset, prov, inputs)
     except _StageFailure as fail:
         return fail.payload
     verify_results = _run_verify_statements(program, env, preset)
@@ -335,18 +353,19 @@ def cmd_graph(file: str, target: str = "default") -> dict:
     }
 
 
-def cmd_report(file: str, target: str = "default") -> dict:
+def cmd_report(file: str, target: str = "default", inputs_path: str | None = None) -> dict:
     path = Path(file)
     preset = _target_preset(target)
     prov = _provenance(path, target)
+    inputs = _load_inputs(inputs_path)
     try:
         program = _stage_parse(path, prov)
         result = _stage_check(program, preset, prov)
-        dag = _stage_build(program, result, prov)
+        dag = _stage_build(program, result, prov, inputs)
     except _StageFailure as fail:
         return fail.payload
     try:
-        env = _stage_run(dag, program, preset, prov)
+        env = _stage_run(dag, program, preset, prov, inputs)
         verify_results = _run_verify_statements(program, env, preset)
         run_ok = True
     except _StageFailure as fail:
@@ -367,7 +386,8 @@ def cmd_report(file: str, target: str = "default") -> dict:
     }
 
 
-def cmd_manifest(file: str, target: str = "default", output_dir: str = ".") -> dict:
+def cmd_manifest(file: str, target: str = "default", output_dir: str = ".",
+                  inputs_path: str | None = None) -> dict:
     """Phase 14: writes the combined reproducibility manifest (execution
     manifest, dependency DAG, equation/variable/operator/status
     registries, provenance, numerical outputs, audit results) to
@@ -375,7 +395,8 @@ def cmd_manifest(file: str, target: str = "default", output_dir: str = ".") -> d
     module to avoid a circular import (manifest.py itself reuses this
     module's stage helpers)."""
     from .manifest import write_manifest
-    path = write_manifest(file, output_dir, target)
+    inputs = _load_inputs(inputs_path)
+    path = write_manifest(file, output_dir, target, inputs)
     return {"ok": True, "manifest_path": str(path)}
 
 
@@ -385,6 +406,11 @@ _COMMANDS = {
     "report": cmd_report, "manifest": cmd_manifest,
 }
 
+# subcommands that actually execute the program (as opposed to just
+# parsing/checking/building its static structure) and therefore accept
+# --inputs for declared external values (Phase 16).
+_EXECUTING_COMMANDS = {"run", "verify", "report", "manifest"}
+
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="seit")
@@ -393,6 +419,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
         sub = subparsers.add_parser(name)
         sub.add_argument("file")
         sub.add_argument("--target", choices=sorted(TARGET_PRESETS), default="default")
+        if name in _EXECUTING_COMMANDS:
+            sub.add_argument("--inputs", dest="inputs_path", default=None,
+                              help="JSON file of declared external input values")
         if name == "manifest":
             sub.add_argument("--output-dir", default=".")
     return parser
@@ -401,10 +430,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
     handler = _COMMANDS[args.command]
+    kwargs = {}
+    if args.command in _EXECUTING_COMMANDS:
+        kwargs["inputs_path"] = args.inputs_path
     if args.command == "manifest":
-        result = handler(args.file, args.target, args.output_dir)
-    else:
-        result = handler(args.file, args.target)
+        kwargs["output_dir"] = args.output_dir
+    result = handler(args.file, args.target, **kwargs)
     print(json.dumps(result, indent=2))
     return 0 if result.get("ok") else 1
 
