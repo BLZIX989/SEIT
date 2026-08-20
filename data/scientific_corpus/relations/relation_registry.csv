@@ -1,0 +1,5 @@
+relation_id,relation_type,lhs,rhs,source_id,equation_id,assumptions,provenance
+SCIREL-1b24506e90d0b20f,POISSON_BRACKET,"X^\mu(\sigma,\tau)","\dot X^\nu(\sigma',\tau)",LIT-KIRITSIS-SST,SCIEQ14-92184d700fdbe1c8,,"detected in clause: \{X^\mu(\sigma,\tau),\dot X^\nu(\sigma',\tau)\}_{PB}=\frac{1}{T}\delta(\sigma-\s"
+SCIREL-25b78155212aecfe,ANTICOMMUTATOR,\alpha_m^\mu,\alpha_n^\nu,LIT-KIRITSIS-SST,SCIEQ14-92184d700fdbe1c8,,"detected in clause: \quad \{\alpha_m^\mu,\alpha_n^\nu\}=\{\bar\alpha_m^\mu,\bar\alpha_n^\nu\}=-im\de"
+SCIREL-24e50e94551b2f68,ANTICOMMUTATOR,\bar\alpha_m^\mu,\bar\alpha_n^\nu,LIT-KIRITSIS-SST,SCIEQ14-92184d700fdbe1c8,,"detected in clause: \quad \{\alpha_m^\mu,\alpha_n^\nu\}=\{\bar\alpha_m^\mu,\bar\alpha_n^\nu\}=-im\de"
+SCIREL-b59a2d1a61ca8438,POISSON_BRACKET,L_m,L_n,LIT-KIRITSIS-SST,SCIEQ14-154d2edfcb91e9d6,,"detected in clause: \quad \{L_m,L_n\}_{PB}=-i(m-n)L_{m+n}"
