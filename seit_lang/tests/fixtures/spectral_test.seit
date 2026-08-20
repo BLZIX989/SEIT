@@ -1,0 +1,9 @@
+module spectral_test;
+variable B: IncidenceMatrix;
+variable L: Laplacian;
+derive L = B * transpose(B);
+verify symmetric(L);
+verify positive_semidefinite(L);
+derive spectrum(L);
+derive heat_kernel(L, beta);
+report;
