@@ -25,6 +25,8 @@ from compiler.ir.registry import MDCLRegistries
 from compiler.ir.toe_closure_hypotheses import (
     TYPE_DEFS_TOE_CLOSURE, register_toe_closure_hypotheses,
 )
+from compiler.protocol.build_protocols import build_protocol_registry
+from compiler.protocol.derivation_chainlinks import build_derivation_chainlinks
 from compiler.verification.self_audit import run_self_audit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -101,8 +103,16 @@ def build_and_run() -> dict:
     all_calculations = (list(test_results["calculations"]) + list(fc005_results["calculations"])
                          + list(toe_closure_results["calculations"]))
 
+    # Phase 12: Chainlink/Protocol projection layer -- read-only, built
+    # entirely from the registries/falsifications above; adds no new
+    # numerical claims (see compiler/protocol/__init__.py).
+    chainlinks = build_derivation_chainlinks(registries, falsifications)
+    protocols = build_protocol_registry(chainlinks)
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     registries.dump_all(OUT_DIR)
+    chainlinks.dump_json(OUT_DIR / "chainlink_registry.json")
+    protocols.dump_json(OUT_DIR / "protocol_registry.json")
 
     proof_registry = []
     for t in registries.transformations:
@@ -174,7 +184,7 @@ def build_and_run() -> dict:
         "equation_registry.json", "status_matrix.json", "proof_registry.json",
         "calculation_registry.json", "falsification_registry.json",
         "provenance_registry.json", "target_independence.json", "master_mdcl.json",
-        "fc005_result.json",
+        "fc005_result.json", "chainlink_registry.json", "protocol_registry.json",
     )]
     audit_results = run_self_audit(registries, required_paths=required_paths,
                                     calculations=all_calculations)
@@ -210,6 +220,8 @@ def build_and_run() -> dict:
         "all_audits_passed": all_audits_passed,
         "all_test1_passed": all_test1_passed,
         "terminal_status": terminal,
+        "chainlinks": chainlinks,
+        "protocols": protocols,
     }
 
 
