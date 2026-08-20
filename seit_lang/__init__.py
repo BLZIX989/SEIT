@@ -192,4 +192,28 @@ two derived consequences (grading-commutation, intersection-form
 symmetry), never the full three-way table; this phase respects that
 same boundary rather than fabricating sign values just because the
 brief's prose lists them.
+
+Phase 10 status: the Clifford derivation branch is exposed as
+executable `.seit` primitives (seit_lang/clifford_branch.py):
+euclidean_gamma_matrices(n) constructs an actual complex representation
+of Cl(n,0) (standard Jordan-Wigner/Pauli-tensor-product construction,
+external well-established math) and
+verify_clifford_anticommutation(n) checks {gamma_a,gamma_b}=2*delta_ab*I
+EXACTLY for every generator pair, not merely asserting the formula --
+which caught a real bug while writing this phase's own tests: an
+initial clifford_representation_dimension() formula (2^ceil(n/2)) was
+silently wrong at every odd n (the real construction only grows every
+SECOND n, 2^floor(n/2)), caught by a test comparing the formula against
+the actual constructed matrix size, not by inspection, and fixed before
+committing. minimal_n_for_representation_dimension_at_least()
+demonstrates the "calculate minimal forced n" search MECHANISM the
+brief asks for, applied to a well-defined mathematical condition;
+clifford_rank_forcing_report() exposes clifford_derivation.py's own
+existing, unchanged finding that this project's own construction does
+NOT force any specific n ("UNFORCED") -- the two are never conflated.
+generate_clifford_status_declaration() reuses Phase 8's exact
+_seit_status_label classifier (not a second, possibly-diverging
+implementation) to emit `.seit` source labeling Cl(6) OPEN, never
+DERIVED, per the brief's explicit "only promote Cl(6) to DERIVED if
+actually forced" requirement.
 """
