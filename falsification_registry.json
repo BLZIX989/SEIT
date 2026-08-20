@@ -61,6 +61,27 @@
     }
   },
   {
+    "id": "FALS-CURVATURE-RELABELING-RIT",
+    "protocol": "representation_invariance",
+    "target": "CURVATURE-OLLIVIER-RICCI for cycle(n=12)",
+    "passed": true,
+    "detail": "invariant under all tested representations",
+    "evidence": {
+      "n_representations": 5
+    }
+  },
+  {
+    "id": "FALS-CURVATURE-RELABELING-MIT",
+    "protocol": "mathematical_invariance",
+    "target": "CURVATURE-OLLIVIER-RICCI for cycle(n=12)",
+    "passed": true,
+    "detail": "invariant preserved under all 4 tested transformations",
+    "evidence": {
+      "n_transformations": 4,
+      "n_mismatches": 0
+    }
+  },
+  {
     "id": "FALS-FC005-FISHER-LORENTZIAN",
     "protocol": "mathematical_invariance",
     "target": "Fisher-Rao metric F = Lorentzian spacetime metric g_munu",

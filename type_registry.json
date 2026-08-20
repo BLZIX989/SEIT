@@ -45,6 +45,11 @@
     "parent": "mathematical_object"
   },
   {
+    "name": "discrete_curvature",
+    "description": "Ollivier-Ricci discrete graph curvature, computed independently of any non-unique metric candidate",
+    "parent": "mathematical_object"
+  },
+  {
     "name": "historical_claim",
     "description": "a prose claim from a pre-compiler source document",
     "parent": null

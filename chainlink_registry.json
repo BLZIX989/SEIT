@@ -151,6 +151,32 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-OPERATOR-TO-CURVATURE-DISCRETE",
+    "source_node": "OPERATOR-L",
+    "target_node": "CURVATURE-OLLIVIER-RICCI",
+    "transformation": "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y)",
+    "mathematical_statement": "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y) (Ollivier-Ricci, alpha=0)",
+    "dependencies": [
+      "OPERATOR-L"
+    ],
+    "assumptions": [
+      "This is an INDEPENDENT route around CL-METRIC-TO-CONNECTION, not a resolution of it: Ollivier-Ricci curvature is a discrete graph-curvature notion computed directly from OPERATOR-L's own random-walk structure (established mathematics, Ollivier 2009), not a continuum Levi-Civita connection built from METRIC-CANDIDATE. CL-METRIC-TO-CONNECTION remains OPEN."
+    ],
+    "status": "CALCULATED",
+    "proof_status": "NUMERIC_WITH_HAND_VERIFIED_CASES",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "TESTED_SURVIVED",
+    "executable_backend": "compiler/backends/ollivier_ricci.py",
+    "reproducibility": "NUMERIC_WITH_LP_DUALITY_CROSSCHECK",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "primal/dual LP duality gap exceeds 1e-6 on any swept edge"
+    ],
+    "provenance_source": "compiler/backends/ollivier_ricci.py",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-METRIC-TO-CONNECTION",
     "source_node": "METRIC-CANDIDATE",
     "target_node": "CONNECTION-NODE",
@@ -171,7 +197,7 @@
     "literature_support": [],
     "open_obligations": [
       "no admissible, non-arbitrary construction of a connection from a non-unique metric candidate is registered in this compiler",
-      "if an established discrete-curvature method (Ollivier-Ricci, Forman-Ricci) is applied, it must survive representation_invariance_test and mathematical_invariance_test (compiler/falsification/protocols.py) before being registered above OPEN"
+      "CL-OPERATOR-TO-CURVATURE-DISCRETE registers a real Ollivier-Ricci discrete curvature computed independently of METRIC-CANDIDATE (parameter-free, survives real RIT/MIT falsification runs) -- but that is a DIFFERENT construction, not a resolution of this chainlink. This chainlink remains OPEN: no connection has been built FROM METRIC-CANDIDATE specifically."
     ],
     "failure_conditions": [
       "any candidate connection construction that depends on an arbitrary, unjustified choice of the diffusion-time parameter t is inadmissible by the same non-arbitrariness requirement METRIC-CANDIDATE itself was already held to"

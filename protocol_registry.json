@@ -53,6 +53,7 @@
       "CL-HEATFLOW-TO-KERNEL",
       "CL-SPECL-TO-DIFFUSION",
       "CL-DIFFUSION-TO-METRIC",
+      "CL-OPERATOR-TO-CURVATURE-DISCRETE",
       "CL-METRIC-TO-CONNECTION"
     ],
     "admissibility_conditions": [

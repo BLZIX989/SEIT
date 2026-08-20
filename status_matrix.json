@@ -213,6 +213,14 @@
     ]
   },
   {
+    "id": "CURVATURE-OLLIVIER-RICCI",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OPERATOR-L"
+    ]
+  },
+  {
     "id": "T2-HISTORICAL",
     "kind": "Object",
     "status": "PROPOSED",
@@ -517,6 +525,14 @@
     "status": "CONDITIONAL",
     "dependencies": [
       "DIFFUSION-DISTANCE"
+    ]
+  },
+  {
+    "id": "T-OPERATOR-TO-CURVATURE",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OPERATOR-L"
     ]
   },
   {

@@ -11,6 +11,7 @@ from compiler.core.status import Status
 from compiler.falsification.protocols import (
     FalsificationRecord, representation_invariance_test,
 )
+from compiler.ir.discrete_curvature import register_discrete_curvature
 from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.registry import MDCLRegistries
 from compiler.protocol.build_protocols import build_protocol_registry
@@ -22,6 +23,7 @@ from compiler.protocol.derivation_chainlinks import (
 def _build():
     registries = MDCLRegistries()
     test_results = register_executable_tests(registries)
+    curvature_results = register_discrete_curvature(registries)
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     # a real (trivially-passing) representation-invariance record targeting
     # Spec(L), same as run_compiler.py adds -- included so
@@ -30,6 +32,7 @@ def _build():
         record_id="FALS-SPECTRUM-RELABELING-INVARIANCE", target="Spec(L) test",
         representations=[1, 1, 1], invariant_fn=lambda x: x,
     ))
+    falsifications.extend(curvature_results["falsifications"])
     return registries, falsifications
 
 
@@ -134,6 +137,33 @@ def test_falsification_protocol_source_document_status_is_honest():
     protocols = build_protocol_registry(chainlinks)
     falsification_protocol = protocols.get("PROTOCOL-STRUCTURAL-FALSIFICATION")
     assert falsification_protocol.source_document_status == "MISSING_SOURCE"
+
+
+def test_curvature_chainlink_does_not_claim_to_resolve_the_frontier():
+    """CL-OPERATOR-TO-CURVATURE-DISCRETE is a real, independently-executed
+    discrete curvature construction, but it must never be presented as
+    having resolved the still-open METRIC-CANDIDATE -> CONNECTION
+    obstruction -- both records must say so explicitly, and the frontier
+    chainlink must remain OPEN regardless of the new chainlink's status."""
+    registries, falsifications = _build()
+    chainlinks = build_derivation_chainlinks(registries, falsifications)
+    curvature = chainlinks.get("CL-OPERATOR-TO-CURVATURE-DISCRETE")
+    frontier = chainlinks.get("CL-METRIC-TO-CONNECTION")
+    assert any("does not resolve" in o or "DIFFERENT construction" in o
+               for o in frontier.open_obligations)
+    assert any("INDEPENDENT route" in a for a in curvature.assumptions)
+    assert frontier.status == "OPEN"
+    assert curvature.dependencies == ["OPERATOR-L"]
+    assert "METRIC-CANDIDATE" not in curvature.dependencies
+
+
+def test_curvature_chainlink_real_duality_gap_is_near_zero():
+    """The primal/dual LP cross-check (this chainlink's own falsification
+    obligation) must actually have run and found near-zero disagreement --
+    not merely be claimed to have run."""
+    registries, falsifications = _build()
+    curvature_obj = registries.objects.get("CURVATURE-OLLIVIER-RICCI")
+    assert curvature_obj.provenance.verification["max_duality_gap"] < 1e-6
 
 
 def test_no_chainlink_status_is_ever_falsified_or_verified_without_backend_agreement():

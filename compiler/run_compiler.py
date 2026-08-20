@@ -18,6 +18,7 @@ from compiler.falsification.protocols import (
     FalsificationRecord, representation_invariance_test,
 )
 from compiler.historical.register import register_historical_nodes
+from compiler.ir.discrete_curvature import register_discrete_curvature
 from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.forward_chain import register_template_chain
@@ -45,6 +46,8 @@ TYPE_DEFS = [
     ("diffusion_distance", "d_t(i,j) built from Spec(L)", "mathematical_object"),
     ("geometry_candidate", "a candidate metric/geometry, status never above CONDITIONAL "
                            "without an analytic proof", "mathematical_object"),
+    ("discrete_curvature", "Ollivier-Ricci discrete graph curvature, computed independently "
+                           "of any non-unique metric candidate", "mathematical_object"),
     ("historical_claim", "a prose claim from a pre-compiler source document", None),
     ("reproduction_attempt", "an attempt to re-execute a historical claim in this compiler", None),
     ("forward_derivation_attempt", "an attempt at a target-independent forward derivation", None),
@@ -91,17 +94,19 @@ def build_and_run() -> dict:
 
     register_template_chain(registries)
     test_results = register_executable_tests(registries)
+    curvature_results = register_discrete_curvature(registries)
     register_historical_nodes(registries)
     fc005_results = register_fc005(registries, ROOT)
     toe_closure_results = register_toe_closure_hypotheses(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
+    falsifications.extend(curvature_results["falsifications"])
     falsifications.extend(fc005_results["falsifications"])
     falsifications.extend(toe_closure_results["falsifications"])
 
-    all_calculations = (list(test_results["calculations"]) + list(fc005_results["calculations"])
-                         + list(toe_closure_results["calculations"]))
+    all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
+                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new
