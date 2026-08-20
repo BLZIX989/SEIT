@@ -27,11 +27,23 @@ Build order (per the governing brief, Phase 15 -- test incrementally):
                                             compiler.dependencies.graph)
   Phase 5+ physics kernel bindings, CLI, reproducibility, milestone program
 
-Phase 1 status: lexer, parser, AST are implemented below
+Phase 1 status: lexer, parser, AST are implemented
 (seit_lang/lexer.py, seit_lang/ast_nodes.py, seit_lang/parser.py). The
 formal grammar is documented in seit_lang/GRAMMAR.md. This exact grammar
 is NOT asserted to be canonical or final -- it is the working definition
 this phase builds and tests against, and later phases may extend it (the
 brief's own Phase 16 example program already needs one extension beyond
 the literal Phase 1 keyword list -- see GRAMMAR.md).
+
+Phase 2 status: the semantic type system is implemented
+(seit_lang/types.py: the brief's fixed 24-type vocabulary plus a minimal
+subtype hierarchy; seit_lang/semantic.py: a single-pass type checker that
+rejects invalid operations at compile time while leaving calls to
+unregistered transformations explicitly Unresolved rather than silently
+accepting them). Running the checker against the brief's own literal
+Phase 16 milestone example (spectral_test.seit) surfaces a real gap in
+that example -- it calls heat_kernel(L, beta) without ever declaring
+beta -- which is recorded as an expected, intentional test result
+(seit_lang/tests/test_semantic.py) rather than patched silently; a
+corrected fixture (spectral_test_complete.seit) exists alongside it.
 """
