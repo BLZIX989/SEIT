@@ -662,6 +662,72 @@
     ]
   },
   {
+    "id": "AUDIT-1-D_B-DISCARDS-AVAILABLE-2-CELLS",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "AUDIT-2-NO-OTHER-CANDIDATE-CONSTRUCTIONS-MISSED",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "FINITE-ALGEBRA-A_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-GRADING-GAMMA_F-PRIME",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-REAL-STRUCTURE-J_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-FIRST-ORDER-CONDITION-RECOVERY",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-SPECTRAL-TRIPLE-RECOVERY-CERTIFICATION",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME",
+      "AXIOM-CHECK-FIRST-ORDER-CONDITION-RECOVERY"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -772,6 +838,18 @@
     "status": "CALCULATED",
     "dependencies": [
       "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
     ]
   },
   {

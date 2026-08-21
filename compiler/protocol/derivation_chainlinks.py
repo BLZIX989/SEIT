@@ -45,6 +45,7 @@ _REPRODUCIBILITY = {
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_TOLERANCE_1E-4_AT_4_DISTINCT_E_VALUES",
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
     "T-DIRAC-SQUARED-FINITE": "EXACT_NUMERIC_BLOCK_MATCH",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
 }
 
 # transformation_id -> whether a genuine symbolic/definitional proof backs
@@ -68,6 +69,7 @@ _PROOF_STATUS = {
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_VERIFICATION_ONLY",
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
     "T-DIRAC-SQUARED-FINITE": "PROVEN_DEFINITIONAL",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
 }
 
 # transformation_id -> real backend module that executes it.
@@ -84,6 +86,7 @@ _EXECUTABLE_BACKEND = {
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "compiler/backends/lichnerowicz_seeley_dewitt.py",
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "compiler/backends/finite_spectral_triple_candidate.py",
     "T-DIRAC-SQUARED-FINITE": "compiler/backends/finite_spectral_triple_candidate.py",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery.py",
 }
 
 # (chainlink_id, transformation_id, mathematical_statement)
@@ -125,6 +128,9 @@ _FINITE_SPECTRAL_TRIPLE_CHAINLINKS = [
      "(first-order condition; exact closed form, generically nonzero)"),
     ("CL-FINITE-DIRAC-SQUARED", "T-DIRAC-SQUARED-FINITE",
      "D_F^2 = diag(d1 d1^T, d1^T d1), exactly block-diagonal, E_B=0 for the bare operator"),
+    ("CL-FINITE-SPECTRAL-TRIPLE-RECOVERY", "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+     "[[D_F',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled (A_F,H_F'=H_F(+)H_F,D_F'=D_F(+)D_F,"
+     "J_F',gamma_F') -- recovery after the original candidate's certification FAILED"),
 ]
 
 

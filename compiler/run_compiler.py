@@ -24,6 +24,9 @@ from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.finite_spectral_triple_certification import (
     TYPE_DEFS_FINITE_SPECTRAL_TRIPLE, register_finite_spectral_triple_certification,
 )
+from compiler.ir.finite_spectral_triple_recovery import (
+    TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY, register_finite_spectral_triple_recovery,
+)
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
 from compiler.ir.seeley_dewitt_verification import (
@@ -96,7 +99,8 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 def build_and_run() -> dict:
     registries = MDCLRegistries()
     for name, desc, parent in (TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE
-                                + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE):
+                                + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE
+                                + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY):
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -112,6 +116,9 @@ def build_and_run() -> dict:
     # Requested execution boundary: certify the candidate finite spectral
     # triple BEFORE any spectral-action work is treated as certified.
     finite_triple_results = register_finite_spectral_triple_certification(registries, ROOT)
+    # Audit that certification's architecture for problems, then register
+    # the recovery construction (must run after: depends on FINITE-DIRAC-D_B).
+    recovery_results = register_finite_spectral_triple_recovery(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -122,7 +129,8 @@ def build_and_run() -> dict:
     all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
                          + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"])
                          + list(seeley_dewitt_results["calculations"])
-                         + list(finite_triple_results["calculations"]))
+                         + list(finite_triple_results["calculations"])
+                         + list(recovery_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new

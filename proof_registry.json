@@ -82,5 +82,12 @@
     "statement": "D_F^2 computed directly by matrix multiplication and compared block-by-block against d1 d1^T (vertex) and d1^T d1 (edge)",
     "method": "numpy exact linear algebra, exact block match (not approximate)",
     "status": "CALCULATED"
+  },
+  {
+    "id": "PROOF-T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED candidate (A_F,H_F',D_F'=D_F(+)D_F,J_F',gamma_F')",
+    "method": "numpy exact linear algebra at n=200 (genuine complex random f,g) plus sympy symbolic-general confirmation of the copy-2-support-is-zero closed form at n=4",
+    "status": "VERIFIED"
   }
 ]

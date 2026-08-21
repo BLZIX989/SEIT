@@ -302,6 +302,34 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-FINITE-SPECTRAL-TRIPLE-RECOVERY",
+    "source_node": "FINITE-DIRAC-D_B",
+    "target_node": "FINITE-SPECTRAL-TRIPLE-RECOVERY-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED candidate (A_F,H_F',D_F'=D_F(+)D_F,J_F',gamma_F')",
+    "mathematical_statement": "[[D_F',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled (A_F,H_F'=H_F(+)H_F,D_F'=D_F(+)D_F,J_F',gamma_F') -- recovery after the original candidate's certification FAILED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_recovery.py",
+    "reproducibility": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_recovery.py",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
     "source_node": "OMEGA_B-FINITE",
     "target_node": "SPECTRAL-ACTION-A0-A6-FINITE-B",

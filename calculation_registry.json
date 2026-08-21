@@ -2937,5 +2937,28 @@
       "E_B_bare_is_zero": true
     },
     "status": "CALCULATED"
+  },
+  {
+    "id": "CALC-FINITE-SPECTRAL-TRIPLE-RECOVERY",
+    "kind": "doubled_spectral_triple_recovery_certification",
+    "inputs": {
+      "mechanism": "The prior candidate's first-order-condition failure had a precise structural cause: with J trivial (J b J^-1 = b for real b, since H_F was a plain real vector space), the condition collapses to [[D,a],b]=0 for ALL a,b in A_F, and nothing made a,b act from 'opposite sides' of D_F. The standard NCG fix for exactly this failure mode is Connes' own doubling construction: H_F' = H_F (+) H_F, genuinely COMPLEX (J being 'trivial conjugation on a real space' was exactly the degeneracy that broke the prior attempt, so this recovery must not repeat it); pi'(f) = pi(f) (+) 0 (A_F acts on copy 1 only -- the left action); gamma_F' = gamma_F (+) gamma_F; J'(xi,eta) = (conj(eta),conj(xi)) (swap + complex-conjugate, a genuine antilinear involution). D_F' = D_F (+) D_F (the SAME D_F content on each copy, zero coupling between copies -- the minimal extension)."
+    },
+    "results": {
+      "self_adjoint": true,
+      "grading_axioms_hold": true,
+      "real_structure_signs": [
+        1,
+        1,
+        1
+      ],
+      "first_order_condition_holds": true,
+      "first_order_condition_holds_symbolic_general": true,
+      "sign_variant_also_passes": true
+    },
+    "verification": {
+      "result_summary": "Self-adjointness, both grading axioms, and the first-order condition ALL hold exactly for this construction -- confirmed both numerically (n=200, genuine complex random test vectors, not real-valued stand-ins) and symbolically in general form (n=4, f left as a free symbol): [D_F',pi'(f)] has IDENTICALLY ZERO output on copy 2, for ANY f -- the exact structural fact that makes the first-order condition automatic, since J'pi'(g)J'^-1 only touches copy 2."
+    },
+    "status": "VERIFIED"
   }
 ]

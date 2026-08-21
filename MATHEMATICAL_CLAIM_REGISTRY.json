@@ -486,8 +486,8 @@
     "STATUS": "VERIFIED",
     "EVIDENCE": {
       "claim": "The Chainlink projection is a faithful structure-preserving map: every (source_node, target_node) edge it draws corresponds either to a real dependency edge already present in the canonical registries, or to a chainlink that explicitly self-documents its target as an intentionally unregistered open frontier gap (never silently fabricated).",
-      "n_chainlinks_total": 16,
-      "n_faithful_against_real_registry_dependency": 15,
+      "n_chainlinks_total": 17,
+      "n_faithful_against_real_registry_dependency": 16,
       "n_self_documented_open_gaps": 1,
       "self_documented_open_gaps": [
         {

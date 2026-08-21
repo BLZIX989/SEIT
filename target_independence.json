@@ -106,6 +106,13 @@
       "context": "stage_gate\nStage 3: only evaluated if stage 2 closed. Does kappa_spectral agree with an INDEPENDENTLY sourced kappa_cosmological (never derived from the same catalogue/run)? See compiler/backends/desi"
     },
     {
+      "node_id": "AUDIT-2-NO-OTHER-CANDIDATE-CONSTRUCTIONS-MISSED",
+      "term": "SU(2)",
+      "role": "comparison",
+      "allowed": true,
+      "context": "architecture_audit_finding\nA systematic grep sweep across compiler/, scientific_corpus/, and seit_lang/ for Dirac/spectral-triple/real-structure/order-zero content found no additional algebra represen"
+    },
+    {
       "node_id": "EQ-H4-G2-TRIALITY-INTERSECTION-CLAIM",
       "term": "SU(3)",
       "role": "comparison",
