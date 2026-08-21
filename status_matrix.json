@@ -761,6 +761,22 @@
     ]
   },
   {
+    "id": "OMEGA_B-COUPLED-RECOVERY",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -900,6 +916,22 @@
     "dependencies": [
       "TFT-002B-CANDIDATE",
       "COUPLING-MATRIX-C"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
     ]
   },
   {

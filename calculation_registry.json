@@ -3005,5 +3005,42 @@
       "first_order_condition_holds_symbolic_general": true
     },
     "status": "VERIFIED"
+  },
+  {
+    "id": "CALC-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "kind": "connes_inner_fluctuation_attempt",
+    "inputs": {
+      "generator": "omega = i*[D_F'',pi'(f)] for a single real f on the vertex block"
+    },
+    "results": {
+      "J_conjugate_matrix_verified": true,
+      "omega_self_adjoint": true,
+      "real_structure_epsilon_prime_used": 1,
+      "D_A_self_adjoint": true,
+      "D_A_anticommutes_with_grading": true,
+      "Omega_B_is_zero": false,
+      "Omega_B_self_adjoint": true,
+      "Omega_B_max_abs": 36.337281477615626
+    },
+    "verification": {
+      "well_posed": true
+    },
+    "status": "VERIFIED"
+  },
+  {
+    "id": "CALC-COUPLED-RECOVERY-FINITE-MOMENTS",
+    "kind": "finite_trace_moments",
+    "inputs": {},
+    "results": {
+      "a0''": 2800.0,
+      "a2''": 17645.97195235262,
+      "a4''": 286139.7766925918,
+      "a6''": 8489955.8803325
+    },
+    "verification": {
+      "well_posed": true,
+      "max_imag_residual": 1.6315084125746656e-13
+    },
+    "status": "CALCULATED"
   }
 ]

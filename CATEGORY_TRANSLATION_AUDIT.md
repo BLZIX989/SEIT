@@ -6,8 +6,8 @@ The Chainlink registry is a PROJECTION (a function from real compiler registry s
 
 ## Structure-preservation result
 
-- total chainlinks: 19
-- backed by a real canonical dependency edge: 18
+- total chainlinks: 21
+- backed by a real canonical dependency edge: 20
 - self-documented intentional open gaps (not violations): 1
 - genuine violations: 0
 
@@ -15,7 +15,7 @@ The Chainlink registry is a PROJECTION (a function from real compiler registry s
 
 ## Composability result
 
-- composable pairs (A->B, B->C sharing a node): 8
+- composable pairs (A->B, B->C sharing a node): 10
 - with an explicit direct composite A->C also registered: 0
 
 The Chainlink registry represents each real compiler transformation as ONE edge (a DIRECT-dependency graph), never synthesizing a transitive composite edge that doesn't correspond to an actual single transformation the compiler runs. This is the CORRECT and intended behavior given the project's own isolation discipline (never fabricate a relationship the compiler didn't itself compute) -- it means the registry is not attempting to BE a category with composition, it is a faithful direct-edge projection, and any 'is this chain composable end-to-end' question must be answered by graph reachability over these direct edges, not by expecting a registered composite record.

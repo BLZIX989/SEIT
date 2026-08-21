@@ -399,12 +399,60 @@
     "literature_support": [],
     "open_obligations": [
       "the first-order condition fails for this candidate's (A_F,J_F) -- see AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
-      "a genuinely different (A_F,J_F,gamma_F) that passes the first-order condition has not been found or attempted anywhere in this corpus"
+      "this specific candidate (A_F,H_F,D_F,J_F,gamma_F) has not been, and is not expected to be, revised -- but genuinely different candidates that DO pass the first-order condition were constructed (CL-FINITE-SPECTRAL-TRIPLE-RECOVERY, CL-TFT002B-EVALUATION, CL-COUPLED-RECOVERY) and one of them has now been carried through an actual inner-fluctuation attempt -- see CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION and CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION. This chainlink remains OPEN because it is specifically about the ORIGINAL candidate."
     ],
     "failure_conditions": [
       "an alternative candidate is constructed and its own first-order-condition check fails the same way (would need its own independent certification, not inherited from this one)"
     ],
     "provenance_source": "compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION",
+    "source_node": "COUPLED-RECOVERY-CERTIFICATION",
+    "target_node": "OMEGA_B-COUPLED-RECOVERY",
+    "transformation": "build omega=i*[D_F'',pi'(f)], verify self-adjointness, form D_A''=D_F''+omega+eps'*J''omegaJ''^-1 via an explicit closed-form J-conjugation matrix (independently verified against the vector-level J definition), verify D_A'' self-adjoint and grading-anticommuting, compute Omega_B''=D_A''^2-D_F''^2",
+    "mathematical_statement": "D_A''=D_F''+omega+eps'*J''omegaJ''^-1 (omega=i*[D_F'',pi'(f)]) verified self-adjoint and grading-anticommuting; Omega_B''=D_A''^2-D_F''^2 genuinely nonzero -- the first well-posed inner fluctuation anywhere in this corpus (closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION wiring gap for the coupled-recovery candidate specifically)",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "reproducibility": "EXACT_NUMERIC_N=200_DIM=2800_PLUS_J_CONJUGATION_CROSSCHECK",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "D_A'' fails to come out self-adjoint, or fails to anticommute with the grading, or Omega_B''=D_A''^2-D_F''^2 comes out identically zero (a trivial, non-informative fluctuation) for the tested generator"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION",
+    "source_node": "OMEGA_B-COUPLED-RECOVERY",
+    "target_node": "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B",
+    "transformation": "Tr(D_A''^k) for k=0,2,4,6 -- exact finite-dimensional trace moments, not a continuum Seeley-DeWitt expansion",
+    "mathematical_statement": "a0''..a6'' = Tr(D_A''^k), k=0,2,4,6 -- exact finite-dimensional trace moments of the fluctuated coupled-recovery candidate, NOT continuum Seeley-DeWitt coefficients",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "reproducibility": "EXACT_FINITE_TRACE_MOMENTS_N=200_DIM=2800",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "the fluctuation upstream (CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION) is not well-posed, or a trace moment's imaginary part exceeds float-noise tolerance for a claimed self-adjoint operator"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
     "source_document_status": "N/A"
   },
   {

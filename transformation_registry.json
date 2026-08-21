@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "SELECTION-SIGMA",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:14.861822+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:12.825582+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -49,8 +49,8 @@
       "dependency_ids": [],
       "transformation_id": "T-GRAPH-TO-OPERATOR",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.023230+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:12.991144+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -89,8 +89,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-SPECTRUM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.025127+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:12.993070+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -129,8 +129,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.027145+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:12.995019+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -169,8 +169,8 @@
       "dependency_ids": [],
       "transformation_id": "T-HEATFLOW-TO-KERNEL",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.029023+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:12.996917+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -212,8 +212,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.223223+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:13.119242+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -247,8 +247,8 @@
       "dependency_ids": [],
       "transformation_id": "T-DIFFUSION-TO-METRIC",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.227376+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:13.123146+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -284,8 +284,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-CURVATURE",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:15.640401+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:13.523780+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -321,8 +321,8 @@
       "dependency_ids": [],
       "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:16.223323+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:14.097220+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -358,8 +358,8 @@
       "dependency_ids": [],
       "transformation_id": "T-LICHNEROWICZ-GAUGE-TERM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:19.018932+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:16.757168+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -395,8 +395,8 @@
       "dependency_ids": [],
       "transformation_id": "T-LICHNEROWICZ-GRAVITY-TERM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:25.078422+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:22.665181+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -432,8 +432,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T20:17:25.090619+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:22.677335+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -472,8 +472,8 @@
       "dependency_ids": [],
       "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
       "calculation_id": "CALC-FINITE-SPECTRAL-TRIPLE-AXIOMS",
-      "execution_timestamp": "2026-08-21T20:17:25.267043+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:22.891993+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -507,8 +507,8 @@
       "dependency_ids": [],
       "transformation_id": "T-DIRAC-SQUARED-FINITE",
       "calculation_id": "CALC-DIRAC-SQUARED-FINITE-D_B",
-      "execution_timestamp": "2026-08-21T20:17:25.337497+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:22.944400+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -546,8 +546,8 @@
       "dependency_ids": [],
       "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
       "calculation_id": "CALC-FINITE-SPECTRAL-TRIPLE-RECOVERY",
-      "execution_timestamp": "2026-08-21T20:17:27.336880+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:24.952918+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -583,8 +583,8 @@
       "dependency_ids": [],
       "transformation_id": "T-TFT002B-EVALUATION",
       "calculation_id": "CALC-TFT002B-EVALUATION",
-      "execution_timestamp": "2026-08-21T20:17:27.778387+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:25.424244+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -621,8 +621,8 @@
       "dependency_ids": [],
       "transformation_id": "T-COUPLED-RECOVERY-AXIOMS",
       "calculation_id": "CALC-COUPLED-RECOVERY-CERTIFICATION",
-      "execution_timestamp": "2026-08-21T20:17:34.878649+00:00",
-      "git_commit": "80fba4db6b95254ebeacbdd90236a058f3202569",
+      "execution_timestamp": "2026-08-21T21:17:33.824007+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -642,5 +642,79 @@
     "preconditions": [],
     "postconditions": [],
     "proof": "numpy exact linear algebra at n=200 (genuine complex random f,g,C) plus sympy symbolic-general confirmation (f,g,coupling weights all free symbols) that pi(f) C pi(g) vanishes identically"
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "status": "VERIFIED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+      "calculation_id": "CALC-COUPLED-RECOVERY-INNER-FLUCTUATION",
+      "execution_timestamp": "2026-08-21T21:18:22.811831+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "well_posed": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "COUPLED-RECOVERY-CERTIFICATION",
+    "codomain": "OMEGA_B-COUPLED-RECOVERY",
+    "action": "build omega=i*[D_F'',pi'(f)], verify self-adjointness, form D_A''=D_F''+omega+eps'*J''omegaJ''^-1 via an explicit closed-form J-conjugation matrix (independently verified against the vector-level J definition), verify D_A'' self-adjoint and grading-anticommuting, compute Omega_B''=D_A''^2-D_F''^2",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "numpy exact linear algebra at n=200 (dim=2800 doubled candidate); J_conjugate_matrix's closed form independently verified against the ground-truth vector-level J_apply composition on random complex inputs"
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+      "calculation_id": "CALC-COUPLED-RECOVERY-FINITE-MOMENTS",
+      "execution_timestamp": "2026-08-21T21:18:22.815687+00:00",
+      "git_commit": "05902eefa4536d37135059205914221bd0a21a00",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "CALCULATED",
+      "verification": {
+        "well_posed": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "OMEGA_B-COUPLED-RECOVERY",
+    "codomain": "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B",
+    "action": "Tr(D_A''^k) for k=0,2,4,6 -- exact finite-dimensional trace moments, not a continuum Seeley-DeWitt expansion",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "numpy exact finite-dimensional trace via repeated matrix multiplication (matrix_power), imaginary residual confirmed at float-noise scale (<1e-12) for self-adjoint D_A''"
   }
 ]

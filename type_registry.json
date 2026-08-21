@@ -198,5 +198,10 @@
     "name": "coupled_recovery_component",
     "description": "a component of the nontrivially-coupled doubled recovery (Phase 2), extending the uncoupled recovery with a genuine inter-copy coupling",
     "parent": null
+  },
+  {
+    "name": "inner_fluctuation_component",
+    "description": "a component (gauge potential, fluctuated Dirac operator, or curvature) of a Connes inner-fluctuation D_A=D+omega+J omega J^-1 attempted over a candidate that passes the first-order condition -- status always computed from real axiom checks",
+    "parent": null
   }
 ]

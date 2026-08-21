@@ -48,6 +48,8 @@ _REPRODUCIBILITY = {
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
     "T-TFT002B-EVALUATION": "EXACT_NUMERIC_N=200",
     "T-COUPLED-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "EXACT_NUMERIC_N=200_DIM=2800_PLUS_J_CONJUGATION_CROSSCHECK",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "EXACT_FINITE_TRACE_MOMENTS_N=200_DIM=2800",
 }
 
 # transformation_id -> whether a genuine symbolic/definitional proof backs
@@ -74,6 +76,8 @@ _PROOF_STATUS = {
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
     "T-TFT002B-EVALUATION": "PROVEN_DEFINITIONAL",
     "T-COUPLED-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "NUMERIC_VERIFICATION_ONLY",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "NUMERIC_VERIFICATION_ONLY",
 }
 
 # transformation_id -> real backend module that executes it.
@@ -93,6 +97,8 @@ _EXECUTABLE_BACKEND = {
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery.py",
     "T-TFT002B-EVALUATION": "compiler/backends/finite_spectral_triple_tft002b.py",
     "T-COUPLED-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
 }
 
 # (chainlink_id, transformation_id, mathematical_statement)
@@ -143,6 +149,28 @@ _FINITE_SPECTRAL_TRIPLE_CHAINLINKS = [
     ("CL-COUPLED-RECOVERY", "T-COUPLED-RECOVERY-AXIOMS",
      "[[D_F'',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled TFT-002B candidate with a genuine "
      "nonzero, non-proportional Hermitian inter-copy coupling C (not the trivial D_F(+)D_F split)"),
+]
+
+# Same shape as _FINITE_SPECTRAL_TRIPLE_CHAINLINKS above, kept separate
+# (rather than folded in) because that list's failure_conditions text is
+# specific to the first-order-condition check phrasing -- these two are
+# about a different subject (inner fluctuation / finite trace moments) and
+# need their own, honestly distinct failure_conditions.
+_COUPLED_RECOVERY_SPECTRAL_ACTION_CHAINLINKS = [
+    ("CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION", "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+     "D_A''=D_F''+omega+eps'*J''omegaJ''^-1 (omega=i*[D_F'',pi'(f)]) verified self-adjoint and "
+     "grading-anticommuting; Omega_B''=D_A''^2-D_F''^2 genuinely nonzero -- the first well-posed "
+     "inner fluctuation anywhere in this corpus (closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION "
+     "wiring gap for the coupled-recovery candidate specifically)",
+     ["D_A'' fails to come out self-adjoint, or fails to anticommute with the grading, or "
+      "Omega_B''=D_A''^2-D_F''^2 comes out identically zero (a trivial, non-informative "
+      "fluctuation) for the tested generator"]),
+    ("CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION", "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+     "a0''..a6'' = Tr(D_A''^k), k=0,2,4,6 -- exact finite-dimensional trace moments of the "
+     "fluctuated coupled-recovery candidate, NOT continuum Seeley-DeWitt coefficients",
+     ["the fluctuation upstream (CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION) is not well-posed, or "
+      "a trace moment's imaginary part exceeds float-noise tolerance for a claimed self-adjoint "
+      "operator"]),
 ]
 
 
@@ -306,14 +334,53 @@ def build_derivation_chainlinks(
             open_obligations=[
                 "the first-order condition fails for this candidate's (A_F,J_F) -- see "
                 "AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
-                "a genuinely different (A_F,J_F,gamma_F) that passes the first-order condition has "
-                "not been found or attempted anywhere in this corpus",
+                "this specific candidate (A_F,H_F,D_F,J_F,gamma_F) has not been, and is not "
+                "expected to be, revised -- but genuinely different candidates that DO pass the "
+                "first-order condition were constructed (CL-FINITE-SPECTRAL-TRIPLE-RECOVERY, "
+                "CL-TFT002B-EVALUATION, CL-COUPLED-RECOVERY) and one of them has now been carried "
+                "through an actual inner-fluctuation attempt -- see "
+                "CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION and CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION. "
+                "This chainlink remains OPEN because it is specifically about the ORIGINAL candidate.",
             ],
             failure_conditions=[
                 "an alternative candidate is constructed and its own first-order-condition check fails "
                 "the same way (would need its own independent certification, not inherited from this one)",
             ],
             provenance_source="compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
+            source_document_status="N/A",
+        ))
+
+    # Closes the wiring gap the above block's stale text used to describe:
+    # the coupled-recovery candidate DOES pass the first-order condition,
+    # and has now been carried through a real inner-fluctuation / finite-
+    # moment attempt (compiler/ir/finite_spectral_triple_coupled_recovery_
+    # spectral_action.py). This is an INDEPENDENT chainlink pair, not a
+    # resolution of CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION above (that one
+    # stays OPEN, correctly, for the original candidate it describes).
+    for chainlink_id, transformation_id, statement, failure_conditions in _COUPLED_RECOVERY_SPECTRAL_ACTION_CHAINLINKS:
+        if transformation_id not in registries.transformations:
+            continue
+        t = registries.transformations.get(transformation_id)
+        status_val = t.status.value if isinstance(t.status, Status) else t.status
+        reg.add(Chainlink(
+            chainlink_id=chainlink_id,
+            source_node=t.domain,
+            target_node=t.codomain,
+            transformation=t.action,
+            mathematical_statement=statement,
+            dependencies=list(t.dependencies),
+            assumptions=list(t.assumptions),
+            status=status_val,
+            proof_status=_PROOF_STATUS[transformation_id],
+            calculation_status=status_val,
+            falsification_status="NOT_TESTED",
+            executable_backend=_EXECUTABLE_BACKEND[transformation_id],
+            reproducibility=_REPRODUCIBILITY[transformation_id],
+            open_obligations=[] if status_val in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"{transformation_id} status is {status_val}, not admissible for downstream chainlinks"
+            ],
+            failure_conditions=failure_conditions,
+            provenance_source=t.provenance.source if t.provenance else "",
             source_document_status="N/A",
         ))
 

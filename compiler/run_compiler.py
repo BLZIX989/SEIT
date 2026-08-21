@@ -24,6 +24,9 @@ from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.finite_spectral_triple_certification import (
     TYPE_DEFS_FINITE_SPECTRAL_TRIPLE, register_finite_spectral_triple_certification,
 )
+from compiler.ir.finite_spectral_triple_coupled_recovery_spectral_action import (
+    TYPE_DEFS_COUPLED_RECOVERY_SPECTRAL_ACTION, register_coupled_recovery_spectral_action,
+)
 from compiler.ir.finite_spectral_triple_recovery import (
     TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY, register_finite_spectral_triple_recovery,
 )
@@ -104,7 +107,8 @@ def build_and_run() -> dict:
     for name, desc, parent in (TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE
                                 + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE
                                 + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY
-                                + TYPE_DEFS_TFT002B_COUPLED_RECOVERY):
+                                + TYPE_DEFS_TFT002B_COUPLED_RECOVERY
+                                + TYPE_DEFS_COUPLED_RECOVERY_SPECTRAL_ACTION):
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -126,6 +130,12 @@ def build_and_run() -> dict:
     # Phase 1/2/3: TFT-002B evaluation + nontrivially-coupled recovery.
     # Must run after both above (reuses H2-GRAPH-CONTROL).
     tft002b_results = register_tft002b_and_coupled_recovery(registries, ROOT)
+    # Closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION wiring gap this
+    # session's audit found: attempts a real inner-fluctuation over the
+    # coupled-recovery candidate, which passes the first-order condition
+    # (unlike the original candidate that chainlink depends on). Must run
+    # after tft002b_results (reuses COUPLED-RECOVERY-CERTIFICATION).
+    coupled_recovery_sa_results = register_coupled_recovery_spectral_action(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -138,7 +148,8 @@ def build_and_run() -> dict:
                          + list(seeley_dewitt_results["calculations"])
                          + list(finite_triple_results["calculations"])
                          + list(recovery_results["calculations"])
-                         + list(tft002b_results["calculations"]))
+                         + list(tft002b_results["calculations"])
+                         + list(coupled_recovery_sa_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new

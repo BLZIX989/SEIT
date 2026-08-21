@@ -103,5 +103,19 @@
     "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED, NONTRIVIALLY-COUPLED candidate over TFT-002B",
     "method": "numpy exact linear algebra at n=200 (genuine complex random f,g,C) plus sympy symbolic-general confirmation (f,g,coupling weights all free symbols) that pi(f) C pi(g) vanishes identically",
     "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "transformation_id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "statement": "build omega=i*[D_F'',pi'(f)], verify self-adjointness, form D_A''=D_F''+omega+eps'*J''omegaJ''^-1 via an explicit closed-form J-conjugation matrix (independently verified against the vector-level J definition), verify D_A'' self-adjoint and grading-anticommuting, compute Omega_B''=D_A''^2-D_F''^2",
+    "method": "numpy exact linear algebra at n=200 (dim=2800 doubled candidate); J_conjugate_matrix's closed form independently verified against the ground-truth vector-level J_apply composition on random complex inputs",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "transformation_id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "statement": "Tr(D_A''^k) for k=0,2,4,6 -- exact finite-dimensional trace moments, not a continuum Seeley-DeWitt expansion",
+    "method": "numpy exact finite-dimensional trace via repeated matrix multiplication (matrix_power), imaginary residual confirmed at float-noise scale (<1e-12) for self-adjoint D_A''",
+    "status": "CALCULATED"
   }
 ]
