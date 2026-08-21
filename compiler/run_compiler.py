@@ -43,6 +43,8 @@ from compiler.ir.toe_closure_hypotheses import (
 )
 from compiler.protocol.build_protocols import build_protocol_registry
 from compiler.protocol.derivation_chainlinks import build_derivation_chainlinks
+from compiler.protocol.protocol_matrix import build_protocol_matrix
+from compiler.protocol.write_protocol_matrix_report import write_protocol_matrix_report
 from compiler.verification.self_audit import run_self_audit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -239,6 +241,15 @@ def build_and_run() -> dict:
     (OUT_DIR / "self_audit_report.json").write_text(
         json.dumps([a.to_dict() for a in audit_results], indent=2)
     )
+
+    # Peer-review protocol-matrix crosswalk (design proposal agreed this
+    # session): reads ONLY the real registries/chainlinks/audits already
+    # computed above, never re-derives anything.
+    protocol_matrix = build_protocol_matrix(registries, chainlinks, protocols, audit_results, ROOT)
+    (OUT_DIR / "protocol_matrix.json").write_text(
+        json.dumps([e.to_dict() for e in protocol_matrix], indent=2)
+    )
+    write_protocol_matrix_report(protocol_matrix, OUT_DIR / "PEER_REVIEW_STATUS_MATRIX.md")
 
     all_audits_passed = all(a.passed for a in audit_results)
     all_test1_passed = all(r.passed for r in test_results["test1_results"])
