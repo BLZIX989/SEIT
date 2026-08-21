@@ -89,5 +89,19 @@
     "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED candidate (A_F,H_F',D_F'=D_F(+)D_F,J_F',gamma_F')",
     "method": "numpy exact linear algebra at n=200 (genuine complex random f,g) plus sympy symbolic-general confirmation of the copy-2-support-is-zero closed form at n=4",
     "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-TFT002B-EVALUATION",
+    "transformation_id": "T-TFT002B-EVALUATION",
+    "statement": "build the 3-graded Hodge-Dirac operator at full scale (n=200) and check self-adjointness, grading axioms, exact square, and comparison against D_B",
+    "method": "numpy exact linear algebra at n=200, all invariants checked directly",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-AXIOMS",
+    "transformation_id": "T-COUPLED-RECOVERY-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED, NONTRIVIALLY-COUPLED candidate over TFT-002B",
+    "method": "numpy exact linear algebra at n=200 (genuine complex random f,g,C) plus sympy symbolic-general confirmation (f,g,coupling weights all free symbols) that pi(f) C pi(g) vanishes identically",
+    "status": "VERIFIED"
   }
 ]

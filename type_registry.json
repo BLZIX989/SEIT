@@ -188,5 +188,15 @@
     "name": "recovered_finite_spectral_triple_component",
     "description": "one component of a recovery candidate (doubled Hilbert space, algebra, grading, real structure) built after an original candidate's certification genuinely failed",
     "parent": null
+  },
+  {
+    "name": "evaluated_dirac_candidate",
+    "description": "a Dirac-type operator candidate with explicit invariant checks, promoted to canonical only if the checks pass and no dependency regression is introduced",
+    "parent": null
+  },
+  {
+    "name": "coupled_recovery_component",
+    "description": "a component of the nontrivially-coupled doubled recovery (Phase 2), extending the uncoupled recovery with a genuine inter-copy coupling",
+    "parent": null
   }
 ]

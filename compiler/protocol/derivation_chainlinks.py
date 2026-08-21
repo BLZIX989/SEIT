@@ -46,6 +46,8 @@ _REPRODUCIBILITY = {
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
     "T-DIRAC-SQUARED-FINITE": "EXACT_NUMERIC_BLOCK_MATCH",
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-TFT002B-EVALUATION": "EXACT_NUMERIC_N=200",
+    "T-COUPLED-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
 }
 
 # transformation_id -> whether a genuine symbolic/definitional proof backs
@@ -70,6 +72,8 @@ _PROOF_STATUS = {
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
     "T-DIRAC-SQUARED-FINITE": "PROVEN_DEFINITIONAL",
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-TFT002B-EVALUATION": "PROVEN_DEFINITIONAL",
+    "T-COUPLED-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
 }
 
 # transformation_id -> real backend module that executes it.
@@ -87,6 +91,8 @@ _EXECUTABLE_BACKEND = {
     "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "compiler/backends/finite_spectral_triple_candidate.py",
     "T-DIRAC-SQUARED-FINITE": "compiler/backends/finite_spectral_triple_candidate.py",
     "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery.py",
+    "T-TFT002B-EVALUATION": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "T-COUPLED-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
 }
 
 # (chainlink_id, transformation_id, mathematical_statement)
@@ -131,6 +137,12 @@ _FINITE_SPECTRAL_TRIPLE_CHAINLINKS = [
     ("CL-FINITE-SPECTRAL-TRIPLE-RECOVERY", "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
      "[[D_F',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled (A_F,H_F'=H_F(+)H_F,D_F'=D_F(+)D_F,"
      "J_F',gamma_F') -- recovery after the original candidate's certification FAILED"),
+    ("CL-TFT002B-EVALUATION", "T-TFT002B-EVALUATION",
+     "D3=[[0,d1,0],[d1^T,0,d2],[0,d2^T,0]], D3^2=diag(L0,L1,L2) exactly (full graded Hodge "
+     "Laplacian, uses the 600 real triangles D_B discarded) -- promoted as additional candidate"),
+    ("CL-COUPLED-RECOVERY", "T-COUPLED-RECOVERY-AXIOMS",
+     "[[D_F'',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled TFT-002B candidate with a genuine "
+     "nonzero, non-proportional Hermitian inter-copy coupling C (not the trivial D_F(+)D_F split)"),
 ]
 
 

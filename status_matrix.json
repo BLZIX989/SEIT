@@ -728,6 +728,39 @@
     ]
   },
   {
+    "id": "TFT-002B-CANDIDATE",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "COUPLING-MATRIX-C",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE"
+    ]
+  },
+  {
+    "id": "COUPLED-RECOVERY-CERTIFICATION",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
+    ]
+  },
+  {
+    "id": "PHASE3-KO-DIMENSION-SIGN-SCAN",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -850,6 +883,23 @@
       "FINITE-ALGEBRA-A_F-PRIME",
       "FINITE-GRADING-GAMMA_F-PRIME",
       "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ]
+  },
+  {
+    "id": "T-TFT002B-EVALUATION",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-AXIOMS",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
     ]
   },
   {

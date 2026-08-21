@@ -330,6 +330,55 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-TFT002B-EVALUATION",
+    "source_node": "H2-GRAPH-CONTROL",
+    "target_node": "TFT-002B-CANDIDATE",
+    "transformation": "build the 3-graded Hodge-Dirac operator at full scale (n=200) and check self-adjointness, grading axioms, exact square, and comparison against D_B",
+    "mathematical_statement": "D3=[[0,d1,0],[d1^T,0,d2],[0,d2^T,0]], D3^2=diag(L0,L1,L2) exactly (full graded Hodge Laplacian, uses the 600 real triangles D_B discarded) -- promoted as additional candidate",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "reproducibility": "EXACT_NUMERIC_N=200",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY",
+    "source_node": "TFT-002B-CANDIDATE",
+    "target_node": "COUPLED-RECOVERY-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED, NONTRIVIALLY-COUPLED candidate over TFT-002B",
+    "mathematical_statement": "[[D_F'',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled TFT-002B candidate with a genuine nonzero, non-proportional Hermitian inter-copy coupling C (not the trivial D_F(+)D_F split)",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "reproducibility": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
     "source_node": "OMEGA_B-FINITE",
     "target_node": "SPECTRAL-ACTION-A0-A6-FINITE-B",

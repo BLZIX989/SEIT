@@ -27,6 +27,9 @@ from compiler.ir.finite_spectral_triple_certification import (
 from compiler.ir.finite_spectral_triple_recovery import (
     TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY, register_finite_spectral_triple_recovery,
 )
+from compiler.ir.finite_spectral_triple_tft002b_and_coupled_recovery import (
+    TYPE_DEFS_TFT002B_COUPLED_RECOVERY, register_tft002b_and_coupled_recovery,
+)
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
 from compiler.ir.seeley_dewitt_verification import (
@@ -100,7 +103,8 @@ def build_and_run() -> dict:
     registries = MDCLRegistries()
     for name, desc, parent in (TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE
                                 + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE
-                                + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY):
+                                + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY
+                                + TYPE_DEFS_TFT002B_COUPLED_RECOVERY):
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -119,6 +123,9 @@ def build_and_run() -> dict:
     # Audit that certification's architecture for problems, then register
     # the recovery construction (must run after: depends on FINITE-DIRAC-D_B).
     recovery_results = register_finite_spectral_triple_recovery(registries, ROOT)
+    # Phase 1/2/3: TFT-002B evaluation + nontrivially-coupled recovery.
+    # Must run after both above (reuses H2-GRAPH-CONTROL).
+    tft002b_results = register_tft002b_and_coupled_recovery(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -130,7 +137,8 @@ def build_and_run() -> dict:
                          + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"])
                          + list(seeley_dewitt_results["calculations"])
                          + list(finite_triple_results["calculations"])
-                         + list(recovery_results["calculations"]))
+                         + list(recovery_results["calculations"])
+                         + list(tft002b_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new
