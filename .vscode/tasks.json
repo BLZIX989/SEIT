@@ -1,0 +1,53 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SEIT: Setup (one-time)",
+      "type": "shell",
+      "command": "bash scripts/mac_setup.sh",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "SEIT: Run Console (backend + frontend)",
+      "type": "shell",
+      "command": "bash scripts/run_console.sh",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "runOptions": { "instanceLimit": 1 }
+    },
+    {
+      "label": "SEIT: Backend only (FastAPI, :8000)",
+      "type": "shell",
+      "command": "source .venv/bin/activate && python3 -m uvicorn console.api.main:app --reload --port 8000",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "SEIT: Frontend only (Vite, :5173)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/console/web" },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "SEIT: Run Full Compiler",
+      "type": "shell",
+      "command": "bash scripts/run_compiler.sh",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "SEIT: Run Python Tests",
+      "type": "shell",
+      "command": "bash scripts/run_tests.sh",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    }
+  ]
+}

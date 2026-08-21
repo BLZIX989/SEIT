@@ -40,6 +40,16 @@ _REPRODUCIBILITY = {
     "T-SPECTRUM-TO-DIFFUSION": "EXACT_DEFINITIONAL",           # direct formula evaluation
     "T-DIFFUSION-TO-METRIC": "NUMERIC_NON_UNIQUE",             # depends on free diffusion-time parameter
     "T-OPERATOR-TO-CURVATURE": "NUMERIC_WITH_LP_DUALITY_CROSSCHECK",
+    "T-LICHNEROWICZ-GAUGE-TERM": "EXACT_SYMBOLIC_ZERO_RESIDUAL",
+    "T-LICHNEROWICZ-GRAVITY-TERM": "EXACT_SYMBOLIC_COEFFICIENT_SOLVED",
+    "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_TOLERANCE_1E-4_AT_4_DISTINCT_E_VALUES",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-DIRAC-SQUARED-FINITE": "EXACT_NUMERIC_BLOCK_MATCH",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-TFT002B-EVALUATION": "EXACT_NUMERIC_N=200",
+    "T-COUPLED-RECOVERY-AXIOMS": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "EXACT_NUMERIC_N=200_DIM=2800_PLUS_J_CONJUGATION_CROSSCHECK",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "EXACT_FINITE_TRACE_MOMENTS_N=200_DIM=2800",
 }
 
 # transformation_id -> whether a genuine symbolic/definitional proof backs
@@ -58,6 +68,16 @@ _PROOF_STATUS = {
     "T-SPECTRUM-TO-DIFFUSION": "PROVEN_DEFINITIONAL",
     "T-DIFFUSION-TO-METRIC": "NO_PROOF_REGISTERED",
     "T-OPERATOR-TO-CURVATURE": "NUMERIC_WITH_HAND_VERIFIED_CASES",
+    "T-LICHNEROWICZ-GAUGE-TERM": "PROVEN_SYMBOLIC_EXACT",
+    "T-LICHNEROWICZ-GRAVITY-TERM": "PROVEN_SYMBOLIC_EXACT",
+    "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_VERIFICATION_ONLY",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-DIRAC-SQUARED-FINITE": "PROVEN_DEFINITIONAL",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-TFT002B-EVALUATION": "PROVEN_DEFINITIONAL",
+    "T-COUPLED-RECOVERY-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "NUMERIC_VERIFICATION_ONLY",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "NUMERIC_VERIFICATION_ONLY",
 }
 
 # transformation_id -> real backend module that executes it.
@@ -69,6 +89,16 @@ _EXECUTABLE_BACKEND = {
     "T-SPECTRUM-TO-DIFFUSION": "compiler/backends/diffusion_metric.py",
     "T-DIFFUSION-TO-METRIC": "compiler/backends/diffusion_metric.py",
     "T-OPERATOR-TO-CURVATURE": "compiler/backends/ollivier_ricci.py",
+    "T-LICHNEROWICZ-GAUGE-TERM": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "T-LICHNEROWICZ-GRAVITY-TERM": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "compiler/backends/finite_spectral_triple_candidate.py",
+    "T-DIRAC-SQUARED-FINITE": "compiler/backends/finite_spectral_triple_candidate.py",
+    "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery.py",
+    "T-TFT002B-EVALUATION": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "T-COUPLED-RECOVERY-AXIOMS": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "T-COUPLED-RECOVERY-INNER-FLUCTUATION": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "T-COUPLED-RECOVERY-SPECTRAL-ACTION": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
 }
 
 # (chainlink_id, transformation_id, mathematical_statement)
@@ -81,6 +111,66 @@ _REAL_CHAINLINKS = [
     ("CL-DIFFUSION-TO-METRIC", "T-DIFFUSION-TO-METRIC", "candidate g_ij from diffusion-distance refinement sweep"),
     ("CL-OPERATOR-TO-CURVATURE-DISCRETE", "T-OPERATOR-TO-CURVATURE",
      "kappa(x,y) = 1 - W1(m_x,m_y)/d(x,y) (Ollivier-Ricci, alpha=0)"),
+]
+
+# (chainlink_id, transformation_id, mathematical_statement) -- SAME shape as
+# _REAL_CHAINLINKS above, but for transformations registered by
+# compiler/ir/seeley_dewitt_verification.py, which (like FC-005) is NOT part
+# of the minimal registry compiler/tests/test_protocol_chainlinks.py builds
+# for its generic Chainlink-layer tests. Kept as a separate list (rather than
+# folded into _REAL_CHAINLINKS, which that test iterates over unconditionally)
+# and added below with an explicit "in registries.transformations" guard, the
+# same pattern already used for CONTINUUM-LIMIT-L-DESI's conditional
+# registration.
+_LICHNEROWICZ_SEELEY_DEWITT_CHAINLINKS = [
+    ("CL-CONTROL-TO-LICHNEROWICZ-GAUGE", "T-LICHNEROWICZ-GAUGE-TERM",
+     "D_A^2 = -(nabla^2+E), E = i*F_12*gamma^1*gamma^2 (flat 2D control, gauge term only)"),
+    ("CL-CONTROL-TO-LICHNEROWICZ-GRAVITY", "T-LICHNEROWICZ-GRAVITY-TERM",
+     "D^2 = -(nabla^2+E), E = c*R with c solved = -1/4 (round S^2 control, gravity term only)"),
+    ("CL-LICHNEROWICZ-TO-SEELEY-DEWITT", "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+     "a0=tr(I)*Vol, a2=tr(E+R/6)*Vol, a4=(1/360)tr[60ER+180E^2+5R^2-2Ric^2+2Riem^2]*Vol (S^3 control)"),
+]
+
+# Same shape and guard pattern as above, for
+# compiler/ir/finite_spectral_triple_certification.py's transformations.
+_FINITE_SPECTRAL_TRIPLE_CHAINLINKS = [
+    ("CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS", "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+     "self-adjointness, grading, real-structure-sign, and first-order-condition "
+     "[[D_F,pi(f)],pi(g)]=0 checks against (A_F,H_F,D_F,J_F,gamma_F) -- FAILS "
+     "(first-order condition; exact closed form, generically nonzero)"),
+    ("CL-FINITE-DIRAC-SQUARED", "T-DIRAC-SQUARED-FINITE",
+     "D_F^2 = diag(d1 d1^T, d1^T d1), exactly block-diagonal, E_B=0 for the bare operator"),
+    ("CL-FINITE-SPECTRAL-TRIPLE-RECOVERY", "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+     "[[D_F',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled (A_F,H_F'=H_F(+)H_F,D_F'=D_F(+)D_F,"
+     "J_F',gamma_F') -- recovery after the original candidate's certification FAILED"),
+    ("CL-TFT002B-EVALUATION", "T-TFT002B-EVALUATION",
+     "D3=[[0,d1,0],[d1^T,0,d2],[0,d2^T,0]], D3^2=diag(L0,L1,L2) exactly (full graded Hodge "
+     "Laplacian, uses the 600 real triangles D_B discarded) -- promoted as additional candidate"),
+    ("CL-COUPLED-RECOVERY", "T-COUPLED-RECOVERY-AXIOMS",
+     "[[D_F'',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled TFT-002B candidate with a genuine "
+     "nonzero, non-proportional Hermitian inter-copy coupling C (not the trivial D_F(+)D_F split)"),
+]
+
+# Same shape as _FINITE_SPECTRAL_TRIPLE_CHAINLINKS above, kept separate
+# (rather than folded in) because that list's failure_conditions text is
+# specific to the first-order-condition check phrasing -- these two are
+# about a different subject (inner fluctuation / finite trace moments) and
+# need their own, honestly distinct failure_conditions.
+_COUPLED_RECOVERY_SPECTRAL_ACTION_CHAINLINKS = [
+    ("CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION", "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+     "D_A''=D_F''+omega+eps'*J''omegaJ''^-1 (omega=i*[D_F'',pi'(f)]) verified self-adjoint and "
+     "grading-anticommuting; Omega_B''=D_A''^2-D_F''^2 genuinely nonzero -- the first well-posed "
+     "inner fluctuation anywhere in this corpus (closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION "
+     "wiring gap for the coupled-recovery candidate specifically)",
+     ["D_A'' fails to come out self-adjoint, or fails to anticommute with the grading, or "
+      "Omega_B''=D_A''^2-D_F''^2 comes out identically zero (a trivial, non-informative "
+      "fluctuation) for the tested generator"]),
+    ("CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION", "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+     "a0''..a6'' = Tr(D_A''^k), k=0,2,4,6 -- exact finite-dimensional trace moments of the "
+     "fluctuated coupled-recovery candidate, NOT continuum Seeley-DeWitt coefficients",
+     ["the fluctuation upstream (CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION) is not well-posed, or "
+      "a trace moment's imaginary part exceeds float-noise tolerance for a claimed self-adjoint "
+      "operator"]),
 ]
 
 
@@ -153,6 +243,198 @@ def build_derivation_chainlinks(
             ]
         reg.add(link)
 
+    # Lichnerowicz/Seeley-DeWitt chainlinks: same construction as the loop
+    # above, guarded by presence -- compiler/ir/seeley_dewitt_verification.py
+    # is not part of the minimal registry
+    # compiler/tests/test_protocol_chainlinks.py builds for its generic
+    # Chainlink-layer tests (same reason CONTINUUM-LIMIT-L-DESI below is
+    # guarded rather than folded into the unconditional loop above).
+    for chainlink_id, transformation_id, statement in _LICHNEROWICZ_SEELEY_DEWITT_CHAINLINKS:
+        if transformation_id not in registries.transformations:
+            continue
+        t = registries.transformations.get(transformation_id)
+        status_val = t.status.value if isinstance(t.status, Status) else t.status
+        reg.add(Chainlink(
+            chainlink_id=chainlink_id,
+            source_node=t.domain,
+            target_node=t.codomain,
+            transformation=t.action,
+            mathematical_statement=statement,
+            dependencies=list(t.dependencies),
+            assumptions=list(t.assumptions),
+            status=status_val,
+            proof_status=_PROOF_STATUS[transformation_id],
+            calculation_status=status_val,
+            falsification_status="NOT_TESTED",
+            executable_backend=_EXECUTABLE_BACKEND[transformation_id],
+            reproducibility=_REPRODUCIBILITY[transformation_id],
+            open_obligations=[] if status_val in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"{transformation_id} status is {status_val}, not admissible for downstream chainlinks"
+            ],
+            failure_conditions=["residual is not exactly/numerically zero against the claimed identity"],
+            provenance_source=t.provenance.source if t.provenance else "",
+            source_document_status="N/A",
+        ))
+
+    # Finite spectral-triple certification chainlinks: same guarded
+    # construction as the Lichnerowicz/Seeley-DeWitt loop above.
+    for chainlink_id, transformation_id, statement in _FINITE_SPECTRAL_TRIPLE_CHAINLINKS:
+        if transformation_id not in registries.transformations:
+            continue
+        t = registries.transformations.get(transformation_id)
+        status_val = t.status.value if isinstance(t.status, Status) else t.status
+        reg.add(Chainlink(
+            chainlink_id=chainlink_id,
+            source_node=t.domain,
+            target_node=t.codomain,
+            transformation=t.action,
+            mathematical_statement=statement,
+            dependencies=list(t.dependencies),
+            assumptions=list(t.assumptions),
+            status=status_val,
+            proof_status=_PROOF_STATUS[transformation_id],
+            calculation_status=status_val,
+            falsification_status="NOT_TESTED",
+            executable_backend=_EXECUTABLE_BACKEND[transformation_id],
+            reproducibility=_REPRODUCIBILITY[transformation_id],
+            open_obligations=[] if status_val in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"{transformation_id} status is {status_val}, not admissible for downstream chainlinks "
+                "-- specifically, this FAIL blocks (E_B,Omega_B) via the standard NCG inner-fluctuation "
+                "mechanism, per compiler/historical/finite_spectral_triple_certification.py"
+            ],
+            failure_conditions=["[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra "
+                                "representation (exactly what was found here)"],
+            provenance_source=t.provenance.source if t.provenance else "",
+            source_document_status="N/A",
+        ))
+
+    # The honest frontier this certification produces: Omega_B and the
+    # finite spectral-action moments a0^B..a6^B are OPEN, not because they
+    # were never attempted, but because the certification that would
+    # license computing them genuinely FAILS (first-order condition).
+    if "SPECTRAL-ACTION-A0-A6-FINITE-B" in registries.objects:
+        sa_finite = registries.objects.get("SPECTRAL-ACTION-A0-A6-FINITE-B")
+        sa_status = sa_finite.status.value if isinstance(sa_finite.status, Status) else sa_finite.status
+        reg.add(Chainlink(
+            chainlink_id="CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
+            source_node="OMEGA_B-FINITE",
+            target_node="SPECTRAL-ACTION-A0-A6-FINITE-B",
+            transformation="Omega_B (inner-fluctuation curvature) -> a0^B,a2^B,a4^B,a6^B (NOT CERTIFIABLE)",
+            mathematical_statement="S_eff^B = Tr f(D_A^B/Lambda) ~ sum_k a_{2k}^B Lambda^{d-2k} + ... "
+                                    "(requires a well-posed fluctuated D_A^B, which requires the "
+                                    "first-order condition -- FALSE for this candidate)",
+            dependencies=["OMEGA_B-FINITE"],
+            assumptions=list(sa_finite.assumptions),
+            status=sa_status,
+            proof_status="OPEN",
+            calculation_status=sa_status,
+            falsification_status="NOT_TESTED",
+            executable_backend=None,
+            reproducibility="N/A_NOT_EXECUTED",
+            open_obligations=[
+                "the first-order condition fails for this candidate's (A_F,J_F) -- see "
+                "AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+                "this specific candidate (A_F,H_F,D_F,J_F,gamma_F) has not been, and is not "
+                "expected to be, revised -- but genuinely different candidates that DO pass the "
+                "first-order condition were constructed (CL-FINITE-SPECTRAL-TRIPLE-RECOVERY, "
+                "CL-TFT002B-EVALUATION, CL-COUPLED-RECOVERY) and one of them has now been carried "
+                "through an actual inner-fluctuation attempt -- see "
+                "CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION and CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION. "
+                "This chainlink remains OPEN because it is specifically about the ORIGINAL candidate.",
+            ],
+            failure_conditions=[
+                "an alternative candidate is constructed and its own first-order-condition check fails "
+                "the same way (would need its own independent certification, not inherited from this one)",
+            ],
+            provenance_source="compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
+            source_document_status="N/A",
+        ))
+
+    # Closes the wiring gap the above block's stale text used to describe:
+    # the coupled-recovery candidate DOES pass the first-order condition,
+    # and has now been carried through a real inner-fluctuation / finite-
+    # moment attempt (compiler/ir/finite_spectral_triple_coupled_recovery_
+    # spectral_action.py). This is an INDEPENDENT chainlink pair, not a
+    # resolution of CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION above (that one
+    # stays OPEN, correctly, for the original candidate it describes).
+    for chainlink_id, transformation_id, statement, failure_conditions in _COUPLED_RECOVERY_SPECTRAL_ACTION_CHAINLINKS:
+        if transformation_id not in registries.transformations:
+            continue
+        t = registries.transformations.get(transformation_id)
+        status_val = t.status.value if isinstance(t.status, Status) else t.status
+        reg.add(Chainlink(
+            chainlink_id=chainlink_id,
+            source_node=t.domain,
+            target_node=t.codomain,
+            transformation=t.action,
+            mathematical_statement=statement,
+            dependencies=list(t.dependencies),
+            assumptions=list(t.assumptions),
+            status=status_val,
+            proof_status=_PROOF_STATUS[transformation_id],
+            calculation_status=status_val,
+            falsification_status="NOT_TESTED",
+            executable_backend=_EXECUTABLE_BACKEND[transformation_id],
+            reproducibility=_REPRODUCIBILITY[transformation_id],
+            open_obligations=[] if status_val in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"{transformation_id} status is {status_val}, not admissible for downstream chainlinks"
+            ],
+            failure_conditions=failure_conditions,
+            provenance_source=t.provenance.source if t.provenance else "",
+            source_document_status="N/A",
+        ))
+
+    # CONTINUUM-LIMIT-L-DESI: unlike the 7 chainlinks above, this edge has no
+    # registered Transformation (compiler/ir/fc005.py only registers Objects
+    # with dependency links for the DESI chain) -- so this chainlink is
+    # computed directly from the real CONTINUUM-LIMIT-L-DESI Object's own
+    # status/dependencies/provenance instead, exactly as honest a source as
+    # a Transformation would be, and reflects how this branch is actually
+    # built rather than inventing a Transformation node to fit the pattern.
+    # Added as a first-class chainlink (not a footnote) alongside the
+    # FC005-CONTINUUM-EXPONENT-CORRECTION provenance record documenting the
+    # eps^(5/2) -> eps^5 exponent correction this node's label carries.
+    # Only registered when FC-005 has actually been registered into these
+    # registries (register_fc005() is not part of every build path -- e.g.
+    # the isolated Phase-12 unit tests build only the graph/curvature
+    # chain -- and this chainlink must not claim to describe a node that
+    # was never built).
+    if "CONTINUUM-LIMIT-L-DESI" in registries.objects:
+        continuum = registries.objects.get("CONTINUUM-LIMIT-L-DESI")
+        continuum_status = continuum.status.value if isinstance(continuum.status, Status) else continuum.status
+        reg.add(Chainlink(
+            chainlink_id="CL-OPERATOR-TO-CONTINUUM-DESI",
+            source_node="OPERATOR-L-DESI",
+            target_node="CONTINUUM-LIMIT-L-DESI",
+            transformation="L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)) -- continuum-limit "
+                           "normalization applied to the real DESI-derived graph Laplacian",
+            mathematical_statement="L_tilde_(N,eps) = -L_N/(C_K N eps^5), d=3",
+            dependencies=list(continuum.dependencies),
+            assumptions=list(continuum.assumptions) + [
+                "eps^(d+2)=eps^5 (d=3) is CORRECTED from the workbook's original eps^(d/2+1)="
+                "eps^(5/2) -- see FC005-CONTINUUM-EXPONENT-CORRECTION for the full provenance "
+                "record and compiler/backends/desi_graph.py::normalize_continuum_limit for the "
+                "derivation.",
+            ],
+            status=continuum_status,
+            proof_status="NUMERIC_VERIFICATION_ONLY",
+            calculation_status=continuum_status,
+            falsification_status="NOT_TESTED",
+            executable_backend="compiler/backends/desi_graph.py::normalize_continuum_limit",
+            reproducibility=("NUMERIC_ON_REAL_DESI_PILOT_FIXTURE"
+                             if continuum.provenance and
+                             continuum.provenance.verification.get("gate1_converged") is not None
+                             else "N/A_BLOCKED_ON_DESI_CATALOGUE"),
+            open_obligations=[] if continuum_status in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"CONTINUUM-LIMIT-L-DESI status is {continuum_status}, not admissible for "
+                "downstream DESI chainlinks (DESI-SPECTRUM, DESI-HEAT-TRACE, ...)"
+            ],
+            failure_conditions=["Gate 1 (mathematical convergence) fails on (N,eps) refinement -- "
+                                "see MATHEMATICAL-CONVERGENCE-DESI"],
+            provenance_source=continuum.provenance.source if continuum.provenance else "",
+            source_document_status="N/A",
+        ))
+
     # The honest frontier: this is where the real, executed chain actually
     # stops today. METRIC-CANDIDATE is CONDITIONAL and explicitly
     # non-unique (compiler/backends/diffusion_metric.py's own
@@ -206,5 +488,48 @@ def build_derivation_chainlinks(
         provenance_source="compiler/protocol/derivation_chainlinks.py (Phase 12 frontier audit)",
         source_document_status="N/A",
     ))
+
+    # The honest frontier of the D_A^2=-(nabla^2+E) -> a0 -> a2 -> a4 -> a6 ->
+    # Tr f(D_A/Lambda) -> S_eff chain: a0, a2, a4 are now verified (on
+    # control manifolds -- CL-LICHNEROWICZ-TO-SEELEY-DEWITT above), but the
+    # general a6 formula was explicitly NOT independently rederived (see
+    # compiler/historical/seeley_dewitt_verification.py::A6_SCOPE_NOTE), so
+    # Tr f(D_A/Lambda) cannot be certified. Recorded as OPEN with an
+    # explicit obstruction, per the same discipline CL-METRIC-TO-CONNECTION
+    # above already applies to the geometry branch's own frontier.
+    if "SEELEY-DEWITT-A6-GENERAL" in registries.objects:
+        a6 = registries.objects.get("SEELEY-DEWITT-A6-GENERAL")
+        a6_status = a6.status.value if isinstance(a6.status, Status) else a6.status
+        reg.add(Chainlink(
+            chainlink_id="CL-SEELEY-DEWITT-TO-SPECTRAL-ACTION",
+            source_node="SEELEY-DEWITT-A6-GENERAL",
+            target_node="SPECTRAL-ACTION-TR-F-CERTIFICATION",
+            transformation="a6 (general Gilkey formula, position-dependent E(x), nonabelian Omega_{mu nu}, "
+                           "Delta E, dozen-plus curvature invariants) -> Tr f(D_A/Lambda) (NOT REGISTERED)",
+            mathematical_statement="S_eff = Tr f(D_A/Lambda) ~ sum_k a_{2k} Lambda^{d-2k} + ... "
+                                    "(requires a6, among others, not yet resolved)",
+            dependencies=["SEELEY-DEWITT-A6-GENERAL"],
+            assumptions=list(a6.assumptions),
+            status=a6_status,
+            proof_status="OPEN",
+            calculation_status=a6_status,
+            falsification_status="NOT_TESTED",
+            executable_backend=None,
+            reproducibility="N/A_NOT_EXECUTED",
+            open_obligations=[
+                "general Gilkey a6 formula not independently rederived in this repository -- external "
+                "reference only (Gilkey 1975; Vassilevich 2003), PROPOSED/comparison status",
+                "even once a6 is resolved, this branch verifies GENERAL Lichnerowicz/Gilkey formulas on "
+                "control manifolds only -- it does NOT certify this project's own candidate D_B for "
+                "seit_lang.spectral_action's Tr f(D/Lambda), which has never been shown to satisfy the "
+                "full Connes spectral-triple axioms (seit_lang/spectral_action.py's own module docstring)",
+            ],
+            failure_conditions=[
+                "an independently rederived a6 formula fails to match the published Gilkey/Vassilevich "
+                "result on a solvable control case (the same style of check already applied to a0/a2/a4)",
+            ],
+            provenance_source="compiler/protocol/derivation_chainlinks.py (D_A^2 verification frontier)",
+            source_document_status="N/A",
+        ))
 
     return reg

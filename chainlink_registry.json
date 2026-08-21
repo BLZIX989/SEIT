@@ -177,6 +177,313 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-CONTROL-TO-LICHNEROWICZ-GAUGE",
+    "source_node": "CONTROL-FLAT-2D",
+    "target_node": "LICHNEROWICZ-GAUGE-TERM",
+    "transformation": "D_A = i*gamma^a(d_a+iA_a), squared by direct symbolic operator composition",
+    "mathematical_statement": "D_A^2 = -(nabla^2+E), E = i*F_12*gamma^1*gamma^2 (flat 2D control, gauge term only)",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_EXACT",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "EXACT_SYMBOLIC_ZERO_RESIDUAL",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-CONTROL-TO-LICHNEROWICZ-GRAVITY",
+    "source_node": "CONTROL-MANIFOLD-S2",
+    "target_node": "LICHNEROWICZ-GRAVITY-TERM-S2",
+    "transformation": "D^2 on round S^2 via Cartan spin connection + Levi-Civita Christoffel symbols, coefficient of E=c*R solved by direct symbolic composition",
+    "mathematical_statement": "D^2 = -(nabla^2+E), E = c*R with c solved = -1/4 (round S^2 control, gravity term only)",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_EXACT",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "EXACT_SYMBOLIC_COEFFICIENT_SOLVED",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-LICHNEROWICZ-TO-SEELEY-DEWITT",
+    "source_node": "S3-MANIFOLD",
+    "target_node": "SEELEY-DEWITT-A0-A2-A4",
+    "transformation": "shifted operator L=-Delta-E on S^3, exact spectrum, degree-4 heat-trace polynomial fit vs Gilkey-predicted closed forms, 4 distinct E values",
+    "mathematical_statement": "a0=tr(I)*Vol, a2=tr(E+R/6)*Vol, a4=(1/360)tr[60ER+180E^2+5R^2-2Ric^2+2Riem^2]*Vol (S^3 control)",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "NUMERIC_TOLERANCE_1E-4_AT_4_DISTINCT_E_VALUES",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "source_node": "H2-GRAPH-CONTROL",
+    "target_node": "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the concrete (A_F,H_F,D_F,J_F,gamma_F) candidate defined above",
+    "mathematical_statement": "self-adjointness, grading, real-structure-sign, and first-order-condition [[D_F,pi(f)],pi(g)]=0 checks against (A_F,H_F,D_F,J_F,gamma_F) -- FAILS (first-order condition; exact closed form, generically nonzero)",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ],
+    "assumptions": [],
+    "status": "FAIL",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "FAIL",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_candidate.py",
+    "reproducibility": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [
+      "T-FINITE-SPECTRAL-TRIPLE-AXIOMS status is FAIL, not admissible for downstream chainlinks -- specifically, this FAIL blocks (E_B,Omega_B) via the standard NCG inner-fluctuation mechanism, per compiler/historical/finite_spectral_triple_certification.py"
+    ],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_candidate.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-FINITE-DIRAC-SQUARED",
+    "source_node": "FINITE-DIRAC-D_B",
+    "target_node": "DIRAC-SQUARED-FINITE-D_B",
+    "transformation": "D_F^2 computed directly by matrix multiplication and compared block-by-block against d1 d1^T (vertex) and d1^T d1 (edge)",
+    "mathematical_statement": "D_F^2 = diag(d1 d1^T, d1^T d1), exactly block-diagonal, E_B=0 for the bare operator",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_candidate.py",
+    "reproducibility": "EXACT_NUMERIC_BLOCK_MATCH",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_candidate.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-FINITE-SPECTRAL-TRIPLE-RECOVERY",
+    "source_node": "FINITE-DIRAC-D_B",
+    "target_node": "FINITE-SPECTRAL-TRIPLE-RECOVERY-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED candidate (A_F,H_F',D_F'=D_F(+)D_F,J_F',gamma_F')",
+    "mathematical_statement": "[[D_F',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled (A_F,H_F'=H_F(+)H_F,D_F'=D_F(+)D_F,J_F',gamma_F') -- recovery after the original candidate's certification FAILED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_recovery.py",
+    "reproducibility": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_recovery.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-TFT002B-EVALUATION",
+    "source_node": "H2-GRAPH-CONTROL",
+    "target_node": "TFT-002B-CANDIDATE",
+    "transformation": "build the 3-graded Hodge-Dirac operator at full scale (n=200) and check self-adjointness, grading axioms, exact square, and comparison against D_B",
+    "mathematical_statement": "D3=[[0,d1,0],[d1^T,0,d2],[0,d2^T,0]], D3^2=diag(L0,L1,L2) exactly (full graded Hodge Laplacian, uses the 600 real triangles D_B discarded) -- promoted as additional candidate",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "reproducibility": "EXACT_NUMERIC_N=200",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_tft002b.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY",
+    "source_node": "TFT-002B-CANDIDATE",
+    "target_node": "COUPLED-RECOVERY-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED, NONTRIVIALLY-COUPLED candidate over TFT-002B",
+    "mathematical_statement": "[[D_F'',pi'(f)],J'pi'(g)J'^-1]=0 HOLDS for the doubled TFT-002B candidate with a genuine nonzero, non-proportional Hermitian inter-copy coupling C (not the trivial D_F(+)D_F split)",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "reproducibility": "NUMERIC_N=200_COMPLEX_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_recovery_coupled.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
+    "source_node": "OMEGA_B-FINITE",
+    "target_node": "SPECTRAL-ACTION-A0-A6-FINITE-B",
+    "transformation": "Omega_B (inner-fluctuation curvature) -> a0^B,a2^B,a4^B,a6^B (NOT CERTIFIABLE)",
+    "mathematical_statement": "S_eff^B = Tr f(D_A^B/Lambda) ~ sum_k a_{2k}^B Lambda^{d-2k} + ... (requires a well-posed fluctuated D_A^B, which requires the first-order condition -- FALSE for this candidate)",
+    "dependencies": [
+      "OMEGA_B-FINITE"
+    ],
+    "assumptions": [
+      "Connes' inner-fluctuation formula D_A = D_F + omega + J*omega*J^-1 (omega = sum a[D_F,b]) is only guaranteed well-defined/gauge-covariant when the first-order condition holds. It does not hold here, so (E_B, Omega_B) in the physical Chamseddine-Connes sense CANNOT be certified for this candidate -- there is no well-posed fluctuated operator D_A to take a Lichnerowicz-type decomposition of. The BARE, unfluctuated D_F^2 remains exactly computable (block-diagonal, confirms dirac_candidates.py's own diag(L0,d1^T d1) result), giving E_B=0 trivially for the unfluctuated operator -- but this is a much weaker statement than a genuine NCG spectral action, and a0^B..a6^B cannot be certified as physically meaningful moments on this basis. Per the explicit instruction that certification governs whether the spectral action can be touched: it cannot, for THIS candidate, until either (a) a genuinely different (A_F,J_F,gamma_F) is found that passes the first-order condition, or (b) the corpus explicitly accepts the trivial E_B=0 bare-operator reading, which none of its existing physical claims do."
+    ],
+    "status": "OPEN",
+    "proof_status": "OPEN",
+    "calculation_status": "OPEN",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": null,
+    "reproducibility": "N/A_NOT_EXECUTED",
+    "literature_support": [],
+    "open_obligations": [
+      "the first-order condition fails for this candidate's (A_F,J_F) -- see AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+      "this specific candidate (A_F,H_F,D_F,J_F,gamma_F) has not been, and is not expected to be, revised -- but genuinely different candidates that DO pass the first-order condition were constructed (CL-FINITE-SPECTRAL-TRIPLE-RECOVERY, CL-TFT002B-EVALUATION, CL-COUPLED-RECOVERY) and one of them has now been carried through an actual inner-fluctuation attempt -- see CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION and CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION. This chainlink remains OPEN because it is specifically about the ORIGINAL candidate."
+    ],
+    "failure_conditions": [
+      "an alternative candidate is constructed and its own first-order-condition check fails the same way (would need its own independent certification, not inherited from this one)"
+    ],
+    "provenance_source": "compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION",
+    "source_node": "COUPLED-RECOVERY-CERTIFICATION",
+    "target_node": "OMEGA_B-COUPLED-RECOVERY",
+    "transformation": "build omega=i*[D_F'',pi'(f)], verify self-adjointness, form D_A''=D_F''+omega+eps'*J''omegaJ''^-1 via an explicit closed-form J-conjugation matrix (independently verified against the vector-level J definition), verify D_A'' self-adjoint and grading-anticommuting, compute Omega_B''=D_A''^2-D_F''^2",
+    "mathematical_statement": "D_A''=D_F''+omega+eps'*J''omegaJ''^-1 (omega=i*[D_F'',pi'(f)]) verified self-adjoint and grading-anticommuting; Omega_B''=D_A''^2-D_F''^2 genuinely nonzero -- the first well-posed inner fluctuation anywhere in this corpus (closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION wiring gap for the coupled-recovery candidate specifically)",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "reproducibility": "EXACT_NUMERIC_N=200_DIM=2800_PLUS_J_CONJUGATION_CROSSCHECK",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "D_A'' fails to come out self-adjoint, or fails to anticommute with the grading, or Omega_B''=D_A''^2-D_F''^2 comes out identically zero (a trivial, non-informative fluctuation) for the tested generator"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-COUPLED-RECOVERY-TO-SPECTRAL-ACTION",
+    "source_node": "OMEGA_B-COUPLED-RECOVERY",
+    "target_node": "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B",
+    "transformation": "Tr(D_A''^k) for k=0,2,4,6 -- exact finite-dimensional trace moments, not a continuum Seeley-DeWitt expansion",
+    "mathematical_statement": "a0''..a6'' = Tr(D_A''^k), k=0,2,4,6 -- exact finite-dimensional trace moments of the fluctuated coupled-recovery candidate, NOT continuum Seeley-DeWitt coefficients",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "reproducibility": "EXACT_FINITE_TRACE_MOMENTS_N=200_DIM=2800",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "the fluctuation upstream (CL-COUPLED-RECOVERY-TO-INNER-FLUCTUATION) is not well-posed, or a trace moment's imaginary part exceeds float-noise tolerance for a claimed self-adjoint operator"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_coupled_recovery_spectral_action.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-OPERATOR-TO-CONTINUUM-DESI",
+    "source_node": "OPERATOR-L-DESI",
+    "target_node": "CONTINUUM-LIMIT-L-DESI",
+    "transformation": "L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)) -- continuum-limit normalization applied to the real DESI-derived graph Laplacian",
+    "mathematical_statement": "L_tilde_(N,eps) = -L_N/(C_K N eps^5), d=3",
+    "dependencies": [
+      "OPERATOR-L-DESI"
+    ],
+    "assumptions": [
+      "eps^(d+2)=eps^5 (d=3) is CORRECTED from the workbook's original eps^(d/2+1)=eps^(5/2) -- see FC005-CONTINUUM-EXPONENT-CORRECTION for the full provenance record and compiler/backends/desi_graph.py::normalize_continuum_limit for the derivation."
+    ],
+    "status": "FAIL",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "FAIL",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/desi_graph.py::normalize_continuum_limit",
+    "reproducibility": "NUMERIC_ON_REAL_DESI_PILOT_FIXTURE",
+    "literature_support": [],
+    "open_obligations": [
+      "CONTINUUM-LIMIT-L-DESI status is FAIL, not admissible for downstream DESI chainlinks (DESI-SPECTRUM, DESI-HEAT-TRACE, ...)"
+    ],
+    "failure_conditions": [
+      "Gate 1 (mathematical convergence) fails on (N,eps) refinement -- see MATHEMATICAL-CONVERGENCE-DESI"
+    ],
+    "provenance_source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-METRIC-TO-CONNECTION",
     "source_node": "METRIC-CANDIDATE",
     "target_node": "CONNECTION-NODE",
@@ -203,6 +510,35 @@
       "any candidate connection construction that depends on an arbitrary, unjustified choice of the diffusion-time parameter t is inadmissible by the same non-arbitrariness requirement METRIC-CANDIDATE itself was already held to"
     ],
     "provenance_source": "compiler/protocol/derivation_chainlinks.py (Phase 12 frontier audit)",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-SEELEY-DEWITT-TO-SPECTRAL-ACTION",
+    "source_node": "SEELEY-DEWITT-A6-GENERAL",
+    "target_node": "SPECTRAL-ACTION-TR-F-CERTIFICATION",
+    "transformation": "a6 (general Gilkey formula, position-dependent E(x), nonabelian Omega_{mu nu}, Delta E, dozen-plus curvature invariants) -> Tr f(D_A/Lambda) (NOT REGISTERED)",
+    "mathematical_statement": "S_eff = Tr f(D_A/Lambda) ~ sum_k a_{2k} Lambda^{d-2k} + ... (requires a6, among others, not yet resolved)",
+    "dependencies": [
+      "SEELEY-DEWITT-A6-GENERAL"
+    ],
+    "assumptions": [
+      "The general Gilkey a6 formula (position-dependent E(x), nonabelian gauge curvature Omega_{mu nu}, Delta E, and a dozen-plus pure-curvature invariants) was NOT independently rederived here: reproducing a formula that long from memory, with no primary source available in this session to cross-check it against, would itself be exactly the kind of unverified claim this project's own discipline forbids. A narrow, elementary, non-Gilkey-formula-dependent consistency check was run instead -- for CONSTANT E, Y_E(t)=exp(t*E)*Y_0(t) is a trivial algebraic identity requiring no heat-kernel theory at all -- and confirmed the fit machinery is self-consistent through O(t^3) (residuals ~1e-4 to 1e-6 at 3 nonzero E values). This does NOT verify the general a6 formula for non-constant E(x) or nonzero gauge curvature. External reference only, PROPOSED/comparison status: Gilkey, P.B. (1975), 'The spectral geometry of the second order elliptic differential operator'; Vassilevich, D.V. (2003), 'Heat kernel expansion: user's manual', Phys. Rept. 388."
+    ],
+    "status": "OPEN",
+    "proof_status": "OPEN",
+    "calculation_status": "OPEN",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": null,
+    "reproducibility": "N/A_NOT_EXECUTED",
+    "literature_support": [],
+    "open_obligations": [
+      "general Gilkey a6 formula not independently rederived in this repository -- external reference only (Gilkey 1975; Vassilevich 2003), PROPOSED/comparison status",
+      "even once a6 is resolved, this branch verifies GENERAL Lichnerowicz/Gilkey formulas on control manifolds only -- it does NOT certify this project's own candidate D_B for seit_lang.spectral_action's Tr f(D/Lambda), which has never been shown to satisfy the full Connes spectral-triple axioms (seit_lang/spectral_action.py's own module docstring)"
+    ],
+    "failure_conditions": [
+      "an independently rederived a6 formula fails to match the published Gilkey/Vassilevich result on a solvable control case (the same style of check already applied to a0/a2/a4)"
+    ],
+    "provenance_source": "compiler/protocol/derivation_chainlinks.py (D_A^2 verification frontier)",
     "source_document_status": "N/A"
   }
 ]

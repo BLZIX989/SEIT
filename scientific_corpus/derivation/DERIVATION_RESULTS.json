@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-08-20T21:08:12.023698+00:00",
+  "run_timestamp": "2026-08-21T22:02:45.490787+00:00",
   "simplicial_dirac": {
     "filled_triangle": {
       "chain_complex_identity": {
@@ -470,8 +470,8 @@
   "categorical": {
     "faithful_edge_preservation": {
       "claim": "The Chainlink projection is a faithful structure-preserving map: every (source_node, target_node) edge it draws corresponds either to a real dependency edge already present in the canonical registries, or to a chainlink that explicitly self-documents its target as an intentionally unregistered open frontier gap (never silently fabricated).",
-      "n_chainlinks_total": 8,
-      "n_faithful_against_real_registry_dependency": 7,
+      "n_chainlinks_total": 21,
+      "n_faithful_against_real_registry_dependency": 20,
       "n_self_documented_open_gaps": 1,
       "self_documented_open_gaps": [
         {
@@ -486,34 +486,34 @@
     },
     "composability": {
       "claim": "For every composable pair of chainlinks A->B, B->C, a direct composite chainlink A->C is also registered.",
-      "n_composable_pairs": 7,
+      "n_composable_pairs": 10,
       "n_with_explicit_composite_registered": 0,
-      "n_without_explicit_composite": 7,
+      "n_without_explicit_composite": 10,
       "examples_missing_composite": [
         [
-          "GRAPH-G-SEED",
-          "OPERATOR-L",
-          "CURVATURE-OLLIVIER-RICCI"
-        ],
-        [
-          "GRAPH-G-SEED",
-          "OPERATOR-L",
-          "SPECTRUM-L"
-        ],
-        [
-          "OPERATOR-L",
-          "SPECTRUM-L",
-          "DIFFUSION-DISTANCE"
-        ],
-        [
-          "OPERATOR-L",
-          "SPECTRUM-L",
-          "HEAT-FLOW-R"
+          "TFT-002B-CANDIDATE",
+          "COUPLED-RECOVERY-CERTIFICATION",
+          "OMEGA_B-COUPLED-RECOVERY"
         ],
         [
           "SPECTRUM-L",
+          "HEAT-FLOW-R",
+          "KERNEL-PROJECTOR"
+        ],
+        [
           "DIFFUSION-DISTANCE",
-          "METRIC-CANDIDATE"
+          "METRIC-CANDIDATE",
+          "CONNECTION-NODE"
+        ],
+        [
+          "H2-GRAPH-CONTROL",
+          "TFT-002B-CANDIDATE",
+          "COUPLED-RECOVERY-CERTIFICATION"
+        ],
+        [
+          "COUPLED-RECOVERY-CERTIFICATION",
+          "OMEGA_B-COUPLED-RECOVERY",
+          "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B"
         ]
       ],
       "interpretation": "The Chainlink registry represents each real compiler transformation as ONE edge (a DIRECT-dependency graph), never synthesizing a transitive composite edge that doesn't correspond to an actual single transformation the compiler runs. This is the CORRECT and intended behavior given the project's own isolation discipline (never fabricate a relationship the compiler didn't itself compute) -- it means the registry is not attempting to BE a category with composition, it is a faithful direct-edge projection, and any 'is this chain composable end-to-end' question must be answered by graph reachability over these direct edges, not by expecting a registered composite record."

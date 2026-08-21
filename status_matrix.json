@@ -275,6 +275,12 @@
     "dependencies": []
   },
   {
+    "id": "FC005-CONTINUUM-EXPONENT-CORRECTION",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
     "id": "S3-MANIFOLD",
     "kind": "Object",
     "status": "PROPOSED",
@@ -474,6 +480,303 @@
     "dependencies": []
   },
   {
+    "id": "CONTROL-MANIFOLD-S2",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "CONTROL-FLAT-2D",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "LICHNEROWICZ-GAUGE-TERM",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ]
+  },
+  {
+    "id": "LICHNEROWICZ-GRAVITY-TERM-S2",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ]
+  },
+  {
+    "id": "DIRAC-SQUARED-LICHNEROWICZ-GENERAL",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "LICHNEROWICZ-GAUGE-TERM",
+      "LICHNEROWICZ-GRAVITY-TERM-S2"
+    ]
+  },
+  {
+    "id": "SEELEY-DEWITT-A0-A2-A4",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "DIRAC-SQUARED-LICHNEROWICZ-GENERAL",
+      "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "SEELEY-DEWITT-A6-GENERAL",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SEELEY-DEWITT-A0-A2-A4"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-TR-F-CERTIFICATION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SEELEY-DEWITT-A6-GENERAL"
+    ]
+  },
+  {
+    "id": "H2-GRAPH-CONTROL",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "FINITE-DIRAC-D_B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "FINITE-ALGEBRA-A_F",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "FINITE-GRADING-GAMMA_F",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "FINITE-REAL-STRUCTURE-J_F",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-SELF-ADJOINT-D_B",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-GRADING-D_B",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-ALGEBRA-A_F"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-REAL-STRUCTURE-SIGNS",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-REAL-STRUCTURE-J_F",
+      "FINITE-GRADING-GAMMA_F"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-FIRST-ORDER-CONDITION",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ]
+  },
+  {
+    "id": "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "H2-GRAPH-CONTROL",
+      "AXIOM-CHECK-SELF-ADJOINT-D_B",
+      "AXIOM-CHECK-GRADING-D_B",
+      "AXIOM-CHECK-REAL-STRUCTURE-SIGNS",
+      "AXIOM-CHECK-FIRST-ORDER-CONDITION"
+    ]
+  },
+  {
+    "id": "DIRAC-SQUARED-FINITE-D_B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "E_B-BARE-FINITE",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "DIRAC-SQUARED-FINITE-D_B"
+    ]
+  },
+  {
+    "id": "OMEGA_B-FINITE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+      "DIRAC-SQUARED-FINITE-D_B"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-A0-A6-FINITE-B",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "E_B-BARE-FINITE",
+      "OMEGA_B-FINITE"
+    ]
+  },
+  {
+    "id": "AUDIT-1-D_B-DISCARDS-AVAILABLE-2-CELLS",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "AUDIT-2-NO-OTHER-CANDIDATE-CONSTRUCTIONS-MISSED",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
+    "id": "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "FINITE-ALGEBRA-A_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-GRADING-GAMMA_F-PRIME",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-REAL-STRUCTURE-J_F-PRIME",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-FIRST-ORDER-CONDITION-RECOVERY",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ]
+  },
+  {
+    "id": "FINITE-SPECTRAL-TRIPLE-RECOVERY-CERTIFICATION",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME",
+      "AXIOM-CHECK-FIRST-ORDER-CONDITION-RECOVERY"
+    ]
+  },
+  {
+    "id": "TFT-002B-CANDIDATE",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "COUPLING-MATRIX-C",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE"
+    ]
+  },
+  {
+    "id": "COUPLED-RECOVERY-CERTIFICATION",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
+    ]
+  },
+  {
+    "id": "PHASE3-KO-DIMENSION-SIGN-SCAN",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
+    "id": "OMEGA_B-COUPLED-RECOVERY",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-A0-A6-COUPLED-RECOVERY-B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -541,6 +844,94 @@
     "status": "VERIFIED",
     "dependencies": [
       "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "T-LICHNEROWICZ-GAUGE-TERM",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ]
+  },
+  {
+    "id": "T-LICHNEROWICZ-GRAVITY-TERM",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ]
+  },
+  {
+    "id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "kind": "Transformation",
+    "status": "FAIL",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ]
+  },
+  {
+    "id": "T-DIRAC-SQUARED-FINITE",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "DOUBLED-HILBERT-SPACE-H_F-PRIME",
+      "FINITE-ALGEBRA-A_F-PRIME",
+      "FINITE-GRADING-GAMMA_F-PRIME",
+      "FINITE-REAL-STRUCTURE-J_F-PRIME"
+    ]
+  },
+  {
+    "id": "T-TFT002B-EVALUATION",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-AXIOMS",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "TFT-002B-CANDIDATE",
+      "COUPLING-MATRIX-C"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "COUPLED-RECOVERY-CERTIFICATION"
+    ]
+  },
+  {
+    "id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "OMEGA_B-COUPLED-RECOVERY"
     ]
   },
   {

@@ -130,8 +130,78 @@
     "parent": null
   },
   {
+    "name": "continuum_exponent_correction_record",
+    "description": "provenance record for the CONTINUUM-LIMIT-L-DESI eps^(5/2) -> eps^5 correction: what was stale, where, root cause, and how it was found",
+    "parent": null
+  },
+  {
     "name": "closure_hypothesis_test",
     "description": "an executed test of one of the four primary load-bearing hypotheses (H1-H4) required to decounterfactualize the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING manuscript",
+    "parent": null
+  },
+  {
+    "name": "control_manifold",
+    "description": "a standard, independently-known-analytic manifold used as a verification control (same status as S3-MANIFOLD), never a claim about this project's own constructions",
+    "parent": null
+  },
+  {
+    "name": "lichnerowicz_term",
+    "description": "one piece (gauge or gravity) of the general D_A^2=-(nabla^2+E) identity, verified on a control manifold",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "seeley_dewitt_coefficient",
+    "description": "a general Gilkey heat-kernel coefficient (a0, a2, a4, or a6), verified or left OPEN on a control manifold",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "spectral_action_certification",
+    "description": "whether Tr f(D_A/Lambda) can be certified for physical use; OPEN until every Seeley-DeWitt coefficient it depends on is resolved",
+    "parent": null
+  },
+  {
+    "name": "control_graph",
+    "description": "a standard graph construction used as a verification control (same status as other control_manifold objects), never a claim about a physically-selected graph",
+    "parent": null
+  },
+  {
+    "name": "finite_spectral_triple_component",
+    "description": "one component (algebra representation, grading, real structure, or Dirac operator) of a candidate finite spectral triple (A_F,H_F,D_F,J_F,gamma_F)",
+    "parent": null
+  },
+  {
+    "name": "spectral_triple_axiom_check",
+    "description": "a real, executed check of one Connes spectral-triple axiom against a concrete candidate -- status always computed from the actual check, never asserted",
+    "parent": null
+  },
+  {
+    "name": "finite_dirac_squared_decomposition",
+    "description": "D_F^2 for a finite candidate Dirac operator, and whether its E_B/Omega_B decomposition is certifiable",
+    "parent": null
+  },
+  {
+    "name": "architecture_audit_finding",
+    "description": "a real, verified finding about a gap, inconsistency, or unused-richer-alternative in an already-built architecture, never itself a new physics claim",
+    "parent": null
+  },
+  {
+    "name": "recovered_finite_spectral_triple_component",
+    "description": "one component of a recovery candidate (doubled Hilbert space, algebra, grading, real structure) built after an original candidate's certification genuinely failed",
+    "parent": null
+  },
+  {
+    "name": "evaluated_dirac_candidate",
+    "description": "a Dirac-type operator candidate with explicit invariant checks, promoted to canonical only if the checks pass and no dependency regression is introduced",
+    "parent": null
+  },
+  {
+    "name": "coupled_recovery_component",
+    "description": "a component of the nontrivially-coupled doubled recovery (Phase 2), extending the uncoupled recovery with a genuine inter-copy coupling",
+    "parent": null
+  },
+  {
+    "name": "inner_fluctuation_component",
+    "description": "a component (gauge potential, fluctuated Dirac operator, or curvature) of a Connes inner-fluctuation D_A=D+omega+J omega J^-1 attempted over a candidate that passes the first-order condition -- status always computed from real axiom checks",
     "parent": null
   }
 ]

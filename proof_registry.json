@@ -47,5 +47,75 @@
     "statement": "analytic Spec -> K(t) -> fit -> E_kappa",
     "method": "closed-form S^3 spectrum, numpy heat-trace summation with controlled truncation, numpy.polyfit degree-3/4/5 sweep",
     "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-LICHNEROWICZ-GAUGE-TERM",
+    "transformation_id": "T-LICHNEROWICZ-GAUGE-TERM",
+    "statement": "D_A = i*gamma^a(d_a+iA_a), squared by direct symbolic operator composition",
+    "method": "sympy symbolic Matrix differential-operator composition, exact (not numeric) zero residual",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-LICHNEROWICZ-GRAVITY-TERM",
+    "transformation_id": "T-LICHNEROWICZ-GRAVITY-TERM",
+    "statement": "D^2 on round S^2 via Cartan spin connection + Levi-Civita Christoffel symbols, coefficient of E=c*R solved by direct symbolic composition",
+    "method": "sympy: Cartan structure equation for omega^{12}, Christoffel symbols from the metric (cross-checked vs closed form), Riemann tensor (validated convention reused), sp.solve for c -- not asserted",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+    "transformation_id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+    "statement": "shifted operator L=-Delta-E on S^3, exact spectrum, degree-4 heat-trace polynomial fit vs Gilkey-predicted closed forms, 4 distinct E values",
+    "method": "reuses this project's own already-verified S3 heat-trace-fit machinery (compiler/backends/heat_kernel_sphere.py, compiler/verification/heat_kernel_fit.py), extended to nonzero constant E",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the concrete (A_F,H_F,D_F,J_F,gamma_F) candidate defined above",
+    "method": "numpy exact linear algebra at n=200 (random f,g) plus sympy symbolic-general confirmation of the first-order-condition closed form at n=4",
+    "status": "FAIL"
+  },
+  {
+    "id": "PROOF-T-DIRAC-SQUARED-FINITE",
+    "transformation_id": "T-DIRAC-SQUARED-FINITE",
+    "statement": "D_F^2 computed directly by matrix multiplication and compared block-by-block against d1 d1^T (vertex) and d1^T d1 (edge)",
+    "method": "numpy exact linear algebra, exact block match (not approximate)",
+    "status": "CALCULATED"
+  },
+  {
+    "id": "PROOF-T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-RECOVERY-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED candidate (A_F,H_F',D_F'=D_F(+)D_F,J_F',gamma_F')",
+    "method": "numpy exact linear algebra at n=200 (genuine complex random f,g) plus sympy symbolic-general confirmation of the copy-2-support-is-zero closed form at n=4",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-TFT002B-EVALUATION",
+    "transformation_id": "T-TFT002B-EVALUATION",
+    "statement": "build the 3-graded Hodge-Dirac operator at full scale (n=200) and check self-adjointness, grading axioms, exact square, and comparison against D_B",
+    "method": "numpy exact linear algebra at n=200, all invariants checked directly",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-AXIOMS",
+    "transformation_id": "T-COUPLED-RECOVERY-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the DOUBLED, NONTRIVIALLY-COUPLED candidate over TFT-002B",
+    "method": "numpy exact linear algebra at n=200 (genuine complex random f,g,C) plus sympy symbolic-general confirmation (f,g,coupling weights all free symbols) that pi(f) C pi(g) vanishes identically",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "transformation_id": "T-COUPLED-RECOVERY-INNER-FLUCTUATION",
+    "statement": "build omega=i*[D_F'',pi'(f)], verify self-adjointness, form D_A''=D_F''+omega+eps'*J''omegaJ''^-1 via an explicit closed-form J-conjugation matrix (independently verified against the vector-level J definition), verify D_A'' self-adjoint and grading-anticommuting, compute Omega_B''=D_A''^2-D_F''^2",
+    "method": "numpy exact linear algebra at n=200 (dim=2800 doubled candidate); J_conjugate_matrix's closed form independently verified against the ground-truth vector-level J_apply composition on random complex inputs",
+    "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "transformation_id": "T-COUPLED-RECOVERY-SPECTRAL-ACTION",
+    "statement": "Tr(D_A''^k) for k=0,2,4,6 -- exact finite-dimensional trace moments, not a continuum Seeley-DeWitt expansion",
+    "method": "numpy exact finite-dimensional trace via repeated matrix multiplication (matrix_power), imaginary residual confirmed at float-noise scale (<1e-12) for self-adjoint D_A''",
+    "status": "CALCULATED"
   }
 ]

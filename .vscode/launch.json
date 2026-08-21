@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "SEIT: Debug Backend (FastAPI)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["console.api.main:app", "--reload", "--port", "8000"],
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/bin/python3",
+      "justMyCode": false
+    },
+    {
+      "name": "SEIT: Debug Full Compiler Run",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "compiler.run_compiler",
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/bin/python3",
+      "justMyCode": true
+    },
+    {
+      "name": "SEIT: Debug Current Test File",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-q", "${file}"],
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/.venv/bin/python3",
+      "justMyCode": true
+    }
+  ]
+}

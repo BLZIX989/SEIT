@@ -21,13 +21,30 @@ from compiler.historical.register import register_historical_nodes
 from compiler.ir.discrete_curvature import register_discrete_curvature
 from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
+from compiler.ir.finite_spectral_triple_certification import (
+    TYPE_DEFS_FINITE_SPECTRAL_TRIPLE, register_finite_spectral_triple_certification,
+)
+from compiler.ir.finite_spectral_triple_coupled_recovery_spectral_action import (
+    TYPE_DEFS_COUPLED_RECOVERY_SPECTRAL_ACTION, register_coupled_recovery_spectral_action,
+)
+from compiler.ir.finite_spectral_triple_recovery import (
+    TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY, register_finite_spectral_triple_recovery,
+)
+from compiler.ir.finite_spectral_triple_tft002b_and_coupled_recovery import (
+    TYPE_DEFS_TFT002B_COUPLED_RECOVERY, register_tft002b_and_coupled_recovery,
+)
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
+from compiler.ir.seeley_dewitt_verification import (
+    TYPE_DEFS_SEELEY_DEWITT, register_seeley_dewitt_verification,
+)
 from compiler.ir.toe_closure_hypotheses import (
     TYPE_DEFS_TOE_CLOSURE, register_toe_closure_hypotheses,
 )
 from compiler.protocol.build_protocols import build_protocol_registry
 from compiler.protocol.derivation_chainlinks import build_derivation_chainlinks
+from compiler.protocol.protocol_matrix import build_protocol_matrix
+from compiler.protocol.write_protocol_matrix_report import write_protocol_matrix_report
 from compiler.verification.self_audit import run_self_audit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,7 +106,11 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE:
+    for name, desc, parent in (TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE
+                                + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE
+                                + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE_RECOVERY
+                                + TYPE_DEFS_TFT002B_COUPLED_RECOVERY
+                                + TYPE_DEFS_COUPLED_RECOVERY_SPECTRAL_ACTION):
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -98,6 +119,25 @@ def build_and_run() -> dict:
     register_historical_nodes(registries)
     fc005_results = register_fc005(registries, ROOT)
     toe_closure_results = register_toe_closure_hypotheses(registries, ROOT)
+    # Must run after register_fc005: reuses the already-registered
+    # S3-MANIFOLD object as its control manifold for the numeric
+    # Seeley-DeWitt a0/a2/a4 check.
+    seeley_dewitt_results = register_seeley_dewitt_verification(registries, ROOT)
+    # Requested execution boundary: certify the candidate finite spectral
+    # triple BEFORE any spectral-action work is treated as certified.
+    finite_triple_results = register_finite_spectral_triple_certification(registries, ROOT)
+    # Audit that certification's architecture for problems, then register
+    # the recovery construction (must run after: depends on FINITE-DIRAC-D_B).
+    recovery_results = register_finite_spectral_triple_recovery(registries, ROOT)
+    # Phase 1/2/3: TFT-002B evaluation + nontrivially-coupled recovery.
+    # Must run after both above (reuses H2-GRAPH-CONTROL).
+    tft002b_results = register_tft002b_and_coupled_recovery(registries, ROOT)
+    # Closes the CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION wiring gap this
+    # session's audit found: attempts a real inner-fluctuation over the
+    # coupled-recovery candidate, which passes the first-order condition
+    # (unlike the original candidate that chainlink depends on). Must run
+    # after tft002b_results (reuses COUPLED-RECOVERY-CERTIFICATION).
+    coupled_recovery_sa_results = register_coupled_recovery_spectral_action(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -106,7 +146,12 @@ def build_and_run() -> dict:
     falsifications.extend(toe_closure_results["falsifications"])
 
     all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
-                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"]))
+                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"])
+                         + list(seeley_dewitt_results["calculations"])
+                         + list(finite_triple_results["calculations"])
+                         + list(recovery_results["calculations"])
+                         + list(tft002b_results["calculations"])
+                         + list(coupled_recovery_sa_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new
@@ -196,6 +241,15 @@ def build_and_run() -> dict:
     (OUT_DIR / "self_audit_report.json").write_text(
         json.dumps([a.to_dict() for a in audit_results], indent=2)
     )
+
+    # Peer-review protocol-matrix crosswalk (design proposal agreed this
+    # session): reads ONLY the real registries/chainlinks/audits already
+    # computed above, never re-derives anything.
+    protocol_matrix = build_protocol_matrix(registries, chainlinks, protocols, audit_results, ROOT)
+    (OUT_DIR / "protocol_matrix.json").write_text(
+        json.dumps([e.to_dict() for e in protocol_matrix], indent=2)
+    )
+    write_protocol_matrix_report(protocol_matrix, OUT_DIR / "PEER_REVIEW_STATUS_MATRIX.md")
 
     all_audits_passed = all(a.passed for a in audit_results)
     all_test1_passed = all(r.passed for r in test_results["test1_results"])
