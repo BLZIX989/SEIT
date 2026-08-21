@@ -480,6 +480,68 @@
     "dependencies": []
   },
   {
+    "id": "CONTROL-MANIFOLD-S2",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "CONTROL-FLAT-2D",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "LICHNEROWICZ-GAUGE-TERM",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ]
+  },
+  {
+    "id": "LICHNEROWICZ-GRAVITY-TERM-S2",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ]
+  },
+  {
+    "id": "DIRAC-SQUARED-LICHNEROWICZ-GENERAL",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "LICHNEROWICZ-GAUGE-TERM",
+      "LICHNEROWICZ-GRAVITY-TERM-S2"
+    ]
+  },
+  {
+    "id": "SEELEY-DEWITT-A0-A2-A4",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "DIRAC-SQUARED-LICHNEROWICZ-GENERAL",
+      "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "SEELEY-DEWITT-A6-GENERAL",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SEELEY-DEWITT-A0-A2-A4"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-TR-F-CERTIFICATION",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "SEELEY-DEWITT-A6-GENERAL"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -543,6 +605,30 @@
   },
   {
     "id": "T-FC005-S3-CONTROL-CHAIN",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "T-LICHNEROWICZ-GAUGE-TERM",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ]
+  },
+  {
+    "id": "T-LICHNEROWICZ-GRAVITY-TERM",
+    "kind": "Transformation",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ]
+  },
+  {
+    "id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
     "kind": "Transformation",
     "status": "VERIFIED",
     "dependencies": [

@@ -177,6 +177,78 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-CONTROL-TO-LICHNEROWICZ-GAUGE",
+    "source_node": "CONTROL-FLAT-2D",
+    "target_node": "LICHNEROWICZ-GAUGE-TERM",
+    "transformation": "D_A = i*gamma^a(d_a+iA_a), squared by direct symbolic operator composition",
+    "mathematical_statement": "D_A^2 = -(nabla^2+E), E = i*F_12*gamma^1*gamma^2 (flat 2D control, gauge term only)",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_EXACT",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "EXACT_SYMBOLIC_ZERO_RESIDUAL",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-CONTROL-TO-LICHNEROWICZ-GRAVITY",
+    "source_node": "CONTROL-MANIFOLD-S2",
+    "target_node": "LICHNEROWICZ-GRAVITY-TERM-S2",
+    "transformation": "D^2 on round S^2 via Cartan spin connection + Levi-Civita Christoffel symbols, coefficient of E=c*R solved by direct symbolic composition",
+    "mathematical_statement": "D^2 = -(nabla^2+E), E = c*R with c solved = -1/4 (round S^2 control, gravity term only)",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "PROVEN_SYMBOLIC_EXACT",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "EXACT_SYMBOLIC_COEFFICIENT_SOLVED",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-LICHNEROWICZ-TO-SEELEY-DEWITT",
+    "source_node": "S3-MANIFOLD",
+    "target_node": "SEELEY-DEWITT-A0-A2-A4",
+    "transformation": "shifted operator L=-Delta-E on S^3, exact spectrum, degree-4 heat-trace polynomial fit vs Gilkey-predicted closed forms, 4 distinct E values",
+    "mathematical_statement": "a0=tr(I)*Vol, a2=tr(E+R/6)*Vol, a4=(1/360)tr[60ER+180E^2+5R^2-2Ric^2+2Riem^2]*Vol (S^3 control)",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ],
+    "assumptions": [],
+    "status": "VERIFIED",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "VERIFIED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "reproducibility": "NUMERIC_TOLERANCE_1E-4_AT_4_DISTINCT_E_VALUES",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "residual is not exactly/numerically zero against the claimed identity"
+    ],
+    "provenance_source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-OPERATOR-TO-CONTINUUM-DESI",
     "source_node": "OPERATOR-L-DESI",
     "target_node": "CONTINUUM-LIMIT-L-DESI",
@@ -231,6 +303,35 @@
       "any candidate connection construction that depends on an arbitrary, unjustified choice of the diffusion-time parameter t is inadmissible by the same non-arbitrariness requirement METRIC-CANDIDATE itself was already held to"
     ],
     "provenance_source": "compiler/protocol/derivation_chainlinks.py (Phase 12 frontier audit)",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-SEELEY-DEWITT-TO-SPECTRAL-ACTION",
+    "source_node": "SEELEY-DEWITT-A6-GENERAL",
+    "target_node": "SPECTRAL-ACTION-TR-F-CERTIFICATION",
+    "transformation": "a6 (general Gilkey formula, position-dependent E(x), nonabelian Omega_{mu nu}, Delta E, dozen-plus curvature invariants) -> Tr f(D_A/Lambda) (NOT REGISTERED)",
+    "mathematical_statement": "S_eff = Tr f(D_A/Lambda) ~ sum_k a_{2k} Lambda^{d-2k} + ... (requires a6, among others, not yet resolved)",
+    "dependencies": [
+      "SEELEY-DEWITT-A6-GENERAL"
+    ],
+    "assumptions": [
+      "The general Gilkey a6 formula (position-dependent E(x), nonabelian gauge curvature Omega_{mu nu}, Delta E, and a dozen-plus pure-curvature invariants) was NOT independently rederived here: reproducing a formula that long from memory, with no primary source available in this session to cross-check it against, would itself be exactly the kind of unverified claim this project's own discipline forbids. A narrow, elementary, non-Gilkey-formula-dependent consistency check was run instead -- for CONSTANT E, Y_E(t)=exp(t*E)*Y_0(t) is a trivial algebraic identity requiring no heat-kernel theory at all -- and confirmed the fit machinery is self-consistent through O(t^3) (residuals ~1e-4 to 1e-6 at 3 nonzero E values). This does NOT verify the general a6 formula for non-constant E(x) or nonzero gauge curvature. External reference only, PROPOSED/comparison status: Gilkey, P.B. (1975), 'The spectral geometry of the second order elliptic differential operator'; Vassilevich, D.V. (2003), 'Heat kernel expansion: user's manual', Phys. Rept. 388."
+    ],
+    "status": "OPEN",
+    "proof_status": "OPEN",
+    "calculation_status": "OPEN",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": null,
+    "reproducibility": "N/A_NOT_EXECUTED",
+    "literature_support": [],
+    "open_obligations": [
+      "general Gilkey a6 formula not independently rederived in this repository -- external reference only (Gilkey 1975; Vassilevich 2003), PROPOSED/comparison status",
+      "even once a6 is resolved, this branch verifies GENERAL Lichnerowicz/Gilkey formulas on control manifolds only -- it does NOT certify this project's own candidate D_B for seit_lang.spectral_action's Tr f(D/Lambda), which has never been shown to satisfy the full Connes spectral-triple axioms (seit_lang/spectral_action.py's own module docstring)"
+    ],
+    "failure_conditions": [
+      "an independently rederived a6 formula fails to match the published Gilkey/Vassilevich result on a solvable control case (the same style of check already applied to a0/a2/a4)"
+    ],
+    "provenance_source": "compiler/protocol/derivation_chainlinks.py (D_A^2 verification frontier)",
     "source_document_status": "N/A"
   }
 ]

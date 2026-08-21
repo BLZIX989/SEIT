@@ -138,5 +138,25 @@
     "name": "closure_hypothesis_test",
     "description": "an executed test of one of the four primary load-bearing hypotheses (H1-H4) required to decounterfactualize the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING manuscript",
     "parent": null
+  },
+  {
+    "name": "control_manifold",
+    "description": "a standard, independently-known-analytic manifold used as a verification control (same status as S3-MANIFOLD), never a claim about this project's own constructions",
+    "parent": null
+  },
+  {
+    "name": "lichnerowicz_term",
+    "description": "one piece (gauge or gravity) of the general D_A^2=-(nabla^2+E) identity, verified on a control manifold",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "seeley_dewitt_coefficient",
+    "description": "a general Gilkey heat-kernel coefficient (a0, a2, a4, or a6), verified or left OPEN on a control manifold",
+    "parent": "mathematical_object"
+  },
+  {
+    "name": "spectral_action_certification",
+    "description": "whether Tr f(D_A/Lambda) can be certified for physical use; OPEN until every Seeley-DeWitt coefficient it depends on is resolved",
+    "parent": null
   }
 ]

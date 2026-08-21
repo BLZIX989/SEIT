@@ -23,6 +23,9 @@ from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
+from compiler.ir.seeley_dewitt_verification import (
+    TYPE_DEFS_SEELEY_DEWITT, register_seeley_dewitt_verification,
+)
 from compiler.ir.toe_closure_hypotheses import (
     TYPE_DEFS_TOE_CLOSURE, register_toe_closure_hypotheses,
 )
@@ -89,7 +92,7 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE:
+    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE + TYPE_DEFS_SEELEY_DEWITT:
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -98,6 +101,10 @@ def build_and_run() -> dict:
     register_historical_nodes(registries)
     fc005_results = register_fc005(registries, ROOT)
     toe_closure_results = register_toe_closure_hypotheses(registries, ROOT)
+    # Must run after register_fc005: reuses the already-registered
+    # S3-MANIFOLD object as its control manifold for the numeric
+    # Seeley-DeWitt a0/a2/a4 check.
+    seeley_dewitt_results = register_seeley_dewitt_verification(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -106,7 +113,8 @@ def build_and_run() -> dict:
     falsifications.extend(toe_closure_results["falsifications"])
 
     all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
-                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"]))
+                         + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"])
+                         + list(seeley_dewitt_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new

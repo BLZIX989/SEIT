@@ -2787,5 +2787,97 @@
       "rank_check_for_this_different_claim": "rank(Aut(octonions) x Spin(8)) = 2+4 = 6, which IS >= rank(SM) = 4. The rank obstruction that rules out the counterfactual manuscript's 'intersection' claim does NOT rule out this different, direct-product formulation -- SU(3) fits inside the G2 factor (a real, standard, correct maximal-subgroup fact) and SU(2)xU(1) has enough rank to potentially fit inside the Spin(8) factor. This means the repository's ORIGINAL claim remains merely UNCONSTRUCTED (no actual embedding, decomposition, or uniqueness argument is given anywhere in the repository), not proven impossible -- a materially different, more honest status than the counterfactual manuscript's claim, which this analysis shows is actually impossible as stated."
     },
     "verdict": "H4's specific 'intersection via triality' formulation (as stated in the counterfactual manuscript) is MATHEMATICALLY IMPOSSIBLE, not merely unproven: the triality-fixed subgroup of Spin(8) is G2 itself (a genuine, standard fact), and G2's rank (2) is strictly less than the Standard Model gauge group's rank (4), so no subgroup-of-G2 construction can ever equal SU(3)xSU(2)xU(1). The repository's own, different, original direct-product formulation (Aut(octonions) x Spin(8) superset SU(3)xSU(2)xU(1)) is not ruled out by this argument, but remains completely unconstructed -- no actual embedding or selection mechanism exists anywhere in this project."
+  },
+  {
+    "id": "CALC-LICHNEROWICZ-GAUGE-TERM",
+    "kind": "symbolic_operator_composition_flat_2d",
+    "inputs": {
+      "gauge_field": "abstract abelian A_mu(x,y), arbitrary symbolic functions",
+      "curvature": "R=0 (flat)"
+    },
+    "results": {
+      "E_gauge_formula": "E = i*F_12*gamma^1*gamma^2  (F_12 = d_1 A_2 - d_2 A_1)",
+      "clifford_algebra_checked": true
+    },
+    "verification": {
+      "residual_is_zero": true
+    },
+    "status": "VERIFIED"
+  },
+  {
+    "id": "CALC-LICHNEROWICZ-GRAVITY-TERM",
+    "kind": "symbolic_operator_composition_round_s2",
+    "inputs": {
+      "manifold": "round unit S^2",
+      "gauge_field": "none (R contribution isolated)"
+    },
+    "results": {
+      "omega12_derived": "-cos(theta)",
+      "R_computed": 2.0,
+      "lichnerowicz_coefficient_c": "-1/4"
+    },
+    "verification": {
+      "christoffel_checked": true,
+      "matches_textbook_quarter": true
+    },
+    "status": "VERIFIED"
+  },
+  {
+    "id": "CALC-SEELEY-DEWITT-A0-A2-A4",
+    "kind": "numeric_heat_trace_fit_E_dependence_s3",
+    "inputs": {
+      "E_values": [
+        0.0,
+        0.7,
+        -0.3,
+        2.5
+      ],
+      "fit_degree": 4,
+      "tolerance": 0.0001
+    },
+    "results": {
+      "points": [
+        {
+          "E": 0.0,
+          "a0_fit": 19.73920880217912,
+          "a1_fit": 19.739208801797602,
+          "a2_fit": 9.869604535030692,
+          "a0_residual": 2.0518013839468287e-14,
+          "a1_residual": 1.9307451022939658e-11,
+          "a2_residual": 1.35710945469412e-08
+        },
+        {
+          "E": 0.7,
+          "a0_fit": 19.73920880218482,
+          "a1_fit": 33.55665495762072,
+          "a2_fit": 28.52315912781959,
+          "a0_residual": 3.0921006821233784e-13,
+          "a1_residual": 1.8127824035326884e-10,
+          "a2_residual": 8.444617003989882e-08
+        },
+        {
+          "E": -0.3,
+          "a0_fit": 19.73920880217875,
+          "a1_fit": 13.81744616155896,
+          "a2_fit": 4.836106114321072,
+          "a0_residual": 1.799825775391955e-15,
+          "a1_residual": 2.4504627931961467e-12,
+          "a2_residual": 8.728657303727378e-09
+        },
+        {
+          "E": 2.5,
+          "a0_fit": 19.739208802407884,
+          "a1_fit": 69.08723057845582,
+          "a2_fit": 120.90274515699093,
+          "a0_residual": 1.1609776164165805e-11,
+          "a1_residual": 3.317106261399159e-09,
+          "a2_residual": 7.546868769383868e-07
+        }
+      ]
+    },
+    "verification": {
+      "all_passed": true
+    },
+    "status": "VERIFIED"
   }
 ]

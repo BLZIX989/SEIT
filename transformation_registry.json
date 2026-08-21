@@ -14,8 +14,8 @@
       "dependency_ids": [],
       "transformation_id": "SELECTION-SIGMA",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.468624+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.339398+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -49,8 +49,8 @@
       "dependency_ids": [],
       "transformation_id": "T-GRAPH-TO-OPERATOR",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.686508+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.486761+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -89,8 +89,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-SPECTRUM",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.688537+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.488865+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -129,8 +129,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-HEATFLOW",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.690465+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.497080+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -169,8 +169,8 @@
       "dependency_ids": [],
       "transformation_id": "T-HEATFLOW-TO-KERNEL",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.692450+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.502668+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -212,8 +212,8 @@
       "dependency_ids": [],
       "transformation_id": "T-SPECTRUM-TO-DIFFUSION",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.901214+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.664782+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -247,8 +247,8 @@
       "dependency_ids": [],
       "transformation_id": "T-DIFFUSION-TO-METRIC",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:02.903163+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:40.666832+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -284,8 +284,8 @@
       "dependency_ids": [],
       "transformation_id": "T-OPERATOR-TO-CURVATURE",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:03.329376+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:41.052109+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -321,8 +321,8 @@
       "dependency_ids": [],
       "transformation_id": "T-FC005-S3-CONTROL-CHAIN",
       "calculation_id": "",
-      "execution_timestamp": "2026-08-21T02:30:03.920562+00:00",
-      "git_commit": "311c588921d0076517045972d0468736856a88a8",
+      "execution_timestamp": "2026-08-21T03:12:41.628709+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
       "code_version": "forward-mdcl-compiler-0.1.0",
       "numerical_environment": {
         "python": "3.11.15",
@@ -342,5 +342,116 @@
     "preconditions": [],
     "postconditions": [],
     "proof": "closed-form S^3 spectrum, numpy heat-trace summation with controlled truncation, numpy.polyfit degree-3/4/5 sweep"
+  },
+  {
+    "id": "T-LICHNEROWICZ-GAUGE-TERM",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-FLAT-2D"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-LICHNEROWICZ-GAUGE-TERM",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-21T03:12:44.161876+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "residual_is_zero": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "CONTROL-FLAT-2D",
+    "codomain": "LICHNEROWICZ-GAUGE-TERM",
+    "action": "D_A = i*gamma^a(d_a+iA_a), squared by direct symbolic operator composition",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "sympy symbolic Matrix differential-operator composition, exact (not numeric) zero residual"
+  },
+  {
+    "id": "T-LICHNEROWICZ-GRAVITY-TERM",
+    "status": "VERIFIED",
+    "dependencies": [
+      "CONTROL-MANIFOLD-S2"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-LICHNEROWICZ-GRAVITY-TERM",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-21T03:12:49.953183+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "matches_textbook_quarter": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "CONTROL-MANIFOLD-S2",
+    "codomain": "LICHNEROWICZ-GRAVITY-TERM-S2",
+    "action": "D^2 on round S^2 via Cartan spin connection + Levi-Civita Christoffel symbols, coefficient of E=c*R solved by direct symbolic composition",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "sympy: Cartan structure equation for omega^{12}, Christoffel symbols from the metric (cross-checked vs closed form), Riemann tensor (validated convention reused), sp.solve for c -- not asserted"
+  },
+  {
+    "id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+    "status": "VERIFIED",
+    "dependencies": [
+      "S3-MANIFOLD"
+    ],
+    "assumptions": [],
+    "provenance": {
+      "source": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+      "source_version": "",
+      "object_id": "",
+      "equation_id": "",
+      "dependency_ids": [],
+      "transformation_id": "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
+      "calculation_id": "",
+      "execution_timestamp": "2026-08-21T03:12:49.967052+00:00",
+      "git_commit": "31522dbee6f07ebca12e040149b7f880c1c5f073",
+      "code_version": "forward-mdcl-compiler-0.1.0",
+      "numerical_environment": {
+        "python": "3.11.15",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "sympy": "1.14.0"
+      },
+      "status": "VERIFIED",
+      "verification": {
+        "all_passed": true
+      }
+    },
+    "role": "upstream_construction",
+    "domain": "S3-MANIFOLD",
+    "codomain": "SEELEY-DEWITT-A0-A2-A4",
+    "action": "shifted operator L=-Delta-E on S^3, exact spectrum, degree-4 heat-trace polynomial fit vs Gilkey-predicted closed forms, 4 distinct E values",
+    "preconditions": [],
+    "postconditions": [],
+    "proof": "reuses this project's own already-verified S3 heat-trace-fit machinery (compiler/backends/heat_kernel_sphere.py, compiler/verification/heat_kernel_fit.py), extended to nonzero constant E"
   }
 ]
