@@ -2,6 +2,10 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
+# Local Python virtual environment (scripts/mac_setup.sh creates this) --
+# never committed, recreated fresh on each machine.
+.venv/
+
 # DESI raw survey data: large FITS files fetched from the official public
 # DR1 release are never committed (spec: "repository must remain
 # reproducible without embedding tens or hundreds of gigabytes of
