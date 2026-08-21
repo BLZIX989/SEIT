@@ -27,6 +27,10 @@ from compiler.core.ir import Equation, Object, Transformation
 from compiler.core.status import Status
 from compiler.falsification.eigen_uniqueness import run_counterexample
 from compiler.falsification.protocols import FalsificationRecord
+from compiler.historical.continuum_exponent_correction import (
+    CORRECTED_EXPONENT, CORRECTED_EXPONENT_D3, DISCOVERY_CONTEXT,
+    LOCATIONS_AUDITED, ROOT_CAUSE, SUPERSEDED_EXPONENT_D3,
+)
 from compiler.historical.fc005_reconciliation import (
     DISCREPANCY_AUDIT_RESULT, FILENAME_DISCREPANCIES, WORKBOOK_CHAIN,
 )
@@ -73,6 +77,9 @@ TYPE_DEFS_FC005 = [
                    "its status is never inferred from another stage_gate's status", None),
     ("workbook_reconciliation_record", "provenance/precedence record for the four supplied "
                                         "FC-005 workbooks", None),
+    ("continuum_exponent_correction_record", "provenance record for the CONTINUUM-LIMIT-L-DESI "
+                                              "eps^(5/2) -> eps^5 correction: what was stale, where, "
+                                              "root cause, and how it was found", None),
 ]
 
 
@@ -100,6 +107,36 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
                       "chain": WORKBOOK_CHAIN},
     )
     registries.objects.add_object(reconciliation)
+
+    # ---- 0b. CONTINUUM-LIMIT-L-DESI exponent correction record (first-class,
+    # not a footnote): the eps^(5/2) -> eps^5 fix was already present in
+    # compiler/backends/desi_graph.py (found during the real Gate 1 failure
+    # investigation) but had never been propagated into this node's own
+    # descriptive label / the registries generated from it. See
+    # compiler/historical/continuum_exponent_correction.py for the full
+    # record; this Object exposes it inside the real MDCL/provenance system
+    # rather than only in a source comment.
+    exponent_correction = Object(
+        id="FC005-CONTINUUM-EXPONENT-CORRECTION", type="continuum_exponent_correction_record",
+        status=Status.CALCULATED, role="comparison",
+        carrier=f"CONTINUUM-LIMIT-L-DESI normalization exponent: superseded "
+                f"{SUPERSEDED_EXPONENT_D3} (d=3) -> corrected {CORRECTED_EXPONENT} = "
+                f"{CORRECTED_EXPONENT_D3} (d=3). {ROOT_CAUSE}",
+        assumptions=[DISCOVERY_CONTEXT,
+                     f"{len(LOCATIONS_AUDITED)} locations audited directly by inspection; see "
+                     "provenance.verification for the per-location table."],
+    )
+    exponent_correction.provenance = make_provenance(
+        source="compiler/backends/desi_graph.py::normalize_continuum_limit (correct); "
+               "compiler/ir/fc005.py CONTINUUM-LIMIT-L-DESI label (was stale, fixed in the same "
+               "commit as this record)",
+        object_id=exponent_correction.id, status=Status.CALCULATED,
+        verification={"locations_audited": LOCATIONS_AUDITED,
+                      "superseded_exponent_d3": SUPERSEDED_EXPONENT_D3,
+                      "corrected_exponent_d3": CORRECTED_EXPONENT_D3,
+                      "root_cause": ROOT_CAUSE, "discovery_context": DISCOVERY_CONTEXT},
+    )
+    registries.objects.add_object(exponent_correction)
 
     # ---- 1. Bulk-import reference equations (Level 1/3 source, comparison-only) ----
     ref_rows = _load_reference_equations(repo_root)
@@ -282,7 +319,11 @@ def register_fc005(registries: MDCLRegistries, repo_root: Path) -> dict:
          "G_DESI = (V,E,W): weighted observational graph from the DESI catalogue"),
         ("OPERATOR-L-DESI", "graph_laplacian_operator", ["GRAPH-G-DESI"], operator_status, "L_DESI = D - W"),
         ("CONTINUUM-LIMIT-L-DESI", "mathematical_object", ["OPERATOR-L-DESI"], continuum_limit_status,
-         "L_tilde_(N,eps) = -L_N/(C_K N eps^(5/2)), d=3"),
+         "L_tilde_(N,eps) = -L_N/(C_K N eps^(d+2)), d=3 -> eps^5. CORRECTED from the workbook's "
+         "eps^(d/2+1)=eps^(5/2), which is only valid under a different (length^2-unit) kernel "
+         "convention than the one this code implements -- see "
+         "compiler/backends/desi_graph.py::normalize_continuum_limit and "
+         "FC005_CONTINUUM_DIAGNOSTIC_REPORT.md."),
         ("DESI-SPECTRUM", "spectral_data", ["CONTINUUM-LIMIT-L-DESI"], spectrum_status,
          "Spec(-Delta_h) via -L_tilde eigenproblem (sign-corrected, see desi_fc005_pipeline.py)"),
         ("DESI-HEAT-TRACE", "heat_trace_function", ["DESI-SPECTRUM"], downstream_status,

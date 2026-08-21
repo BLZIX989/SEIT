@@ -1,5 +1,5 @@
 {
-  "run_timestamp": "2026-08-20T21:08:12.023698+00:00",
+  "run_timestamp": "2026-08-21T02:30:07.468823+00:00",
   "simplicial_dirac": {
     "filled_triangle": {
       "chain_complex_identity": {
@@ -470,8 +470,8 @@
   "categorical": {
     "faithful_edge_preservation": {
       "claim": "The Chainlink projection is a faithful structure-preserving map: every (source_node, target_node) edge it draws corresponds either to a real dependency edge already present in the canonical registries, or to a chainlink that explicitly self-documents its target as an intentionally unregistered open frontier gap (never silently fabricated).",
-      "n_chainlinks_total": 8,
-      "n_faithful_against_real_registry_dependency": 7,
+      "n_chainlinks_total": 9,
+      "n_faithful_against_real_registry_dependency": 8,
       "n_self_documented_open_gaps": 1,
       "self_documented_open_gaps": [
         {

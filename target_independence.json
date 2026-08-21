@@ -22,6 +22,13 @@
       "context": "historical_claim\nProse claim: G_physical = (1,3) x [SU(3) x SU(2) x U(1)] is asserted to be \"explicitly derived as the group of continuous automorphisms that preserve the invariant structural identity"
     },
     {
+      "node_id": "FC005-CONTINUUM-EXPONENT-CORRECTION",
+      "term": "DESI",
+      "role": "comparison",
+      "allowed": true,
+      "context": "continuum_exponent_correction_record\nCONTINUUM-LIMIT-L-DESI normalization exponent: superseded eps^(5/2) (d=3) -> corrected eps^(d+2) = eps^5 (d=3). The workbook's own kernel definition (EQ-013/DC-002"
+    },
+    {
       "node_id": "DESI-CATALOGUE",
       "term": "DESI",
       "role": "observational_output",
@@ -41,6 +48,13 @@
       "role": "observational_output",
       "allowed": true,
       "context": "graph_laplacian_operator\nL_DESI = D - W"
+    },
+    {
+      "node_id": "CONTINUUM-LIMIT-L-DESI",
+      "term": "DESI",
+      "role": "observational_output",
+      "allowed": true,
+      "context": "mathematical_object\nL_tilde_(N,eps) = -L_N/(C_K N eps^(d+2)), d=3 -> eps^5. CORRECTED from the workbook's eps^(d/2+1)=eps^(5/2), which is only valid under a different (length^2-unit) kernel convention"
     },
     {
       "node_id": "DESI-SPECTRUM",

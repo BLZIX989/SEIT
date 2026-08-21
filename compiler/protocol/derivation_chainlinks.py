@@ -153,6 +153,57 @@ def build_derivation_chainlinks(
             ]
         reg.add(link)
 
+    # CONTINUUM-LIMIT-L-DESI: unlike the 7 chainlinks above, this edge has no
+    # registered Transformation (compiler/ir/fc005.py only registers Objects
+    # with dependency links for the DESI chain) -- so this chainlink is
+    # computed directly from the real CONTINUUM-LIMIT-L-DESI Object's own
+    # status/dependencies/provenance instead, exactly as honest a source as
+    # a Transformation would be, and reflects how this branch is actually
+    # built rather than inventing a Transformation node to fit the pattern.
+    # Added as a first-class chainlink (not a footnote) alongside the
+    # FC005-CONTINUUM-EXPONENT-CORRECTION provenance record documenting the
+    # eps^(5/2) -> eps^5 exponent correction this node's label carries.
+    # Only registered when FC-005 has actually been registered into these
+    # registries (register_fc005() is not part of every build path -- e.g.
+    # the isolated Phase-12 unit tests build only the graph/curvature
+    # chain -- and this chainlink must not claim to describe a node that
+    # was never built).
+    if "CONTINUUM-LIMIT-L-DESI" in registries.objects:
+        continuum = registries.objects.get("CONTINUUM-LIMIT-L-DESI")
+        continuum_status = continuum.status.value if isinstance(continuum.status, Status) else continuum.status
+        reg.add(Chainlink(
+            chainlink_id="CL-OPERATOR-TO-CONTINUUM-DESI",
+            source_node="OPERATOR-L-DESI",
+            target_node="CONTINUUM-LIMIT-L-DESI",
+            transformation="L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)) -- continuum-limit "
+                           "normalization applied to the real DESI-derived graph Laplacian",
+            mathematical_statement="L_tilde_(N,eps) = -L_N/(C_K N eps^5), d=3",
+            dependencies=list(continuum.dependencies),
+            assumptions=list(continuum.assumptions) + [
+                "eps^(d+2)=eps^5 (d=3) is CORRECTED from the workbook's original eps^(d/2+1)="
+                "eps^(5/2) -- see FC005-CONTINUUM-EXPONENT-CORRECTION for the full provenance "
+                "record and compiler/backends/desi_graph.py::normalize_continuum_limit for the "
+                "derivation.",
+            ],
+            status=continuum_status,
+            proof_status="NUMERIC_VERIFICATION_ONLY",
+            calculation_status=continuum_status,
+            falsification_status="NOT_TESTED",
+            executable_backend="compiler/backends/desi_graph.py::normalize_continuum_limit",
+            reproducibility=("NUMERIC_ON_REAL_DESI_PILOT_FIXTURE"
+                             if continuum.provenance and
+                             continuum.provenance.verification.get("gate1_converged") is not None
+                             else "N/A_BLOCKED_ON_DESI_CATALOGUE"),
+            open_obligations=[] if continuum_status in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"CONTINUUM-LIMIT-L-DESI status is {continuum_status}, not admissible for "
+                "downstream DESI chainlinks (DESI-SPECTRUM, DESI-HEAT-TRACE, ...)"
+            ],
+            failure_conditions=["Gate 1 (mathematical convergence) fails on (N,eps) refinement -- "
+                                "see MATHEMATICAL-CONVERGENCE-DESI"],
+            provenance_source=continuum.provenance.source if continuum.provenance else "",
+            source_document_status="N/A",
+        ))
+
     # The honest frontier: this is where the real, executed chain actually
     # stops today. METRIC-CANDIDATE is CONDITIONAL and explicitly
     # non-unique (compiler/backends/diffusion_metric.py's own

@@ -275,6 +275,12 @@
     "dependencies": []
   },
   {
+    "id": "FC005-CONTINUUM-EXPONENT-CORRECTION",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": []
+  },
+  {
     "id": "S3-MANIFOLD",
     "kind": "Object",
     "status": "PROPOSED",

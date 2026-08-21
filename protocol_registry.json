@@ -54,6 +54,7 @@
       "CL-SPECL-TO-DIFFUSION",
       "CL-DIFFUSION-TO-METRIC",
       "CL-OPERATOR-TO-CURVATURE-DISCRETE",
+      "CL-OPERATOR-TO-CONTINUUM-DESI",
       "CL-METRIC-TO-CONNECTION"
     ],
     "admissibility_conditions": [

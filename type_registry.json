@@ -130,6 +130,11 @@
     "parent": null
   },
   {
+    "name": "continuum_exponent_correction_record",
+    "description": "provenance record for the CONTINUUM-LIMIT-L-DESI eps^(5/2) -> eps^5 correction: what was stale, where, root cause, and how it was found",
+    "parent": null
+  },
+  {
     "name": "closure_hypothesis_test",
     "description": "an executed test of one of the four primary load-bearing hypotheses (H1-H4) required to decounterfactualize the COUNTERFACTUAL_MASTER_THEORY_OF_EVERYTHING manuscript",
     "parent": null

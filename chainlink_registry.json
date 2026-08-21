@@ -177,6 +177,34 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-OPERATOR-TO-CONTINUUM-DESI",
+    "source_node": "OPERATOR-L-DESI",
+    "target_node": "CONTINUUM-LIMIT-L-DESI",
+    "transformation": "L_tilde_(N,eps) = -L_N / (C_K * N * eps^(d+2)) -- continuum-limit normalization applied to the real DESI-derived graph Laplacian",
+    "mathematical_statement": "L_tilde_(N,eps) = -L_N/(C_K N eps^5), d=3",
+    "dependencies": [
+      "OPERATOR-L-DESI"
+    ],
+    "assumptions": [
+      "eps^(d+2)=eps^5 (d=3) is CORRECTED from the workbook's original eps^(d/2+1)=eps^(5/2) -- see FC005-CONTINUUM-EXPONENT-CORRECTION for the full provenance record and compiler/backends/desi_graph.py::normalize_continuum_limit for the derivation."
+    ],
+    "status": "FAIL",
+    "proof_status": "NUMERIC_VERIFICATION_ONLY",
+    "calculation_status": "FAIL",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/desi_graph.py::normalize_continuum_limit",
+    "reproducibility": "NUMERIC_ON_REAL_DESI_PILOT_FIXTURE",
+    "literature_support": [],
+    "open_obligations": [
+      "CONTINUUM-LIMIT-L-DESI status is FAIL, not admissible for downstream DESI chainlinks (DESI-SPECTRUM, DESI-HEAT-TRACE, ...)"
+    ],
+    "failure_conditions": [
+      "Gate 1 (mathematical convergence) fails on (N,eps) refinement -- see MATHEMATICAL-CONVERGENCE-DESI"
+    ],
+    "provenance_source": "compiler/backends/desi_fc005_pipeline.py (executed on data/desi/dr1/fc005/validated/pilot_fixture/lrg_sgc_pilot_3000_z0.4-0.6.fits)",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-METRIC-TO-CONNECTION",
     "source_node": "METRIC-CANDIDATE",
     "target_node": "CONNECTION-NODE",

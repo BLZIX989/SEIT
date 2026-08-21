@@ -6,8 +6,8 @@ The Chainlink registry is a PROJECTION (a function from real compiler registry s
 
 ## Structure-preservation result
 
-- total chainlinks: 8
-- backed by a real canonical dependency edge: 7
+- total chainlinks: 9
+- backed by a real canonical dependency edge: 8
 - self-documented intentional open gaps (not violations): 1
 - genuine violations: 0
 
