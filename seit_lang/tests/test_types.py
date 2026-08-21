@@ -13,16 +13,26 @@ if str(ROOT) not in sys.path:
 from seit_lang.types import SEIT_TYPES, ancestors, comparable, is_known_type, is_subtype, widen
 
 
-def test_exactly_24_types_from_the_brief():
-    expected = {
-        "Scalar", "Vector", "Matrix", "Operator", "Graph", "IncidenceMatrix",
-        "Laplacian", "Spectrum", "Eigenvector", "Projector", "Metric",
-        "Connection", "Curvature", "Tensor", "State", "DensityMatrix",
-        "Algebra", "HilbertSpace", "CliffordAlgebra", "SpectralTriple",
-        "Functional", "Equation", "Theorem", "Dataset",
-    }
-    assert SEIT_TYPES == expected
-    assert len(SEIT_TYPES) == 24
+_FMUTC_BRIEF_24_TYPES = {
+    "Scalar", "Vector", "Matrix", "Operator", "Graph", "IncidenceMatrix",
+    "Laplacian", "Spectrum", "Eigenvector", "Projector", "Metric",
+    "Connection", "Curvature", "Tensor", "State", "DensityMatrix",
+    "Algebra", "HilbertSpace", "CliffordAlgebra", "SpectralTriple",
+    "Functional", "Equation", "Theorem", "Dataset",
+}
+
+
+def test_all_24_original_fmutc_brief_types_still_present_unchanged():
+    assert _FMUTC_BRIEF_24_TYPES <= SEIT_TYPES
+
+
+def test_exactly_one_documented_post_brief_extension_type():
+    # Trajectory (seit_lang/evolution_branch.py's typed evolve/
+    # trajectory abstraction) is the only addition beyond the brief's
+    # original 24 -- see types.py's module docstring for why.
+    extra = SEIT_TYPES - _FMUTC_BRIEF_24_TYPES
+    assert extra == {"Trajectory"}
+    assert len(SEIT_TYPES) == 25
 
 
 def test_is_known_type():
@@ -92,3 +102,13 @@ def test_incidence_matrix_and_laplacian_are_siblings_not_comparable():
     # Both specialize Matrix but are not comparable to EACH OTHER --
     # only to their common ancestor.
     assert comparable("IncidenceMatrix", "Laplacian") is False
+
+
+def test_trajectory_is_a_specialization_of_dataset():
+    assert is_subtype("Trajectory", "Dataset") is True
+    assert ancestors("Trajectory") == ["Dataset"]
+
+
+def test_trajectory_is_not_a_vector_or_matrix():
+    assert is_subtype("Trajectory", "Vector") is False
+    assert is_subtype("Trajectory", "Matrix") is False

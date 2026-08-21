@@ -377,4 +377,27 @@ corpus test suite kept green throughout, never modifying compiler/core,
 compiler/dependencies, compiler/backends, compiler/falsification,
 compiler/verification, compiler/ir, run_compiler.py, or any canonical
 registry outside their own real execution paths.
+
+EVOLUTION KERNEL (post-16-phase extension, two steps, both complete):
+per an explicit architectural constraint -- do not add a generic
+imperative loop to `.seit` merely to support numerical simulation;
+preserve the language's declarative, acyclic-DAG semantics -- temporal
+evolution was built in two deliberately separated steps. Step 1
+(seit_lang/evolution/) is a standalone numerical subsystem (fixed-step
+Euler/RK4 integrators, real heat/wave-equation right-hand-sides on this
+project's own graph Laplacians) with zero coupling to seit_lang's
+language layer, verified against real exact solutions and conservation
+laws before any `.seit`-facing code existed. Step 2
+(seit_lang/evolution_branch.py) exposes it through a new 25th type,
+Trajectory (a documented specialization of Dataset -- see
+seit_lang/types.py's module docstring for why this one addition to the
+FMUTC brief's fixed 24-type list is legitimate), and a set of typed
+accessor primitives (trajectory_final_state, heat_total_series, etc.)
+that pull individually-typed, individually-verifiable values back out
+of a trajectory without unrolling a single timestep into a DAG node.
+An entire simulation -- however many internal steps -- collapses into
+exactly one `derive` statement and one DAG node; a test confirms a
+1000-step integration produces a DAG with exactly as many nodes as the
+program has named values, never one per step. No grammar change, no
+loop keyword, no cycle.
 """
