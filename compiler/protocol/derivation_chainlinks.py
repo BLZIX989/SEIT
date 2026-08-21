@@ -43,6 +43,8 @@ _REPRODUCIBILITY = {
     "T-LICHNEROWICZ-GAUGE-TERM": "EXACT_SYMBOLIC_ZERO_RESIDUAL",
     "T-LICHNEROWICZ-GRAVITY-TERM": "EXACT_SYMBOLIC_COEFFICIENT_SOLVED",
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_TOLERANCE_1E-4_AT_4_DISTINCT_E_VALUES",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "T-DIRAC-SQUARED-FINITE": "EXACT_NUMERIC_BLOCK_MATCH",
 }
 
 # transformation_id -> whether a genuine symbolic/definitional proof backs
@@ -64,6 +66,8 @@ _PROOF_STATUS = {
     "T-LICHNEROWICZ-GAUGE-TERM": "PROVEN_SYMBOLIC_EXACT",
     "T-LICHNEROWICZ-GRAVITY-TERM": "PROVEN_SYMBOLIC_EXACT",
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "NUMERIC_VERIFICATION_ONLY",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "T-DIRAC-SQUARED-FINITE": "PROVEN_DEFINITIONAL",
 }
 
 # transformation_id -> real backend module that executes it.
@@ -78,6 +82,8 @@ _EXECUTABLE_BACKEND = {
     "T-LICHNEROWICZ-GAUGE-TERM": "compiler/backends/lichnerowicz_seeley_dewitt.py",
     "T-LICHNEROWICZ-GRAVITY-TERM": "compiler/backends/lichnerowicz_seeley_dewitt.py",
     "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC": "compiler/backends/lichnerowicz_seeley_dewitt.py",
+    "T-FINITE-SPECTRAL-TRIPLE-AXIOMS": "compiler/backends/finite_spectral_triple_candidate.py",
+    "T-DIRAC-SQUARED-FINITE": "compiler/backends/finite_spectral_triple_candidate.py",
 }
 
 # (chainlink_id, transformation_id, mathematical_statement)
@@ -108,6 +114,17 @@ _LICHNEROWICZ_SEELEY_DEWITT_CHAINLINKS = [
      "D^2 = -(nabla^2+E), E = c*R with c solved = -1/4 (round S^2 control, gravity term only)"),
     ("CL-LICHNEROWICZ-TO-SEELEY-DEWITT", "T-SEELEY-DEWITT-A0-A2-A4-NUMERIC",
      "a0=tr(I)*Vol, a2=tr(E+R/6)*Vol, a4=(1/360)tr[60ER+180E^2+5R^2-2Ric^2+2Riem^2]*Vol (S^3 control)"),
+]
+
+# Same shape and guard pattern as above, for
+# compiler/ir/finite_spectral_triple_certification.py's transformations.
+_FINITE_SPECTRAL_TRIPLE_CHAINLINKS = [
+    ("CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS", "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+     "self-adjointness, grading, real-structure-sign, and first-order-condition "
+     "[[D_F,pi(f)],pi(g)]=0 checks against (A_F,H_F,D_F,J_F,gamma_F) -- FAILS "
+     "(first-order condition; exact closed form, generically nonzero)"),
+    ("CL-FINITE-DIRAC-SQUARED", "T-DIRAC-SQUARED-FINITE",
+     "D_F^2 = diag(d1 d1^T, d1^T d1), exactly block-diagonal, E_B=0 for the bare operator"),
 ]
 
 
@@ -210,6 +227,75 @@ def build_derivation_chainlinks(
             ],
             failure_conditions=["residual is not exactly/numerically zero against the claimed identity"],
             provenance_source=t.provenance.source if t.provenance else "",
+            source_document_status="N/A",
+        ))
+
+    # Finite spectral-triple certification chainlinks: same guarded
+    # construction as the Lichnerowicz/Seeley-DeWitt loop above.
+    for chainlink_id, transformation_id, statement in _FINITE_SPECTRAL_TRIPLE_CHAINLINKS:
+        if transformation_id not in registries.transformations:
+            continue
+        t = registries.transformations.get(transformation_id)
+        status_val = t.status.value if isinstance(t.status, Status) else t.status
+        reg.add(Chainlink(
+            chainlink_id=chainlink_id,
+            source_node=t.domain,
+            target_node=t.codomain,
+            transformation=t.action,
+            mathematical_statement=statement,
+            dependencies=list(t.dependencies),
+            assumptions=list(t.assumptions),
+            status=status_val,
+            proof_status=_PROOF_STATUS[transformation_id],
+            calculation_status=status_val,
+            falsification_status="NOT_TESTED",
+            executable_backend=_EXECUTABLE_BACKEND[transformation_id],
+            reproducibility=_REPRODUCIBILITY[transformation_id],
+            open_obligations=[] if status_val in ("VERIFIED", "DERIVED", "CALCULATED") else [
+                f"{transformation_id} status is {status_val}, not admissible for downstream chainlinks "
+                "-- specifically, this FAIL blocks (E_B,Omega_B) via the standard NCG inner-fluctuation "
+                "mechanism, per compiler/historical/finite_spectral_triple_certification.py"
+            ],
+            failure_conditions=["[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra "
+                                "representation (exactly what was found here)"],
+            provenance_source=t.provenance.source if t.provenance else "",
+            source_document_status="N/A",
+        ))
+
+    # The honest frontier this certification produces: Omega_B and the
+    # finite spectral-action moments a0^B..a6^B are OPEN, not because they
+    # were never attempted, but because the certification that would
+    # license computing them genuinely FAILS (first-order condition).
+    if "SPECTRAL-ACTION-A0-A6-FINITE-B" in registries.objects:
+        sa_finite = registries.objects.get("SPECTRAL-ACTION-A0-A6-FINITE-B")
+        sa_status = sa_finite.status.value if isinstance(sa_finite.status, Status) else sa_finite.status
+        reg.add(Chainlink(
+            chainlink_id="CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
+            source_node="OMEGA_B-FINITE",
+            target_node="SPECTRAL-ACTION-A0-A6-FINITE-B",
+            transformation="Omega_B (inner-fluctuation curvature) -> a0^B,a2^B,a4^B,a6^B (NOT CERTIFIABLE)",
+            mathematical_statement="S_eff^B = Tr f(D_A^B/Lambda) ~ sum_k a_{2k}^B Lambda^{d-2k} + ... "
+                                    "(requires a well-posed fluctuated D_A^B, which requires the "
+                                    "first-order condition -- FALSE for this candidate)",
+            dependencies=["OMEGA_B-FINITE"],
+            assumptions=list(sa_finite.assumptions),
+            status=sa_status,
+            proof_status="OPEN",
+            calculation_status=sa_status,
+            falsification_status="NOT_TESTED",
+            executable_backend=None,
+            reproducibility="N/A_NOT_EXECUTED",
+            open_obligations=[
+                "the first-order condition fails for this candidate's (A_F,J_F) -- see "
+                "AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+                "a genuinely different (A_F,J_F,gamma_F) that passes the first-order condition has "
+                "not been found or attempted anywhere in this corpus",
+            ],
+            failure_conditions=[
+                "an alternative candidate is constructed and its own first-order-condition check fails "
+                "the same way (would need its own independent certification, not inherited from this one)",
+            ],
+            provenance_source="compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
             source_document_status="N/A",
         ))
 

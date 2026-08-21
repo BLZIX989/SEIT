@@ -2879,5 +2879,63 @@
       "all_passed": true
     },
     "status": "VERIFIED"
+  },
+  {
+    "id": "CALC-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "kind": "spectral_triple_axiom_certification",
+    "inputs": {
+      "candidate": "D_F = D_B, the H2B block-incidence Dirac operator (dirac_candidates.py) on the SAME H2 ring graph (n=200, k=3) used throughout this corpus, for exact comparability. H_F = R^(N0+N1) (vertex block + edge block). A_F = C(V), the algebra of real-valued functions on the graph's vertex set -- genuinely derived from the graph itself, NOT the Standard Model's A_F = C (+) H (+) M_3(C) (which nothing in this project's own construction forces or produces -- see clifford_derivation.py::clifford_rank_forcing_check). pi(f) = multiplication by f on the vertex block, zero on the edge block (the edge-block content is generated FROM this representation via [D_F,pi(f)], per Connes' own formalism, not separately assigned). gamma_F = diag(I_N0,-I_N1), the natural Z/2 grading matching D_F's block-swap structure. J_F = complex conjugation on H_F, the natural real structure (same choice H2 already used for D+=sqrt(L))."
+    },
+    "results": {
+      "self_adjoint": true,
+      "grading_axioms_hold": true,
+      "real_structure_signs": [
+        1,
+        1,
+        1
+      ],
+      "first_order_condition_holds": false,
+      "first_order_commutator_norm": 48.76576598751488,
+      "first_order_closed_form_confirmed_symbolically_general": true
+    },
+    "verification": {
+      "findings": [
+        {
+          "check": "self-adjointness of D_F",
+          "result": "HOLDS",
+          "note": "Exact block-antisymmetric-transpose structure by construction; confirms dirac_candidates.py's own D_self_adjoint=True finding."
+        },
+        {
+          "check": "grading axioms (gamma_F^2=I, {D_F,gamma_F}=0, [pi(f),gamma_F]=0)",
+          "result": "ALL HOLD",
+          "note": "Mechanical consequence of the block structure (gamma_F block-diagonal, D_F block-off-diagonal, pi(f) block-diagonal) -- checked directly, not assumed."
+        },
+        {
+          "check": "real-structure signs (epsilon, epsilon', epsilon'')",
+          "result": "(+1, +1, +1) -- degenerate/trivial",
+          "note": "Complex conjugation fixes every real matrix in this construction (D_F, gamma_F, pi(f) are all real), so all three signs come out trivially +1. This is the SAME degenerate situation h2_spectral_triple_locality_check already found for D+=sqrt(L) ('J^2=+1...this corresponds to KO-dimension 0 mod 8...for a triple with no grading'). Per ko_dimension.py's own explicit policy, this record does NOT restate Connes' full (epsilon,epsilon',epsilon'')->KO-mod-8 table from memory to attach a specific integer label to the graded case here; the substantive point -- no discriminating real-structure content is produced by the natural choice -- holds regardless of the exact label."
+        },
+        {
+          "check": "first-order condition [[D_F,pi(f)],pi(g)]=0 for all a=pi(f),b=pi(g) in A_F",
+          "result": "FAILS",
+          "note": "Exact closed form (confirmed both numerically at n=200 with random f,g, and symbolically in general form at n=4 with f,g left as free symbols): [[D_F,pi(f)],pi(g)] = [[0, diag(f*g) d1],[d1^T diag(f*g), 0]], nonzero for generic f,g (verified to vanish correctly for the degenerate case f*g=0 everywhere, confirming the closed form is genuinely computed, not a stub). This is the FIRST TIME this check has been run anywhere in this corpus -- every prior module (dirac_candidates.py, clifford_derivation.py, h2_spectral_triple_locality_check) explicitly states it as not yet attempted."
+        }
+      ]
+    },
+    "status": "FAIL"
+  },
+  {
+    "id": "CALC-DIRAC-SQUARED-FINITE-D_B",
+    "kind": "finite_dirac_squared_block_decomposition",
+    "inputs": {},
+    "results": {
+      "block_diagonal": true,
+      "vertex_block_is_graph_laplacian": true,
+      "edge_block_is_up_laplacian": true
+    },
+    "verification": {
+      "E_B_bare_is_zero": true
+    },
+    "status": "CALCULATED"
   }
 ]

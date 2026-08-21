@@ -542,6 +542,126 @@
     ]
   },
   {
+    "id": "H2-GRAPH-CONTROL",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": []
+  },
+  {
+    "id": "FINITE-DIRAC-D_B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "FINITE-ALGEBRA-A_F",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "H2-GRAPH-CONTROL"
+    ]
+  },
+  {
+    "id": "FINITE-GRADING-GAMMA_F",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "FINITE-REAL-STRUCTURE-J_F",
+    "kind": "Object",
+    "status": "PROPOSED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-SELF-ADJOINT-D_B",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-GRADING-D_B",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-ALGEBRA-A_F"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-REAL-STRUCTURE-SIGNS",
+    "kind": "Object",
+    "status": "VERIFIED",
+    "dependencies": [
+      "FINITE-REAL-STRUCTURE-J_F",
+      "FINITE-GRADING-GAMMA_F"
+    ]
+  },
+  {
+    "id": "AXIOM-CHECK-FIRST-ORDER-CONDITION",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ]
+  },
+  {
+    "id": "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+    "kind": "Object",
+    "status": "FAIL",
+    "dependencies": [
+      "H2-GRAPH-CONTROL",
+      "AXIOM-CHECK-SELF-ADJOINT-D_B",
+      "AXIOM-CHECK-GRADING-D_B",
+      "AXIOM-CHECK-REAL-STRUCTURE-SIGNS",
+      "AXIOM-CHECK-FIRST-ORDER-CONDITION"
+    ]
+  },
+  {
+    "id": "DIRAC-SQUARED-FINITE-D_B",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ]
+  },
+  {
+    "id": "E_B-BARE-FINITE",
+    "kind": "Object",
+    "status": "CALCULATED",
+    "dependencies": [
+      "DIRAC-SQUARED-FINITE-D_B"
+    ]
+  },
+  {
+    "id": "OMEGA_B-FINITE",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+      "DIRAC-SQUARED-FINITE-D_B"
+    ]
+  },
+  {
+    "id": "SPECTRAL-ACTION-A0-A6-FINITE-B",
+    "kind": "Object",
+    "status": "OPEN",
+    "dependencies": [
+      "E_B-BARE-FINITE",
+      "OMEGA_B-FINITE"
+    ]
+  },
+  {
     "id": "SELECTION-SIGMA",
     "kind": "Transformation",
     "status": "OPEN",
@@ -633,6 +753,25 @@
     "status": "VERIFIED",
     "dependencies": [
       "S3-MANIFOLD"
+    ]
+  },
+  {
+    "id": "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "kind": "Transformation",
+    "status": "FAIL",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ]
+  },
+  {
+    "id": "T-DIRAC-SQUARED-FINITE",
+    "kind": "Transformation",
+    "status": "CALCULATED",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
     ]
   },
   {

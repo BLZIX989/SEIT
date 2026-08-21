@@ -249,6 +249,88 @@
     "source_document_status": "N/A"
   },
   {
+    "chainlink_id": "CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "source_node": "H2-GRAPH-CONTROL",
+    "target_node": "FINITE-SPECTRAL-TRIPLE-CERTIFICATION",
+    "transformation": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the concrete (A_F,H_F,D_F,J_F,gamma_F) candidate defined above",
+    "mathematical_statement": "self-adjointness, grading, real-structure-sign, and first-order-condition [[D_F,pi(f)],pi(g)]=0 checks against (A_F,H_F,D_F,J_F,gamma_F) -- FAILS (first-order condition; exact closed form, generically nonzero)",
+    "dependencies": [
+      "FINITE-DIRAC-D_B",
+      "FINITE-ALGEBRA-A_F",
+      "FINITE-GRADING-GAMMA_F",
+      "FINITE-REAL-STRUCTURE-J_F"
+    ],
+    "assumptions": [],
+    "status": "FAIL",
+    "proof_status": "PROVEN_SYMBOLIC_GENERAL_FOR_FIRST_ORDER_CONDITION_PLUS_NUMERIC",
+    "calculation_status": "FAIL",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_candidate.py",
+    "reproducibility": "NUMERIC_N=200_PLUS_SYMBOLIC_GENERAL_CROSSCHECK_N=4",
+    "literature_support": [],
+    "open_obligations": [
+      "T-FINITE-SPECTRAL-TRIPLE-AXIOMS status is FAIL, not admissible for downstream chainlinks -- specifically, this FAIL blocks (E_B,Omega_B) via the standard NCG inner-fluctuation mechanism, per compiler/historical/finite_spectral_triple_certification.py"
+    ],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_candidate.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-FINITE-DIRAC-SQUARED",
+    "source_node": "FINITE-DIRAC-D_B",
+    "target_node": "DIRAC-SQUARED-FINITE-D_B",
+    "transformation": "D_F^2 computed directly by matrix multiplication and compared block-by-block against d1 d1^T (vertex) and d1^T d1 (edge)",
+    "mathematical_statement": "D_F^2 = diag(d1 d1^T, d1^T d1), exactly block-diagonal, E_B=0 for the bare operator",
+    "dependencies": [
+      "FINITE-DIRAC-D_B"
+    ],
+    "assumptions": [],
+    "status": "CALCULATED",
+    "proof_status": "PROVEN_DEFINITIONAL",
+    "calculation_status": "CALCULATED",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": "compiler/backends/finite_spectral_triple_candidate.py",
+    "reproducibility": "EXACT_NUMERIC_BLOCK_MATCH",
+    "literature_support": [],
+    "open_obligations": [],
+    "failure_conditions": [
+      "[[D_F,pi(f)],pi(g)] is not identically zero for the candidate algebra representation (exactly what was found here)"
+    ],
+    "provenance_source": "compiler/backends/finite_spectral_triple_candidate.py",
+    "source_document_status": "N/A"
+  },
+  {
+    "chainlink_id": "CL-FINITE-TRIPLE-TO-SPECTRAL-ACTION",
+    "source_node": "OMEGA_B-FINITE",
+    "target_node": "SPECTRAL-ACTION-A0-A6-FINITE-B",
+    "transformation": "Omega_B (inner-fluctuation curvature) -> a0^B,a2^B,a4^B,a6^B (NOT CERTIFIABLE)",
+    "mathematical_statement": "S_eff^B = Tr f(D_A^B/Lambda) ~ sum_k a_{2k}^B Lambda^{d-2k} + ... (requires a well-posed fluctuated D_A^B, which requires the first-order condition -- FALSE for this candidate)",
+    "dependencies": [
+      "OMEGA_B-FINITE"
+    ],
+    "assumptions": [
+      "Connes' inner-fluctuation formula D_A = D_F + omega + J*omega*J^-1 (omega = sum a[D_F,b]) is only guaranteed well-defined/gauge-covariant when the first-order condition holds. It does not hold here, so (E_B, Omega_B) in the physical Chamseddine-Connes sense CANNOT be certified for this candidate -- there is no well-posed fluctuated operator D_A to take a Lichnerowicz-type decomposition of. The BARE, unfluctuated D_F^2 remains exactly computable (block-diagonal, confirms dirac_candidates.py's own diag(L0,d1^T d1) result), giving E_B=0 trivially for the unfluctuated operator -- but this is a much weaker statement than a genuine NCG spectral action, and a0^B..a6^B cannot be certified as physically meaningful moments on this basis. Per the explicit instruction that certification governs whether the spectral action can be touched: it cannot, for THIS candidate, until either (a) a genuinely different (A_F,J_F,gamma_F) is found that passes the first-order condition, or (b) the corpus explicitly accepts the trivial E_B=0 bare-operator reading, which none of its existing physical claims do."
+    ],
+    "status": "OPEN",
+    "proof_status": "OPEN",
+    "calculation_status": "OPEN",
+    "falsification_status": "NOT_TESTED",
+    "executable_backend": null,
+    "reproducibility": "N/A_NOT_EXECUTED",
+    "literature_support": [],
+    "open_obligations": [
+      "the first-order condition fails for this candidate's (A_F,J_F) -- see AXIOM-CHECK-FIRST-ORDER-CONDITION and CL-CONTROL-TO-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+      "a genuinely different (A_F,J_F,gamma_F) that passes the first-order condition has not been found or attempted anywhere in this corpus"
+    ],
+    "failure_conditions": [
+      "an alternative candidate is constructed and its own first-order-condition check fails the same way (would need its own independent certification, not inherited from this one)"
+    ],
+    "provenance_source": "compiler/protocol/derivation_chainlinks.py (finite spectral-triple frontier)",
+    "source_document_status": "N/A"
+  },
+  {
     "chainlink_id": "CL-OPERATOR-TO-CONTINUUM-DESI",
     "source_node": "OPERATOR-L-DESI",
     "target_node": "CONTINUUM-LIMIT-L-DESI",

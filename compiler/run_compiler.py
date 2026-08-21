@@ -21,6 +21,9 @@ from compiler.historical.register import register_historical_nodes
 from compiler.ir.discrete_curvature import register_discrete_curvature
 from compiler.ir.executable_tests import register_executable_tests
 from compiler.ir.fc005 import TYPE_DEFS_FC005, register_fc005
+from compiler.ir.finite_spectral_triple_certification import (
+    TYPE_DEFS_FINITE_SPECTRAL_TRIPLE, register_finite_spectral_triple_certification,
+)
 from compiler.ir.forward_chain import register_template_chain
 from compiler.ir.registry import MDCLRegistries
 from compiler.ir.seeley_dewitt_verification import (
@@ -92,7 +95,8 @@ def _representation_invariance_falsification_test() -> FalsificationRecord:
 
 def build_and_run() -> dict:
     registries = MDCLRegistries()
-    for name, desc, parent in TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE + TYPE_DEFS_SEELEY_DEWITT:
+    for name, desc, parent in (TYPE_DEFS + TYPE_DEFS_FC005 + TYPE_DEFS_TOE_CLOSURE
+                                + TYPE_DEFS_SEELEY_DEWITT + TYPE_DEFS_FINITE_SPECTRAL_TRIPLE):
         registries.types.add_type(name, desc, parent)
 
     register_template_chain(registries)
@@ -105,6 +109,9 @@ def build_and_run() -> dict:
     # S3-MANIFOLD object as its control manifold for the numeric
     # Seeley-DeWitt a0/a2/a4 check.
     seeley_dewitt_results = register_seeley_dewitt_verification(registries, ROOT)
+    # Requested execution boundary: certify the candidate finite spectral
+    # triple BEFORE any spectral-action work is treated as certified.
+    finite_triple_results = register_finite_spectral_triple_certification(registries, ROOT)
 
     falsifications: list[FalsificationRecord] = list(test_results["falsifications"])
     falsifications.append(_representation_invariance_falsification_test())
@@ -114,7 +121,8 @@ def build_and_run() -> dict:
 
     all_calculations = (list(test_results["calculations"]) + list(curvature_results["calculations"])
                          + list(fc005_results["calculations"]) + list(toe_closure_results["calculations"])
-                         + list(seeley_dewitt_results["calculations"]))
+                         + list(seeley_dewitt_results["calculations"])
+                         + list(finite_triple_results["calculations"]))
 
     # Phase 12: Chainlink/Protocol projection layer -- read-only, built
     # entirely from the registries/falsifications above; adds no new

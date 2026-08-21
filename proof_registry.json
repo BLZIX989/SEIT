@@ -68,5 +68,19 @@
     "statement": "shifted operator L=-Delta-E on S^3, exact spectrum, degree-4 heat-trace polynomial fit vs Gilkey-predicted closed forms, 4 distinct E values",
     "method": "reuses this project's own already-verified S3 heat-trace-fit machinery (compiler/backends/heat_kernel_sphere.py, compiler/verification/heat_kernel_fit.py), extended to nonzero constant E",
     "status": "VERIFIED"
+  },
+  {
+    "id": "PROOF-T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "transformation_id": "T-FINITE-SPECTRAL-TRIPLE-AXIOMS",
+    "statement": "self-adjointness, grading, real-structure-sign, and first-order-condition checks against the concrete (A_F,H_F,D_F,J_F,gamma_F) candidate defined above",
+    "method": "numpy exact linear algebra at n=200 (random f,g) plus sympy symbolic-general confirmation of the first-order-condition closed form at n=4",
+    "status": "FAIL"
+  },
+  {
+    "id": "PROOF-T-DIRAC-SQUARED-FINITE",
+    "transformation_id": "T-DIRAC-SQUARED-FINITE",
+    "statement": "D_F^2 computed directly by matrix multiplication and compared block-by-block against d1 d1^T (vertex) and d1^T d1 (edge)",
+    "method": "numpy exact linear algebra, exact block match (not approximate)",
+    "status": "CALCULATED"
   }
 ]
