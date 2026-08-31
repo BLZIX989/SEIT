@@ -31,6 +31,13 @@ class Theorem:
     implemented: bool = False
     applicability_check: Callable | None = None   # (bound: dict[str, MathObject]) -> bool
     transformation: Callable | None = None        # (bound) -> tuple[MathObject, list[ProofObligation]]
+    # Phase 12 (UniquenessEngine): True only for a theorem that is ITSELF a
+    # cited uniqueness argument (e.g. "the Levi-Civita connection is the
+    # UNIQUE torsion-free metric-compatible connection"), not merely a
+    # constructive theorem that happens to produce one candidate. Defaults to
+    # False everywhere -- UniquenessEngine never infers uniqueness from a
+    # search that simply stopped after one success.
+    proves_uniqueness: bool = False
 
     def check_applicable(self, bound: dict) -> bool:
         if not self.implemented or self.applicability_check is None:

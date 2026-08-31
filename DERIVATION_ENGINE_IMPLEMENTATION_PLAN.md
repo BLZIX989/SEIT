@@ -132,11 +132,22 @@ resulting `status_matrix.json` entry has the mapped `Status`, with a
 variational, geometric) are implemented per the Documentation Conformance Audit's own
 Priority 1–2 recommendations.
 **Deliverable:** `derive(target=flagship_prediction)` attempting `m_{aP}`, `f_GW`, `R_c`.
-**Not started in this pass** — explicitly deferred until Phases 1–13 are real and its
-own upstream dependency chain (§ the Documentation Conformance Audit's DER-SC/DER-TRC/
-DER-GEO recommendations) exists to derive from. Attempting it earlier would mean
-inventing the missing upstream mathematics ad hoc, which is exactly what this whole
-program exists to prevent.
+**Status: minimal slice implemented (follow-up session).** `m_aP` only, via
+`compiler/backends/qcd_axion_mass.py` (the standard QCD axion mass relation, an
+established formula, not invented here) and `compiler/derivation/
+flagship_theorems.py::THM_QCD_AXION_MASS`. The arithmetic independently reproduces
+`reports/master_toe/MASTER_TOE_PREDICTIONS.md`'s own hand-checked value
+(6.885×10⁻¹³ eV) to 0.1%, but N_sub is bound as an explicit, unresolved
+`EpistemicKind.ASSUMPTION` — that report's own audit found the N_sub ← CMB spectral
+index (n_s) connecting formula was never located in the source corpus — so the
+resulting Derivation is honestly `CONDITIONAL`, and `register_canonical_derivation`
+correctly refuses to register it as `CANONICAL`. This is the intended outcome, not an
+unfinished feature: the engine must not let a correct downstream arithmetic check
+promote a claim whose upstream link is still open. `f_GW` (166.48 Hz) and `R_c`
+(120–150 pc) remain **not attempted**: unlike N_sub, their upstream chains have not
+been audited anywhere in this repository the way N_sub's was, and wiring them now
+would mean inventing missing mathematics ad hoc rather than reproducing an
+already-checked chain — the exact thing this program exists to prevent.
 
 ## What this session implements now
 
@@ -144,5 +155,42 @@ Phases 1–6 and a minimal Phase 9/10 (invalidation + recovery search over a sma
 synthetic three-node chain, since no real canonical node has been falsified this
 session) — i.e. TEST 1, TEST 2, TEST 3, and TEST 8 from the task's §20 benchmark list,
 executed for real, with passing tests, committed as an additive `compiler/derivation/`
-package. Phases 7, 8, 11, 12, 13, 14 are specified above but not implemented in this
-pass; they are the explicit next-session backlog, in the stated order.
+package.
+
+## Follow-up session: Phases 7, 8, 9-completion, 11, 12, 13, and a Phase 14 slice
+
+- **Phase 7** (verification integration): the three Slice-1 theorems now each carry an
+  independent symbolic obligation alongside their numeric one (exact sympy
+  characteristic-polynomial cross-check for the spectrum; sympy's own matrix
+  exponential, a different implementation path than scipy's `expm`, for the heat
+  kernel) — never conflated into a single obligation.
+- **Phase 8** (falsification integration): `compiler.falsification.protocols.
+  representation_invariance_test` and `.mathematical_invariance_test` (existing,
+  unmodified) now run as additional obligations on the Laplacian-PSD and
+  spectral-decomposition theorems. The pre-existing falsification test suite's pass
+  rate (21 tests) is unchanged.
+- **Phase 9 completion**: `DerivationEngine.derive` now actually enforces
+  `InadmissiblePremise` (previously declared but never raised) — a bound premise
+  produced by a FALSIFIED/BLOCKED/otherwise-uncertified Derivation is refused, recorded
+  as an honest `DERIVATION_FAILED` record, never silently used. Definitions and
+  assumptions (the premises themselves, not claims about them) are always admissible.
+- **Phase 11** (`compiler/derivation/equivalence.py`): `EquivalenceEngine.classify`
+  with exactly the one registered check the spec calls for (verified change-of-basis);
+  defaults to `"unknown"` otherwise, including when two candidates share an identical
+  spectrum but no witness was supplied.
+- **Phase 12** (`compiler/derivation/uniqueness.py`): `UniquenessEngine.admissible_set`,
+  re-run directly against this project's own GEO-001 finding
+  (`compiler/falsification/eigen_uniqueness.py`'s executed counterexample) and
+  confirmed to report `"unknown"`, never `"singleton"`, for two operators sharing a
+  spectrum. `"singleton"` is reachable only via an explicit `Theorem.proves_uniqueness`
+  flag — never from an unexhausted search stopping after one success.
+- **Phase 13** (`compiler/derivation/certification.py`): `to_canonical_status` (the
+  `DerivationStatus → Status` table) and `register_canonical_derivation`, the one
+  integration point that promotes a `VERIFIED` Derivation to `CANONICAL` and registers
+  it into the existing `compiler.ir.registry.MDCLRegistries` — idempotent, and a
+  refusal (not a crash) for anything not `VERIFIED`/`CANONICAL`.
+- **Phase 14 slice**: as described above.
+
+20 new tests added this follow-up session (29 total across all `compiler/derivation`
+test files, all passing), full pre-existing suite re-run with 0 regressions after each
+phase.

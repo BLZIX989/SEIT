@@ -107,3 +107,74 @@ def test_unimplemented_theorem_is_refused_not_silently_skipped():
     assert d.status == DerivationStatus.DERIVATION_FAILED
     assert "THM-LEVI-CIVITA-UNIQUENESS" in d.note
     assert "not implemented" in d.note
+
+
+def test_phase7_symbolic_and_numeric_obligations_are_independent_records():
+    """Task section 12's example: L=L^T checked symbolically and
+    ||L-L^T||<eps checked numerically must be two distinct, independently
+    inspectable ProofObligations, never conflated into one. Exercised across
+    all three Slice-1 theorems (Phase 7)."""
+    engine, L_obj, spec_obj = test_test2_laplacian_to_spectrum()
+
+    d1 = engine.derivations.get("D-TEST1")
+    numeric = next(o for o in d1.proof_obligations if o.obligation_id == "symmetric-numeric")
+    symbolic = next(o for o in d1.proof_obligations if o.obligation_id == "symmetric-symbolic")
+    assert numeric is not symbolic
+    assert numeric.result == symbolic.result == ObligationResult.SATISFIED
+    assert "numerically" in numeric.description
+    assert "sympy" in symbolic.description
+
+    d2 = engine.derivations.get("D-TEST2")
+    numeric2 = next(o for o in d2.proof_obligations if o.obligation_id == "eigen-equation-residual-numeric")
+    symbolic2 = next(o for o in d2.proof_obligations if o.obligation_id == "eigen-equation-residual-symbolic")
+    assert numeric2 is not symbolic2
+    assert numeric2.result == symbolic2.result == ObligationResult.SATISFIED
+
+    d3 = engine.derive("D-TEST3-PHASE7", MathType.HEAT_KERNEL,
+                        {"operator": L_obj, "spectrum": spec_obj, "t": 0.5},
+                        theorem_id="THM-MATRIX-EXPONENTIAL-SEMIGROUP")
+    assert d3.status == DerivationStatus.VERIFIED
+    cross_check = next(o for o in d3.proof_obligations
+                        if o.obligation_id == "heat-kernel-symbolic-cross-check")
+    assert cross_check.result == ObligationResult.SATISFIED
+
+
+def test_phase8_falsification_protocols_are_wired_not_reimplemented():
+    """Task's falsification integration (Phase 8): the EXISTING
+    compiler.falsification.protocols functions run as additional
+    obligations on the applicable Slice-1 theorems, rather than being
+    reimplemented ad hoc."""
+    engine, L_obj = test_test1_graph_to_laplacian_symmetric_psd()
+    d1 = engine.derivations.get("D-TEST1")
+    rep_inv = next(o for o in d1.proof_obligations
+                    if o.obligation_id == "falsification-representation-invariance")
+    assert rep_inv.result == ObligationResult.SATISFIED
+    assert "representation_invariance_test" in rep_inv.description
+
+    d2 = engine.derive("D-TEST2-PHASE8", MathType.SPECTRUM, {"operator": L_obj},
+                        theorem_id="THM-SPECTRAL-DECOMPOSITION-REAL-SYMMETRIC")
+    assert d2.status == DerivationStatus.VERIFIED
+    math_inv = next(o for o in d2.proof_obligations
+                     if o.obligation_id == "falsification-mathematical-invariance")
+    assert math_inv.result == ObligationResult.SATISFIED
+    assert "mathematical_invariance_test" in math_inv.description
+
+
+def test_phase7_symbolic_check_falsifies_a_genuinely_broken_operator():
+    """A deliberately non-symmetric matrix must fail BOTH the numeric and
+    the exact-sympy symbolic symmetry check independently -- neither
+    obligation is a rubber stamp of the other."""
+    import numpy as np
+
+    from compiler.derivation.obligations import ProofObligation
+    from compiler.derivation.symbolic import numpy_to_sympy, symbolic_symmetric
+
+    broken = np.array([[2.0, -2.0, 0.0], [-1.0, 2.0, -1.0], [0.0, -1.0, 1.0]])  # not symmetric
+    numeric_ob = ProofObligation(
+        "symmetric-numeric", "test", check=lambda: bool(np.allclose(broken, broken.T)),
+    ).discharge()
+    symbolic_ob = ProofObligation(
+        "symmetric-symbolic", "test", check=lambda: symbolic_symmetric(numpy_to_sympy(broken)),
+    ).discharge()
+    assert numeric_ob.result == ObligationResult.FAILED
+    assert symbolic_ob.result == ObligationResult.FAILED

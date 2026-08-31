@@ -9,12 +9,16 @@ statement, hypotheses, and citation, but the engine refuses to execute them
 from __future__ import annotations
 
 import numpy as np
+import sympy as sp
 
 from compiler.backends.graph_laplacian import laplacian, laplacian_exact
 from compiler.backends.heat_flow import heat_operator
 from compiler.backends.spectral import spectrum
 from compiler.derivation.obligations import ObligationResult, ProofObligation
 from compiler.derivation.symbolic import symbolic_symmetric
+from compiler.falsification.protocols import (
+    mathematical_invariance_test, representation_invariance_test,
+)
 from compiler.derivation.theorems import Theorem, TheoremRegistry
 from compiler.derivation.types import (
     EpistemicKind, MathObject, MathType, TypeCompositionError, require,
@@ -61,6 +65,28 @@ def _laplacian_transform(bound: dict):
         check=lambda: psd_ok,
     ).discharge())
 
+    # Phase 8: wire the EXISTING falsification protocol (compiler.falsification.
+    # protocols.representation_invariance_test) in as an additional obligation,
+    # not reimplemented -- PSD-ness (min eigenvalue) must not depend on how
+    # the vertices happen to be labeled.
+    perm_rng = np.random.default_rng(2)
+    orders = [tuple(range(g.n))] + [tuple(perm_rng.permutation(g.n)) for _ in range(5)]
+    falsification = representation_invariance_test(
+        record_id=f"FALS-{graph_obj.id}-PSD-REP-INVARIANCE",
+        target="min eigenvalue of L (PSD-ness)",
+        representations=orders,
+        invariant_fn=lambda order: float(np.linalg.eigvalsh(L[np.ix_(order, order)]).min()),
+        equal_fn=lambda a, b: abs(a - b) < 1e-8,
+    )
+    fals_ob = ProofObligation(
+        "falsification-representation-invariance",
+        "min eigenvalue of L is invariant under vertex relabeling "
+        "(compiler.falsification.protocols.representation_invariance_test)",
+        check=lambda: falsification.passed,
+    ).discharge()
+    fals_ob.evidence = f"{fals_ob.evidence}; {falsification.detail}"
+    obligations.append(fals_ob)
+
     output = MathObject(
         id=f"{graph_obj.id}::L", math_type=MathType.MATRIX,
         epistemic_kind=EpistemicKind.DERIVED_RESULT, carrier=L,
@@ -105,19 +131,74 @@ def _spectrum_transform(bound: dict):
     spec = spectrum(L)
     residual = spec.eigen_equation_residual(L)
 
-    ob = ProofObligation(
-        "eigen-equation-residual",
-        "max_n ||L phi_n - lambda_n phi_n|| below tolerance (real symmetric spectral theorem)",
+    obligations = [ProofObligation(
+        "eigen-equation-residual-numeric",
+        "max_n ||L phi_n - lambda_n phi_n|| below tolerance (real symmetric spectral theorem), "
+        "checked numerically against the numpy eigendecomposition",
         check=lambda: residual < 1e-8,
+    ).discharge()]
+
+    # Phase 7: an INDEPENDENT symbolic cross-check, not a restatement of the
+    # numeric one -- the exact characteristic polynomial det(L - lambda I),
+    # built via sympy from L's exact integer entries (graph Laplacians are
+    # integer-valued by construction), is evaluated AT each numpy eigenvalue.
+    # A genuine root of the exact polynomial gives near-zero here independent
+    # of how numpy computed the eigenvalue.
+    n = L.shape[0]
+    if n <= EXACT_ARITHMETIC_MAX_N:
+        L_exact = sp.Matrix(np.rint(L).astype(int).tolist())
+        charpoly = L_exact.charpoly().as_expr()
+        lam = charpoly.free_symbols.pop() if charpoly.free_symbols else sp.Symbol("lambda")
+        max_charpoly_residual = max(
+            abs(float(charpoly.subs(lam, float(ev)))) for ev in spec.eigenvalues
+        )
+        # scale-normalize: an n x n characteristic polynomial's coefficients
+        # grow with n, so compare against the polynomial's own leading scale.
+        scale = max(1.0, max(abs(float(c)) for c in sp.Poly(charpoly, lam).all_coeffs()))
+        obligations.append(ProofObligation(
+            "eigen-equation-residual-symbolic",
+            "exact sympy characteristic polynomial det(L_exact - lambda I) evaluates near zero "
+            "at each numpy-computed eigenvalue (n<=8, independent of the numeric eigensolver)",
+            check=lambda: (max_charpoly_residual / scale) < 1e-6,
+        ).discharge())
+
+    # Phase 8: wire compiler.falsification.protocols.mathematical_invariance_test
+    # (not reimplemented) -- the spectrum must be invariant under the
+    # admissible mathematical transformation of permutation-similarity
+    # (P L P^T for a permutation matrix P), the operator-level analogue of
+    # the representation-invariance check already run on L itself.
+    perm_rng = np.random.default_rng(3)
+
+    def _perm_matrix(order):
+        P = np.zeros((n, n))
+        for i, j in enumerate(order):
+            P[i, j] = 1.0
+        return P
+
+    perms = [_perm_matrix(tuple(perm_rng.permutation(n))) for _ in range(5)]
+    falsification = mathematical_invariance_test(
+        record_id=f"FALS-{op_obj.id}-SPECTRUM-PERM-INVARIANCE",
+        target="Spec(L) under permutation similarity",
+        transformations=[lambda M, P=P: P @ M @ P.T for P in perms],
+        base_object=L,
+        invariant_fn=lambda M: tuple(np.round(np.sort(np.linalg.eigvalsh(M)), 8)),
+    )
+    fals_ob = ProofObligation(
+        "falsification-mathematical-invariance",
+        "Spec(L) is invariant under permutation-similarity transformations "
+        "(compiler.falsification.protocols.mathematical_invariance_test)",
+        check=lambda: falsification.passed,
     ).discharge()
+    fals_ob.evidence = f"{fals_ob.evidence}; {falsification.detail}"
+    obligations.append(fals_ob)
 
     output = MathObject(
         id=f"{op_obj.id}::Spec", math_type=MathType.SPECTRUM,
         epistemic_kind=EpistemicKind.DERIVED_RESULT, carrier=spec,
     )
-    if ob.result == ObligationResult.SATISFIED:
+    if all(o.result == ObligationResult.SATISFIED for o in obligations):
         output.verified_properties["eigendecomposition_valid"] = True
-    return output, [ob]
+    return output, obligations
 
 
 THM_SPECTRAL_DECOMPOSITION = Theorem(
@@ -169,6 +250,22 @@ def _heat_kernel_transform(bound: dict):
         ProofObligation("heat-kernel-semigroup", "H(s+t) = H(s) H(t) for sampled s,t > 0",
                           check=lambda: semigroup_ok).discharge(),
     ]
+
+    # Phase 7: an INDEPENDENT symbolic cross-check via sympy's own matrix
+    # exponential (a different implementation path than scipy's expm used by
+    # heat_operator), built from L's exact integer entries.
+    if n <= EXACT_ARITHMETIC_MAX_N:
+        L_exact = sp.Matrix(np.rint(L).astype(int).tolist())
+        H_sym = (-sp.Rational(t).limit_denominator(10 ** 6) * L_exact).exp()
+        H_sym_numeric = np.array(H_sym.evalf(), dtype=float)
+        symbolic_matches_numeric = bool(np.allclose(H_sym_numeric, H_t, atol=1e-6))
+        obligations.append(ProofObligation(
+            "heat-kernel-symbolic-cross-check",
+            "sympy's own matrix-exponential (n<=8, exact integer L) agrees with the "
+            "scipy-backed numeric H(t) to within 1e-6 -- an independent implementation path",
+            check=lambda: symbolic_matches_numeric,
+        ).discharge())
+
     output = MathObject(
         id=f"{op_obj.id}::H(t={t})", math_type=MathType.HEAT_KERNEL,
         epistemic_kind=EpistemicKind.DERIVED_RESULT, carrier=H_t,

@@ -412,3 +412,15 @@ this spec is deliberately silent on writing implementation code beyond describin
 `DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md` (Deliverable 3) sequences the build; the
 first executable slice (TEST 1 + TEST 8) is implemented immediately after this spec
 and the plan, as the concrete proof that the design above actually runs.
+
+## 12. Status update (follow-up session)
+
+Phases 7, 8, the section 9 leakage-control enforcement, 11 (`EquivalenceEngine`), 12
+(`UniquenessEngine`), 13 (`certification.py`), and a minimal, honest Phase 14 slice
+(`m_aP` only, correctly stuck at `CONDITIONAL`) are now implemented and tested — see
+`DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md`'s own "Follow-up session" section for the
+per-phase detail. Every design decision this section originally left open (the
+`InadmissiblePremise` enforcement point, the `EquivalenceEngine`'s single witness-based
+check, `UniquenessEngine`'s default-to-`"unknown"` discipline) was implemented exactly
+as specified above, verified against this project's own prior findings
+(`compiler/falsification/eigen_uniqueness.py`) rather than against new assumptions.
