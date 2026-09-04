@@ -927,7 +927,7 @@ exclusions = [
     ("Flagship predictions f_GW (166.48 Hz) and R_c (120-150 pc)",
      "Not attempted: unlike m_aP, their upstream derivation chains have not been located and "
      "audited anywhere in this project.",
-     "DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md, Phase 14."),
+     "reports/derivation_environment/DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md, Phase 14."),
     ("E8 unification (Lisi, 2007)",
      "A serious, published proposal, but rigorously shown not to work: no embedding places the "
      "Standard Model's three fermion generations inside E8 without also predicting unobserved "

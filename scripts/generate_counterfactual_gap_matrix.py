@@ -103,7 +103,7 @@ ROWS = [
          status="FICTIONAL; deliberately left symbolic (no numbers fit), unlike the real corpus's own alpha/m_e claims"),
     dict(component="Clausius-Duhem thermodynamic apparatus (dU, q^mu, Delta S>=0)",
          counterfactual_result="Claimed to follow from coarse-graining the master equation (Sec. 10)",
-         repository_support="the target equations appear in FORWARD_MDCL_COMPILER_SPEC.md as the canonical (unbuilt) TRC target",
+         repository_support="the target equations appear in docs/FORWARD_MDCL_COMPILER_SPEC.md as the canonical (unbuilt) TRC target",
          established_physics_support="YES for the equations themselves (standard continuum thermodynamics)",
          new_assumption_required="YES -- the claimed derivation from the spectral action is entirely unconstructed",
          actual_derivation_exists="NO",

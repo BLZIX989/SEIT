@@ -28,7 +28,7 @@ Crosswalk of the "Candidate Universal Theory Compiler -- Protocol Matrix v1.0" t
 
 | Protocol | Layer | Family/Target | Computed status | Evidence |
 |---|---|---|---|---|
-| MC-001 | I | Universal Compiler Specification Protocol | DOCUMENT_EXISTS | FORWARD_MDCL_COMPILER_SPEC.md: found at repository root |
+| MC-001 | I | Universal Compiler Specification Protocol | DOCUMENT_EXISTS | docs/FORWARD_MDCL_COMPILER_SPEC.md: found at repository root |
 | MC-002 | I | Master Dependency ChainLink Protocol (MDCL) | DOCUMENT_EXISTS | master_mdcl.json: found at repository root |
 | MC-003 | I | Universal Dependency Law Protocol (UDL) | PASS | self_audit dependency_audit: passed=True, 0 issues -- topological-order confirmation over the real dependency DAG |
 | MC-004 | I | Universal Registry Protocol | DOCUMENT_EXISTS | object_registry.json: found at repository root -- one of several universal registries this run produced; see also transformation_registry.json, equation_registry.json |

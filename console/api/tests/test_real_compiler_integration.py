@@ -8,7 +8,7 @@ This intentionally runs against the real repository's canonical state,
 same as `compiler/tests` already does: the standard, accepted side effect
 is timestamp/git_commit drift in the registry files, which the phase's
 verification pass reverts with `git checkout --` once tests pass (see
-UOC_RESEARCH_CONSOLE_ARCHITECTURE.md section 8 / the Phase 6-10 commit
+reports/research_console/UOC_RESEARCH_CONSOLE_ARCHITECTURE.md section 8 / the Phase 6-10 commit
 history for this established pattern). console_runs/ and
 console_research/ (ledger) are both gitignored, so the run record and
 ledger entries this test creates are backed up and restored around the

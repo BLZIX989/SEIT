@@ -1,4 +1,4 @@
-"""Execution engine (Phase 6 of DERIVATION_ENGINE_SPEC.md section 5).
+"""Execution engine (Phase 6 of reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 5).
 
 Deliberately thin orchestration: DerivationEngine never reimplements numeric
 or symbolic mathematics itself -- every Theorem's `transformation` calls into
@@ -20,7 +20,7 @@ class InadmissiblePremise(ValueError):
     """Raised when a bound premise's epistemic/verification state does not
     meet the leakage-control discipline this engine reuses from
     compiler/verification/self_audit.py::LEAKAGE_ACTIVE_STATUSES (see
-    DERIVATION_ENGINE_SPEC.md section 9)."""
+    reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 9)."""
 
 
 # Phase 9 (spec section 9): a MathObject may be used as a premise without its
@@ -64,7 +64,7 @@ class DerivationEngine:
         return None
 
     def _check_admissible_premise(self, obj: MathObject, *, allow_conditional: bool) -> None:
-        """Enforces DERIVATION_ENGINE_SPEC.md section 9: refuse a premise
+        """Enforces reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 9: refuse a premise
         whose upstream verification state does not meet the leakage-control
         bar, mirroring compiler/verification/self_audit.py's
         LEAKAGE_ACTIVE_STATUSES rather than reimplementing it. Raises

@@ -9,7 +9,7 @@ general: H and H' = U H U^dagger can share an identical spectrum while being
 different matrices, so "same output" is never, by itself, evidence of
 "same underlying construction."
 
-Exactly one real check is registered for Slice 1 (DERIVATION_ENGINE_SPEC.md
+Exactly one real check is registered for Slice 1 (reports/derivation_environment/DERIVATION_ENGINE_SPEC.md
 section 8): verified similarity via an explicitly supplied change-of-basis
 witness. Every other case -- including two candidates with no witness at
 all -- returns "unknown".

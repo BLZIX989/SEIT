@@ -11,7 +11,7 @@ the one place canonical status is ever assigned).
 Scope note: the historical UOCP_Formal_Registry.docx / UDP whitepaper / UCG
 Specification v5 / DER Registry v1/v2 source documents referenced by this
 project's prior research are NOT present in this repository (confirmed
-against source_material/ and RESEARCH_CONSOLE_REPOSITORY_MAP.md section 1 --
+against source_material/ and reports/research_console/RESEARCH_CONSOLE_REPOSITORY_MAP.md section 1 --
 that corpus was supplied in a separate, parallel research thread and was
 explicitly never committed here). Every Chainlink/Protocol record in this
 package that would normally cite historical source text instead carries an

@@ -1,5 +1,5 @@
 """Phase 11: EquivalenceEngine. Confirms the discipline required by
-DERIVATION_ENGINE_SPEC.md section 8 -- a classification stronger than
+reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 8 -- a classification stronger than
 'unknown' is returned ONLY when an explicit, checked equivalence witness
 actually verifies, never inferred from matching numeric output alone.
 """

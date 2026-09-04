@@ -1,4 +1,4 @@
-"""Established-mathematics library (Phase 4 of DERIVATION_ENGINE_SPEC.md
+"""Established-mathematics library (Phase 4 of reports/derivation_environment/DERIVATION_ENGINE_SPEC.md
 section 3). A Theorem with `implemented=False` is registered honestly --
 statement, hypotheses, conclusion, domain, and provenance are real and
 citable -- but `check_applicable`/`apply` refuse to run it, raising
@@ -78,6 +78,6 @@ class TheoremRegistry:
 
     def candidates_for(self, conclusion_type: MathType) -> list:
         """Preserves registration order -- the order theorems were added is
-        the order the engine tries them in, per DERIVATION_ENGINE_SPEC.md
+        the order the engine tries them in, per reports/derivation_environment/DERIVATION_ENGINE_SPEC.md
         section 5 step 3."""
         return [t for t in self._items.values() if t.conclusion_type == conclusion_type]

@@ -75,6 +75,8 @@ def _write_csv_and_xlsx(records: list, fieldnames: list[str], csv_path: Path, xl
 
 def main(*, output_root: Path = ROOT, max_pdf_pages: int = 10, max_pdfs: int | None = None) -> dict:
     corpus_dir = output_root / "data" / "scientific_corpus"
+    extraction_dir = output_root / "reports" / "scientific_corpus_extraction"
+    extraction_dir.mkdir(parents=True, exist_ok=True)
 
     literature_items = json.loads(LITERATURE_REGISTRY_PATH.read_text())
     status_matrix = json.loads(STATUS_MATRIX_PATH.read_text())
@@ -116,30 +118,30 @@ def main(*, output_root: Path = ROOT, max_pdf_pages: int = 10, max_pdfs: int | N
                  "source_status", "exact_representation", "surrounding_text", "variable_ids",
                  "operator_ids", "structure_ids", "assumptions", "dimensional_information",
                  "provenance", "equation_hash"]
-    _write_csv_and_xlsx(equations, eq_fields, output_root / "SCIENTIFIC_EQUATION_CORPUS.csv",
-                        output_root / "SCIENTIFIC_EQUATION_CORPUS.xlsx", "equations")
+    _write_csv_and_xlsx(equations, eq_fields, extraction_dir / "SCIENTIFIC_EQUATION_CORPUS.csv",
+                        extraction_dir / "SCIENTIFIC_EQUATION_CORPUS.xlsx", "equations")
 
     var_fields = ["variable_id", "equation_id", "literal_symbol", "local_definition", "role",
                   "mathematical_type", "source_id", "source_location", "extraction_method", "confidence"]
-    _write_csv_and_xlsx(variables, var_fields, output_root / "SCIENTIFIC_VARIABLE_CORPUS.csv",
-                        output_root / "SCIENTIFIC_VARIABLE_CORPUS.xlsx", "variables")
+    _write_csv_and_xlsx(variables, var_fields, extraction_dir / "SCIENTIFIC_VARIABLE_CORPUS.csv",
+                        extraction_dir / "SCIENTIFIC_VARIABLE_CORPUS.xlsx", "variables")
 
     op_fields = ["operator_id", "equation_id", "symbol", "source_id", "source_location", "definition",
                  "extraction_method", "confidence", "algebraic_properties"]
-    _write_csv_and_xlsx(operators, op_fields, output_root / "SCIENTIFIC_OPERATOR_CORPUS.csv",
-                        output_root / "SCIENTIFIC_OPERATOR_CORPUS.xlsx", "operators")
+    _write_csv_and_xlsx(operators, op_fields, extraction_dir / "SCIENTIFIC_OPERATOR_CORPUS.csv",
+                        extraction_dir / "SCIENTIFIC_OPERATOR_CORPUS.xlsx", "operators")
 
     struct_fields = ["structure_id", "structure_type", "source_id", "source_location",
                       "equation_ids", "definition", "evidence", "provenance"]
-    _write_csv_and_xlsx(structures, struct_fields, output_root / "SCIENTIFIC_STRUCTURE_CORPUS.csv",
-                        output_root / "SCIENTIFIC_STRUCTURE_CORPUS.xlsx", "structures")
+    _write_csv_and_xlsx(structures, struct_fields, extraction_dir / "SCIENTIFIC_STRUCTURE_CORPUS.csv",
+                        extraction_dir / "SCIENTIFIC_STRUCTURE_CORPUS.xlsx", "structures")
 
     crosswalk_fields = ["chain_position", "canonical_object", "source_id", "source_equation_id",
                          "source_structure_id", "relationship", "evidence", "status", "provenance"]
-    _write_csv_and_xlsx(crosswalk, crosswalk_fields, output_root / "UOC_CHAIN_LITERATURE_CROSSWALK.csv",
-                        output_root / "UOC_CHAIN_LITERATURE_CROSSWALK.xlsx", "crosswalk")
+    _write_csv_and_xlsx(crosswalk, crosswalk_fields, extraction_dir / "UOC_CHAIN_LITERATURE_CROSSWALK.csv",
+                        extraction_dir / "UOC_CHAIN_LITERATURE_CROSSWALK.xlsx", "crosswalk")
 
-    review_csv = output_root / "EXTRACTION_REVIEW_QUEUE.csv"
+    review_csv = extraction_dir / "EXTRACTION_REVIEW_QUEUE.csv"
     review_fields = ["review_id", "equation_id", "issue", "source_location", "machine_proposal",
                       "unresolved_question", "status"]
     with review_csv.open("w", newline="") as f:
@@ -164,6 +166,8 @@ def main(*, output_root: Path = ROOT, max_pdf_pages: int = 10, max_pdfs: int | N
 
 
 def write_reports(result: dict, output_root: Path) -> None:
+    extraction_dir = output_root / "reports" / "scientific_corpus_extraction"
+    extraction_dir.mkdir(parents=True, exist_ok=True)
     eq = result["equations"]
     review = result["review"]
     pdf_review = [r for r in review if r.issue == "PDF_TEXT_CANDIDATE_NOT_STRUCTURED"]
@@ -262,7 +266,7 @@ def write_reports(result: dict, output_root: Path) -> None:
         "- A repeated equation is not a theorem; a mathematically-plausible equivalence is not a "
         "canonical identity -- no equivalence analysis was attempted (Phase 15+, not started).",
     ]
-    (output_root / "PHASE14_EXTRACTION_REPORT.md").write_text("\n".join(lines) + "\n")
+    (extraction_dir / "PHASE14_EXTRACTION_REPORT.md").write_text("\n".join(lines) + "\n")
 
     provenance = {
         "phase": "Phase 14: Mathematical Extraction Layer",
@@ -280,7 +284,7 @@ def write_reports(result: dict, output_root: Path) -> None:
         "extraction_methods": by_method, "extraction_quality": by_quality,
         "pdf_extraction_stats": result["pdf_stats"],
     }
-    (output_root / "PHASE14_PROVENANCE.json").write_text(json.dumps(provenance, indent=2, sort_keys=True))
+    (extraction_dir / "PHASE14_PROVENANCE.json").write_text(json.dumps(provenance, indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":

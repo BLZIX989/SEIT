@@ -63,7 +63,7 @@ CONCEPTUAL_SYMBOLS: dict[str, str] = {
 # are conceptually close to the executed GRAPH-G-SEED branch
 # (compiler/ir/executable_tests.py), but forward_chain.py's own module
 # docstring is explicit that the two branches are NOT the same chain
-# and must not be conflated (compiler_architecture.md, "Why two
+# and must not be conflated (reports/research_console/compiler_architecture.md, "Why two
 # separate node families exist"). So EXECUTED is reserved for nodes
 # that are themselves directly wired to an executed backend, and every
 # TEMPLATE_CHAIN node is NOT_IMPLEMENTED unless proven otherwise.

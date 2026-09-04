@@ -1,4 +1,4 @@
-"""Proof obligations (Phase 5 of DERIVATION_ENGINE_SPEC.md section 4). Every
+"""Proof obligations (Phase 5 of reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 4). Every
 obligation is discharged by actually running its `check` callable -- a missing
 check is honestly recorded as NOT_TESTED, never silently upgraded to
 SATISFIED.

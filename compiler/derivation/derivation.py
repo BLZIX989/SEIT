@@ -1,4 +1,4 @@
-"""Derivation trace model (Phase 3 of DERIVATION_ENGINE_SPEC.md section 2/6).
+"""Derivation trace model (Phase 3 of reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 2/6).
 
 A Derivation never records a bare "therefore X follows" -- it stores the
 actual sequence of DerivationSteps, each naming the established-mathematics
@@ -6,7 +6,7 @@ rule invoked and the numeric/symbolic evidence produced. DerivationStatus is
 additive: it governs Derivation records only and does not replace
 compiler.core.status.Status, which continues to govern canonical Objects/
 Transformations/Equations exactly as before this package existed (see
-DERIVATION_ENGINE_SPEC.md section 6 for the one-directional mapping used only
+reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 6 for the one-directional mapping used only
 at the moment a Derivation is registered into the canonical registries).
 """
 from __future__ import annotations

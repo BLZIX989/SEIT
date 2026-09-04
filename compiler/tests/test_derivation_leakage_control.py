@@ -1,5 +1,5 @@
 """Phase 9 completion: leakage-control admissibility enforcement
-(DERIVATION_ENGINE_SPEC.md section 9). DerivationEngine.derive must refuse a
+(reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 9). DerivationEngine.derive must refuse a
 bound premise produced by a FALSIFIED/BLOCKED/uncertified Derivation --
 raising the refusal as an honest DERIVATION_FAILED record (audit trail kept)
 rather than silently using it or crashing uncaught.

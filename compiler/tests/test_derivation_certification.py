@@ -3,7 +3,7 @@ Runs a Slice-1 derivation through to registration into the EXISTING
 compiler.ir.registry.MDCLRegistries and confirms the resulting
 status_matrix entry carries the DerivationStatus-mapped compiler Status,
 cross-referenced back to the Derivation via provenance.calculation_id --
-DERIVATION_ENGINE_SPEC.md section 6's one-directional integration point.
+reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 6's one-directional integration point.
 """
 from __future__ import annotations
 

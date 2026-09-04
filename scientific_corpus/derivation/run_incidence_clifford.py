@@ -3,7 +3,7 @@ own instruction block, Sec.1-11 -- explicitly NOT the uploaded
 canonical_closure_report.md, whose "resolved"/"terminates the search"
 claims this project does not implement; see chat response for the
 specific inconsistencies found in that document). Writes 7 deliverable
-files at the repository root from real computed results.
+files under reports/audits/ from real computed results.
 """
 from __future__ import annotations
 
@@ -13,6 +13,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+AUDITS_DIR = ROOT / "reports" / "audits"
+AUDITS_DIR.mkdir(parents=True, exist_ok=True)
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -54,7 +56,7 @@ def write_reports(r: dict) -> None:
               f"**{pd['beta_near_0_matches_unweighted_persistent_distance']}**",
               f"Monotone nonincreasing in beta: **{pd['monotone_nonincreasing_in_beta']}**", "",
               pd["note"]]
-    (ROOT / "FC005_PERSISTENT_SECTOR_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "FC005_PERSISTENT_SECTOR_REPORT.md").write_text("\n".join(lines) + "\n")
 
     # --- KC003_DECOMPOSITION_REPORT.md ---
     kc = r["kc003_decomposition"]
@@ -64,7 +66,7 @@ def write_reports(r: dict) -> None:
     for name, sub in kc.items():
         lines += [f"## {name}", "", f"**Statement:** {sub['statement']}", "",
                   f"**Status:** {sub['status']}", ""]
-    (ROOT / "KC003_DECOMPOSITION_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "KC003_DECOMPOSITION_REPORT.md").write_text("\n".join(lines) + "\n")
 
     # --- VR001_HILBERT_CORRESPONDENCE_REPORT.md ---
     vr = r["vr001_known_manifold_control"]
@@ -84,10 +86,10 @@ def write_reports(r: dict) -> None:
               "This validates the TEST METHODOLOGY on a case with a known analytic answer "
               "(the circle). The real DESI data's own convergence status is separately, "
               "already assessed in CONVERGENCE_AUDIT.md (CONV-001) -- not re-litigated here."]
-    (ROOT / "VR001_HILBERT_CORRESPONDENCE_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "VR001_HILBERT_CORRESPONDENCE_REPORT.md").write_text("\n".join(lines) + "\n")
 
     # --- NCG_KO_PARAMETER_SCAN.csv ---
-    with (ROOT / "NCG_KO_PARAMETER_SCAN.csv").open("w", newline="") as f:
+    with (AUDITS_DIR / "NCG_KO_PARAMETER_SCAN.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["KO_mod_8", "real_structure_commutes_with_grading", "intersection_form_symmetry",
                     "odd_dim_determinant_forced_zero", "source"])
@@ -118,7 +120,7 @@ def write_reports(r: dict) -> None:
              "KO=0/4 (symmetric): the determinant obstruction is REMOVED in general, but no "
              "specific matrix from this project's own construction has been shown to have "
              "nonzero determinant -- CANDIDATE, OPEN, not resolved."]
-    (ROOT / "NCG_INTERSECTION_FORM_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "NCG_INTERSECTION_FORM_REPORT.md").write_text("\n".join(lines) + "\n")
 
     # --- CLIFFORD_DERIVATION_REPORT.md ---
     cr = r["clifford_rank_forcing"]
@@ -132,7 +134,7 @@ def write_reports(r: dict) -> None:
              "", f"## SU(4) -> Standard Model gauge group", "",
              f"**Status: {su4['su4_to_sm_breaking_status']}**", "", su4["evidence"], "",
              su4["verdict"]]
-    (ROOT / "CLIFFORD_DERIVATION_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "CLIFFORD_DERIVATION_REPORT.md").write_text("\n".join(lines) + "\n")
 
     # --- INCIDENCE_CLIFFORD_CLOSURE_REPORT.md (the honest master summary) ---
     h2b = r["h2b_reused_from_prior_phase"]
@@ -185,7 +187,7 @@ def write_reports(r: dict) -> None:
              "spectral triple and gauge group remains genuinely open at multiple independent "
              "points (KC-003a/d, the specific KO=0/4 matrix, Cl(6)'s forcing, SU(4)->SM "
              "breaking) -- this is a real narrowing of the problem, not a closure of it."]
-    (ROOT / "INCIDENCE_CLIFFORD_CLOSURE_REPORT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "INCIDENCE_CLIFFORD_CLOSURE_REPORT.md").write_text("\n".join(lines) + "\n")
 
 
 if __name__ == "__main__":

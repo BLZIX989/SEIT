@@ -1,5 +1,5 @@
 """Mathematical object model and type-composition legality (Phase 1 of
-DERIVATION_ENGINE_SPEC.md section 1). Enforces the governing task's explicit
+reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 1). Enforces the governing task's explicit
 requirement: "the compiler must reject invalid mathematical compositions" --
 a MathObject may only be USED as a stronger/narrower type (e.g. a bare Matrix
 used as a SelfAdjointOperator, or a Tensor used as a Metric) once the

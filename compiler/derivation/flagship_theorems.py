@@ -1,5 +1,5 @@
 """Flagship prediction theorem(s) -- Phase 14, minimal slice, per
-DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md's own explicit deferral note.
+reports/derivation_environment/DERIVATION_ENGINE_IMPLEMENTATION_PLAN.md's own explicit deferral note.
 
 Only m_aP (the persistence axion mass) is attempted here, and only
 honestly: the QCD axion mass relation itself (m_a = Lambda_QCD^2/f_a) is

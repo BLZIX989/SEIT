@@ -1,6 +1,6 @@
 """Certification mapping (Phase 13 of the implementation plan). The ONE
 integration point between the new, additive DerivationStatus and the
-existing compiler.core.status.Status (DERIVATION_ENGINE_SPEC.md section 6).
+existing compiler.core.status.Status (reports/derivation_environment/DERIVATION_ENGINE_SPEC.md section 6).
 A pure function (`to_canonical_status`) plus the actual registration call
 into the EXISTING registries/provenance machinery
 (compiler.ir.registry.MDCLRegistries, compiler.provenance.provenance.
@@ -20,7 +20,7 @@ from compiler.derivation.derivation import Derivation, DerivationStatus
 from compiler.ir.registry import MDCLRegistries
 from compiler.provenance.provenance import make_provenance
 
-# DerivationStatus -> Status, exactly the table in DERIVATION_ENGINE_SPEC.md
+# DerivationStatus -> Status, exactly the table in reports/derivation_environment/DERIVATION_ENGINE_SPEC.md
 # section 6. Anything absent from this dict maps to None: "never registered
 # into the canonical registries at all" (pre-canonical or historical
 # Derivation-layer-only states).
