@@ -6,9 +6,9 @@
     "family_or_target": "Universal Compiler Specification Protocol",
     "description": "Defines compiler grammar and execution rules -> canonical compiler specification",
     "computed_status": "DOCUMENT_EXISTS",
-    "evidence": "FORWARD_MDCL_COMPILER_SPEC.md: found at repository root",
+    "evidence": "docs/FORWARD_MDCL_COMPILER_SPEC.md: found at repository root",
     "correspondence_kind": "document",
-    "correspondence_ref": "FORWARD_MDCL_COMPILER_SPEC.md"
+    "correspondence_ref": "docs/FORWARD_MDCL_COMPILER_SPEC.md"
   },
   {
     "protocol_id": "MC-002",

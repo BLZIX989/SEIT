@@ -1,7 +1,7 @@
 """Pydantic response models for the UOC Research Console API.
 
 Every model here mirrors a real compiler schema field-for-field rather
-than inventing a new one (per UOC_RESEARCH_CONSOLE_ARCHITECTURE.md
+than inventing a new one (per reports/research_console/UOC_RESEARCH_CONSOLE_ARCHITECTURE.md
 section 4.1) — the intent is that these models are load-bearing
 documentation of `compiler/core/ir.py`'s dataclasses and the on-disk
 registry shapes, not an independent design.

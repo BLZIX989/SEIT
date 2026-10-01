@@ -15,7 +15,7 @@ no new physics, no new claims, just formal metadata over what is real:
    thread (outside this repository) searched an external corpus for
    protocols named SEP/RIT/MIT/OISR and found MISSING_SOURCE there; this
    registers the plain fact, already noted in
-   RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6, that this repository's
+   reports/research_console/RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6, that this repository's
    own falsification protocols already implement those same four
    conceptual tests (structural elimination / representation invariance /
    mathematical invariance / observer-independent structural reduction)
@@ -103,7 +103,7 @@ def build_protocol_registry(chainlinks: ChainlinkRegistry) -> ProtocolRegistry:
             "The project's historical research (outside this repository) refers to protocols "
             "named SEP/RIT/MIT/OISR; that historical specification text is not present in this "
             "repository (see compiler/protocol/__init__.py and "
-            "RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6). This registers the fact -- already "
+            "reports/research_console/RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6). This registers the fact -- already "
             "noted in that reconnaissance document -- that this repository's own, independently "
             "implemented falsification protocols already realize the same four conceptual tests "
             "under this repository's own naming. This is NOT presented as a recovery of the "

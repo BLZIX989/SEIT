@@ -159,7 +159,7 @@ def main() -> dict:
         (ROOT / "literature" / "extraction" / "STRING_THEORY_LITERATURE_REGISTRY.json").read_text())
 
     import csv
-    with (ROOT / "UOC_CHAIN_LITERATURE_CROSSWALK.csv").open() as f:
+    with (ROOT / "reports" / "scientific_corpus_extraction" / "UOC_CHAIN_LITERATURE_CROSSWALK.csv").open() as f:
         crosswalk_rows = list(csv.DictReader(f))
 
     audits = {
@@ -176,7 +176,9 @@ def main() -> dict:
     }
     all_passed = all(a["passed"] for a in audits.values())
     result = {"all_passed": all_passed, "audits": audits}
-    (ROOT / "PHASE14_EXTRACTION_AUDIT.json").write_text(json.dumps(result, indent=2, sort_keys=True))
+    audit_dir = ROOT / "reports" / "scientific_corpus_extraction"
+    audit_dir.mkdir(parents=True, exist_ok=True)
+    (audit_dir / "PHASE14_EXTRACTION_AUDIT.json").write_text(json.dumps(result, indent=2, sort_keys=True))
     return result
 
 

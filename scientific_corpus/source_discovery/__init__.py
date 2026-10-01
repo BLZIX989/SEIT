@@ -7,8 +7,8 @@ files with real byte hashes), never EQUATION evidence. No equation is
 extracted from anything in this package -- search-result metadata and
 abstracts are discovery evidence only, never mathematical content.
 Equation/variable/operator extraction is a separate, later pipeline
-that has not been built (see PHASE13_PHASE_A_B_STATUS_REPORT.md and
-PHASE13_SOURCE_DISCOVERY_REPORT.md for exactly what has and hasn't been
+that has not been built (see reports/scientific_corpus_extraction/PHASE13_PHASE_A_B_STATUS_REPORT.md and
+reports/scientific_corpus_extraction/PHASE13_SOURCE_DISCOVERY_REPORT.md for exactly what has and hasn't been
 attempted).
 
 Channel used this slice: the arXiv API (export.arxiv.org/api/query),

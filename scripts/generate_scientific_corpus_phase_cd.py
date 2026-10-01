@@ -289,7 +289,9 @@ if __name__ == "__main__":
 
     result = main(offline=args.offline_fixture, max_results_per_query=args.max_results_per_query,
                   max_acquisitions=args.max_acquisitions, output_root=args.output_root)
-    write_report(result, args.output_root / "PHASE13_SOURCE_DISCOVERY_REPORT.md")
+    report_dir = args.output_root / "reports" / "scientific_corpus_extraction"
+    report_dir.mkdir(parents=True, exist_ok=True)
+    write_report(result, report_dir / "PHASE13_SOURCE_DISCOVERY_REPORT.md")
     print(f"discovered: {len(result['discovered'])} unique sources "
           f"({result['discovery_stats']['raw_hits_across_all_queries']} raw hits, "
           f"{result['discovery_stats']['duplicate_hits_removed']} deduped)")

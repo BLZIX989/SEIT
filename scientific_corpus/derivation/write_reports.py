@@ -1,4 +1,5 @@
-"""Generates the 16 Phase 14 deliverable files at the repository root from
+"""Generates the 16 Phase 14 deliverable files under reports/audits/ and
+reports/derivation_corpus/ (repository root before the 2026-09 reorg) from
 scientific_corpus/derivation/DERIVATION_RESULTS.json (must be produced by
 run_all.py first). Every number quoted in these reports is read directly
 out of that JSON -- nothing here is typed in independently of the actual
@@ -15,6 +16,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS_PATH = ROOT / "scientific_corpus" / "derivation" / "DERIVATION_RESULTS.json"
+AUDITS_DIR = ROOT / "reports" / "audits"
+DERIVATION_CORPUS_DIR = ROOT / "reports" / "derivation_corpus"
+AUDITS_DIR.mkdir(parents=True, exist_ok=True)
+DERIVATION_CORPUS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def load() -> dict:
@@ -86,7 +91,7 @@ def write_derivation_frontier(r: dict) -> None:
         "real dependency edges, remainder self-documented as open gaps, 0 genuine "
         "violations | categorical.py |",
     ]
-    (ROOT / "DERIVATION_FRONTIER.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "DERIVATION_FRONTIER.md").write_text("\n".join(lines) + "\n")
 
 
 def write_claim_registry(r: dict) -> None:
@@ -125,7 +130,7 @@ def write_claim_registry(r: dict) -> None:
          "SOURCE": "This from That / Universal Rosetta translation claim", "STATUS": "VERIFIED",
          "EVIDENCE": r["categorical"]["faithful_edge_preservation"]},
     ]
-    (ROOT / "MATHEMATICAL_CLAIM_REGISTRY.json").write_text(json.dumps(claims, indent=2, default=str))
+    (DERIVATION_CORPUS_DIR / "MATHEMATICAL_CLAIM_REGISTRY.json").write_text(json.dumps(claims, indent=2, default=str))
 
 
 def write_equation_registry(r: dict) -> None:
@@ -140,7 +145,7 @@ def write_equation_registry(r: dict) -> None:
          "existing compiler, CONDITIONAL (free t)"),
         ("EQ-D14-008", "D_mu = partial_mu + i g A_mu", "gauge covariant derivative", "dimensionally consistent, not computed against real data"),
     ]
-    with (ROOT / "EQUATION_REGISTRY.csv").open("w", newline="") as f:
+    with (DERIVATION_CORPUS_DIR / "EQUATION_REGISTRY.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["equation_id", "equation", "description", "status"])
         w.writerows(rows)
@@ -158,7 +163,7 @@ def write_variable_registry() -> None:
         ("VAR-D14-008", "g", "gauge coupling constant", "scalar, [length]^-1/[A_mu] by convention"),
         ("VAR-D14-009", "t", "diffusion time parameter", "scalar, free/unfixed (source of METRIC-CANDIDATE non-uniqueness)"),
     ]
-    with (ROOT / "VARIABLE_REGISTRY.csv").open("w", newline="") as f:
+    with (DERIVATION_CORPUS_DIR / "VARIABLE_REGISTRY.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["variable_id", "symbol", "description", "type_and_dimension"])
         w.writerows(rows)
@@ -173,7 +178,7 @@ def write_operator_registry() -> None:
         ("OP-D14-005", "gamma^mu (Dirac basis)", "linear, Hermitian for mu=0",
          "N/A (finite-dim representation)", "{gamma^mu,gamma^nu}=2g^{mu nu}I (verified exact)"),
     ]
-    with (ROOT / "OPERATOR_REGISTRY.csv").open("w", newline="") as f:
+    with (DERIVATION_CORPUS_DIR / "OPERATOR_REGISTRY.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["operator_id", "operator", "linearity_selfadjointness", "locality", "algebraic_property"])
         w.writerows(rows)
@@ -198,7 +203,7 @@ def write_convergence_audit(r: dict) -> None:
         elif "interpretation" in res:
             lines.append(f"- {res['interpretation']}")
         lines.append("")
-    (ROOT / "CONVERGENCE_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "CONVERGENCE_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_dirac_audit(r: dict) -> None:
@@ -231,7 +236,7 @@ def write_dirac_audit(r: dict) -> None:
         "", h2b["comparison_to_H2_D_plus_sqrt_L"]["interpretation"], "",
         "### What this does NOT establish", "", h2b["what_this_DOES_NOT_establish"],
     ]
-    (ROOT / "DIRAC_OPERATOR_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "DIRAC_OPERATOR_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_mass_spectrum_audit(r: dict) -> None:
@@ -246,7 +251,7 @@ def write_mass_spectrum_audit(r: dict) -> None:
     lines += ["", "## Erdos-Renyi 50-seed sweep ('go fishing' test)", "",
               m["structural_test"]["erdos_renyi_interpretation"], "",
               "## Degrees-of-freedom verdict", "", m["degrees_of_freedom_analysis"]["verdict"]]
-    (ROOT / "MASS_SPECTRUM_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "MASS_SPECTRUM_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_gauge_audit(r: dict) -> None:
@@ -267,7 +272,7 @@ def write_gauge_audit(r: dict) -> None:
              f"- status: **{g['su2xu1_in_spin8']['status']}**", "",
              "## The specific gap that matters for THIS project (H4C)", "",
              g["missing_link_to_compiler_spectrum_H4C"]["missing_object"]]
-    (ROOT / "GAUGE_STRUCTURE_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "GAUGE_STRUCTURE_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_tft_bridge_theorems(r: dict) -> None:
@@ -312,7 +317,7 @@ def write_tft_bridge_theorems(r: dict) -> None:
              "for this project's discrete setting -- external, established mathematics "
              "(Atiyah-Singer 1963) that this project has not yet connected any of its own "
              "constructions to."]
-    (ROOT / "TFT_BRIDGE_THEOREMS.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "TFT_BRIDGE_THEOREMS.md").write_text("\n".join(lines) + "\n")
 
 
 def write_operator_algebra_audit(r: dict) -> None:
@@ -325,7 +330,7 @@ def write_operator_algebra_audit(r: dict) -> None:
              f"Holds exactly for all 27 (a,b,c) triples: **{o['su2_jacobi_identity']['holds_exactly_for_all_27_abc_triples']}**",
              "", "## Gauge covariant derivative dimensional check", "",
              json.dumps(o["gauge_covariant_derivative_dimensions"], indent=2)]
-    (ROOT / "OPERATOR_ALGEBRA_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "OPERATOR_ALGEBRA_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_category_translation_audit(r: dict) -> None:
@@ -350,7 +355,7 @@ def write_category_translation_audit(r: dict) -> None:
              f"- composable pairs (A->B, B->C sharing a node): {comp['n_composable_pairs']}",
              f"- with an explicit direct composite A->C also registered: {comp['n_with_explicit_composite_registered']}",
              "", comp["interpretation"]]
-    (ROOT / "CATEGORY_TRANSLATION_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "CATEGORY_TRANSLATION_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_dimensional_type_audit(r: dict) -> None:
@@ -358,7 +363,7 @@ def write_dimensional_type_audit(r: dict) -> None:
     lines = ["# DIMENSIONAL_TYPE_AUDIT.md", "", "| Equation | Dimension/type note | Typechecks |", "|---|---|---|"]
     for row in rows:
         lines.append(f"| `{row['equation']}` | {row['dimension']} | {row['typechecks']} |")
-    (ROOT / "DIMENSIONAL_TYPE_AUDIT.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "DIMENSIONAL_TYPE_AUDIT.md").write_text("\n".join(lines) + "\n")
 
 
 def write_observational_closure(r: dict) -> None:
@@ -386,7 +391,7 @@ def write_observational_closure(r: dict) -> None:
              "opposed to internal mathematical consistency) was possible beyond what is "
              "listed above -- this is reported explicitly rather than the report being "
              "silently thin on this section."]
-    (ROOT / "OBSERVATIONAL_CLOSURE.md").write_text("\n".join(lines) + "\n")
+    (AUDITS_DIR / "OBSERVATIONAL_CLOSURE.md").write_text("\n".join(lines) + "\n")
 
 
 def write_counterexample_registry(r: dict) -> None:
@@ -411,7 +416,7 @@ def write_counterexample_registry(r: dict) -> None:
                               "fixed-topology results",
             "predicted": er["predicted_ratio"], "actual": None, "residual": er["absolute_residual"],
         })
-    with (ROOT / "COUNTEREXAMPLE_REGISTRY.jsonl").open("w") as f:
+    with (DERIVATION_CORPUS_DIR / "COUNTEREXAMPLE_REGISTRY.jsonl").open("w") as f:
         for rec in records:
             f.write(json.dumps(rec, default=str) + "\n")
 
@@ -442,7 +447,7 @@ def write_run_manifest(r: dict) -> None:
             "DIMENSIONAL_TYPE_AUDIT.md", "OBSERVATIONAL_CLOSURE.md", "COUNTEREXAMPLE_REGISTRY.jsonl",
         ],
     }
-    (ROOT / "DERIVATION_RUN_MANIFEST.json").write_text(json.dumps(manifest, indent=2))
+    (DERIVATION_CORPUS_DIR / "DERIVATION_RUN_MANIFEST.json").write_text(json.dumps(manifest, indent=2))
 
 
 if __name__ == "__main__":

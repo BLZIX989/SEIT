@@ -132,6 +132,6 @@
       "falsification_registry.json"
     ],
     "source_document_status": "MISSING_SOURCE",
-    "provenance_note": "The project's historical research (outside this repository) refers to protocols named SEP/RIT/MIT/OISR; that historical specification text is not present in this repository (see compiler/protocol/__init__.py and RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6). This registers the fact -- already noted in that reconnaissance document -- that this repository's own, independently implemented falsification protocols already realize the same four conceptual tests under this repository's own naming. This is NOT presented as a recovery of the historical SEP/RIT/MIT/OISR source text."
+    "provenance_note": "The project's historical research (outside this repository) refers to protocols named SEP/RIT/MIT/OISR; that historical specification text is not present in this repository (see compiler/protocol/__init__.py and reports/research_console/RESEARCH_CONSOLE_REPOSITORY_MAP.md section 6). This registers the fact -- already noted in that reconnaissance document -- that this repository's own, independently implemented falsification protocols already realize the same four conceptual tests under this repository's own naming. This is NOT presented as a recovery of the historical SEP/RIT/MIT/OISR source text."
   }
 ]

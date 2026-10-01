@@ -52,7 +52,7 @@ class Correspondence:
 # dict is itself the honest finding for that protocol ID.
 _CORRESPONDENCES: dict[str, Correspondence] = {
     # I. Meta-Compiler / Governance
-    "MC-001": Correspondence("document", "FORWARD_MDCL_COMPILER_SPEC.md"),
+    "MC-001": Correspondence("document", "docs/FORWARD_MDCL_COMPILER_SPEC.md"),
     "MC-002": Correspondence("document", "master_mdcl.json"),
     "MC-003": Correspondence("audit", "dependency_audit",
                               "topological-order confirmation over the real dependency DAG"),
